@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Solr Query for Mimicking SQL IN Operator Functionality - HarmsSite</title>
+  <title>Category: Symfony - HarmsSite</title>
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="[caption id=&#8221;&#8221; align=&#8221;alignright&#8221; width=&#8221;240&#8221;] Learning SQL (Photo credit: therefromhere)[/caption] I did a lot &hellip;">
+  <meta name="description" content="Category: Symfony">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://harmstyler.github.io/blog/2012/09/13/solr-query-for-mimicking-sql-in-operator-functionality">
+  <link rel="canonical" href="http://harmstyler.github.ioblog/categories/symfony">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="HarmsSite" type="application/atom+xml">
@@ -76,102 +76,35 @@
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">Solr Query for Mimicking SQL in Operator Functionality</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-13T00:00:00-05:00" pubdate data-updated="true">Sep 13<span>th</span>, 2012</time>
-        
-      </p>
+    <h1 class="entry-title">Category: Symfony</h1>
     
   </header>
+  
+  <div id="blog-archives" class="category">
 
 
-<div class="entry-content">[caption id=&#8221;&#8221; align=&#8221;alignright&#8221; width=&#8221;240&#8221;]<a href="http://www.flickr.com/photos/80985329@N00/518053737" target="_blank"><img class="zemanta-img-inserted zemanta-img-configured" title="Learning SQL" src="http://farm1.static.flickr.com/224/518053737_8a9794389e_m.jpg" alt="Learning SQL" width="240" height="180" /></a> Learning SQL (Photo credit: therefromhere)[/caption]
 
-I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the <code>IN</code> operator. In Solr you have the option of specifying a field using the <code>qf</code> operator, but what if you have more search terms searching other fields? The problem becomes far more complex. Given the following SQL statement how would we query Solr?
-<pre>SELECT *
-FROM table_name
-WHERE column_name IN (value1,value2,...) AND other_column='foo'</pre>
-There are couple of ways to do this, but I think there is one very good and much easier way. The first obvious way to query solr is to match the fields to columns manually.
-<pre>/select?q=*:*&amp;fq=column_name:value1 AND column_name:value2 AND other_colum:'foo'</pre>
-This is all fine and dandy but what if I want to be able to add a list of content to the query? Adding the column name every time can become a chore and make the query unnecessarily large. To do an <code>IN</code> query try this:
-<pre>/select?q=*:*&amp;fq=column_name:+(value1 value2) AND other_colum:'foo'</pre>
-Having used this one before, I can tell you it works for me using Solr 3.6 and that the placement of the + symbol is key.
+  
+  <h2>2013</h2>
 
-And what about a <code>NOT IN</code> query?
-<pre>SELECT *
-FROM table_name
-WHERE column_name NOT IN (value1,value2,...) AND other_column='foo'</pre>
-The &#8216;bad&#8217; way:
-<pre>/select?q=*:*&amp;fq=-column_namevalue1 AND -column_name:value2 AND other_colum:'foo'</pre>
-This one I found from working with eZ Publish and eZ Find, and I happen to like it a lot. It is a clever little Solr query that selects all from the column then filters out what we don&#8217;t want.
-<pre>/select?q=*:*&amp;fq=other_colum:'foo' AND column_name:[* TO *] -column_name:(value1 value2)</pre>
-<code>column_name:[* TO *]</code> is like saying select all from the column, but then we add <code>-column_name:(value1 value2)</code> to filter out what we don&#8217;t want.
+<article>
+  
+<h1><a href="/blog/2013/03/02/symfony2-access-conrol/">Symfony2 Access Conrol</a></h1>
+<time datetime="2013-03-02T00:00:00-06:00" pubdate><span class='month'>Mar</span> <span class='day'>02</span> <span class='year'>2013</span></time>
 
-Cheers and good luck!
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/development/'>Development</a>, <a class='category' href='/blog/categories/symfony/'>Symfony</a></span>
+</footer>
+
+
+</article>
+
 </div>
 
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">Tyler Harms</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-13T00:00:00-05:00" pubdate data-updated="true">Sep 13<span>th</span>, 2012</time>
-      
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://harmstyler.github.io/blog/2012/09/13/solr-query-for-mimicking-sql-in-operator-functionality/" data-via="harmstyler" data-counturl="http://harmstyler.github.io/blog/2012/09/13/solr-query-for-mimicking-sql-in-operator-functionality/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2012/08/25/optimizing-solr-to-fit-your-needs-part-1/" title="Previous Post: Optimizing Solr to fit your needs Part 1">&laquo; Optimizing Solr to fit your needs Part 1</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2012/09/28/aws-authorize-security-groups-across-acounts-shellrunner/" title="Next Post: AWS authorize security groups across acounts « ShellRunner">AWS authorize security groups across acounts « ShellRunner &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
 </div>
