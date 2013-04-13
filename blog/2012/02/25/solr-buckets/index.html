@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Solr Buckets - HarmsSite</title>
+  <meta name="author" content="Tyler Harms">
+
+  
+  <meta name="description" content="I have been meaning to make this blog post for a couple of months now. I came across this topic a while back when I was working on creating some &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://harmstyler.github.io/blog/2012/02/25/solr-buckets">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="HarmsSite" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-23865520-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">HarmsSite</a></h1>
+  
+    <h2>Web Development Blog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:harmstyler.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Solr Buckets</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-25T00:00:00-06:00" pubdate data-updated="true">Feb 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">I have been meaning to make this blog post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find powered by Solr. The Problem: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (take advantage of Solr&#8217;s speed and let it do the work). Now, the book I was using, <a title="Apache Solr Enterprise Search Server" href="http://www.packtpub.com/apache-solr-3-enterprise-search-server/book?utm_source=lucene.apache.org&amp;utm_medium=link&amp;utm_content=pod&amp;utm_campaign=mdb_009576" target="_blank">Apache Solr Enterprise Search Server</a>, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the SynonymFilterFactory. So for starters lets look at the fieldType:
+<blockquote>&lt;fieldType name=&#8221;bucketFirstLetterGroup&#8221; class=&#8221;solr.TextField&#8221; sortMissingLast=&#8221;true&#8221; omitNorms=&#8221;true&#8221;&gt;
+&lt;analyzer type=&#8221;index&#8221;&gt;
+&lt;tokenizer class=&#8221;solr.PatternTokenizerFactory&#8221; pattern=&#8221;^([a-zA-Z]).*&#8221; group=&#8221;1&#8221; /&gt;
+&lt;filter class=&#8221;solr.SynonymFilterFactory&#8221; synonyms=&#8221;mb_letterBuckets.txt&#8221; ignoreCase=&#8221;true&#8221; expand=&#8221;false&#8221;/&gt;
+&lt;/analyzer&gt;
+&lt;analyzer type=&#8221;query&#8221;&gt;
+&lt;tokenizer class=&#8221;solr.KeywordTokenizerFactory&#8221; /&gt;
+&lt;/analyzer&gt;
+&lt;/fieldType&gt;</blockquote>
+It is actually pretty straight forward. It uses a PatternTokenizerFactory to ignore case but grab only letters and then the SynonymFilterFactory looks at a text file to see how to group all the letters. That is where the book got fuzzy. It told me to look at the default synonyms.txt file for reference and it sent me on my merry way. I scoured the internet for the answer to my dilema and finally found my answer though trial and error. The default synonyms.txt file looks like this:
+<blockquote>#some test synonym mappings unlikely to appear in real input text
+aaafoo =&gt; aaabar
+bbbfoo =&gt; bbbfoo bbbbar
+cccfoo =&gt; cccbar cccbaz
+fooaaa,baraaa,bazaaa
+
+# Some synonym groups specific to this example
+GB,gib,gigabyte,gigabytes
+MB,mib,megabyte,megabytes
+Television, Televisions, TV, TVs
+#notice we use &#8220;gib&#8221; instead of &#8220;GiB&#8221; so any WordDelimiterFilter coming
+#after us won&#8217;t split it into two words.
+
+# Synonym mappings can be used for spelling correction too
+pixima =&gt; pixma</blockquote>
+From this file I concluded that my buckets should be grouped as a-c=&gt;a b c and so on. But that is not the case (it will actually appear to bucket the letters but also leave all the letters as their own bucket at the same time (A-C 150 results A 50 results and so on). It actually works opposite of the example. What is on the left is the solr fieldType and the right is the bucket/synonym. To work it must be a,b,c=&gt;a-c.
+<blockquote>a,b,c=&gt;A-C
+d,e,f=&gt;D-F
+g,h,i=&gt;G-I
+j,k,l=&gt;J-L
+m,n,o=&gt;M-O
+p,q,r=&gt;P-R
+s,t,u=&gt;S-U
+v,w,x,y,z=&gt;V-Z</blockquote>
+So yeah, I have been meaning to post this for a while as I could find no meaningful help on the matter elsewhere on the internet. Also, remember to reindex!
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tyler Harms</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-25T00:00:00-06:00" pubdate data-updated="true">Feb 25<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://harmstyler.github.io/blog/2012/02/25/solr-buckets/" data-via="harmstyler" data-counturl="http://harmstyler.github.io/blog/2012/02/25/solr-buckets/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/02/24/tylers-weekly-update-for-2012-02-24-2/" title="Previous Post: Tyler's Weekly Update for 2012-02-24">&laquo; Tyler's Weekly Update for 2012-02-24</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/03/02/tylers-weekly-update-for-2012-03-02-2/" title="Next Post: Tyler's Weekly Update for 2012-03-02">Tyler's Weekly Update for 2012-03-02 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/">Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/02/symfony2-access-conrol/">Symfony2 Access Conrol</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/19/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/07/optimizing-solr-to-fit-your-needs-part-2/">Optimizing Solr To Fit Your Needs Part 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/21/learning-symfony/">Learning Symfony</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/harmstyler">@harmstyler</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'harmstyler',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Tyler Harms -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

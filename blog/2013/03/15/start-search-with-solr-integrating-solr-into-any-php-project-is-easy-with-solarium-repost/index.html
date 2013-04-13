@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST] - HarmsSite</title>
+  <meta name="author" content="Tyler Harms">
+
+  
+  <meta name="description" content="This post is a repost of an article I wrote for Web and PHP Magazine&#8217;s February issue.
+Solr has quickly become one of the most popular search &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://harmstyler.github.io/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="HarmsSite" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-23865520-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">HarmsSite</a></h1>
+  
+    <h2>Web Development Blog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:harmstyler.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Start Searching With Solr - Integrating Solr Into Any PHP Project Is Easy With Solarium [REPOST]</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-15T00:00:00-05:00" pubdate data-updated="true">Mar 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h5 style="text-align: center;">This post is a repost of an article I wrote for <a title="Web and PHP Magazine" href="http://webandphp.com/" target="_blank">Web and PHP Magazine</a>&#8217;s <a title="Web and PHP February Issue" href="http://webandphp.com/issue-11" target="_blank">February issue</a>.</h5>
+<h4>Solr has quickly become one of the most popular search engines available. Due to Solr&#8217;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.</h4>
+<pre><strong>Listing 1</strong>
+{
+    "require": {
+        "solarium/solarium": "3.0.0" 
+    }
+}</pre>
+<pre><strong>Listing 2</strong>
+
+$config = array(
+    'endpoint' =&gt; array(
+        'localhost' =&gt; array( 
+            'host' =&gt; '127.0.0.1' 'port' =&gt; '8983' 'path' =&gt; '/solr/'
+        )
+    )
+);
+
+<span style="color: #888888;">// new Solarium Client object</span>
+$client = new Solarium\Client($config);</pre>
+<pre><strong>Listing 3</strong>
+
+&lt;field name="id" type="int" indexed="true" stored="true" /&gt;
+&lt;field name="name" type="string" indexed="true" stored="true" 
+    multiValued="true" /&gt;
+&lt;field name="text" type="text" indexed="true" stored="true" /&gt;</pre>
+Introduction to Solr: Search is an important part of most web projects and should be given much care. Throughout the years, making content searchable has changed a great deal. Obviously, exposing SQL queries to users through search is dangerous. Modern search implementations require a secure approach, such as a stand-alone search server, separate from site data. There are many search options to choose from. Your search list might include: Sphinx, Flax, ElasticSearch, Google, and Solr. Solr’s scalability, speed, built in features and community make it an ideal platform for any project. Luckily, integrating Solr into your PHP project has been made easy by the Solarium Project.
+
+In Apache’s own words, “<em>Solr is an open source enterprise search server based on the Lucene Java search library, with XML/HTTP and JSON, Ruby, and Python APIs, hit highlighting, faceted search, caching, replication, and a web administration interface</em>” [1]. Apache Solr is an open source, extensible, stand-alone search engine, built on Lucene, managed by The Apache Software Foundation. There are currently two stable versions of Solr available for use; Solr 3.6.2 and Solr 4.0. Either version may be used with Solarium; Solr 4 ships with added features, however, so use Solr 4 if possible.
+
+Solr is designed to run as a stand-alone Java web application (app). The documentation for downloading, installing, and running Solr can be found at <a title="Solr Tutorial" href="http:// lucene.apache.org/solr/tutorial.html" target="_blank">http:// lucene.apache.org/solr/tutorial.html</a>. Because Solr is meant to be separate from the primary project, it can be installed anywhere. All interactions with Solr happen over HTTP through a REST-like API. Solarium utilizes both PHP and JSON for its interactions with Solr.
+
+One of the greatest features of Solr is its scalability. Replication can be set up to run multiple Solr instances in a master/slave setup, just like MySQL replication.The documentation for setting up a master/slave setup is very thorough, so it will not be discussed further here. Another option for scaling Solr is to search multiple search cores. Solr can run multiple search cores at a time. Solr can search multiple cores at a time through its distributed search and sharding capabilities. Large search indexes can be split into multiple smaller indexes; then through a distributed search multiple cores are searched. The best part of a multicore search setup is that not all cores need to exist on the same server. This allows for very flexible search architecture.
+<h3>Solarium acts as a bridge</h3>
+Solr has a REST-like API, so interactions with it are very simple and happen over HTTP. The Solarium Project is “<em>an open source Solr client library for PHP applications</em>” [2], which makes interacting with Solr even simpler. Solarium exists to expose the Solr API through an easy to use PHP library.
+
+Installation of Solarium has been made very easy through the use of Composer (Listing 1). Installing through Composer will automatically add the library to the PHP autoload path. To install Solarium into a project not utilizing Composer, the files will need to be downloaded from GitHub (<a title="Solarium Library" href="https:// github.com/basdenooijer/solarium/tags" target="_blank">https:// github.com/basdenooijer/solarium/tags</a>). Next, add the solarium library to the PHP autoload path manually. After Solarium is installed, Solr can be accessed through sending a Solarium Client ($client) object to a configuration array. The configuration array should be made up of the Solr host, port and path (Listing 2).
+<h3>Adding content to Solr</h3>
+Before anything can be searched in Solr, documents (docs) must be added to the Solr index. Solr maintains a collection of docs in its index. A doc is a collection of fields and values. Solr fields must be defined in the Solr schema. A field can occur multiple times in a doc.
+
+To make an update to Solr using Solarium, start with the $client object. Using the $client object, create an $update instance then make a doc:
+<pre>$update = $client-&gt;createUpdate(); 
+$doc1 = $update-&gt;createDocument();</pre>
+With the newly created $doc, begin adding content to Solr fields as instances of the $doc:
+<pre>$doc1-&gt;id = 123;
+$doc1-&gt;name = 'First Document';
+$doc1-&gt;text = 'This is the first document\'s content';
+
+<span style="color: #888888;">// Create another doc</span>
+$doc2 = $update-&gt;createDocument();
+$doc2-&gt;id = 234;
+$doc2-&gt;name = 'Next Document';
+$doc2-&gt;text = 'This is the next document\'s content';</pre>
+In this example, the Solr schema would have to be set up to accept the id, name and text fields. Solr ships with an example search app with a good demo of a Solr schema; each field will need to be added to the schema in order for Solr to add the docs to the search index (Listing 3). Next, add each $doc created to an array so that addDocuments() can be called on the array. This will run the Solr add command for every document in the array:
+<pre>$update-&gt;addDocuments(array($doc1, $doc2));</pre>
+The newly-added docs will not actually become a permanent part of the Solr index until Solr is told to commit all added docs to its index. To do this with Solarium, call addCommit() to generate a commit message for Solr, then a call to update() with the $update will send the commit:
+<pre>$update-&gt;addCommit(); $client-&gt;update($update);</pre>
+The new docs should now exist and be searchable using Solr.
+<h3>Searching Solr through Solarium</h3>
+Solarium offers a robust PHP API for searching Solr. To run a basic query, start with the $client object. Next, call the createSelect() instance of the $client object to generate the query for execution:
+<pre>$query = $client=&gt;createSelect();
+
+<span style="color: #888888;">// *:* is equivalent to telling solr to return all docs</span>
+$query-&gt;setQuery('*:*');</pre>
+Because the createSelect() function is being used to generate the query, the select() function should be used when executing the query:
+<pre>$resultSet = $client-&gt;select($query);</pre>
+Use the $resultSet array to iterate over the array and display the results:
+<pre>echo '&lt;div class="search-results"&gt;'; 
+foreach ($resultSet as $result) {
+    echo '&lt;div class="search-result"&gt;';
+    echo '&lt;p&gt;' . $result-&gt;id . '&lt;/p&gt;';
+    echo '&lt;p&gt;' . $result-&gt;name . '&lt;/p&gt;';
+    echo '&lt;p&gt;' . $result-&gt;text . '&lt;/p&gt;';
+    echo '&lt;/div&gt;';
+}
+echo '&lt;/div&gt;';</pre>
+The $resultSet can also be refined. Setting up pagination, for instance, is very easy:
+<pre>$query-&gt;setStart(0)-&gt;setRows(10);</pre>
+Sorting is also very easy (note that Solr will sort by score if no sort is set):
+<pre>$query-&gt;addSort('name', Select::SORT_ASC);</pre>
+Filtering, setting query fields, boosting, and faceting are also possible ways of searching Solr. Filtering is another way of narrowing search results without using a query. Query fields allow for control over what fields are searched. Boosting gives certain field’s higher precedence in the Search. Facets give users a way to better navigate search results. Solarium gives easy access to all the various ways of searching Solr content.
+<h3>Removing content from Solr</h3>
+Solr does not have a command called update; however, updates can be performed by re-adding content. Solr uses a unique identifier for each doc and only allows for one instance of the identifier in the search index. To update content, call the add command on an already existent Solr doc id. Sometimes updating Solr with new content isn’t enough. Sometimes the need to delete content from Solr arises. Doing this is similar to when adding docs, create an $update instance:
+<pre>$update = $client-&gt;createUpdate();</pre>
+Using the $update instance, documents can be deleted by id or by query. This offers a great deal of flexibility for deleting content. Deleting by id is used more often because it offers very precise deletes:
+<pre>$update-&gt;addDeleteById(234);
+$update-&gt;addCommit();
+$client-&gt;update($update);</pre>
+Deleting by query, however, can be incredibly powerful and useful. When starting development of a new search project with test content, for instance, deleting by query offers the ability to remove all test content. If all the test content starts with the word test, deleting the content is simple:
+<pre>$update-&gt;addDeleteQuery('name:test*');
+$update-&gt;addCommit();
+$client-&gt;update($update);</pre>
+Another common practice is to wipe the index and start fresh. Using delete by query, this task is again made very simple:
+<pre>$update-&gt;addDeleteQuery('*:*');
+$update-&gt;addCommit();
+$client-&gt;update($update);</pre>
+Solarium’s delete doc API is very useful in maintaining an up-to-date search index.
+<h3>Conclusion</h3>
+Solr is an incredibly scalable, powerful and easy-to-use search engine that should be considered for any search project. Solr is designed to be language agnostic through its REST-like API, and thanks to Solarium it fits very easily into any PHP project. This article covers only three use cases for Solarium; the examples shipped with Solarium offer a great deal more. Search highlighting, debugging, optimizing, and ‘more like this’ functionality are all possible with Solr and Solarium.
+<h4><span style="text-decoration: underline;">References</span></h4>
+[1] Apache Solr: http://projects.apache.org/projects/solr.html
+[2] The Solarium Project: http://www.solarium-project.org/
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tyler Harms</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-15T00:00:00-05:00" pubdate data-updated="true">Mar 15<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://harmstyler.github.io/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/" data-via="harmstyler" data-counturl="http://harmstyler.github.io/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/02/symfony2-access-conrol/" title="Previous Post: Symfony2 Access Conrol">&laquo; Symfony2 Access Conrol</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/">Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/02/symfony2-access-conrol/">Symfony2 Access Conrol</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/19/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/07/optimizing-solr-to-fit-your-needs-part-2/">Optimizing Solr To Fit Your Needs Part 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/21/learning-symfony/">Learning Symfony</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/harmstyler">@harmstyler</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'harmstyler',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Tyler Harms -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

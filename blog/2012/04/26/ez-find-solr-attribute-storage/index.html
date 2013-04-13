@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>eZ Find: Enable Attribute Storage - HarmsSite</title>
+  <meta name="author" content="Tyler Harms">
+
+  
+  <meta name="description" content="When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://harmstyler.github.io/blog/2012/04/26/ez-find-solr-attribute-storage">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="HarmsSite" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-23865520-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">HarmsSite</a></h1>
+  
+    <h2>Web Development Blog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:harmstyler.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">eZ Find: Enable Attribute Storage</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-26T00:00:00-05:00" pubdate data-updated="true">Apr 26<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes <code>'as_objects', true()</code> eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.
+
+Another option, however, is to return all the information from Solr, no more object building from the DB. To do this all you have to do is enable <code>EnableSolrAttributeStorage</code> in the ezfind.ini. That way, if you are searching on a site that does not have access to the local database (cross-site search for instance) you can return all the content you need from Solr, because it is <em>all</em> stored.
+
+&nbsp;
+
+So remember, set:
+<code>'as_objects', false()</code> in the fetch.
+
+and in the ezfind.ini
+
+<pre>[IndexOptions]
+EnableSolrAttributeStorage=true</pre>
+
+Then just remember to re-index your content to get all the new attributes in there.
+
+&nbsp;
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tyler Harms</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-26T00:00:00-05:00" pubdate data-updated="true">Apr 26<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://harmstyler.github.io/blog/2012/04/26/ez-find-solr-attribute-storage/" data-via="harmstyler" data-counturl="http://harmstyler.github.io/blog/2012/04/26/ez-find-solr-attribute-storage/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/04/23/dogs-underwater/" title="Previous Post: Dogs Underwater">&laquo; Dogs Underwater</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/05/08/ezfind-shards/" title="Next Post: Searching Multiple Solr Cores using Shards and eZ Find">Searching Multiple Solr Cores using Shards and eZ Find &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/">Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/02/symfony2-access-conrol/">Symfony2 Access Conrol</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/19/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/07/optimizing-solr-to-fit-your-needs-part-2/">Optimizing Solr To Fit Your Needs Part 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/21/learning-symfony/">Learning Symfony</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/harmstyler">@harmstyler</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'harmstyler',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Tyler Harms -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

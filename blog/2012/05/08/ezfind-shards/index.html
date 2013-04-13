@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Searching Multiple Solr Cores using Shards and eZ Find - HarmsSite</title>
+  <meta name="author" content="Tyler Harms">
+
+  
+  <meta name="description" content="Prerequisites: eZ Publish with eZ Find installed The following post is based on the option in the eZ Find solr.ini referring to Shards.
+[SolrBase]
+# &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://harmstyler.github.io/blog/2012/05/08/ezfind-shards">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="HarmsSite" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-23865520-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">HarmsSite</a></h1>
+  
+    <h2>Web Development Blog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:harmstyler.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Searching Multiple Solr Cores Using Shards and eZ Find</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-08T00:00:00-05:00" pubdate data-updated="true">May 8<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content">Prerequisites:
+	eZ Publish with eZ Find installed
+
+The following post is based on the option in the eZ Find <code>solr.ini</code> referring to Shards.
+<pre style="display:block;"><span style="color: #000066; font-weight:bold;">[SolrBase]</span>
+<span style="color: #000099;">#SearchServerURI=http://localhost:8983/solr</span>
+<span style="color: #009292;">#Shards mapping, can be to multicores in one servlet or even a crosss servers</span>
+<span style="color: #009292;">#typical use is multilingual setups, but also for external index support</span>
+<span style="color: #009292;">#the keys are used as shorthands in template functions</span>
+<span style="color: #000099;">#Shards[]</span>
+<span style="color: #000099;">#Shards[eng-GB]=</span><span style="color: #660066;">http://localhost:8983/solr/eng-GB</span>
+<span style="color: #000099;">#Shards[fre-FR]=</span><span style="color: #660066;">http://localhost:8983/solr/fre-FR</span>
+<span style="color: #000099;">#Shards[myforeignindex]=</span><span style="color: #660066;">http://myotherhost:8983/solr</span></pre>
+
+What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).
+<!--more-->
+First things first, we need to tell each siteaccess what its&#8217; Search Server URI is. Within the <code>settings/siteaccess/&lt;siteaccess-name&gt;/</code> directory we need to create a new solr.ini.append.php file (duplicate the file in the admin version). Within each siteaccess we need to input our solr core name; for harmssite it would be <code>SearchServerURI=http://localhost:8983/solr/harmssite</code> and for the counterhelix siteaccess it would be <code>SearchServerURI=http://localhost:8983/solr/counterhelix</code>.
+
+Next, make sure that you have your cores installed into solr. In order to do this just copy the default eng-GB from the <code>solr.multicore/</code> directory and then rename it for each core you wish to have, in my case I have a harmssite and a counterhelix core. There is also a <code>solr.xml</code> that we need to edit. Here we declare each core that we created.
+
+Mine:
+<pre style="display:block;">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;solr persistent="true" sharedLib="lib"&gt;
+  &lt;cores adminPath="/admin/cores"&gt;
+    &lt;core name="harmssite" instanceDir="harmssite" /&gt;
+    &lt;core name="counterhelix" instanceDir="counterhelix" /&gt;
+  &lt;/cores&gt;
+&lt;/solr&gt;
+</pre>
+
+Finally, we need to start solr, while giving it a new home parameter.
+
+<pre>java -Dsolr.solr.home=solr.multicore -jar start.jar</pre>
+
+There is decent documentation on this up to this point located <a href="http://bit.ly/IYt5QI" title="eZ Find docs">here</a>.
+
+Next, we need to add a list of our shards into our override <code>solr.ini.append.php</code> file. Use the demo from above, just put in the url each core. Something to note here. I believe the documentation is wrong here. We should not include the <code>http://</code> in this list, Solr will add this automatically for us when it runs the search. Thus, mine looks like this:
+
+<pre style="display:block;"><span style="color: #000066; font-weight:bold;">[SolrBase]</span>
+<span style="color: #000099;">Shards[]</span>
+<span style="color: #000099;">Shards[harmssite]=</span><span style="color: #660066;">localhost:8983/solr/harmssite</span>
+<span style="color: #000099;">Shards[counterhelix]=</span><span style="color: #660066;">localhost:8983/solr/counterhelix</span></pre>
+
+I am assuming here that you know how to index your content, so update your search index to follow these settings. The next step is to set up a distributed search in our eZ Find fetch.
+
+example:
+
+<pre style="display:block;">{set $search=fetch( ezfind,search,
+                    hash( 'query', $query,
+                          'sort_by', $sort_by,
+                          'facet', $defaultSearchFacets,
+                          'filter', $filterParameters,
+                          'publish_date', $search_date,
+                          'offset', $view_parameters.offset,
+                          'limit', $page_limit,
+                          'as_objects', false(),
+                          'distributed_search',
+                            hash( 'shards',array('harmssite','counterhelix')
+                          )
+                         ))}</pre>
+
+Note that we have to send the <code>distributed_search</code> parameter as a hashed array. In this case we are telling eZ Find to search both shards. We can have eZ Find search whatever core we want it to at this point, just harmssite, just counterhelix, both, or even new cores that we might add later. The advantages are obvious, separated indexes allowing for much larger sets of data is a huge upgrade. The downside is that searching multiple cores at once is a little slower, so really you should not use this option unless you are in need of scaling solr out more; this would be a touch overkill for my site.
+
+If you have followed me up to this point and have tried running this, you may have noticed that it does not work out of the box. The <code>ezfezpsolrquerybuilder.php</code> is still a work in process and has not been set up to handle shards just yet. Out of the box, should you send the distributed search shards array to eZ Find, eZ Find will take it, generate the shard urls and then do nothing with them. The task I leave you is to try and fix this problem for eZ Find. I have a fix for this, but would love to see what other people come up with (I will post my code here next week). The <a href="https://github.com/ezsystems/ezfind/blob/master/classes/ezfezpsolrquerybuilder.php" title="ezfezpsolrquerybuilder.php">file in question</a>. Remember, all we need to do is send the shards parameter to the search plugin should one be sent to eZ Find; the search plugin is already setup to handle shards.
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tyler Harms</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-08T00:00:00-05:00" pubdate data-updated="true">May 8<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://harmstyler.github.io/blog/2012/05/08/ezfind-shards/" data-via="harmstyler" data-counturl="http://harmstyler.github.io/blog/2012/05/08/ezfind-shards/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/04/26/ez-find-solr-attribute-storage/" title="Previous Post: eZ Find: Enable Attribute Storage">&laquo; eZ Find: Enable Attribute Storage</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/05/14/solr-3-6-update/" title="Next Post: Solr 3.6 Update">Solr 3.6 Update &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/">Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/02/symfony2-access-conrol/">Symfony2 Access Conrol</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/19/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/07/optimizing-solr-to-fit-your-needs-part-2/">Optimizing Solr To Fit Your Needs Part 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/21/learning-symfony/">Learning Symfony</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/harmstyler">@harmstyler</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'harmstyler',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Tyler Harms -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
