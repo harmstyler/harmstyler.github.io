@@ -4,7 +4,7 @@
   <title><![CDATA[HarmsSite]]></title>
   <link href="http://harmstyler.github.io/atom.xml" rel="self"/>
   <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-13T11:28:47-05:00</updated>
+  <updated>2013-04-13T11:48:51-05:00</updated>
   <id>http://harmstyler.github.io/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -18,32 +18,69 @@
     <link href="http://harmstyler.github.io/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/"/>
     <updated>2013-03-15T00:00:00-05:00</updated>
     <id>http://harmstyler.github.io/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost</id>
-    <content type="html"><![CDATA[<h5 style="text-align: center;">This post is a repost of an article I wrote for <a title="Web and PHP Magazine" href="http://webandphp.com/" target="_blank">Web and PHP Magazine</a>&#8217;s <a title="Web and PHP February Issue" href="http://webandphp.com/issue-11" target="_blank">February issue</a>.</h5>
+    <content type="html"><![CDATA[<h5 style="text-align:center">This post is a repost of an article I wrote for <a title="Web and PHP Magazine" href="http://webandphp.com/" target="_blank">Web and PHP Magazine</a>&#8217;s <a title="Web and PHP February Issue" href="http://webandphp.com/issue-11" target="_blank">February issue</a>.</h5>
 <h4>Solr has quickly become one of the most popular search engines available. Due to Solr&#8217;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.</h4>
-<pre><strong>Listing 1</strong>
-{
-    "require": {
-        "solarium/solarium": "3.0.0" 
-    }
-}</pre>
-<pre><strong>Listing 2</strong>
-
-$config = array(
-    'endpoint' =&gt; array(
-        'localhost' =&gt; array( 
-            'host' =&gt; '127.0.0.1' 'port' =&gt; '8983' 'path' =&gt; '/solr/'
-        )
-    )
-);
-
-<span style="color: #888888;">// new Solarium Client object</span>
-$client = new Solarium\Client($config);</pre>
-<pre><strong>Listing 3</strong>
-
-&lt;field name="id" type="int" indexed="true" stored="true" /&gt;
-&lt;field name="name" type="string" indexed="true" stored="true" 
-    multiValued="true" /&gt;
-&lt;field name="text" type="text" indexed="true" stored="true" /&gt;</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">/*</span>
+</span><span class='line'><span class="x"> * Listing 1</span>
+</span><span class='line'><span class="x"> */</span>
+</span><span class='line'><span class="x">{</span>
+</span><span class='line'><span class="x">    &quot;require&quot;: {</span>
+</span><span class='line'><span class="x">        &quot;solarium/solarium&quot;: &quot;3.0.0&quot;</span>
+</span><span class='line'><span class="x">    }</span>
+</span><span class='line'><span class="x">}</span>
+</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">/*</span>
+</span><span class='line'><span class="x"> * Listing 2</span>
+</span><span class='line'><span class="x"> */</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">$config = array(</span>
+</span><span class='line'><span class="x">    &#39;endpoint&#39; =&gt; array(</span>
+</span><span class='line'><span class="x">        &#39;localhost&#39; =&gt; array(</span>
+</span><span class='line'><span class="x">            &#39;host&#39; =&gt; &#39;127.0.0.1&#39; &#39;port&#39; =&gt; &#39;8983&#39; &#39;path&#39; =&gt; &#39;/solr/&#39;</span>
+</span><span class='line'><span class="x">        )</span>
+</span><span class='line'><span class="x">    )</span>
+</span><span class='line'><span class="x">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">// new Solarium Client object</span>
+</span><span class='line'><span class="x">$client = new Solarium\Client($config);</span>
+</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="c">&lt;!--</span>
+</span><span class='line'><span class="c">  Listing 3</span>
+</span><span class='line'><span class="c"> --&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="na">multiValued=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;text&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 Introduction to Solr: Search is an important part of most web projects and should be given much care. Throughout the years, making content searchable has changed a great deal. Obviously, exposing SQL queries to users through search is dangerous. Modern search implementations require a secure approach, such as a stand-alone search server, separate from site data. There are many search options to choose from. Your search list might include: Sphinx, Flax, ElasticSearch, Google, and Solr. Solr’s scalability, speed, built in features and community make it an ideal platform for any project. Luckily, integrating Solr into your PHP project has been made easy by the Solarium Project.
 
 In Apache’s own words, “<em>Solr is an open source enterprise search server based on the Lucene Java search library, with XML/HTTP and JSON, Ruby, and Python APIs, hit highlighting, faceted search, caching, replication, and a web administration interface</em>” [1]. Apache Solr is an open source, extensible, stand-alone search engine, built on Lucene, managed by The Apache Software Foundation. There are currently two stable versions of Solr available for use; Solr 3.6.2 and Solr 4.0. Either version may be used with Solarium; Solr 4 ships with added features, however, so use Solr 4 if possible.
@@ -59,7 +96,7 @@ Installation of Solarium has been made very easy through the use of Composer (Li
 Before anything can be searched in Solr, documents (docs) must be added to the Solr index. Solr maintains a collection of docs in its index. A doc is a collection of fields and values. Solr fields must be defined in the Solr schema. A field can occur multiple times in a doc.
 
 To make an update to Solr using Solarium, start with the $client object. Using the $client object, create an $update instance then make a doc:
-<pre>$update = $client-&gt;createUpdate(); 
+<pre>$update = $client-&gt;createUpdate();
 $doc1 = $update-&gt;createDocument();</pre>
 With the newly created $doc, begin adding content to Solr fields as instances of the $doc:
 <pre>$doc1-&gt;id = 123;
@@ -85,7 +122,7 @@ $query-&gt;setQuery('*:*');</pre>
 Because the createSelect() function is being used to generate the query, the select() function should be used when executing the query:
 <pre>$resultSet = $client-&gt;select($query);</pre>
 Use the $resultSet array to iterate over the array and display the results:
-<pre>echo '&lt;div class="search-results"&gt;'; 
+<pre>echo '&lt;div class="search-results"&gt;';
 foreach ($resultSet as $result) {
     echo '&lt;div class="search-result"&gt;';
     echo '&lt;p&gt;' . $result-&gt;id . '&lt;/p&gt;';
