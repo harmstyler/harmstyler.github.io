@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[HarmsSite]]></title>
+  <link href="http://harmssite.com/atom.xml" rel="self"/>
+  <link href="http://harmssite.com/"/>
+  <updated>2013-04-13T10:23:39-05:00</updated>
+  <id>http://harmssite.com/</id>
+  <author>
+    <name><![CDATA[Tyler Harms]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
