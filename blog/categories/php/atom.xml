@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PHP | HarmsSite]]></title>
   <link href="http://harmstyler.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T09:16:33-05:00</updated>
+  <updated>2013-04-14T10:47:07-05:00</updated>
   <id>http://harmstyler.github.io/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -223,6 +223,45 @@ Solarium’s delete doc API is very useful in maintaining an up-to-date search i
 <li>The Solarium Project: http://www.solarium-project.org/</li>
 </ol>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Scraping a page with php]]></title>
+    <link href="http://harmstyler.github.io/2012/01/scraping-a-page-with-php/"/>
+    <updated>2012-01-24T00:00:00-06:00</updated>
+    <id>http://harmstyler.github.io/2012/01/scraping-a-page-with-php</id>
+    <content type="html"><![CDATA[<p>I ran across a problem recently, I needed to get the contents of a page so that I could mimic a widget’s functionality without having access to the database that said page’s widget used (confused yet). Basically, one site had a widget that displayed an upcoming event (information with came from a database), I needed to copy that widget to another website. Moreover, I did not want to use JavaScript to accomplish my goal because I need the new site to be cached pretty heavily on the server. My first thought was to use cURL, but when I ran curl_exec my function would output the entire page contents onto my new site, something that I did not want, I only wanted a small portion of the website. My next option was to use <code>file_get_contents(“my_url”)</code>, as was pointed out to me, this will return the full page as a string. With this I could have accomplished my goal, but not with as much ease as I would hope. I ran into the <code>DOMDOcument()</code> php object a while back and was curious about what I could do with it so I decided to do some research on that. This would eventually lead me to my answer. It turns out that the script is very simple and I can see myself using it quite often so I decided to share it.
+Here it is:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php</span>
+</span><span class='line'><span class="x">public function scrapePage($url,$id){&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;$d = new DOMDOcument();</span>
+</span><span class='line'><span class="x">libxml_use_internal_errors(true);</span>
+</span><span class='line'><span class="x">$d-&amp;gt;loadHTMLFile($url);</span>
+</span><span class='line'><span class="x">$widget = $d-&amp;gt;getElementById($id);</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">if ($widget !== null) {</span>
+</span><span class='line'><span class="x">    return simplexml_import_dom($widget)-&amp;gt;asXML();</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

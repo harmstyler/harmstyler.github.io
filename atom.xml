@@ -4,7 +4,7 @@
   <title><![CDATA[HarmsSite]]></title>
   <link href="http://harmstyler.github.io/atom.xml" rel="self"/>
   <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T09:16:33-05:00</updated>
+  <updated>2013-04-14T10:47:07-05:00</updated>
   <id>http://harmstyler.github.io/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -429,14 +429,16 @@
 
 <p>There are couple of ways to do this, but I think there is one very good and much easier way. The first obvious way to query solr is to match the fields to columns manually.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/select?q=*:*&amp;fq=column_name:value1 AND column_name:value2 AND other_colum:'foo'</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=*:*&amp;fq=column_name:value1 AND column_name:value2 AND other_colum:&#39;foo&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>This is all fine and dandy but what if I want to be able to add a list of content to the query? Adding the column name every time can become a chore and make the query unnecessarily large. To do an <code>IN</code> query try this:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/select?q=*:*&amp;fq=column_name:+(value1 value2) AND other_colum:'foo'</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=*:*&amp;fq=column_name:+(value1 value2) AND other_colum:&#39;foo&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Having used this one before, I can tell you it works for me using Solr 3.6 and that the placement of the + symbol is key.</p>
@@ -454,14 +456,16 @@
 
 <p>The &#8216;bad&#8217; way:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/select?q=*:*&amp;fq=-column_namevalue1 AND -column_name:value2 AND other_colum:'foo'</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=*:*&amp;fq=-column_namevalue1 AND -column_name:value2 AND other_colum:&#39;foo&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>This one I found from working with eZ Publish and eZ Find, and I happen to like it a lot. It is a clever little Solr query that selects all from the column then filters out what we don&#8217;t want.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/select?q=*:*&amp;fq=other_colum:'foo' AND column_name:[* TO *] -column_name:(value1 value2)</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=*:*&amp;fq=other_colum:&#39;foo&#39; AND column_name:[* TO *] -column_name:(value1 value2)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p><code>column_name:[* TO *]</code> is like saying select all from the column, but then we add <code>-column_name:(value1 value2)</code> to filter out what we don&#8217;t want.</p>
@@ -889,8 +893,9 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
 
 <p>Now that we are using Solr in a multi-core environment, starting Solr is a bit different.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>java -Dsolr.solr.home=solr.multicore -jar start.jar</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>java -Dsolr.solr.home<span class="o">=</span>solr.multicore -jar start.jar
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Notice, we just sent the start.jar a new place for solr to call its&#8217; home directory <code>solr.multicore</code>.</p>

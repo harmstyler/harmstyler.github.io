@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="I have been meaning to make this blog post for a couple of months now. I came across this topic a while back when I was working on creating some &hellip;">
+  <meta name="description" content="I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -103,42 +103,87 @@
   </header>
 
 
-<div class="entry-content">I have been meaning to make this blog post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find powered by Solr. The Problem: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (take advantage of Solr&#8217;s speed and let it do the work). Now, the book I was using, <a title="Apache Solr Enterprise Search Server" href="http://www.packtpub.com/apache-solr-3-enterprise-search-server/book?utm_source=lucene.apache.org&amp;utm_medium=link&amp;utm_content=pod&amp;utm_campaign=mdb_009576" target="_blank">Apache Solr Enterprise Search Server</a>, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the SynonymFilterFactory. So for starters lets look at the fieldType:
-<blockquote>&lt;fieldType name=&#8221;bucketFirstLetterGroup&#8221; class=&#8221;solr.TextField&#8221; sortMissingLast=&#8221;true&#8221; omitNorms=&#8221;true&#8221;&gt;
-&lt;analyzer type=&#8221;index&#8221;&gt;
-&lt;tokenizer class=&#8221;solr.PatternTokenizerFactory&#8221; pattern=&#8221;^([a-zA-Z]).*&#8221; group=&#8221;1&#8221; /&gt;
-&lt;filter class=&#8221;solr.SynonymFilterFactory&#8221; synonyms=&#8221;mb_letterBuckets.txt&#8221; ignoreCase=&#8221;true&#8221; expand=&#8221;false&#8221;/&gt;
-&lt;/analyzer&gt;
-&lt;analyzer type=&#8221;query&#8221;&gt;
-&lt;tokenizer class=&#8221;solr.KeywordTokenizerFactory&#8221; /&gt;
-&lt;/analyzer&gt;
-&lt;/fieldType&gt;</blockquote>
-It is actually pretty straight forward. It uses a PatternTokenizerFactory to ignore case but grab only letters and then the SynonymFilterFactory looks at a text file to see how to group all the letters. That is where the book got fuzzy. It told me to look at the default synonyms.txt file for reference and it sent me on my merry way. I scoured the internet for the answer to my dilema and finally found my answer though trial and error. The default synonyms.txt file looks like this:
-<blockquote>#some test synonym mappings unlikely to appear in real input text
-aaafoo =&gt; aaabar
-bbbfoo =&gt; bbbfoo bbbbar
-cccfoo =&gt; cccbar cccbaz
-fooaaa,baraaa,bazaaa
+<div class="entry-content"><p>I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. <strong>The Problem</strong>: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&#8217;s speed; let Solr do the work). Now, the book I was using, <a title="Apache Solr Enterprise Search Server" href="http://www.packtpub.com/apache-solr-3-enterprise-search-server/book" target="_blank">Apache Solr Enterprise Search Server</a>, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the <code>SynonymFilterFactory</code>. So for starters lets look at the fieldType:</p>
 
-# Some synonym groups specific to this example
-GB,gib,gigabyte,gigabytes
-MB,mib,megabyte,megabytes
-Television, Televisions, TV, TVs
-#notice we use &#8220;gib&#8221; instead of &#8220;GiB&#8221; so any WordDelimiterFilter coming
-#after us won&#8217;t split it into two words.
+<figure class='code'><figcaption><span>schema.xml </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;fieldType</span> <span class="na">name=</span><span class="s">&quot;bucketFirstLetterGroup&quot;</span> <span class="na">class=</span><span class="s">&quot;solr.TextField&quot;</span> <span class="na">sortMissingLast=</span><span class="s">&quot;true&quot;</span> <span class="na">omitNorms=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;analyzer</span> <span class="na">type=</span><span class="s">&quot;index&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;tokenizer</span> <span class="na">class=</span><span class="s">&quot;solr.PatternTokenizerFactory&quot;</span> <span class="na">pattern=</span><span class="s">&quot;^([a-zA-Z]).*&quot;</span> <span class="na">group=</span><span class="s">&quot;1&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.SynonymFilterFactory&quot;</span> <span class="na">synonyms=</span><span class="s">&quot;mb_letterBuckets.txt&quot;</span> <span class="na">ignoreCase=</span><span class="s">&quot;true&quot;</span> <span class="na">expand=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/analyzer&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;analyzer</span> <span class="na">type=</span><span class="s">&quot;query&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;tokenizer</span> <span class="na">class=</span><span class="s">&quot;solr.KeywordTokenizerFactory&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/analyzer&gt;</span>
+</span><span class='line'><span class="nt">&lt;/fieldType&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-# Synonym mappings can be used for spelling correction too
-pixima =&gt; pixma</blockquote>
-From this file I concluded that my buckets should be grouped as a-c=&gt;a b c and so on. But that is not the case (it will actually appear to bucket the letters but also leave all the letters as their own bucket at the same time (A-C 150 results A 50 results and so on). It actually works opposite of the example. What is on the left is the solr fieldType and the right is the bucket/synonym. To work it must be a,b,c=&gt;a-c.
-<blockquote>a,b,c=&gt;A-C
-d,e,f=&gt;D-F
-g,h,i=&gt;G-I
-j,k,l=&gt;J-L
-m,n,o=&gt;M-O
-p,q,r=&gt;P-R
-s,t,u=&gt;S-U
-v,w,x,y,z=&gt;V-Z</blockquote>
-So yeah, I have been meaning to post this for a while as I could find no meaningful help on the matter elsewhere on the internet. Also, remember to reindex!
+
+<p>It is actually pretty straight forward. It uses a <code>PatternTokenizerFactory</code> to ignore case but grab only letters and then the SynonymFilterFactory looks at a text file to see how to group all the letters. That is where the book got fuzzy. It told me to look at the default <code>synonyms.txt</code> file for reference and it sent me on my merry way. I scoured the internet for the answer to my dilemma and finally found my answer though trial and error. The default <code>synonyms.txt</code> file looks like this:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#some test synonym mappings unlikely to appear in real input text</span>
+</span><span class='line'><span class="nv">aaafoo</span> <span class="o">=</span>&gt; aaabar
+</span><span class='line'><span class="nv">bbbfoo</span> <span class="o">=</span>&gt; bbbfoo bbbbar
+</span><span class='line'><span class="nv">cccfoo</span> <span class="o">=</span>&gt; cccbar cccbaz
+</span><span class='line'>fooaaa,baraaa,bazaaa
+</span><span class='line'>
+</span><span class='line'><span class="c"># Some synonym groups specific to this example</span>
+</span><span class='line'>GB,gib,gigabyte,gigabytes
+</span><span class='line'>MB,mib,megabyte,megabytes
+</span><span class='line'>Television, Televisions, TV, TVs
+</span><span class='line'><span class="c">#notice we use &quot;gib&quot; instead of &quot;GiB&quot; so any WordDelimiterFilter coming</span>
+</span><span class='line'><span class="c">#after us won&#39;t split it into two words.</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Synonym mappings can be used for spelling correction too</span>
+</span><span class='line'><span class="nv">pixima</span> <span class="o">=</span>&gt; pixma
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>From this file I concluded that my buckets should be grouped as <code>a-c=&gt;a b c</code> and so on. But that is not the case (it will actually appear to bucket the letters but also leave all the letters as their own bucket at the same time (A-C 150 results A 50 results and so on). It actually works opposite of the example. What is on the left is the solr fieldType and the right is the bucket/synonym. To work it must be <code>a,b,c=&gt;a-c</code>.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>a,b,c<span class="o">=</span>&gt;A-C
+</span><span class='line'>d,e,f<span class="o">=</span>&gt;D-F
+</span><span class='line'>g,h,i<span class="o">=</span>&gt;G-I
+</span><span class='line'>j,k,l<span class="o">=</span>&gt;J-L
+</span><span class='line'>m,n,o<span class="o">=</span>&gt;M-O
+</span><span class='line'>p,q,r<span class="o">=</span>&gt;P-R
+</span><span class='line'>s,t,u<span class="o">=</span>&gt;S-U
+</span><span class='line'>v,w,x,y,z<span class="o">=</span>&gt;V-Z
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So yeah, I have been meaning to post this for a while as I could find no meaningful help on the matter elsewhere on the internet. Also, remember to reindex!</p>
 </div>
 
 
@@ -163,6 +208,12 @@ So yeah, I have been meaning to post this for a while as I could find no meaning
 
 <time datetime="2012-02-25T00:00:00-06:00" pubdate data-updated="true">Feb 25<span>th</span>, 2012</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/development/'>Development</a>, <a class='category' href='/blog/categories/solr/'>Solr</a>
+  
+</span>
 
 
     </p>
