@@ -4,7 +4,7 @@
   <title><![CDATA[Category: eZ Find | HarmsSite]]></title>
   <link href="http://harmstyler.github.io/blog/categories/ez-find/atom.xml" rel="self"/>
   <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-13T20:54:24-05:00</updated>
+  <updated>2013-04-14T07:15:15-05:00</updated>
   <id>http://harmstyler.github.io/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -224,6 +224,15 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;p&gt;}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Solr 3.6 Update]]></title>
+    <link href="http://harmstyler.github.io/blog/2012/05/14/solr-3-6-update/"/>
+    <updated>2012-05-14T00:00:00-05:00</updated>
+    <id>http://harmstyler.github.io/blog/2012/05/14/solr-3-6-update</id>
+    <content type="html"><![CDATA[<p>Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.war file on GitHub (it is in <a href="https://github.com/harmstyler/ezfind" title="harmstyler eZ Find fork">my eZ Find branch</a>). Enjoy!</p>
 ]]></content>
   </entry>
   
