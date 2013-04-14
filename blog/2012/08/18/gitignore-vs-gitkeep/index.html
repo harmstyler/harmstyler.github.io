@@ -103,26 +103,42 @@
   </header>
 
 
-<div class="entry-content"><a href="http://harmssite.com/wp-content/uploads/2012/08/Git.png"><img src="http://harmssite.com/wp-content/uploads/2012/08/Git.png" alt="" title="Git" width="110" height="46" class="alignright size-full wp-image-196" /></a>I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my friends who used svn have told me.
+<div class="entry-content"><div class="pull-right"><img src="https://s3.amazonaws.com/hs_blog_content/images/Git_icon.png" alt="Git" title="Git" width="256" height="256" /></div>
 
-The cool thing about git is that it tracks changes, not files or directories. When I create a new empty directory that directory is not tracked by git because it has no file changes inside, hence, the directory will never make it into git until I add a file to that directory. For this example I am going to use the logs directory of a&nbsp;virtual&nbsp;site. In my logs directory I have two files, an <code>error_log</code> and an <code>access_log</code>. Apache error logs and access logs should never be tracked by version control because they are logs that are specific to the given system the site is installed on. However, we should try to track the logs directory in version control. As hinted at before, we can do this in one of two ways.
+
+<p>I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my friends who used svn have told me.</p>
+
+<p>The cool thing about git is that it tracks changes, not files or directories. When I create a new empty directory that directory is not tracked by git because it has no file changes inside, hence, the directory will never make it into git until I add a file to that directory. For this example I am going to use the logs directory of a virtual site. In my logs directory I have two files, an <code>error_log</code> and an <code>access_log</code>. Apache error logs and access logs should never be tracked by version control because they are logs that are specific to the given system the site is installed on. However, we should try to track the logs directory in version control. As hinted at before, we can do this in one of two ways.</p>
 
 <!--more-->
 
-First, the <code>.gitignore</code> file. We can add as my <code>.gitignore</code> files as we need. You can place these files in any directory you want tracked that wouldn&#8217;t be already (technically you can put them anywhere you want and have as many as you want, but don&#8217;t go excessive). <code>.gitignore</code> files are technically the preferred way to go about tracking empty directories because these files are actually read by git. The <code>.gitignore</code> file structure is pretty simple, for defining how to ignore the contents of the logs file you just need to tell git the relative path (relative to the path of the <code>.gitignore</code> file).
-<code>.gitignore</code> file:
-<pre># log files
-logs/access_log
-logs/error_log</pre>
-How to track the empty directory with <code>.gitignore</code>
-<a href="http://harmssite.com/wp-content/uploads/2012/08/gitignore.png"><img class="alignnone size-full wp-image-202" title="gitignore" src="http://harmssite.com/wp-content/uploads/2012/08/gitignore.png" alt="gitignore" width="264" height="130" /></a>
-So, as you can see this is pretty simple, but I think that multiple <code>.gitignore</code> files can become confusing.
 
-Second, the <code>.gitkeep</code> file. This is a git hack that was first adopted by the Rails community. <code>.gitkeep</code> files are not an official file recognized by git. That said, because they start with a <code>'.'</code> they will be a hidden file in any system as well as have it&#8217;s changes tracked by git. Technically our file name could be <code>.foobar</code> and it would still work. The reason I like the <code>.gitkeep</code> files is because it&#8217;s purpose is directly implied by the name of the file (keep the directory in git even if it&#8217;s directory is empty). Another reason I like the use of <code>.gitkeep</code> files over <code>.gitignore</code> is I like to keep all ignored files in one spot, it can be hard to track what is ignored if there are multiple <code>.gitignore</code> files at work in a system.
-The <code>.gitkeep</code> file at work:
-<a href="http://harmssite.com/wp-content/uploads/2012/08/gitkeep.png"><img src="http://harmssite.com/wp-content/uploads/2012/08/gitkeep.png" alt="" title="gitkeep" width="283" height="132" class="alignnone size-full wp-image-206" /></a>
+<p>First, the <code>.gitignore</code> file. We can add as my <code>.gitignore</code> files as we need. You can place these files in any directory you want tracked that wouldn&#8217;t be already (technically you can put them anywhere you want and have as many as you want, but don&#8217;t go excessive). <code>.gitignore</code> files are technically the preferred way to go about tracking empty directories because these files are actually read by git. The <code>.gitignore</code> file structure is pretty simple, for defining how to ignore the contents of the logs file you just need to tell git the relative path (relative to the path of the <code>.gitignore</code> file).
+<code>.gitignore</code> file:</p>
 
-Pretty simple right? So, I have my preference, what is yours?
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># log files</span>
+</span><span class='line'>logs/access_log
+</span><span class='line'>logs/error_log
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>How to track the empty directory with <code>.gitignore</code></p>
+
+<div class="pull-right"><img class="alignnone size-full wp-image-202" title="gitignore" src="https://s3.amazonaws.com/hs_blog_content/images/gitignore.png" alt="gitignore" width="264" height="130" /></div>
+
+
+<p>So, as you can see this is pretty simple, but I think that multiple <code>.gitignore</code> files can become confusing.</p>
+
+<p>Second, the <code>.gitkeep</code> file. This is a git hack that was first adopted by the Rails community. <code>.gitkeep</code> files are not an official file recognized by git. That said, because they start with a <code>'.'</code> they will be a hidden file in any system as well as have it&#8217;s changes tracked by git. Technically our file name could be <code>.foobar</code> and it would still work. The reason I like the <code>.gitkeep</code> files is because it&#8217;s purpose is directly implied by the name of the file (keep the directory in git even if it&#8217;s directory is empty). Another reason I like the use of <code>.gitkeep</code> files over <code>.gitignore</code> is I like to keep all ignored files in one spot, it can be hard to track what is ignored if there are multiple <code>.gitignore</code> files at work in a system.
+The <code>.gitkeep</code> file at work:</p>
+
+<div class="pull-right"><img src="https://s3.amazonaws.com/hs_blog_content/images/gitkeep.png" alt="" title="gitkeep" width="283" height="132" class="alignnone size-full wp-image-206" /></div>
+
+
+<p>Pretty simple right? So, I have my preference, what is yours?</p>
 </div>
 
 
@@ -147,6 +163,12 @@ Pretty simple right? So, I have my preference, what is yours?
 
 <time datetime="2012-08-18T00:00:00-05:00" pubdate data-updated="true">Aug 18<span>th</span>, 2012</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/development/'>Development</a>, <a class='category' href='/blog/categories/git/'>git</a>
+  
+</span>
 
 
     </p>

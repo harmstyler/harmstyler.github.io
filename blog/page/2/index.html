@@ -106,9 +106,12 @@
   </header>
 
 
-  <div class="entry-content"><a href="http://harmssite.com/wp-content/uploads/2012/08/Git.png"><img src="http://harmssite.com/wp-content/uploads/2012/08/Git.png" alt="" title="Git" width="110" height="46" class="alignright size-full wp-image-196" /></a>I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my friends who used svn have told me.
+  <div class="entry-content"><div class="pull-right"><img src="https://s3.amazonaws.com/hs_blog_content/images/Git_icon.png" alt="Git" title="Git" width="256" height="256" /></div>
 
-The cool thing about git is that it tracks changes, not files or directories. When I create a new empty directory that directory is not tracked by git because it has no file changes inside, hence, the directory will never make it into git until I add a file to that directory. For this example I am going to use the logs directory of a&nbsp;virtual&nbsp;site. In my logs directory I have two files, an <code>error_log</code> and an <code>access_log</code>. Apache error logs and access logs should never be tracked by version control because they are logs that are specific to the given system the site is installed on. However, we should try to track the logs directory in version control. As hinted at before, we can do this in one of two ways.
+
+<p>I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my friends who used svn have told me.</p>
+
+<p>The cool thing about git is that it tracks changes, not files or directories. When I create a new empty directory that directory is not tracked by git because it has no file changes inside, hence, the directory will never make it into git until I add a file to that directory. For this example I am going to use the logs directory of a virtual site. In my logs directory I have two files, an <code>error_log</code> and an <code>access_log</code>. Apache error logs and access logs should never be tracked by version control because they are logs that are specific to the given system the site is installed on. However, we should try to track the logs directory in version control. As hinted at before, we can do this in one of two ways.</p>
 
 </div>
   
@@ -149,11 +152,10 @@ The cool thing about git is that it tracks changes, not files or directories. Wh
   </header>
 
 
-  <div class="entry-content"><img class="size-thumbnail wp-image-184 alignright" title="Sublime Text icon" src="http://harmssite.com/wp-content/uploads/2012/06/sublime_text_icon_2181-150x150.png" alt="Sublime Text icon" width="150" height="150" />
+  <div class="entry-content"><div class="pull-right"><img title="Sublime Text icon" src="https://s3.amazonaws.com/hs_blog_content/images/sublime_text_icon_2181-150x150.png" alt="Sublime Text icon" width="150" height="150" /></div>
 
-A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/MHuK34" target="_blank">Sublime Text 2</a> and its&#8217; many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ. So what I decided to do was use the Smarty package as a template for adding more language support for eZ Publish. What I have is far from complete; I usually only add to it when I use a method that is not already supported. You can find it out on <a title="ez sublime on GitHub" href="http://bit.ly/N4eTcp" target="_blank">GitHub</a>. It is my hope that there are some eZ Publish devs out there that really enjoy Sublime as I do and want to help me grow the package. Remember, it is far from complete, but nonetheless, I really hope that you enjoy the language highlighting, and if you do feel free to contribute
 
-.
+<p>A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/MHuK34" target="_blank">Sublime Text 2</a> and its&#8217; many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ. So what I decided to do was use the Smarty package as a template for adding more language support for eZ Publish. What I have is far from complete; I usually only add to it when I use a method that is not already supported. You can find it out on <a title="ez sublime on GitHub" href="http://bit.ly/N4eTcp" target="_blank">GitHub</a>. It is my hope that there are some eZ Publish devs out there that really enjoy Sublime as I do and want to help me grow the package. Remember, it is far from complete, but nonetheless, I really hope that you enjoy the language highlighting, and if you do feel free to contribute.</p>
 </div>
   
   
@@ -189,7 +191,7 @@ A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/M
   </header>
 
 
-  <div class="entry-content">I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the <code>$shardQuery</code> is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the <code>$queryHandler</code> switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)
+  <div class="entry-content"><p>I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the <code>$shardQuery</code> is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the <code>$queryHandler</code> switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)</p>
 
 </div>
   

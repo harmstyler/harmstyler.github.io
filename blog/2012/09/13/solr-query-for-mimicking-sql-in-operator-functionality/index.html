@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="[caption id=&#8221;&#8221; align=&#8221;alignright&#8221; width=&#8221;240&#8221;] Learning SQL (Photo credit: therefromhere)[/caption] I did a lot &hellip;">
+  <meta name="description" content="I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -103,29 +103,60 @@
   </header>
 
 
-<div class="entry-content">[caption id=&#8221;&#8221; align=&#8221;alignright&#8221; width=&#8221;240&#8221;]<a href="http://www.flickr.com/photos/80985329@N00/518053737" target="_blank"><img class="zemanta-img-inserted zemanta-img-configured" title="Learning SQL" src="http://farm1.static.flickr.com/224/518053737_8a9794389e_m.jpg" alt="Learning SQL" width="240" height="180" /></a> Learning SQL (Photo credit: therefromhere)[/caption]
+<div class="entry-content"><div class="pull-right"><img title="Learning SQL" src="http://farm1.static.flickr.com/224/518053737_8a9794389e_m.jpg" alt="Learning SQL" width="240" height="180" /></div>
 
-I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the <code>IN</code> operator. In Solr you have the option of specifying a field using the <code>qf</code> operator, but what if you have more search terms searching other fields? The problem becomes far more complex. Given the following SQL statement how would we query Solr?
-<pre>SELECT *
-FROM table_name
-WHERE column_name IN (value1,value2,...) AND other_column='foo'</pre>
-There are couple of ways to do this, but I think there is one very good and much easier way. The first obvious way to query solr is to match the fields to columns manually.
-<pre>/select?q=*:*&amp;fq=column_name:value1 AND column_name:value2 AND other_colum:'foo'</pre>
-This is all fine and dandy but what if I want to be able to add a list of content to the query? Adding the column name every time can become a chore and make the query unnecessarily large. To do an <code>IN</code> query try this:
-<pre>/select?q=*:*&amp;fq=column_name:+(value1 value2) AND other_colum:'foo'</pre>
-Having used this one before, I can tell you it works for me using Solr 3.6 and that the placement of the + symbol is key.
 
-And what about a <code>NOT IN</code> query?
-<pre>SELECT *
-FROM table_name
-WHERE column_name NOT IN (value1,value2,...) AND other_column='foo'</pre>
-The &#8216;bad&#8217; way:
-<pre>/select?q=*:*&amp;fq=-column_namevalue1 AND -column_name:value2 AND other_colum:'foo'</pre>
-This one I found from working with eZ Publish and eZ Find, and I happen to like it a lot. It is a clever little Solr query that selects all from the column then filters out what we don&#8217;t want.
-<pre>/select?q=*:*&amp;fq=other_colum:'foo' AND column_name:[* TO *] -column_name:(value1 value2)</pre>
-<code>column_name:[* TO *]</code> is like saying select all from the column, but then we add <code>-column_name:(value1 value2)</code> to filter out what we don&#8217;t want.
+<p>I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the <code>IN</code> operator. In Solr you have the option of specifying a field using the <code>qf</code> operator, but what if you have more search terms searching other fields? The problem becomes far more complex. Given the following SQL statement how would we query Solr?</p>
 
-Cheers and good luck!
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='mysql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span> <span class="n">table_name</span>
+</span><span class='line'><span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,...)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There are couple of ways to do this, but I think there is one very good and much easier way. The first obvious way to query solr is to match the fields to columns manually.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/select?q=*:*&amp;fq=column_name:value1 AND column_name:value2 AND other_colum:'foo'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is all fine and dandy but what if I want to be able to add a list of content to the query? Adding the column name every time can become a chore and make the query unnecessarily large. To do an <code>IN</code> query try this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/select?q=*:*&amp;fq=column_name:+(value1 value2) AND other_colum:'foo'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Having used this one before, I can tell you it works for me using Solr 3.6 and that the placement of the + symbol is key.</p>
+
+<p>And what about a <code>NOT IN</code> query?</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='mysql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span> <span class="n">table_name</span>
+</span><span class='line'><span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,...)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The &#8216;bad&#8217; way:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/select?q=*:*&amp;fq=-column_namevalue1 AND -column_name:value2 AND other_colum:'foo'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This one I found from working with eZ Publish and eZ Find, and I happen to like it a lot. It is a clever little Solr query that selects all from the column then filters out what we don&#8217;t want.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/select?q=*:*&amp;fq=other_colum:'foo' AND column_name:[* TO *] -column_name:(value1 value2)</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>column_name:[* TO *]</code> is like saying select all from the column, but then we add <code>-column_name:(value1 value2)</code> to filter out what we don&#8217;t want.</p>
+
+<p>Cheers and good luck!</p>
 </div>
 
 
@@ -151,6 +182,12 @@ Cheers and good luck!
 <time datetime="2012-09-13T00:00:00-05:00" pubdate data-updated="true">Sep 13<span>th</span>, 2012</time>
       
 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/development/'>Development</a>, <a class='category' href='/blog/categories/symfony/'>Symfony</a>, <a class='category' href='/blog/categories/ez-publish/'>eZ Publish</a>
+  
+</span>
+
 
     </p>
     
@@ -173,6 +210,12 @@ Cheers and good luck!
     </p>
   </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -256,7 +299,10 @@ Cheers and good luck!
       var disqus_shortname = 'harmssite';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://harmstyler.github.io/blog/2012/09/13/solr-query-for-mimicking-sql-in-operator-functionality/';
+        var disqus_url = 'http://harmstyler.github.io/blog/2012/09/13/solr-query-for-mimicking-sql-in-operator-functionality/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Symfony | HarmsSite]]></title>
-  <link href="http://harmstyler.github.io/blog/categories/symfony/atom.xml" rel="self"/>
+  <title><![CDATA[Category: eZ Publish | HarmsSite]]></title>
+  <link href="http://harmstyler.github.io/blog/categories/ez-publish/atom.xml" rel="self"/>
   <link href="http://harmstyler.github.io/"/>
   <updated>2013-04-13T20:54:24-05:00</updated>
   <id>http://harmstyler.github.io/</id>
@@ -12,39 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Symfony2 Access Conrol]]></title>
-    <link href="http://harmstyler.github.io/blog/2013/03/02/symfony2-access-conrol/"/>
-    <updated>2013-03-02T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/blog/2013/03/02/symfony2-access-conrol</id>
-    <content type="html"><![CDATA[<p>I am very new to Symfony development. While developing a side project app I found I needed to control access to a certain area to logged in users only. Based on my previous development history I was expecting to have to determine if a user was logged in via the controller. I figured I would need to find an <code>is_logged_in</code> boolean and use it to determine user access control. What I found while doing my development is that Symfony2 takes care of access control in a much more eloquent way. Rather than having to determine if a user is logged in inside each controller, Symfony2 controls access using a system similar to its routing system. Inside a Symfony2 app there is, by default, a <code>security.yml</code> file that is used to control access. Inside the <code>security.yml</code> file locate the <code>access_control</code> declaration. By simply declaring a route inside the <code>access_control</code> yml array we can control which users have access to which routes, like so:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">access_control:&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;pre&gt;&lt;code&gt;- { path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">^/login$, role</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">IS_AUTHENTICATED_ANONYMOUSLY }</span>
-</span><span class='line'><span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">path</span><span class="p-Indicator">:</span> <span class="nv">^/register</span><span class="p-Indicator">,</span> <span class="nv">role</span><span class="p-Indicator">:</span> <span class="nv">IS_AUTHENTICATED_ANONYMOUSLY</span> <span class="p-Indicator">}</span>
-</span><span class='line'><span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">path</span><span class="p-Indicator">:</span> <span class="nv">^/resetting</span><span class="p-Indicator">,</span> <span class="nv">role</span><span class="p-Indicator">:</span> <span class="nv">IS_AUTHENTICATED_ANONYMOUSLY</span> <span class="p-Indicator">}</span>
-</span><span class='line'><span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">path</span><span class="p-Indicator">:</span> <span class="nv">^/admin/</span><span class="p-Indicator">,</span> <span class="nv">role</span><span class="p-Indicator">:</span> <span class="nv">ROLE_ADMIN</span> <span class="p-Indicator">}</span>
-</span><span class='line'><span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">path</span><span class="p-Indicator">:</span> <span class="nv">^/new</span><span class="p-Indicator">,</span> <span class="nv">role</span><span class="p-Indicator">:</span> <span class="nv">ROLE_USER</span> <span class="p-Indicator">}</span>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-As you can see with my code, for anything beyond the <code>/admin/</code> route the <code>ROLE_ADMIN</code> is required. And for anyone accessing the <code>/new</code> route the <code>ROLE_USER</code> is required.</p>
-
-<p>This is obviously pretty trivial stuff, but for somebody new to Symfony2 development like myself, I found it an incredibly simple and powerful way of controlling access to my app.</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[eZ Publish 5 - First Thoughts]]></title>
@@ -127,6 +94,51 @@ This one I found from working with eZ Publish and eZ Find, and I happen to like 
 <code>column_name:[* TO *]</code> is like saying select all from the column, but then we add <code>-column_name:(value1 value2)</code> to filter out what we don't want.</p>
 
 <p>Cheers and good luck!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Optimizing Solr to fit your needs Part 1]]></title>
+    <link href="http://harmstyler.github.io/blog/2012/08/25/optimizing-solr-to-fit-your-needs-part-1/"/>
+    <updated>2012-08-25T00:00:00-05:00</updated>
+    <id>http://harmstyler.github.io/blog/2012/08/25/optimizing-solr-to-fit-your-needs-part-1</id>
+    <content type="html"><![CDATA[<div class="pull-right"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="http://upload.wikimedia.org/wikipedia/en/3/3e/Solr.png" alt="Solr logo" width="283" height="156" /></div>
+
+
+<p>Let me start by saying that eZ Find is a fantastic implementation of <a class="zem_slink" title="Apache Solr" href="http://lucene.apache.org/solr/" rel="homepage" target="_blank">Solr</a> functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an <a class="zem_slink" title="EZ Publish" href="http://ez.no/" rel="homepage" target="_blank">eZ Publish</a> keyword and know that it should thereby be a Solr keyword, again, all out of the box. There are however some serious limitations when it comes time to customize it to meet your system's needs. Do not underestimate the power found in customizing Solr to meet your website's needs. The default setup is great, it's made to fit into any system with very little effort; but, just because it's made to fit in any system does not mean that it should be used for every system.</p>
+
+<p>One of the best things we could have ever done for a large Solr install was to customize a default search field. You might say, "But eZ Find already creates a default search field for you." And you'd be right.
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">&lt;!-- field for the QueryParser to use when an explicit fieldname is absent --&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;defaultSearchField&gt;</span>ezf_df_text<span class="nt">&lt;/defaultSearchField&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The thing that the default search field in eZ Find does not do, however, is get used. There is no way in eZ Find to tell it to search just one field (at least as far as I know). I did some testing in our environment, these numbers will change from system to system, but in our's each search took almost 10 times as long to search all fields individually vs searching just 1 field. We gave eZ Find the option to search one given field, if defined, and it vastly improved our search experience.</p>
+
+<p>eZ Find by default looks at all 'searchable' fields and adds them to either the <a title="qf" href="http://wiki.apache.org/solr/DisMaxQParserPlugin#qf_.28Query_Fields.29"><code>qf</code></a> (if you are using the dismax search like you should be) or it searches every searchable field individually (<code>attr_title_t:(*:*)</code>, <code>attr_title_s:(*:*)</code>, etc, etc, for all searchable fields). All the 'searchable' fields are by default added to the <code>ezf_df_text</code> field, so you should really do yourself a favor and search just one field, it is a noticable speed improvement, especially in large systems.</p>
+
+<p>In Part 2 I will talk about how to better optimize the Solr <code>schema.xml</code> file using the <code>ezf_df_text</code> field.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[EZ Publish with Sublime]]></title>
+    <link href="http://harmstyler.github.io/blog/2012/06/30/ez-publish-with-sublime/"/>
+    <updated>2012-06-30T00:00:00-05:00</updated>
+    <id>http://harmstyler.github.io/blog/2012/06/30/ez-publish-with-sublime</id>
+    <content type="html"><![CDATA[<div class="pull-right"><img title="Sublime Text icon" src="https://s3.amazonaws.com/hs_blog_content/images/sublime_text_icon_2181-150x150.png" alt="Sublime Text icon" width="150" height="150" /></div>
+
+
+<p>A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/MHuK34" target="_blank">Sublime Text 2</a> and its' many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ. So what I decided to do was use the Smarty package as a template for adding more language support for eZ Publish. What I have is far from complete; I usually only add to it when I use a method that is not already supported. You can find it out on <a title="ez sublime on GitHub" href="http://bit.ly/N4eTcp" target="_blank">GitHub</a>. It is my hope that there are some eZ Publish devs out there that really enjoy Sublime as I do and want to help me grow the package. Remember, it is far from complete, but nonetheless, I really hope that you enjoy the language highlighting, and if you do feel free to contribute.</p>
 ]]></content>
   </entry>
   
