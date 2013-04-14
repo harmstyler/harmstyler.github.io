@@ -1,0 +1,17 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Tyler Harms -- Owner/Developer/Author -- @harmstyler
+
+# THANKS
+
+    Octopress (blog), Github (host)
+
+# TECHNOLOGY COLOPHON
+
+    Octopress, Jekyll
+    Github
+    HTML5, CSS3
+    jQuery, Modernizr
