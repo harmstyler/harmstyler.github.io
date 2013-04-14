@@ -4,7 +4,7 @@
   <title><![CDATA[HarmsSite]]></title>
   <link href="http://harmstyler.github.io/atom.xml" rel="self"/>
   <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T08:56:14-05:00</updated>
+  <updated>2013-04-14T09:15:24-05:00</updated>
   <id>http://harmstyler.github.io/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -296,7 +296,7 @@
     <link href="http://harmstyler.github.io/2013/01/ez-publish-5-first-thoughts/"/>
     <updated>2013-01-19T00:00:00-06:00</updated>
     <id>http://harmstyler.github.io/2013/01/ez-publish-5-first-thoughts</id>
-    <content type="html"><![CDATA[<div class="pull-right"><img class="" alt="Syfomy Logo" title="Symfony Logo" src="http://www.forouzani.com/blogs.dir/4/files/2012/09/symfony-logo.png" width="206" height="205" /></div>
+    <content type="html"><![CDATA[<div class="pull-right"><img class="" alt="Syfomy Logo" title="Symfony Logo" src="https://s3.amazonaws.com/hs_blog_content/images/symfony-logo.png" width="206" height="205" /></div>
 
 
 <p>I finally decided on my first eZ Publish 5 project&#8230; my site of course. I am currently in the middle of upgrading my wordpress install to eZ Publish. Honestly, I don&#8217;t really need anything more than a simple Wordpress install, but it will be nice to get an eZ5 site under my belt.</p>
@@ -355,7 +355,7 @@
     <link href="http://harmstyler.github.io/2012/11/learning-symfony/"/>
     <updated>2012-11-21T00:00:00-06:00</updated>
     <id>http://harmstyler.github.io/2012/11/learning-symfony</id>
-    <content type="html"><![CDATA[<div class="pull-right"><img title="Nashville Symfony" src="http://farm4.static.flickr.com/3456/3774065516_d5f54dce34_m.jpg" alt="Nashville Symfony" width="240" height="180" /></div>
+    <content type="html"><![CDATA[<div class="pull-right"><img title="Nashville Symfony" src="https://s3.amazonaws.com/hs_blog_content/images/symfony2.jpg" alt="Nashville Symfony" width="240" height="180" /></div>
 
 
 <p> I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that eZ Systems announced that they were adopting the Symfony framework I knew that I would be be spending some time with it. I have found that Symfony doesn&#8217;t have the lowest barrier to entry so it has been a process, to say the least. I have a blog that has helped matters a great deal and so I wanted to give it some props here. If you are like me, wanting to learn Symfony but lacking time and resources, you should really check this site out: <a href="http://tutorial.symblog.co.uk/" title="Symblog: Creating a Blog in Symfony2">Symblog: Creating a Blog in Symfony2</a></p>
@@ -369,7 +369,7 @@
     <link href="http://harmstyler.github.io/2012/11/skype-version-6/"/>
     <updated>2012-11-01T00:00:00-05:00</updated>
     <id>http://harmstyler.github.io/2012/11/skype-version-6</id>
-    <content type="html"><![CDATA[<div class="pull-right"><img title="MessageViewVersion" src="http://f.cl.ly/items/2f1o400V1s2P3k2H0x0r/Screen%20Shot%202012-11-01%20at%209.53.36%20AM.png" alt="Message View Version" width="352" height="229" /></div>
+    <content type="html"><![CDATA[<div class="pull-right"><img title="MessageViewVersion" src="https://s3.amazonaws.com/hs_blog_content/images/skype-screenshot.png" alt="Message View Version" width="352" height="229" /></div>
 
 
 <p>I recently updated to Skype 6 and found something interesting out. My style package that worked in Skype 5 would not work in Skype 6. With some digging, we found out that in order to make your Skype 5 style work in Skype 6 you need to update the <code>MessageViewVersion</code> to version 7 (I have no idea why). So, with that, have fun updating your Skype to the latest version while still getting use out of your favorite Skype theme.</p>
@@ -413,7 +413,7 @@
     <link href="http://harmstyler.github.io/2012/09/solr-query-for-mimicking-sql-in-operator-functionality/"/>
     <updated>2012-09-13T00:00:00-05:00</updated>
     <id>http://harmstyler.github.io/2012/09/solr-query-for-mimicking-sql-in-operator-functionality</id>
-    <content type="html"><![CDATA[<div class="pull-right"><img title="Learning SQL" src="http://farm1.static.flickr.com/224/518053737_8a9794389e_m.jpg" alt="Learning SQL" width="240" height="180" /></div>
+    <content type="html"><![CDATA[<div class="pull-right"><img title="Learning SQL" src="https://s3.amazonaws.com/hs_blog_content/images/select-query.jpg" alt="Learning SQL" width="240" height="180" /></div>
 
 
 <p>I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the <code>IN</code> operator. In Solr you have the option of specifying a field using the <code>qf</code> operator, but what if you have more search terms searching other fields? The problem becomes far more complex. Given the following SQL statement how would we query Solr?</p>
@@ -475,7 +475,7 @@
     <link href="http://harmstyler.github.io/2012/08/optimizing-solr-to-fit-your-needs-part-1/"/>
     <updated>2012-08-25T00:00:00-05:00</updated>
     <id>http://harmstyler.github.io/2012/08/optimizing-solr-to-fit-your-needs-part-1</id>
-    <content type="html"><![CDATA[<div class="pull-right"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="http://upload.wikimedia.org/wikipedia/en/3/3e/Solr.png" alt="Solr logo" width="283" height="156" /></div>
+    <content type="html"><![CDATA[<div class="pull-right"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="https://s3.amazonaws.com/hs_blog_content/images/Solr.png" alt="Solr logo" width="283" height="156" /></div>
 
 
 <p>Let me start by saying that eZ Find is a fantastic implementation of <a class="zem_slink" title="Apache Solr" href="http://lucene.apache.org/solr/" rel="homepage" target="_blank">Solr</a> functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an <a class="zem_slink" title="EZ Publish" href="http://ez.no/" rel="homepage" target="_blank">eZ Publish</a> keyword and know that it should thereby be a Solr keyword, again, all out of the box. There are however some serious limitations when it comes time to customize it to meet your system&#8217;s needs. Do not underestimate the power found in customizing Solr to meet your website&#8217;s needs. The default setup is great, it&#8217;s made to fit into any system with very little effort; but, just because it&#8217;s made to fit in any system does not mean that it should be used for every system.</p>

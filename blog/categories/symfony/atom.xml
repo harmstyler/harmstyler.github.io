@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Symfony | HarmsSite]]></title>
   <link href="http://harmstyler.github.io/blog/categories/symfony/atom.xml" rel="self"/>
   <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T08:56:14-05:00</updated>
+  <updated>2013-04-14T09:15:24-05:00</updated>
   <id>http://harmstyler.github.io/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -51,7 +51,7 @@ As you can see with my code, for anything beyond the <code>/admin/</code> route 
     <link href="http://harmstyler.github.io/2013/01/ez-publish-5-first-thoughts/"/>
     <updated>2013-01-19T00:00:00-06:00</updated>
     <id>http://harmstyler.github.io/2013/01/ez-publish-5-first-thoughts</id>
-    <content type="html"><![CDATA[<div class="pull-right"><img class="" alt="Syfomy Logo" title="Symfony Logo" src="http://www.forouzani.com/blogs.dir/4/files/2012/09/symfony-logo.png" width="206" height="205" /></div>
+    <content type="html"><![CDATA[<div class="pull-right"><img class="" alt="Syfomy Logo" title="Symfony Logo" src="https://s3.amazonaws.com/hs_blog_content/images/symfony-logo.png" width="206" height="205" /></div>
 
 
 <p>I finally decided on my first eZ Publish 5 project... my site of course. I am currently in the middle of upgrading my wordpress install to eZ Publish. Honestly, I don't really need anything more than a simple Wordpress install, but it will be nice to get an eZ5 site under my belt.</p>
@@ -77,7 +77,7 @@ As you can see with my code, for anything beyond the <code>/admin/</code> route 
     <link href="http://harmstyler.github.io/2012/11/learning-symfony/"/>
     <updated>2012-11-21T00:00:00-06:00</updated>
     <id>http://harmstyler.github.io/2012/11/learning-symfony</id>
-    <content type="html"><![CDATA[<div class="pull-right"><img title="Nashville Symfony" src="http://farm4.static.flickr.com/3456/3774065516_d5f54dce34_m.jpg" alt="Nashville Symfony" width="240" height="180" /></div>
+    <content type="html"><![CDATA[<div class="pull-right"><img title="Nashville Symfony" src="https://s3.amazonaws.com/hs_blog_content/images/symfony2.jpg" alt="Nashville Symfony" width="240" height="180" /></div>
 
 
 <p> I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that eZ Systems announced that they were adopting the Symfony framework I knew that I would be be spending some time with it. I have found that Symfony doesn't have the lowest barrier to entry so it has been a process, to say the least. I have a blog that has helped matters a great deal and so I wanted to give it some props here. If you are like me, wanting to learn Symfony but lacking time and resources, you should really check this site out: <a href="http://tutorial.symblog.co.uk/" title="Symblog: Creating a Blog in Symfony2">Symblog: Creating a Blog in Symfony2</a></p>
@@ -91,7 +91,7 @@ As you can see with my code, for anything beyond the <code>/admin/</code> route 
     <link href="http://harmstyler.github.io/2012/09/solr-query-for-mimicking-sql-in-operator-functionality/"/>
     <updated>2012-09-13T00:00:00-05:00</updated>
     <id>http://harmstyler.github.io/2012/09/solr-query-for-mimicking-sql-in-operator-functionality</id>
-    <content type="html"><![CDATA[<div class="pull-right"><img title="Learning SQL" src="http://farm1.static.flickr.com/224/518053737_8a9794389e_m.jpg" alt="Learning SQL" width="240" height="180" /></div>
+    <content type="html"><![CDATA[<div class="pull-right"><img title="Learning SQL" src="https://s3.amazonaws.com/hs_blog_content/images/select-query.jpg" alt="Learning SQL" width="240" height="180" /></div>
 
 
 <p>I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the <code>IN</code> operator. In Solr you have the option of specifying a field using the <code>qf</code> operator, but what if you have more search terms searching other fields? The problem becomes far more complex. Given the following SQL statement how would we query Solr?

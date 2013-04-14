@@ -4,7 +4,7 @@
   <title><![CDATA[Category: eZ Find | HarmsSite]]></title>
   <link href="http://harmstyler.github.io/blog/categories/ez-find/atom.xml" rel="self"/>
   <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T08:56:14-05:00</updated>
+  <updated>2013-04-14T09:15:24-05:00</updated>
   <id>http://harmstyler.github.io/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -48,7 +48,7 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
     <link href="http://harmstyler.github.io/2012/08/optimizing-solr-to-fit-your-needs-part-1/"/>
     <updated>2012-08-25T00:00:00-05:00</updated>
     <id>http://harmstyler.github.io/2012/08/optimizing-solr-to-fit-your-needs-part-1</id>
-    <content type="html"><![CDATA[<div class="pull-right"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="http://upload.wikimedia.org/wikipedia/en/3/3e/Solr.png" alt="Solr logo" width="283" height="156" /></div>
+    <content type="html"><![CDATA[<div class="pull-right"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="https://s3.amazonaws.com/hs_blog_content/images/Solr.png" alt="Solr logo" width="283" height="156" /></div>
 
 
 <p>Let me start by saying that eZ Find is a fantastic implementation of <a class="zem_slink" title="Apache Solr" href="http://lucene.apache.org/solr/" rel="homepage" target="_blank">Solr</a> functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an <a class="zem_slink" title="EZ Publish" href="http://ez.no/" rel="homepage" target="_blank">eZ Publish</a> keyword and know that it should thereby be a Solr keyword, again, all out of the box. There are however some serious limitations when it comes time to customize it to meet your system's needs. Do not underestimate the power found in customizing Solr to meet your website's needs. The default setup is great, it's made to fit into any system with very little effort; but, just because it's made to fit in any system does not mean that it should be used for every system.</p>
