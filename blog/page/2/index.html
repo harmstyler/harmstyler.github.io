@@ -83,7 +83,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/08/18/gitignore-vs-gitkeep/">Multiple .gitignore Files Versus .gitkeep Files</a></h1>
+      <h1 class="entry-title"><a href="/2012/08/gitignore-vs-gitkeep/">Multiple .gitignore Files Versus .gitkeep Files</a></h1>
     
     
       <p class="meta">
@@ -117,7 +117,7 @@
   
   
     <footer>
-      <a rel="full-article" href="/blog/2012/08/18/gitignore-vs-gitkeep/">Read on &rarr;</a>
+      <a rel="full-article" href="/2012/08/gitignore-vs-gitkeep/">Read on &rarr;</a>
     </footer>
   
 
@@ -129,7 +129,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/06/30/ez-publish-with-sublime/">EZ Publish With Sublime</a></h1>
+      <h1 class="entry-title"><a href="/2012/06/ez-publish-with-sublime/">EZ Publish With Sublime</a></h1>
     
     
       <p class="meta">
@@ -168,7 +168,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/06/29/fixing-shards-in-ez-find/">Fixing Shards in eZ Find</a></h1>
+      <h1 class="entry-title"><a href="/2012/06/fixing-shards-in-ez-find/">Fixing Shards in eZ Find</a></h1>
     
     
       <p class="meta">
@@ -197,7 +197,7 @@
   
   
     <footer>
-      <a rel="full-article" href="/blog/2012/06/29/fixing-shards-in-ez-find/">Read on &rarr;</a>
+      <a rel="full-article" href="/2012/06/fixing-shards-in-ez-find/">Read on &rarr;</a>
     </footer>
   
 
@@ -209,7 +209,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/05/14/solr-3-6-update/">Solr 3.6 Update</a></h1>
+      <h1 class="entry-title"><a href="/2012/05/solr-3-6-update/">Solr 3.6 Update</a></h1>
     
     
       <p class="meta">
@@ -245,7 +245,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/05/08/ezfind-shards/">Searching Multiple Solr Cores Using Shards and eZ Find</a></h1>
+      <h1 class="entry-title"><a href="/2012/05/ezfind-shards/">Searching Multiple Solr Cores Using Shards and eZ Find</a></h1>
     
     
       <p class="meta">
@@ -268,26 +268,37 @@
   </header>
 
 
-  <div class="entry-content">Prerequisites:
-	eZ Publish with eZ Find installed
+  <div class="entry-content"><p>Prerequisites:
+  eZ Publish with eZ Find installed</p>
 
-The following post is based on the option in the eZ Find <code>solr.ini</code> referring to Shards.
-<pre style="display:block;"><span style="color: #000066; font-weight:bold;">[SolrBase]</span>
-<span style="color: #000099;">#SearchServerURI=http://localhost:8983/solr</span>
-<span style="color: #009292;">#Shards mapping, can be to multicores in one servlet or even a crosss servers</span>
-<span style="color: #009292;">#typical use is multilingual setups, but also for external index support</span>
-<span style="color: #009292;">#the keys are used as shorthands in template functions</span>
-<span style="color: #000099;">#Shards[]</span>
-<span style="color: #000099;">#Shards[eng-GB]=</span><span style="color: #660066;">http://localhost:8983/solr/eng-GB</span>
-<span style="color: #000099;">#Shards[fre-FR]=</span><span style="color: #660066;">http://localhost:8983/solr/fre-FR</span>
-<span style="color: #000099;">#Shards[myforeignindex]=</span><span style="color: #660066;">http://myotherhost:8983/solr</span></pre>
+<p>The following post is based on the option in the eZ Find <code>solr.ini</code> referring to Shards.</p>
 
-What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[SolrBase]</span>
+</span><span class='line'><span class="c1">#Shards mapping, can be to multicores in one servlet or even a crosss servers</span>
+</span><span class='line'><span class="c1">#typical use is multilingual setups, but also for external index support</span>
+</span><span class='line'><span class="c1">#the keys are used as shorthands in template functions</span>
+</span><span class='line'><span class="c1">#Shards[]</span>
+</span><span class='line'><span class="c1">#Shards[eng-GB]=http://localhost:8983/solr/eng-GB</span>
+</span><span class='line'><span class="c1">#Shards[fre-FR]=http://localhost:8983/solr/fre-FR</span>
+</span><span class='line'><span class="c1">#Shards[myforeignindex]=http://myotherhost:8983/solr</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).</p>
+
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2012/05/08/ezfind-shards/">Read on &rarr;</a>
+      <a rel="full-article" href="/2012/05/ezfind-shards/">Read on &rarr;</a>
     </footer>
   
 
@@ -299,7 +310,7 @@ What this means for eZ Find developers: we can do a distributed search in our st
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/04/26/ez-find-solr-attribute-storage/">eZ Find: Enable Attribute Storage</a></h1>
+      <h1 class="entry-title"><a href="/2012/04/ez-find-solr-attribute-storage/">eZ Find: Enable Attribute Storage</a></h1>
     
     
       <p class="meta">
@@ -322,23 +333,24 @@ What this means for eZ Find developers: we can do a distributed search in our st
   </header>
 
 
-  <div class="entry-content">When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes <code>'as_objects', true()</code> eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.
+  <div class="entry-content"><p>When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes <code>'as_objects', true()</code> eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.</p>
 
-Another option, however, is to return all the information from Solr, no more object building from the DB. To do this all you have to do is enable <code>EnableSolrAttributeStorage</code> in the ezfind.ini. That way, if you are searching on a site that does not have access to the local database (cross-site search for instance) you can return all the content you need from Solr, because it is <em>all</em> stored.
+<p>Another option, however, is to return all the information from Solr, no more object building from the DB. To do this all you have to do is enable <code>EnableSolrAttributeStorage</code> in the ezfind.ini. That way, if you are searching on a site that does not have access to the local database (cross-site search for instance) you can return all the content you need from Solr, because it is <em>all</em> stored.</p>
 
-&nbsp;
+<p>So remember, set:
+<code>'as_objects', false()</code> in the fetch.</p>
 
-So remember, set:
-<code>'as_objects', false()</code> in the fetch.
+<p>and in the ezfind.ini</p>
 
-and in the ezfind.ini
+<figure class='code'><figcaption><span>ezfind.ini </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[IndexOptions]</span>
+</span><span class='line'><span class="na">EnableSolrAttributeStorage</span><span class="o">=</span><span class="s">true</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre>[IndexOptions]
-EnableSolrAttributeStorage=true</pre>
 
-Then just remember to re-index your content to get all the new attributes in there.
-
-&nbsp;
+<p>Then just remember to re-index your content to get all the new attributes in there.</p>
 </div>
   
   
@@ -351,7 +363,7 @@ Then just remember to re-index your content to get all the new attributes in the
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/04/23/dogs-underwater/">Dogs Underwater</a></h1>
+      <h1 class="entry-title"><a href="/2012/04/dogs-underwater/">Dogs Underwater</a></h1>
     
     
       <p class="meta">
@@ -391,7 +403,7 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/04/20/ez-find-multi-core/">eZ Find Multi-Core</a></h1>
+      <h1 class="entry-title"><a href="/2012/04/ez-find-multi-core/">eZ Find Multi-Core</a></h1>
     
     
       <p class="meta">
@@ -414,15 +426,18 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
   </header>
 
 
-  <div class="entry-content">One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically it&#8217;s multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases.
+  <div class="entry-content"><p>One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.</p>
 
-<a href="http://harmssite.com/wp-content/uploads/2012/04/solr-dir.png"><img class="alignright size-medium wp-image-121" title="solr-dir" src="http://harmssite.com/wp-content/uploads/2012/04/solr-dir-300x186.png" alt="Solr Directory" width="300" height="186" /></a>So, to start. Let&#8217;s assume that if you are reading this, you already read through my previous eZ Find tutorial (<a title="Installing eZ Find" href="http://harmssite.com/2012/03/installing-ez-find/">Installing eZ Find</a>). Since we already have our sever up and running there won&#8217;t be a lot of work to do there. But, we need to move our conf files to the solr multicore directory. Last time we used the solr directory, this time we need to use the directory &#8216;solr.multicore.&#8217; Inside the multicore directory there are a couple of demo cores for languages. What I did is duplicated the english directory a couple times and renamed them for each site.
+<div class="pull-right"><img title="solr-dir" src="https://s3.amazonaws.com/hs_blog_content/images/solr-dir.png" alt="Solr Directory" width="300" height="186" /></div>
+
+
+<p>So, to start. Let&#8217;s assume that if you are reading this, you already read through my previous eZ Find tutorial (<a href="/2012/03/installing-ez-find/" title="Installing eZ Find">Installing eZ Find</a>). Since we already have our sever up and running there won&#8217;t be a lot of work to do there. But, we need to move our config files to the Solr multicore directory. Last time we used the Solr directory, this time we need to use the directory <code>solr.multicore</code>. Inside the multicore directory there are a couple of demo cores for languages. What I did is duplicated the english directory a couple times and renamed them for each site.</p>
 
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2012/04/20/ez-find-multi-core/">Read on &rarr;</a>
+      <a rel="full-article" href="/2012/04/ez-find-multi-core/">Read on &rarr;</a>
     </footer>
   
 
@@ -434,7 +449,7 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/04/12/clear-cache-in-ez-publish-ezpedia/">Clear Cache in eZ Publish - eZpedia</a></h1>
+      <h1 class="entry-title"><a href="/2012/04/clear-cache-in-ez-publish-ezpedia/">Clear Cache in eZ Publish - eZpedia</a></h1>
     
     
       <p class="meta">
@@ -457,17 +472,21 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
   </header>
 
 
-  <div class="entry-content">As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.
+  <div class="entry-content"><p>As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.</p>
 
-<a href="http://www.ezpedia.org/solution/clear_cache_in_ez_publish">Clear Cache in eZ Publish / Solution / Root - eZpedia</a>.
+<p><a href="http://www.ezpedia.org/solution/clear_cache_in_ez_publish">Clear Cache in eZ Publish / Solution / Root - eZpedia</a></p>
 
-My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.
+<p>My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.</p>
 
-<code>cd /path/to/ezpublish;
-rm -vrf var/cache;
-rm -vrf var/ezwebin_site/cache</code>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /path/to/ezpublish;
+</span><span class='line'>rm -vrf var/cache;
+</span><span class='line'>rm -vrf var/ezwebin_site/cache</span></code></pre></td></tr></table></div></figure>
 
-rm -vrf is very scary to run (remove all?!?), but so long as you are doing this to the specified directory you should be safe (but be careful).
+
+<p><code>rm -vrf</code> is very scary to run (remove all?!?), but so long as you are doing this to the specified directory you should be safe (but be careful).</p>
 </div>
   
   
@@ -480,7 +499,7 @@ rm -vrf is very scary to run (remove all?!?), but so long as you are doing this 
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/03/26/despite-bings-rise-google-still-dominates-search-infographic/">Despite Bings Rise, Google Still Dominates Search [INFOGRAPHIC]</a></h1>
+      <h1 class="entry-title"><a href="/2012/03/despite-bings-rise-google-still-dominates-search-infographic/">Despite Bings Rise, Google Still Dominates Search [INFOGRAPHIC]</a></h1>
     
     
       <p class="meta">
@@ -530,23 +549,23 @@ rm -vrf is very scary to run (remove all?!?), but so long as you are doing this 
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/">Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]</a>
+        <a href="/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/">Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/03/02/symfony2-access-conrol/">Symfony2 Access Conrol</a>
+        <a href="/2013/03/symfony2-access-conrol/">Symfony2 Access Conrol</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/01/19/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a>
+        <a href="/2013/01/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/07/optimizing-solr-to-fit-your-needs-part-2/">Optimizing Solr To Fit Your Needs Part 2</a>
+        <a href="/2012/12/optimizing-solr-to-fit-your-needs-part-2/">Optimizing Solr To Fit Your Needs Part 2</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/11/21/learning-symfony/">Learning Symfony</a>
+        <a href="/2012/11/learning-symfony/">Learning Symfony</a>
       </li>
     
   </ul>

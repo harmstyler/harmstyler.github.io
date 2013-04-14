@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Optimizing Solr To Fit Your Needs Part 2 - HarmsSite</title>
+  <meta name="author" content="Tyler Harms">
+
+  
+  <meta name="description" content="I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://harmstyler.github.io/2012/12/optimizing-solr-to-fit-your-needs-part-2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="HarmsSite" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-23865520-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">HarmsSite</a></h1>
+  
+    <h2>Web Development Blog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:harmstyler.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Optimizing Solr to Fit Your Needs Part 2</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-07T00:00:00-06:00" pubdate data-updated="true">Dec 7<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default search field called <code>ezf_df_text</code>. The downside of searching one field is that field needs to be controlled, and the only way it can be controlled is by manually editing the Solr schema file. As you might expect, eZ Find does not control this file very well out of the box.</p>
+
+<figure class='code'><figcaption><span>schema.xml </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_lk&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_k&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_t&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_s&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A copyField will take any field you tell it to and <em>copy it</em> into another field. The code above is what ships with eZ Find, every single <code>*_lk</code> (lckeyword), <code>*_k</code> (keyword), <code>*_t</code> (text), and <code>*_s</code> (string) is added to the <code>ezf_df_text</code> field. For obvious reasons the average installation probably doesn&#8217;t need every piece of content searchable. The first step is to <strong>delete the default copyFields</strong> (e.g. your site users probably shouldn&#8217;t be searched by default).</p>
+
+<!--more-->
+
+
+<p>Luckily, there is only one other step! Unfortunately, this one step can be very time consuming. Visit the <code>luke</code> output for your Solr install and make a list of all the fields you need to search. Make a copyField for every field you want to search, adding each field to the <code>ezf_df_text</code> field.</p>
+
+<p>Remember, this can offer major speed improvements in your searches, especially if you are managing a large amount of content. There are still other optimizations (stored/not stored, indexed/not indexed, term vectors, etc), but that is for another time.</p>
+
+<p>Finally, I did submit a pull request to the eZ Find project. It adds a new search parameter allowing users to declare custom search fields.
+<a href="http://bit.ly/Vp98IU">https://github.com/ezsystems/ezfind/pull/93</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tyler Harms</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-07T00:00:00-06:00" pubdate data-updated="true">Dec 7<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/solr/'>Solr</a>, <a class='category' href='/blog/categories/ez-find/'>eZ Find</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://harmstyler.github.io/2012/12/optimizing-solr-to-fit-your-needs-part-2/" data-via="harmstyler" data-counturl="http://harmstyler.github.io/2012/12/optimizing-solr-to-fit-your-needs-part-2/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2012/11/learning-symfony/" title="Previous Post: Learning Symfony">&laquo; Learning Symfony</a>
+      
+      
+        <a class="basic-alignment right" href="/2013/01/ez-publish-5-first-thoughts/" title="Next Post: eZ Publish 5 - First Thoughts">eZ Publish 5 - First Thoughts &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/">Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/symfony2-access-conrol/">Symfony2 Access Conrol</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/optimizing-solr-to-fit-your-needs-part-2/">Optimizing Solr To Fit Your Needs Part 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/learning-symfony/">Learning Symfony</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/harmstyler">@harmstyler</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'harmstyler',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Tyler Harms -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'harmssite';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

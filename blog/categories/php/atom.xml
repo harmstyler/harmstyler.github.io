@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PHP | HarmsSite]]></title>
   <link href="http://harmstyler.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T07:15:15-05:00</updated>
+  <updated>2013-04-14T08:56:14-05:00</updated>
   <id>http://harmstyler.github.io/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]]]></title>
-    <link href="http://harmstyler.github.io/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/"/>
+    <link href="http://harmstyler.github.io/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/"/>
     <updated>2013-03-15T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost</id>
+    <id>http://harmstyler.github.io/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost</id>
     <content type="html"><![CDATA[<p style="text-align:center;">This post is a repost of an article I wrote for <a title="Web and PHP Magazine" href="http://webandphp.com/" target="_blank">Web and PHP Magazine</a>'s <a title="Web and PHP February Issue" href="http://webandphp.com/issue-11" target="_blank">February issue</a>.</p>
 
 <h4>Solr has quickly become one of the most popular search engines available. Due to Solr's many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.</h4>

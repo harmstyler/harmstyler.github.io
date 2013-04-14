@@ -4,7 +4,7 @@
   <title><![CDATA[Category: eZ Find | HarmsSite]]></title>
   <link href="http://harmstyler.github.io/blog/categories/ez-find/atom.xml" rel="self"/>
   <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T07:15:15-05:00</updated>
+  <updated>2013-04-14T08:56:14-05:00</updated>
   <id>http://harmstyler.github.io/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Optimizing Solr To Fit Your Needs Part 2]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/12/07/optimizing-solr-to-fit-your-needs-part-2/"/>
+    <link href="http://harmstyler.github.io/2012/12/optimizing-solr-to-fit-your-needs-part-2/"/>
     <updated>2012-12-07T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/12/07/optimizing-solr-to-fit-your-needs-part-2</id>
+    <id>http://harmstyler.github.io/2012/12/optimizing-solr-to-fit-your-needs-part-2</id>
     <content type="html"><![CDATA[<p>I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default search field called <code>ezf_df_text</code>. The downside of searching one field is that field needs to be controlled, and the only way it can be controlled is by manually editing the Solr schema file. As you might expect, eZ Find does not control this file very well out of the box.
 <div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>schema.xml </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -45,9 +45,9 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
   
   <entry>
     <title type="html"><![CDATA[Optimizing Solr to fit your needs Part 1]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/08/25/optimizing-solr-to-fit-your-needs-part-1/"/>
+    <link href="http://harmstyler.github.io/2012/08/optimizing-solr-to-fit-your-needs-part-1/"/>
     <updated>2012-08-25T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/08/25/optimizing-solr-to-fit-your-needs-part-1</id>
+    <id>http://harmstyler.github.io/2012/08/optimizing-solr-to-fit-your-needs-part-1</id>
     <content type="html"><![CDATA[<div class="pull-right"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="http://upload.wikimedia.org/wikipedia/en/3/3e/Solr.png" alt="Solr logo" width="283" height="156" /></div>
 
 
@@ -78,9 +78,9 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
   
   <entry>
     <title type="html"><![CDATA[Fixing Shards in eZ Find]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/06/29/fixing-shards-in-ez-find/"/>
+    <link href="http://harmstyler.github.io/2012/06/fixing-shards-in-ez-find/"/>
     <updated>2012-06-29T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/06/29/fixing-shards-in-ez-find</id>
+    <id>http://harmstyler.github.io/2012/06/fixing-shards-in-ez-find</id>
     <content type="html"><![CDATA[<p>I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the <code>$shardQuery</code> is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the <code>$queryHandler</code> switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)</p>
 
 <!--more-->
@@ -229,10 +229,152 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
   
   <entry>
     <title type="html"><![CDATA[Solr 3.6 Update]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/05/14/solr-3-6-update/"/>
+    <link href="http://harmstyler.github.io/2012/05/solr-3-6-update/"/>
     <updated>2012-05-14T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/05/14/solr-3-6-update</id>
+    <id>http://harmstyler.github.io/2012/05/solr-3-6-update</id>
     <content type="html"><![CDATA[<p>Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.war file on GitHub (it is in <a href="https://github.com/harmstyler/ezfind" title="harmstyler eZ Find fork">my eZ Find branch</a>). Enjoy!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Searching Multiple Solr Cores using Shards and eZ Find]]></title>
+    <link href="http://harmstyler.github.io/2012/05/ezfind-shards/"/>
+    <updated>2012-05-08T00:00:00-05:00</updated>
+    <id>http://harmstyler.github.io/2012/05/ezfind-shards</id>
+    <content type="html"><![CDATA[<p>Prerequisites:
+  eZ Publish with eZ Find installed</p>
+
+<p>The following post is based on the option in the eZ Find <code>solr.ini</code> referring to Shards.
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="err">[SolrBase]&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">&lt;h1&gt;Shards</span> <span class="err">mapping,</span> <span class="err">can</span> <span class="err">be</span> <span class="err">to</span> <span class="err">multicores</span> <span class="err">in</span> <span class="err">one</span> <span class="err">servlet</span> <span class="err">or</span> <span class="err">even</span> <span class="err">a</span> <span class="err">crosss</span> <span class="err">servers&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">&lt;h1&gt;typical</span> <span class="err">use</span> <span class="err">is</span> <span class="err">multilingual</span> <span class="err">setups,</span> <span class="err">but</span> <span class="err">also</span> <span class="err">for</span> <span class="err">external</span> <span class="err">index</span> <span class="err">support&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">&lt;h1&gt;the</span> <span class="err">keys</span> <span class="err">are</span> <span class="err">used</span> <span class="err">as</span> <span class="err">shorthands</span> <span class="err">in</span> <span class="err">template</span> <span class="err">functions&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">&lt;h1&gt;Shards[]&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">&lt;h1&gt;Shards[eng-GB]</span><span class="o">=</span><span class="s">http://localhost:8983/solr/eng-GB&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">&lt;h1&gt;Shards[fre-FR]</span><span class="o">=</span><span class="s">http://localhost:8983/solr/fre-FR&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">&lt;h1&gt;Shards[myforeignindex]</span><span class="o">=</span><span class="s">http://myotherhost:8983/solr&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).</p>
+
+<!--more-->
+
+
+<p>First things first, we need to tell each siteaccess what its Search Server URI is. Within the <code>settings/siteaccess/&lt;siteaccess-name&gt;/</code> directory we need to create a new solr.ini.append.php file (duplicate the file in the admin version). Within each siteaccess we need to input our Solr core name; for harmssite it would be <code>SearchServerURI=http://localhost:8983/solr/harmssite</code> and for the counterhelix siteaccess it would be <code>SearchServerURI=http://localhost:8983/solr/counterhelix</code>.</p>
+
+<p>Next, make sure that you have your cores installed into solr. In order to do this just copy the default eng-GB from the <code>solr.multicore/</code> directory and then rename it for each core you wish to have, in my case I have a harmssite and a counterhelix core. There is also a <code>solr.xml</code> that we need to edit. Here we declare each core that we created.</p>
+
+<p>Mine:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="ni">&amp;lt;</span>?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+</span><span class='line'><span class="nt">&lt;solr</span> <span class="na">persistent=</span><span class="s">&quot;true&quot;</span> <span class="na">sharedLib=</span><span class="s">&quot;lib&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;cores</span> <span class="na">adminPath=</span><span class="s">&quot;/admin/cores&quot;</span><span class="nt">&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span><span class="ni">&amp;lt;</span>core name=&quot;harmssite&quot; instanceDir=&quot;harmssite&quot; /<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>core name=&quot;counterhelix&quot; instanceDir=&quot;counterhelix&quot; /<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>  <span class="nt">&lt;/cores&gt;</span>
+</span><span class='line'><span class="nt">&lt;/solr&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Finally, we need to start Solr, while giving it a new home parameter.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>java -Dsolr.solr.home=solr.multicore -jar start.jar</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>There is decent documentation on this up to this point located <a href="http://bit.ly/IYt5QI" title="eZ Find docs">here</a>.</p>
+
+<p>Next, we need to add a list of our shards into our override <code>solr.ini.append.php</code> file. Use the demo from above, just put in the url each core. Something to note here. I believe the documentation is wrong here. We should not include the <code>http://</code> in this list, Solr will add this automatically for us when it runs the search. Thus, mine looks like this:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[SolrBase]</span>
+</span><span class='line'><span class="err">Shards</span><span class="k">[]</span>
+</span><span class='line'><span class="na">Shards[harmssite]</span><span class="o">=</span><span class="s">localhost:8983/solr/harmssite</span>
+</span><span class='line'><span class="na">Shards[counterhelix]</span><span class="o">=</span><span class="s">localhost:8983/solr/counterhelix</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I am assuming here that you know how to index your content, so update your search index to follow these settings. The next step is to set up a distributed search in our eZ Find fetch.</p>
+
+<p>example:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='smarty'><span class='line'><span class="cp">{</span><span class="nf">set</span> <span class="nv">$search</span><span class="o">=</span><span class="na">fetch</span><span class="o">(</span> <span class="s1">&#39;ezfind&#39;</span><span class="o">,</span> <span class="s1">&#39;search&#39;</span><span class="o">,&lt;/</span><span class="na">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="na">pre</span><span class="o">&gt;&lt;</span><span class="na">code</span><span class="o">&gt;</span>                <span class="na">hash</span><span class="o">(</span> <span class="s1">&#39;query&#39;</span><span class="o">,</span> <span class="nv">$query</span><span class="o">,</span>
+</span><span class='line'>                      <span class="s1">&#39;sort_by&#39;</span><span class="o">,</span> <span class="nv">$sort_by</span><span class="o">,</span>
+</span><span class='line'>                      <span class="s1">&#39;facet&#39;</span><span class="o">,</span> <span class="nv">$defaultSearchFacets</span><span class="o">,</span>
+</span><span class='line'>                      <span class="s1">&#39;filter&#39;</span><span class="o">,</span> <span class="nv">$filterParameters</span><span class="o">,</span>
+</span><span class='line'>                      <span class="s1">&#39;publish_date&#39;</span><span class="o">,</span> <span class="nv">$search_date</span><span class="o">,</span>
+</span><span class='line'>                      <span class="s1">&#39;offset&#39;</span><span class="o">,</span> <span class="nv">$view_parameters.offset</span><span class="o">,</span>
+</span><span class='line'>                      <span class="s1">&#39;limit&#39;</span><span class="o">,</span> <span class="nv">$page_limit</span><span class="o">,</span>
+</span><span class='line'>                      <span class="s1">&#39;as_objects&#39;</span><span class="o">,</span> <span class="kc">false</span><span class="o">(),</span>
+</span><span class='line'>                      <span class="s1">&#39;distributed_search&#39;</span><span class="o">,</span> <span class="na">hash</span><span class="o">(</span>
+</span><span class='line'>                          <span class="s1">&#39;shards&#39;</span><span class="o">,</span><span class="na">array</span><span class="o">(</span><span class="s1">&#39;harmssite&#39;</span><span class="o">,</span> <span class="s1">&#39;counterhelix&#39;</span><span class="o">)</span>
+</span><span class='line'>                      <span class="o">)</span>
+</span><span class='line'>                     <span class="o">))</span><span class="cp">}</span><span class="x"></span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Note that we have to send the <code>distributed_search</code> parameter as a hashed array. In this case we are telling eZ Find to search both shards. We can have eZ Find search whatever core we want it to at this point, just harmssite, just counterhelix, both, or even new cores that we might add later. The advantages are obvious, separated indexes allowing for much larger sets of data is a huge upgrade. The downside is that searching multiple cores at once is a little slower, so really you should not use this option unless you are in need of scaling Solr out more; this would be a touch overkill for my site.</p>
+
+<p>If you have followed me up to this point and have tried running this, you may have noticed that it does not work out of the box. The <code>ezfezpsolrquerybuilder.php</code> is still a work in process and has not been set up to handle shards just yet. Out of the box, should you send the distributed search shards array to eZ Find, eZ Find will take it, generate the shard urls and then do nothing with them. The task I leave you is to try and fix this problem for eZ Find. I have a fix for this, but would love to see what other people come up with (I will post my code here next week). The <a href="https://github.com/ezsystems/ezfind/blob/stable-2.7/classes/ezfezpsolrquerybuilder.php">file in question</a>. Remember, all we need to do is send the shards parameter to the search plugin should one be sent to eZ Find; the search plugin is already setup to handle shards.</p>
 ]]></content>
   </entry>
   

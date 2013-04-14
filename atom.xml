@@ -4,7 +4,7 @@
   <title><![CDATA[HarmsSite]]></title>
   <link href="http://harmstyler.github.io/atom.xml" rel="self"/>
   <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T07:15:15-05:00</updated>
+  <updated>2013-04-14T08:56:14-05:00</updated>
   <id>http://harmstyler.github.io/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]]]></title>
-    <link href="http://harmstyler.github.io/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/"/>
+    <link href="http://harmstyler.github.io/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/"/>
     <updated>2013-03-15T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost</id>
+    <id>http://harmstyler.github.io/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost</id>
     <content type="html"><![CDATA[<p style="text-align:center;">This post is a repost of an article I wrote for <a title="Web and PHP Magazine" href="http://webandphp.com/" target="_blank">Web and PHP Magazine</a>&#8217;s <a title="Web and PHP February Issue" href="http://webandphp.com/issue-11" target="_blank">February issue</a>.</p>
 
 <h4>Solr has quickly become one of the most popular search engines available. Due to Solr&#8217;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.</h4>
@@ -265,9 +265,9 @@
   
   <entry>
     <title type="html"><![CDATA[Symfony2 Access Conrol]]></title>
-    <link href="http://harmstyler.github.io/blog/2013/03/02/symfony2-access-conrol/"/>
+    <link href="http://harmstyler.github.io/2013/03/symfony2-access-conrol/"/>
     <updated>2013-03-02T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/blog/2013/03/02/symfony2-access-conrol</id>
+    <id>http://harmstyler.github.io/2013/03/symfony2-access-conrol</id>
     <content type="html"><![CDATA[<p>I am very new to Symfony development. While developing a side project app I found I needed to control access to a certain area to logged in users only. Based on my previous development history I was expecting to have to determine if a user was logged in via the controller. I figured I would need to find an <code>is_logged_in</code> boolean and use it to determine user access control. What I found while doing my development is that Symfony2 takes care of access control in a much more eloquent way. Rather than having to determine if a user is logged in inside each controller, Symfony2 controls access using a system similar to its routing system. Inside a Symfony2 app there is, by default, a <code>security.yml</code> file that is used to control access. Inside the <code>security.yml</code> file locate the <code>access_control</code> declaration. By simply declaring a route inside the <code>access_control</code> yml array we can control which users have access to which routes, like so:</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -293,9 +293,9 @@
   
   <entry>
     <title type="html"><![CDATA[eZ Publish 5 - First Thoughts]]></title>
-    <link href="http://harmstyler.github.io/blog/2013/01/19/ez-publish-5-first-thoughts/"/>
+    <link href="http://harmstyler.github.io/2013/01/ez-publish-5-first-thoughts/"/>
     <updated>2013-01-19T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/blog/2013/01/19/ez-publish-5-first-thoughts</id>
+    <id>http://harmstyler.github.io/2013/01/ez-publish-5-first-thoughts</id>
     <content type="html"><![CDATA[<div class="pull-right"><img class="" alt="Syfomy Logo" title="Symfony Logo" src="http://www.forouzani.com/blogs.dir/4/files/2012/09/symfony-logo.png" width="206" height="205" /></div>
 
 
@@ -319,9 +319,9 @@
   
   <entry>
     <title type="html"><![CDATA[Optimizing Solr To Fit Your Needs Part 2]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/12/07/optimizing-solr-to-fit-your-needs-part-2/"/>
+    <link href="http://harmstyler.github.io/2012/12/optimizing-solr-to-fit-your-needs-part-2/"/>
     <updated>2012-12-07T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/12/07/optimizing-solr-to-fit-your-needs-part-2</id>
+    <id>http://harmstyler.github.io/2012/12/optimizing-solr-to-fit-your-needs-part-2</id>
     <content type="html"><![CDATA[<p>I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default search field called <code>ezf_df_text</code>. The downside of searching one field is that field needs to be controlled, and the only way it can be controlled is by manually editing the Solr schema file. As you might expect, eZ Find does not control this file very well out of the box.</p>
 
 <figure class='code'><figcaption><span>schema.xml </span></figcaption>
@@ -352,9 +352,9 @@
   
   <entry>
     <title type="html"><![CDATA[Learning Symfony]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/11/21/learning-symfony/"/>
+    <link href="http://harmstyler.github.io/2012/11/learning-symfony/"/>
     <updated>2012-11-21T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/11/21/learning-symfony</id>
+    <id>http://harmstyler.github.io/2012/11/learning-symfony</id>
     <content type="html"><![CDATA[<div class="pull-right"><img title="Nashville Symfony" src="http://farm4.static.flickr.com/3456/3774065516_d5f54dce34_m.jpg" alt="Nashville Symfony" width="240" height="180" /></div>
 
 
@@ -366,9 +366,9 @@
   
   <entry>
     <title type="html"><![CDATA[Skype version 6]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/11/01/skype-version-6/"/>
+    <link href="http://harmstyler.github.io/2012/11/skype-version-6/"/>
     <updated>2012-11-01T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/11/01/skype-version-6</id>
+    <id>http://harmstyler.github.io/2012/11/skype-version-6</id>
     <content type="html"><![CDATA[<div class="pull-right"><img title="MessageViewVersion" src="http://f.cl.ly/items/2f1o400V1s2P3k2H0x0r/Screen%20Shot%202012-11-01%20at%209.53.36%20AM.png" alt="Message View Version" width="352" height="229" /></div>
 
 
@@ -378,9 +378,9 @@
   
   <entry>
     <title type="html"><![CDATA[American Politics]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/10/03/american-politics/"/>
+    <link href="http://harmstyler.github.io/2012/10/american-politics/"/>
     <updated>2012-10-03T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/10/03/american-politics</id>
+    <id>http://harmstyler.github.io/2012/10/american-politics</id>
     <content type="html"><![CDATA[<p>I try as hard as I can to stay out of politics. I have my opinions like everybody else and I try to not start arguments as often as possible because I also value my friends and family. But with the American presidential election around the corner, I just had to share this bit of gold.</p>
 
 <div class='embed tweet'><blockquote class="twitter-tweet"><p>Michele Bachman is on the U.S. Intelligence Committee, and Todd Akin on the Science Committee. Let that sink in for a minute.</p>&mdash; Jorge Villalobos (@minusfive) <a href="https://twitter.com/minusfive/status/253246165108277248">October 2, 2012</a></blockquote>
@@ -397,9 +397,9 @@
   
   <entry>
     <title type="html"><![CDATA[AWS authorize security groups across acounts « ShellRunner]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/09/28/aws-authorize-security-groups-across-acounts-shellrunner/"/>
+    <link href="http://harmstyler.github.io/2012/09/aws-authorize-security-groups-across-acounts-shellrunner/"/>
     <updated>2012-09-28T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/09/28/aws-authorize-security-groups-across-acounts-shellrunner</id>
+    <id>http://harmstyler.github.io/2012/09/aws-authorize-security-groups-across-acounts-shellrunner</id>
     <content type="html"><![CDATA[<p>Just had to share this post since I helped a little bit with it. Very handy little tip about authorizing security groups across AWS accounts.</p>
 
 <p><a href="http://shellrunner.com/2012/09/28/aws-authorize-security-groups-across-acounts/" title="AWS authorize security groups across acounts « ShellRunner">AWS authorize security groups across acounts « ShellRunner</a>.</p>
@@ -410,9 +410,9 @@
   
   <entry>
     <title type="html"><![CDATA[Solr Query for Mimicking SQL IN Operator Functionality]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/09/13/solr-query-for-mimicking-sql-in-operator-functionality/"/>
+    <link href="http://harmstyler.github.io/2012/09/solr-query-for-mimicking-sql-in-operator-functionality/"/>
     <updated>2012-09-13T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/09/13/solr-query-for-mimicking-sql-in-operator-functionality</id>
+    <id>http://harmstyler.github.io/2012/09/solr-query-for-mimicking-sql-in-operator-functionality</id>
     <content type="html"><![CDATA[<div class="pull-right"><img title="Learning SQL" src="http://farm1.static.flickr.com/224/518053737_8a9794389e_m.jpg" alt="Learning SQL" width="240" height="180" /></div>
 
 
@@ -472,9 +472,9 @@
   
   <entry>
     <title type="html"><![CDATA[Optimizing Solr to fit your needs Part 1]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/08/25/optimizing-solr-to-fit-your-needs-part-1/"/>
+    <link href="http://harmstyler.github.io/2012/08/optimizing-solr-to-fit-your-needs-part-1/"/>
     <updated>2012-08-25T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/08/25/optimizing-solr-to-fit-your-needs-part-1</id>
+    <id>http://harmstyler.github.io/2012/08/optimizing-solr-to-fit-your-needs-part-1</id>
     <content type="html"><![CDATA[<div class="pull-right"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="http://upload.wikimedia.org/wikipedia/en/3/3e/Solr.png" alt="Solr logo" width="283" height="156" /></div>
 
 
@@ -499,9 +499,9 @@
   
   <entry>
     <title type="html"><![CDATA[Multiple .gitignore files versus .gitkeep files]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/08/18/gitignore-vs-gitkeep/"/>
+    <link href="http://harmstyler.github.io/2012/08/gitignore-vs-gitkeep/"/>
     <updated>2012-08-18T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/08/18/gitignore-vs-gitkeep</id>
+    <id>http://harmstyler.github.io/2012/08/gitignore-vs-gitkeep</id>
     <content type="html"><![CDATA[<div class="pull-right"><img src="https://s3.amazonaws.com/hs_blog_content/images/Git_icon.png" alt="Git" title="Git" width="256" height="256" /></div>
 
 
@@ -543,9 +543,9 @@ The <code>.gitkeep</code> file at work:</p>
   
   <entry>
     <title type="html"><![CDATA[EZ Publish with Sublime]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/06/30/ez-publish-with-sublime/"/>
+    <link href="http://harmstyler.github.io/2012/06/ez-publish-with-sublime/"/>
     <updated>2012-06-30T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/06/30/ez-publish-with-sublime</id>
+    <id>http://harmstyler.github.io/2012/06/ez-publish-with-sublime</id>
     <content type="html"><![CDATA[<div class="pull-right"><img title="Sublime Text icon" src="https://s3.amazonaws.com/hs_blog_content/images/sublime_text_icon_2181-150x150.png" alt="Sublime Text icon" width="150" height="150" /></div>
 
 
@@ -555,9 +555,9 @@ The <code>.gitkeep</code> file at work:</p>
   
   <entry>
     <title type="html"><![CDATA[Fixing Shards in eZ Find]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/06/29/fixing-shards-in-ez-find/"/>
+    <link href="http://harmstyler.github.io/2012/06/fixing-shards-in-ez-find/"/>
     <updated>2012-06-29T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/06/29/fixing-shards-in-ez-find</id>
+    <id>http://harmstyler.github.io/2012/06/fixing-shards-in-ez-find</id>
     <content type="html"><![CDATA[<p>I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the <code>$shardQuery</code> is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the <code>$queryHandler</code> switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)</p>
 
 <!--more-->
@@ -707,115 +707,161 @@ The <code>.gitkeep</code> file at work:</p>
   
   <entry>
     <title type="html"><![CDATA[Solr 3.6 Update]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/05/14/solr-3-6-update/"/>
+    <link href="http://harmstyler.github.io/2012/05/solr-3-6-update/"/>
     <updated>2012-05-14T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/05/14/solr-3-6-update</id>
+    <id>http://harmstyler.github.io/2012/05/solr-3-6-update</id>
     <content type="html"><![CDATA[<p>Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.war file on GitHub (it is in <a href="https://github.com/harmstyler/ezfind" title="harmstyler eZ Find fork">my eZ Find branch</a>). Enjoy!</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Searching Multiple Solr Cores using Shards and eZ Find]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/05/08/ezfind-shards/"/>
+    <link href="http://harmstyler.github.io/2012/05/ezfind-shards/"/>
     <updated>2012-05-08T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/05/08/ezfind-shards</id>
-    <content type="html"><![CDATA[Prerequisites:
-	eZ Publish with eZ Find installed
+    <id>http://harmstyler.github.io/2012/05/ezfind-shards</id>
+    <content type="html"><![CDATA[<p>Prerequisites:
+  eZ Publish with eZ Find installed</p>
 
-The following post is based on the option in the eZ Find <code>solr.ini</code> referring to Shards.
-<pre style="display:block;"><span style="color: #000066; font-weight:bold;">[SolrBase]</span>
-<span style="color: #000099;">#SearchServerURI=http://localhost:8983/solr</span>
-<span style="color: #009292;">#Shards mapping, can be to multicores in one servlet or even a crosss servers</span>
-<span style="color: #009292;">#typical use is multilingual setups, but also for external index support</span>
-<span style="color: #009292;">#the keys are used as shorthands in template functions</span>
-<span style="color: #000099;">#Shards[]</span>
-<span style="color: #000099;">#Shards[eng-GB]=</span><span style="color: #660066;">http://localhost:8983/solr/eng-GB</span>
-<span style="color: #000099;">#Shards[fre-FR]=</span><span style="color: #660066;">http://localhost:8983/solr/fre-FR</span>
-<span style="color: #000099;">#Shards[myforeignindex]=</span><span style="color: #660066;">http://myotherhost:8983/solr</span></pre>
+<p>The following post is based on the option in the eZ Find <code>solr.ini</code> referring to Shards.</p>
 
-What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[SolrBase]</span>
+</span><span class='line'><span class="c1">#Shards mapping, can be to multicores in one servlet or even a crosss servers</span>
+</span><span class='line'><span class="c1">#typical use is multilingual setups, but also for external index support</span>
+</span><span class='line'><span class="c1">#the keys are used as shorthands in template functions</span>
+</span><span class='line'><span class="c1">#Shards[]</span>
+</span><span class='line'><span class="c1">#Shards[eng-GB]=http://localhost:8983/solr/eng-GB</span>
+</span><span class='line'><span class="c1">#Shards[fre-FR]=http://localhost:8983/solr/fre-FR</span>
+</span><span class='line'><span class="c1">#Shards[myforeignindex]=http://myotherhost:8983/solr</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).</p>
+
 <!--more-->
-First things first, we need to tell each siteaccess what its&#8217; Search Server URI is. Within the <code>settings/siteaccess/&lt;siteaccess-name&gt;/</code> directory we need to create a new solr.ini.append.php file (duplicate the file in the admin version). Within each siteaccess we need to input our solr core name; for harmssite it would be <code>SearchServerURI=http://localhost:8983/solr/harmssite</code> and for the counterhelix siteaccess it would be <code>SearchServerURI=http://localhost:8983/solr/counterhelix</code>.
 
-Next, make sure that you have your cores installed into solr. In order to do this just copy the default eng-GB from the <code>solr.multicore/</code> directory and then rename it for each core you wish to have, in my case I have a harmssite and a counterhelix core. There is also a <code>solr.xml</code> that we need to edit. Here we declare each core that we created.
 
-Mine:
-<pre style="display:block;">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;solr persistent="true" sharedLib="lib"&gt;
-  &lt;cores adminPath="/admin/cores"&gt;
-    &lt;core name="harmssite" instanceDir="harmssite" /&gt;
-    &lt;core name="counterhelix" instanceDir="counterhelix" /&gt;
-  &lt;/cores&gt;
-&lt;/solr&gt;
-</pre>
+<p>First things first, we need to tell each siteaccess what its Search Server URI is. Within the <code>settings/siteaccess/&lt;siteaccess-name&gt;/</code> directory we need to create a new solr.ini.append.php file (duplicate the file in the admin version). Within each siteaccess we need to input our Solr core name; for harmssite it would be <code>SearchServerURI=http://localhost:8983/solr/harmssite</code> and for the counterhelix siteaccess it would be <code>SearchServerURI=http://localhost:8983/solr/counterhelix</code>.</p>
 
-Finally, we need to start solr, while giving it a new home parameter.
+<p>Next, make sure that you have your cores installed into solr. In order to do this just copy the default eng-GB from the <code>solr.multicore/</code> directory and then rename it for each core you wish to have, in my case I have a harmssite and a counterhelix core. There is also a <code>solr.xml</code> that we need to edit. Here we declare each core that we created.</p>
 
-<pre>java -Dsolr.solr.home=solr.multicore -jar start.jar</pre>
+<p>Mine:</p>
 
-There is decent documentation on this up to this point located <a href="http://bit.ly/IYt5QI" title="eZ Find docs">here</a>.
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
+</span><span class='line'><span class="nt">&lt;solr</span> <span class="na">persistent=</span><span class="s">&quot;true&quot;</span> <span class="na">sharedLib=</span><span class="s">&quot;lib&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;cores</span> <span class="na">adminPath=</span><span class="s">&quot;/admin/cores&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;core</span> <span class="na">name=</span><span class="s">&quot;harmssite&quot;</span> <span class="na">instanceDir=</span><span class="s">&quot;harmssite&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;core</span> <span class="na">name=</span><span class="s">&quot;counterhelix&quot;</span> <span class="na">instanceDir=</span><span class="s">&quot;counterhelix&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/cores&gt;</span>
+</span><span class='line'><span class="nt">&lt;/solr&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-Next, we need to add a list of our shards into our override <code>solr.ini.append.php</code> file. Use the demo from above, just put in the url each core. Something to note here. I believe the documentation is wrong here. We should not include the <code>http://</code> in this list, Solr will add this automatically for us when it runs the search. Thus, mine looks like this:
 
-<pre style="display:block;"><span style="color: #000066; font-weight:bold;">[SolrBase]</span>
-<span style="color: #000099;">Shards[]</span>
-<span style="color: #000099;">Shards[harmssite]=</span><span style="color: #660066;">localhost:8983/solr/harmssite</span>
-<span style="color: #000099;">Shards[counterhelix]=</span><span style="color: #660066;">localhost:8983/solr/counterhelix</span></pre>
+<p>Finally, we need to start Solr, while giving it a new home parameter.</p>
 
-I am assuming here that you know how to index your content, so update your search index to follow these settings. The next step is to set up a distributed search in our eZ Find fetch.
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>java -Dsolr.solr.home=solr.multicore -jar start.jar</span></code></pre></td></tr></table></div></figure>
 
-example:
 
-<pre style="display:block;">{set $search=fetch( ezfind,search,
-                    hash( 'query', $query,
-                          'sort_by', $sort_by,
-                          'facet', $defaultSearchFacets,
-                          'filter', $filterParameters,
-                          'publish_date', $search_date,
-                          'offset', $view_parameters.offset,
-                          'limit', $page_limit,
-                          'as_objects', false(),
-                          'distributed_search',
-                            hash( 'shards',array('harmssite','counterhelix')
-                          )
-                         ))}</pre>
+<p>There is decent documentation on this up to this point located <a href="http://bit.ly/IYt5QI" title="eZ Find docs">here</a>.</p>
 
-Note that we have to send the <code>distributed_search</code> parameter as a hashed array. In this case we are telling eZ Find to search both shards. We can have eZ Find search whatever core we want it to at this point, just harmssite, just counterhelix, both, or even new cores that we might add later. The advantages are obvious, separated indexes allowing for much larger sets of data is a huge upgrade. The downside is that searching multiple cores at once is a little slower, so really you should not use this option unless you are in need of scaling solr out more; this would be a touch overkill for my site.
+<p>Next, we need to add a list of our shards into our override <code>solr.ini.append.php</code> file. Use the demo from above, just put in the url each core. Something to note here. I believe the documentation is wrong here. We should not include the <code>http://</code> in this list, Solr will add this automatically for us when it runs the search. Thus, mine looks like this:</p>
 
-If you have followed me up to this point and have tried running this, you may have noticed that it does not work out of the box. The <code>ezfezpsolrquerybuilder.php</code> is still a work in process and has not been set up to handle shards just yet. Out of the box, should you send the distributed search shards array to eZ Find, eZ Find will take it, generate the shard urls and then do nothing with them. The task I leave you is to try and fix this problem for eZ Find. I have a fix for this, but would love to see what other people come up with (I will post my code here next week). The <a href="https://github.com/ezsystems/ezfind/blob/master/classes/ezfezpsolrquerybuilder.php" title="ezfezpsolrquerybuilder.php">file in question</a>. Remember, all we need to do is send the shards parameter to the search plugin should one be sent to eZ Find; the search plugin is already setup to handle shards.
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[SolrBase]</span>
+</span><span class='line'><span class="err">Shards</span><span class="k">[]</span>
+</span><span class='line'><span class="na">Shards[harmssite]</span><span class="o">=</span><span class="s">localhost:8983/solr/harmssite</span>
+</span><span class='line'><span class="na">Shards[counterhelix]</span><span class="o">=</span><span class="s">localhost:8983/solr/counterhelix</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I am assuming here that you know how to index your content, so update your search index to follow these settings. The next step is to set up a distributed search in our eZ Find fetch.</p>
+
+<p>example:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='smarty'><span class='line'><span class="cp">{</span><span class="nf">set</span> <span class="nv">$search</span><span class="o">=</span><span class="na">fetch</span><span class="o">(</span> <span class="s1">&#39;ezfind&#39;</span><span class="o">,</span> <span class="s1">&#39;search&#39;</span><span class="o">,</span>
+</span><span class='line'>                    <span class="na">hash</span><span class="o">(</span> <span class="s1">&#39;query&#39;</span><span class="o">,</span> <span class="nv">$query</span><span class="o">,</span>
+</span><span class='line'>                          <span class="s1">&#39;sort_by&#39;</span><span class="o">,</span> <span class="nv">$sort_by</span><span class="o">,</span>
+</span><span class='line'>                          <span class="s1">&#39;facet&#39;</span><span class="o">,</span> <span class="nv">$defaultSearchFacets</span><span class="o">,</span>
+</span><span class='line'>                          <span class="s1">&#39;filter&#39;</span><span class="o">,</span> <span class="nv">$filterParameters</span><span class="o">,</span>
+</span><span class='line'>                          <span class="s1">&#39;publish_date&#39;</span><span class="o">,</span> <span class="nv">$search_date</span><span class="o">,</span>
+</span><span class='line'>                          <span class="s1">&#39;offset&#39;</span><span class="o">,</span> <span class="nv">$view_parameters.offset</span><span class="o">,</span>
+</span><span class='line'>                          <span class="s1">&#39;limit&#39;</span><span class="o">,</span> <span class="nv">$page_limit</span><span class="o">,</span>
+</span><span class='line'>                          <span class="s1">&#39;as_objects&#39;</span><span class="o">,</span> <span class="kc">false</span><span class="o">(),</span>
+</span><span class='line'>                          <span class="s1">&#39;distributed_search&#39;</span><span class="o">,</span> <span class="na">hash</span><span class="o">(</span>
+</span><span class='line'>                              <span class="s1">&#39;shards&#39;</span><span class="o">,</span><span class="na">array</span><span class="o">(</span><span class="s1">&#39;harmssite&#39;</span><span class="o">,</span> <span class="s1">&#39;counterhelix&#39;</span><span class="o">)</span>
+</span><span class='line'>                          <span class="o">)</span>
+</span><span class='line'>                         <span class="o">))</span><span class="cp">}</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that we have to send the <code>distributed_search</code> parameter as a hashed array. In this case we are telling eZ Find to search both shards. We can have eZ Find search whatever core we want it to at this point, just harmssite, just counterhelix, both, or even new cores that we might add later. The advantages are obvious, separated indexes allowing for much larger sets of data is a huge upgrade. The downside is that searching multiple cores at once is a little slower, so really you should not use this option unless you are in need of scaling Solr out more; this would be a touch overkill for my site.</p>
+
+<p>If you have followed me up to this point and have tried running this, you may have noticed that it does not work out of the box. The <code>ezfezpsolrquerybuilder.php</code> is still a work in process and has not been set up to handle shards just yet. Out of the box, should you send the distributed search shards array to eZ Find, eZ Find will take it, generate the shard urls and then do nothing with them. The task I leave you is to try and fix this problem for eZ Find. I have a fix for this, but would love to see what other people come up with (I will post my code here next week). The <a href="https://github.com/ezsystems/ezfind/blob/stable-2.7/classes/ezfezpsolrquerybuilder.php">file in question</a>. Remember, all we need to do is send the shards parameter to the search plugin should one be sent to eZ Find; the search plugin is already setup to handle shards.</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[eZ Find: Enable Attribute Storage]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/04/26/ez-find-solr-attribute-storage/"/>
+    <link href="http://harmstyler.github.io/2012/04/ez-find-solr-attribute-storage/"/>
     <updated>2012-04-26T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/04/26/ez-find-solr-attribute-storage</id>
-    <content type="html"><![CDATA[When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes <code>'as_objects', true()</code> eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.
+    <id>http://harmstyler.github.io/2012/04/ez-find-solr-attribute-storage</id>
+    <content type="html"><![CDATA[<p>When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes <code>'as_objects', true()</code> eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.</p>
 
-Another option, however, is to return all the information from Solr, no more object building from the DB. To do this all you have to do is enable <code>EnableSolrAttributeStorage</code> in the ezfind.ini. That way, if you are searching on a site that does not have access to the local database (cross-site search for instance) you can return all the content you need from Solr, because it is <em>all</em> stored.
+<p>Another option, however, is to return all the information from Solr, no more object building from the DB. To do this all you have to do is enable <code>EnableSolrAttributeStorage</code> in the ezfind.ini. That way, if you are searching on a site that does not have access to the local database (cross-site search for instance) you can return all the content you need from Solr, because it is <em>all</em> stored.</p>
 
-&nbsp;
+<p>So remember, set:
+<code>'as_objects', false()</code> in the fetch.</p>
 
-So remember, set:
-<code>'as_objects', false()</code> in the fetch.
+<p>and in the ezfind.ini</p>
 
-and in the ezfind.ini
+<figure class='code'><figcaption><span>ezfind.ini </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[IndexOptions]</span>
+</span><span class='line'><span class="na">EnableSolrAttributeStorage</span><span class="o">=</span><span class="s">true</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre>[IndexOptions]
-EnableSolrAttributeStorage=true</pre>
 
-Then just remember to re-index your content to get all the new attributes in there.
-
-&nbsp;
+<p>Then just remember to re-index your content to get all the new attributes in there.</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Dogs Underwater]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/04/23/dogs-underwater/"/>
+    <link href="http://harmstyler.github.io/2012/04/dogs-underwater/"/>
     <updated>2012-04-23T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/04/23/dogs-underwater</id>
+    <id>http://harmstyler.github.io/2012/04/dogs-underwater</id>
     <content type="html"><![CDATA[I am usually not one for email forwards. I got one today that I absolutely love, however. So, instead of re-forwarding it, I will share it here.
 
 [nggallery id=2]
@@ -826,64 +872,85 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
   
   <entry>
     <title type="html"><![CDATA[eZ Find Multi-Core]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/04/20/ez-find-multi-core/"/>
+    <link href="http://harmstyler.github.io/2012/04/ez-find-multi-core/"/>
     <updated>2012-04-20T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/04/20/ez-find-multi-core</id>
-    <content type="html"><![CDATA[One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically it&#8217;s multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases.
+    <id>http://harmstyler.github.io/2012/04/ez-find-multi-core</id>
+    <content type="html"><![CDATA[<p>One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.</p>
 
-<a href="http://harmssite.com/wp-content/uploads/2012/04/solr-dir.png"><img class="alignright size-medium wp-image-121" title="solr-dir" src="http://harmssite.com/wp-content/uploads/2012/04/solr-dir-300x186.png" alt="Solr Directory" width="300" height="186" /></a>So, to start. Let&#8217;s assume that if you are reading this, you already read through my previous eZ Find tutorial (<a title="Installing eZ Find" href="http://harmssite.com/2012/03/installing-ez-find/">Installing eZ Find</a>). Since we already have our sever up and running there won&#8217;t be a lot of work to do there. But, we need to move our conf files to the solr multicore directory. Last time we used the solr directory, this time we need to use the directory &#8216;solr.multicore.&#8217; Inside the multicore directory there are a couple of demo cores for languages. What I did is duplicated the english directory a couple times and renamed them for each site.
+<div class="pull-right"><img title="solr-dir" src="https://s3.amazonaws.com/hs_blog_content/images/solr-dir.png" alt="Solr Directory" width="300" height="186" /></div>
 
-<!--more-->I think this is the time for a nice FYI. We can go about this next part in a couple of different ways. The way we choose depends on the desired consequence. So, ask yourself this question, &#8216;Do I want the siteaccesses to share content?&#8217; If you answered yes, you only need 1 core for you sites to share off of, if you answered no, then create a core for each site that you wish to keep separate from the others. Another note, this effect can also be achieved by adjusting an ini setting, but if you know you want your stuff separate, then create multiple cores, it is safer that way. The way I set mine up is I have 2 cores. 1 core has 3 siteaccess sharing content, the other has just 1 site on it (that way its index content will not get mixed by accident).
 
-Now that we are using Solr in a multi-core environment, starting Solr is a bit different.
+<p>So, to start. Let&#8217;s assume that if you are reading this, you already read through my previous eZ Find tutorial (<a href="http://harmstyler.github.io/2012/03/installing-ez-find/" title="Installing eZ Find">Installing eZ Find</a>). Since we already have our sever up and running there won&#8217;t be a lot of work to do there. But, we need to move our config files to the Solr multicore directory. Last time we used the Solr directory, this time we need to use the directory <code>solr.multicore</code>. Inside the multicore directory there are a couple of demo cores for languages. What I did is duplicated the english directory a couple times and renamed them for each site.</p>
 
-<pre>java -Dsolr.solr.home=solr.multicore -jar start.jar</pre>
+<!--more-->
 
-Notice, we just sent the start.jar a new place for solr to call its&#8217; home directory &#8216;solr.multicore.&#8217;
 
-Now that we have Solr re-configured for multi-core work we have to set up our solr.ini files. Inside the siteaccess specific override folders we need to drop in and edit a solr.ini.append.php file. Inside the ini file we need to point eZ Find at the right Solr cores.
+<p>I think this is the time for a nice FYI. We can go about this next part in a couple of different ways. The way we choose depends on the desired consequence. So, ask yourself this question, &#8216;Do I want the siteaccesses to share content?&#8217; If you answered yes, you only need 1 core for you sites to share off of, if you answered no, then create a core for each site that you wish to keep separate from the others. Another note, this effect can also be achieved by adjusting an ini setting, but if you know you want your stuff separate, then create multiple cores, it is safer that way. The way I set mine up is I have 2 cores. 1 core has 3 siteaccess sharing content, the other has just 1 site on it (that way its index content will not get mixed by accident).</p>
 
-<pre>[SolrBase]
-SearchServerURI=http://localhost:8983/solr/&lt;core-name&gt;</pre>
+<p>Now that we are using Solr in a multi-core environment, starting Solr is a bit different.</p>
 
-With that one ini setting set we can fully update our index with the same command as before (the update script inside the eZ Fnd extension). So, after we have that set there is 1 last setting that we need to set, it is inside the ezfind.ini.
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>java -Dsolr.solr.home=solr.multicore -jar start.jar</span></code></pre></td></tr></table></div></figure>
 
-<pre>[SiteSettings]
-#<strong>IndexPubliclyAvailable=disabled</strong>
-#<strong><span style="color: #000000;">SearchOtherInstallations=disabled</span></strong></pre>
 
-Notice that I have the settings commented it out here. I set it in the siteaccess specific override files, and if it is not commented out it overrides my content. Remember, this setting only applies to content that shares a core, if the content is not sharing a core it will not be able to search the other installations.
+<p>Notice, we just sent the start.jar a new place for solr to call its&#8217; home directory <code>solr.multicore</code>.</p>
 
-With this simple set of settings, we gain a lot of power over search. Combinations work here as well, if you don&#8217;t want to share the index, but want to search other available indexes, go for it.
+<p>Now that we have Solr re-configured for multi-core work we have to set up our solr.ini files. Inside the siteaccess specific override folders we need to drop in and edit a solr.ini.append.php file. Inside the ini file we need to point eZ Find at the right Solr cores.</p>
 
-Best of luck to you, if I missed something don&#8217;t be afraid to let me know. Also, if you have questions be sure to ask.
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[SolrBase]</span>
+</span><span class='line'><span class="na">SearchServerURI</span><span class="o">=</span><span class="s">http://localhost:8983/solr/&lt;core-name&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With that one ini setting set we can fully update our index with the same command as before (the update script inside the eZ Fnd extension). So, after we have that set there is 1 last setting that we need to set, it is inside the ezfind.ini.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[SiteSettings]</span>
+</span><span class='line'><span class="c1">#IndexPubliclyAvailable=disabled</span>
+</span><span class='line'><span class="c1">#SearchOtherInstallations=disabled</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Notice that I have the settings commented it out here. I set it in the siteaccess specific override files, and if it is not commented out it overrides my content. Remember, this setting only applies to content that shares a core, if the content is not sharing a core it will not be able to search the other installations.</p>
+
+<p>With this simple set of settings, we gain a lot of power over search. Combinations work here as well, if you don&#8217;t want to share the index, but want to search other available indexes, go for it.</p>
+
+<p>Best of luck to you, if I missed something don&#8217;t be afraid to let me know. Also, if you have questions be sure to ask.</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Clear Cache in eZ Publish - eZpedia]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/04/12/clear-cache-in-ez-publish-ezpedia/"/>
+    <link href="http://harmstyler.github.io/2012/04/clear-cache-in-ez-publish-ezpedia/"/>
     <updated>2012-04-12T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/04/12/clear-cache-in-ez-publish-ezpedia</id>
-    <content type="html"><![CDATA[As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.
+    <id>http://harmstyler.github.io/2012/04/clear-cache-in-ez-publish-ezpedia</id>
+    <content type="html"><![CDATA[<p>As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.</p>
 
-<a href="http://www.ezpedia.org/solution/clear_cache_in_ez_publish">Clear Cache in eZ Publish / Solution / Root - eZpedia</a>.
+<p><a href="http://www.ezpedia.org/solution/clear_cache_in_ez_publish">Clear Cache in eZ Publish / Solution / Root - eZpedia</a></p>
 
-My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.
+<p>My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.</p>
 
-<code>cd /path/to/ezpublish;
-rm -vrf var/cache;
-rm -vrf var/ezwebin_site/cache</code>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /path/to/ezpublish;
+</span><span class='line'>rm -vrf var/cache;
+</span><span class='line'>rm -vrf var/ezwebin_site/cache</span></code></pre></td></tr></table></div></figure>
 
-rm -vrf is very scary to run (remove all?!?), but so long as you are doing this to the specified directory you should be safe (but be careful).
+
+<p><code>rm -vrf</code> is very scary to run (remove all?!?), but so long as you are doing this to the specified directory you should be safe (but be careful).</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Despite Bings Rise, Google Still Dominates Search [INFOGRAPHIC]]]></title>
-    <link href="http://harmstyler.github.io/blog/2012/03/26/despite-bings-rise-google-still-dominates-search-infographic/"/>
+    <link href="http://harmstyler.github.io/2012/03/despite-bings-rise-google-still-dominates-search-infographic/"/>
     <updated>2012-03-26T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/blog/2012/03/26/despite-bings-rise-google-still-dominates-search-infographic</id>
+    <id>http://harmstyler.github.io/2012/03/despite-bings-rise-google-still-dominates-search-infographic</id>
     <content type="html"><![CDATA[Very interesting, Bing is on the rise but it appears to be at the expense of Yahoo! not Google.
 
 <a href="http://mashable.com/2012/03/26/search-stats-infographic/">Despite Bings Rise, Google Still Dominates Search [INFOGRAPHIC]</a>.

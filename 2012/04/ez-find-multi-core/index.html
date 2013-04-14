@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>eZ Find Multi-Core - HarmsSite</title>
+  <meta name="author" content="Tyler Harms">
+
+  
+  <meta name="description" content="One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://harmstyler.github.io/2012/04/ez-find-multi-core">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="HarmsSite" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-23865520-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">HarmsSite</a></h1>
+  
+    <h2>Web Development Blog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:harmstyler.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">eZ Find Multi-Core</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-20T00:00:00-05:00" pubdate data-updated="true">Apr 20<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.</p>
+
+<div class="pull-right"><img title="solr-dir" src="https://s3.amazonaws.com/hs_blog_content/images/solr-dir.png" alt="Solr Directory" width="300" height="186" /></div>
+
+
+<p>So, to start. Let&#8217;s assume that if you are reading this, you already read through my previous eZ Find tutorial (<a href="/2012/03/installing-ez-find/" title="Installing eZ Find">Installing eZ Find</a>). Since we already have our sever up and running there won&#8217;t be a lot of work to do there. But, we need to move our config files to the Solr multicore directory. Last time we used the Solr directory, this time we need to use the directory <code>solr.multicore</code>. Inside the multicore directory there are a couple of demo cores for languages. What I did is duplicated the english directory a couple times and renamed them for each site.</p>
+
+<!--more-->
+
+
+<p>I think this is the time for a nice FYI. We can go about this next part in a couple of different ways. The way we choose depends on the desired consequence. So, ask yourself this question, &#8216;Do I want the siteaccesses to share content?&#8217; If you answered yes, you only need 1 core for you sites to share off of, if you answered no, then create a core for each site that you wish to keep separate from the others. Another note, this effect can also be achieved by adjusting an ini setting, but if you know you want your stuff separate, then create multiple cores, it is safer that way. The way I set mine up is I have 2 cores. 1 core has 3 siteaccess sharing content, the other has just 1 site on it (that way its index content will not get mixed by accident).</p>
+
+<p>Now that we are using Solr in a multi-core environment, starting Solr is a bit different.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>java -Dsolr.solr.home=solr.multicore -jar start.jar</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Notice, we just sent the start.jar a new place for solr to call its&#8217; home directory <code>solr.multicore</code>.</p>
+
+<p>Now that we have Solr re-configured for multi-core work we have to set up our solr.ini files. Inside the siteaccess specific override folders we need to drop in and edit a solr.ini.append.php file. Inside the ini file we need to point eZ Find at the right Solr cores.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[SolrBase]</span>
+</span><span class='line'><span class="na">SearchServerURI</span><span class="o">=</span><span class="s">http://localhost:8983/solr/&lt;core-name&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With that one ini setting set we can fully update our index with the same command as before (the update script inside the eZ Fnd extension). So, after we have that set there is 1 last setting that we need to set, it is inside the ezfind.ini.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[SiteSettings]</span>
+</span><span class='line'><span class="c1">#IndexPubliclyAvailable=disabled</span>
+</span><span class='line'><span class="c1">#SearchOtherInstallations=disabled</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Notice that I have the settings commented it out here. I set it in the siteaccess specific override files, and if it is not commented out it overrides my content. Remember, this setting only applies to content that shares a core, if the content is not sharing a core it will not be able to search the other installations.</p>
+
+<p>With this simple set of settings, we gain a lot of power over search. Combinations work here as well, if you don&#8217;t want to share the index, but want to search other available indexes, go for it.</p>
+
+<p>Best of luck to you, if I missed something don&#8217;t be afraid to let me know. Also, if you have questions be sure to ask.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tyler Harms</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-20T00:00:00-05:00" pubdate data-updated="true">Apr 20<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ez-find/'>eZ Find</a>, <a class='category' href='/blog/categories/ez-publish/'>eZ Publish</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://harmstyler.github.io/2012/04/ez-find-multi-core/" data-via="harmstyler" data-counturl="http://harmstyler.github.io/2012/04/ez-find-multi-core/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2012/04/clear-cache-in-ez-publish-ezpedia/" title="Previous Post: Clear Cache in eZ Publish - eZpedia">&laquo; Clear Cache in eZ Publish - eZpedia</a>
+      
+      
+        <a class="basic-alignment right" href="/2012/04/dogs-underwater/" title="Next Post: Dogs Underwater">Dogs Underwater &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/">Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/symfony2-access-conrol/">Symfony2 Access Conrol</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/optimizing-solr-to-fit-your-needs-part-2/">Optimizing Solr To Fit Your Needs Part 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/learning-symfony/">Learning Symfony</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/harmstyler">@harmstyler</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'harmstyler',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Tyler Harms -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'harmssite';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://harmstyler.github.io/2012/04/ez-find-multi-core/';
+        var disqus_url = 'http://harmstyler.github.io/2012/04/ez-find-multi-core/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

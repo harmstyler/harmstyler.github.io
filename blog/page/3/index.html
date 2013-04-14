@@ -9,9 +9,8 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="&nbsp;
-Alright, so lets begin installing eZ Find by going out and downloading it from the github (https://github.com/ezsystems/ezfind).
-eZ Find is an &hellip;">
+  <meta name="description" content="Alright, so lets begin installing eZ Find by going out and downloading it from the Github => https://github.com/ezsystems/ezfind.
+eZ Find is an eZ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,7 +84,7 @@ eZ Find is an &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/03/22/installing-ez-find/">Installing eZ Find</a></h1>
+      <h1 class="entry-title"><a href="/2012/03/installing-ez-find/">Installing eZ Find</a></h1>
     
     
       <p class="meta">
@@ -108,17 +107,19 @@ eZ Find is an &hellip;">
   </header>
 
 
-  <div class="entry-content">&nbsp;
-<div><a href="http://harmssite.com/wp-content/uploads/2012/03/ezfind-extension.png"><img class=" wp-image-90 alignright" title="ezfind-extension" src="http://harmssite.com/wp-content/uploads/2012/03/ezfind-extension-300x169.png" alt="eZ Find extension in finder" width="270" height="152" /></a>Alright, so lets begin installing eZ Find by going out and downloading it from the github (<a title="eZ Find on GitHub" href="http://bit.ly/GEVOte ">https://github.com/ezsystems/ezfind</a>).</div>
-eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#8221;ezfind,&#8221; and then move the <em>ezfind</em> folder to the <em>extensions</em> directory of your eZ Publish install.
+  <div class="entry-content"><div class="pull-right"><a href="https://s3.amazonaws.com/hs_blog_content/images/ezfind-extension.png"><img class=" wp-image-90 alignright" title="ezfind-extension" src="https://s3.amazonaws.com/hs_blog_content/images/small/ezfind-extension-small.png" alt="eZ Find extension in finder" width="271" height="153" /></a></div>
 
-So, as with any extension, we have to activate it. Go into your override site.ini.append.php (settings/override/site.ini.append.php) and add ezfind to your active extension list (ActiveExtensions[]=ezfind). I added mine just after my main site extension. Easy enough so far right?<a href="http://harmssite.com/wp-content/uploads/2012/03/solr-structure.png"><img class="size-medium wp-image-93 alignright" title="solr-structure" src="http://harmssite.com/wp-content/uploads/2012/03/solr-structure-176x300.png" alt="Solr installed locally" width="176" height="300" /></a>
 
-As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a <em>java</em> directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish intall and rename the folder &#8220;Solr&#8221; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on 1 Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.</div>
+<p>Alright, so lets begin installing eZ Find by going out and downloading it from the Github => <a href="http://bit.ly/GEVOte" title="eZ Find on GitHub">https://github.com/ezsystems/ezfind</a>.
+eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#8221;ezfind,&#8221; and then move the <em>ezfind</em> folder to the <em>extensions</em> directory of your eZ Publish install.</p>
+
+<p>So, as with any extension, we have to activate it. Go into your override <code>site.ini.append.php</code> (settings/override/site.ini.append.php) and add ezfind to your active extension list (<code>ActiveExtensions[]=ezfind</code>). I added mine just after my main site extension. Easy enough so far right?<div class="pull-left"><a href="https://s3.amazonaws.com/hs_blog_content/images/solr-structure.png"><img title="solr-structure" src="https://s3.amazonaws.com/hs_blog_content/images/small/solr-structure-small.png" alt="Solr installed locally" width="179" height="301" /></a></div></p>
+
+<p>As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a <em>java</em> directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish install and rename the folder &#8220;Solr&#8221; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on one Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.</div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2012/03/22/installing-ez-find/">Read on &rarr;</a>
+      <a rel="full-article" href="/2012/03/installing-ez-find/">Read on &rarr;</a>
     </footer>
   
 
@@ -130,7 +131,7 @@ As you had probably already guessed, eZ Find will not without first setting up S
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/03/19/ez-find-basics/">eZ Find Basics</a></h1>
+      <h1 class="entry-title"><a href="/2012/03/ez-find-basics/">eZ Find Basics</a></h1>
     
     
       <p class="meta">
@@ -174,7 +175,7 @@ In conclusion, eZ Find is highly powerful and scalable. If you use eZ Publish I 
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/03/16/tylers-weekly-update-for-2012-03-16-2/">Tyler&#8217;s Weekly Update for 2012-03-16</a></h1>
+      <h1 class="entry-title"><a href="/2012/03/tylers-weekly-update-for-2012-03-16-2/">Tyler&#8217;s Weekly Update for 2012-03-16</a></h1>
     
     
       <p class="meta">
@@ -229,7 +230,7 @@ In conclusion, eZ Find is highly powerful and scalable. If you use eZ Publish I 
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/03/09/tylers-weekly-update-for-2012-03-09-2/">Tyler&#8217;s Weekly Update for 2012-03-09</a></h1>
+      <h1 class="entry-title"><a href="/2012/03/tylers-weekly-update-for-2012-03-09-2/">Tyler&#8217;s Weekly Update for 2012-03-09</a></h1>
     
     
       <p class="meta">
@@ -287,7 +288,7 @@ In conclusion, eZ Find is highly powerful and scalable. If you use eZ Publish I 
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/03/02/tylers-weekly-update-for-2012-03-02-2/">Tyler&#8217;s Weekly Update for 2012-03-02</a></h1>
+      <h1 class="entry-title"><a href="/2012/03/tylers-weekly-update-for-2012-03-02-2/">Tyler&#8217;s Weekly Update for 2012-03-02</a></h1>
     
     
       <p class="meta">
@@ -335,7 +336,7 @@ In conclusion, eZ Find is highly powerful and scalable. If you use eZ Publish I 
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/02/25/solr-buckets/">Solr Buckets</a></h1>
+      <h1 class="entry-title"><a href="/2012/02/solr-buckets/">Solr Buckets</a></h1>
     
     
       <p class="meta">
@@ -406,7 +407,7 @@ So yeah, I have been meaning to post this for a while as I could find no meaning
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/02/24/tylers-weekly-update-for-2012-02-24-2/">Tyler&#8217;s Weekly Update for 2012-02-24</a></h1>
+      <h1 class="entry-title"><a href="/2012/02/tylers-weekly-update-for-2012-02-24-2/">Tyler&#8217;s Weekly Update for 2012-02-24</a></h1>
     
     
       <p class="meta">
@@ -464,7 +465,7 @@ So yeah, I have been meaning to post this for a while as I could find no meaning
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/02/11/photoshoping-goodness/">Photoshopping Goodness</a></h1>
+      <h1 class="entry-title"><a href="/2012/02/photoshoping-goodness/">Photoshopping Goodness</a></h1>
     
     
       <p class="meta">
@@ -504,7 +505,7 @@ So yeah, I have been meaning to post this for a while as I could find no meaning
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/01/24/scraping-a-page-with-php/">Scraping a Page With Php</a></h1>
+      <h1 class="entry-title"><a href="/2012/01/scraping-a-page-with-php/">Scraping a Page With Php</a></h1>
     
     
       <p class="meta">
@@ -551,7 +552,7 @@ Here it is:
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/10/20/gradient-app/">Gradient App</a></h1>
+      <h1 class="entry-title"><a href="/2011/10/gradient-app/">Gradient App</a></h1>
     
     
       <p class="meta">
@@ -615,23 +616,23 @@ Get Gradient App here: <a href="http://www.gradientapp.com/" title="Gradient App
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/03/15/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/">Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]</a>
+        <a href="/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/">Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/03/02/symfony2-access-conrol/">Symfony2 Access Conrol</a>
+        <a href="/2013/03/symfony2-access-conrol/">Symfony2 Access Conrol</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/01/19/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a>
+        <a href="/2013/01/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/07/optimizing-solr-to-fit-your-needs-part-2/">Optimizing Solr To Fit Your Needs Part 2</a>
+        <a href="/2012/12/optimizing-solr-to-fit-your-needs-part-2/">Optimizing Solr To Fit Your Needs Part 2</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/11/21/learning-symfony/">Learning Symfony</a>
+        <a href="/2012/11/learning-symfony/">Learning Symfony</a>
       </li>
     
   </ul>
