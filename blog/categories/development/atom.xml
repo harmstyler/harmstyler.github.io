@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Development | HarmsSite]]></title>
-  <link href="http://harmstyler.github.io/blog/categories/development/atom.xml" rel="self"/>
-  <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T13:50:11-05:00</updated>
-  <id>http://harmstyler.github.io/</id>
+  <link href="http://harmssite.com/blog/categories/development/atom.xml" rel="self"/>
+  <link href="http://harmssite.com/"/>
+  <updated>2013-04-15T11:40:59-05:00</updated>
+  <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
     
@@ -14,10 +14,19 @@
 
   
   <entry>
+    <title type="html"><![CDATA[New Site Theme]]></title>
+    <link href="http://harmssite.com/2013/04/new-site-theme/"/>
+    <updated>2013-04-15T08:39:00-05:00</updated>
+    <id>http://harmssite.com/2013/04/new-site-theme</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]]]></title>
-    <link href="http://harmstyler.github.io/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/"/>
+    <link href="http://harmssite.com/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/"/>
     <updated>2013-03-15T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost</id>
+    <id>http://harmssite.com/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost</id>
     <content type="html"><![CDATA[<p style="text-align:center;">This post is a repost of an article I wrote for <a title="Web and PHP Magazine" href="http://webandphp.com/" target="_blank">Web and PHP Magazine</a>'s <a title="Web and PHP February Issue" href="http://webandphp.com/issue-11" target="_blank">February issue</a>.</p>
 
 <h4>Solr has quickly become one of the most popular search engines available. Due to Solr's many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.</h4>
@@ -228,9 +237,9 @@ Solarium’s delete doc API is very useful in maintaining an up-to-date search i
   
   <entry>
     <title type="html"><![CDATA[Symfony2 Access Conrol]]></title>
-    <link href="http://harmstyler.github.io/2013/03/symfony2-access-conrol/"/>
+    <link href="http://harmssite.com/2013/03/symfony2-access-conrol/"/>
     <updated>2013-03-02T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/2013/03/symfony2-access-conrol</id>
+    <id>http://harmssite.com/2013/03/symfony2-access-conrol</id>
     <content type="html"><![CDATA[<p>I am very new to Symfony development. While developing a side project app I found I needed to control access to a certain area to logged in users only. Based on my previous development history I was expecting to have to determine if a user was logged in via the controller. I figured I would need to find an <code>is_logged_in</code> boolean and use it to determine user access control. What I found while doing my development is that Symfony2 takes care of access control in a much more eloquent way. Rather than having to determine if a user is logged in inside each controller, Symfony2 controls access using a system similar to its routing system. Inside a Symfony2 app there is, by default, a <code>security.yml</code> file that is used to control access. Inside the <code>security.yml</code> file locate the <code>access_control</code> declaration. By simply declaring a route inside the <code>access_control</code> yml array we can control which users have access to which routes, like so:
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -261,9 +270,9 @@ As you can see with my code, for anything beyond the <code>/admin/</code> route 
   
   <entry>
     <title type="html"><![CDATA[eZ Publish 5 - First Thoughts]]></title>
-    <link href="http://harmstyler.github.io/2013/01/ez-publish-5-first-thoughts/"/>
+    <link href="http://harmssite.com/2013/01/ez-publish-5-first-thoughts/"/>
     <updated>2013-01-19T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/2013/01/ez-publish-5-first-thoughts</id>
+    <id>http://harmssite.com/2013/01/ez-publish-5-first-thoughts</id>
     <content type="html"><![CDATA[<div class="pull-right"><img class="" alt="Syfomy Logo" title="Symfony Logo" src="https://s3.amazonaws.com/hs_blog_content/images/symfony-logo.png" width="206" height="205" /></div>
 
 
@@ -287,63 +296,15 @@ As you can see with my code, for anything beyond the <code>/admin/</code> route 
   
   <entry>
     <title type="html"><![CDATA[Learning Symfony]]></title>
-    <link href="http://harmstyler.github.io/2012/11/learning-symfony/"/>
+    <link href="http://harmssite.com/2012/11/learning-symfony/"/>
     <updated>2012-11-21T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/2012/11/learning-symfony</id>
+    <id>http://harmssite.com/2012/11/learning-symfony</id>
     <content type="html"><![CDATA[<div class="pull-right"><img title="Nashville Symfony" src="https://s3.amazonaws.com/hs_blog_content/images/symfony2.jpg" alt="Nashville Symfony" width="240" height="180" /></div>
 
 
 <p> I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that eZ Systems announced that they were adopting the Symfony framework I knew that I would be be spending some time with it. I have found that Symfony doesn't have the lowest barrier to entry so it has been a process, to say the least. I have a blog that has helped matters a great deal and so I wanted to give it some props here. If you are like me, wanting to learn Symfony but lacking time and resources, you should really check this site out: <a href="http://tutorial.symblog.co.uk/" title="Symblog: Creating a Blog in Symfony2">Symblog: Creating a Blog in Symfony2</a></p>
 
 <p>The blog starts with the basics and explores a good deal of Symfony components in detail. In the end you will be left with a barley usable blog, but that is alright, it leaves you with a project to fix. It is a tutorial for Symfony 2.0, and because Symfony is currently on 2.1.3 you will notice some part don't work the way you expect (but I think that forces you to learn more anyway). The tutorial also doesn't use Composer at all; so remember, when the blog tells you to install something, use Composer and skip over the way they tell you how to do it. I hope you enjoy the tutorial, I know I did (I have not currently completed the tutorial but am nearing completion at the time of this writing).</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Solr Query for Mimicking SQL IN Operator Functionality]]></title>
-    <link href="http://harmstyler.github.io/2012/09/solr-query-for-mimicking-sql-in-operator-functionality/"/>
-    <updated>2012-09-13T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/2012/09/solr-query-for-mimicking-sql-in-operator-functionality</id>
-    <content type="html"><![CDATA[<div class="pull-right"><img title="Learning SQL" src="https://s3.amazonaws.com/hs_blog_content/images/select-query.jpg" alt="Learning SQL" width="240" height="180" /></div>
-
-
-<p>I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the <code>IN</code> operator. In Solr you have the option of specifying a field using the <code>qf</code> operator, but what if you have more search terms searching other fields? The problem becomes far more complex. Given the following SQL statement how would we query Solr?
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='mysql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span>
-</span><span class='line'><span class="k">FROM</span> <span class="n">table_name</span>
-</span><span class='line'><span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,...)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-There are couple of ways to do this, but I think there is one very good and much easier way. The first obvious way to query solr is to match the fields to columns manually.
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=column_name:value1 AND column_name:value2 AND other_colum:&#39;foo&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-This is all fine and dandy but what if I want to be able to add a list of content to the query? Adding the column name every time can become a chore and make the query unnecessarily large. To do an <code>IN</code> query try this:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=column_name:+(value1 value2) AND other_colum:&#39;foo&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-Having used this one before, I can tell you it works for me using Solr 3.6 and that the placement of the + symbol is key.</p>
-
-<p>And what about a <code>NOT IN</code> query?
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='mysql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span>
-</span><span class='line'><span class="k">FROM</span> <span class="n">table_name</span>
-</span><span class='line'><span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,...)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-The 'bad' way:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=-column_namevalue1 AND -column_name:value2 AND other_colum:&#39;foo&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-This one I found from working with eZ Publish and eZ Find, and I happen to like it a lot. It is a clever little Solr query that selects all from the column then filters out what we don't want.
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=other_colum:&#39;foo&#39; AND column_name:[&lt;em&gt; TO &lt;/em&gt;] -column_name:(value1 value2)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-<code>column_name:[* TO *]</code> is like saying select all from the column, but then we add <code>-column_name:(value1 value2)</code> to filter out what we don't want.</p>
-
-<p>Cheers and good luck!</p>
 ]]></content>
   </entry>
   

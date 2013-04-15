@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: http://harmstyler.github.io/sitemap.xml
+Sitemap: http://harmssite.com/sitemap.xml

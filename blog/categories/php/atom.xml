@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: PHP | HarmsSite]]></title>
-  <link href="http://harmstyler.github.io/blog/categories/php/atom.xml" rel="self"/>
-  <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T13:50:11-05:00</updated>
-  <id>http://harmstyler.github.io/</id>
+  <link href="http://harmssite.com/blog/categories/php/atom.xml" rel="self"/>
+  <link href="http://harmssite.com/"/>
+  <updated>2013-04-15T11:40:59-05:00</updated>
+  <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]]]></title>
-    <link href="http://harmstyler.github.io/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/"/>
+    <link href="http://harmssite.com/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/"/>
     <updated>2013-03-15T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost</id>
+    <id>http://harmssite.com/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost</id>
     <content type="html"><![CDATA[<p style="text-align:center;">This post is a repost of an article I wrote for <a title="Web and PHP Magazine" href="http://webandphp.com/" target="_blank">Web and PHP Magazine</a>'s <a title="Web and PHP February Issue" href="http://webandphp.com/issue-11" target="_blank">February issue</a>.</p>
 
 <h4>Solr has quickly become one of the most popular search engines available. Due to Solr's many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.</h4>
@@ -228,9 +228,9 @@ Solarium’s delete doc API is very useful in maintaining an up-to-date search i
   
   <entry>
     <title type="html"><![CDATA[Scraping a page with php]]></title>
-    <link href="http://harmstyler.github.io/2012/01/scraping-a-page-with-php/"/>
+    <link href="http://harmssite.com/2012/01/scraping-a-page-with-php/"/>
     <updated>2012-01-24T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/2012/01/scraping-a-page-with-php</id>
+    <id>http://harmssite.com/2012/01/scraping-a-page-with-php</id>
     <content type="html"><![CDATA[<p>I ran across a problem recently, I needed to get the contents of a page so that I could mimic a widget’s functionality without having access to the database that said page’s widget used (confused yet). Basically, one site had a widget that displayed an upcoming event (information with came from a database), I needed to copy that widget to another website. Moreover, I did not want to use JavaScript to accomplish my goal because I need the new site to be cached pretty heavily on the server. My first thought was to use cURL, but when I ran curl_exec my function would output the entire page contents onto my new site, something that I did not want, I only wanted a small portion of the website. My next option was to use <code>file_get_contents(“my_url”)</code>, as was pointed out to me, this will return the full page as a string. With this I could have accomplished my goal, but not with as much ease as I would hope. I ran into the <code>DOMDOcument()</code> php object a while back and was curious about what I could do with it so I decided to do some research on that. This would eventually lead me to my answer. It turns out that the script is very simple and I can see myself using it quite often so I decided to share it.
 Here it is:
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>

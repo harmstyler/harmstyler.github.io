@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: CSS | HarmsSite]]></title>
-  <link href="http://harmstyler.github.io/blog/categories/css/atom.xml" rel="self"/>
-  <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T13:50:11-05:00</updated>
-  <id>http://harmstyler.github.io/</id>
+  <link href="http://harmssite.com/blog/categories/css/atom.xml" rel="self"/>
+  <link href="http://harmssite.com/"/>
+  <updated>2013-04-15T11:40:59-05:00</updated>
+  <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Gradient App]]></title>
-    <link href="http://harmstyler.github.io/2011/10/gradient-app/"/>
+    <link href="http://harmssite.com/2011/10/gradient-app/"/>
     <updated>2011-10-20T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/2011/10/gradient-app</id>
+    <id>http://harmssite.com/2011/10/gradient-app</id>
     <content type="html"><![CDATA[<div class="pull-right"><a href="https://s3.amazonaws.com/hs_blog_content/images/gradient-app.png"><img src="https://s3.amazonaws.com/hs_blog_content/images/small/gradient-app-117x300.png" alt="Gradient App" title="gradient-app" width="117" height="300" /></a></div>
 
 
@@ -52,9 +52,9 @@
   
   <entry>
     <title type="html"><![CDATA[Path to Android!]]></title>
-    <link href="http://harmstyler.github.io/2011/08/path-to-android/"/>
+    <link href="http://harmssite.com/2011/08/path-to-android/"/>
     <updated>2011-08-26T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/2011/08/path-to-android</id>
+    <id>http://harmssite.com/2011/08/path-to-android</id>
     <content type="html"><![CDATA[<div class="pull-right"><a href="http://path.com"><img class="alignleft size-full wp-image-56" title="path-logo" src="https://s3.amazonaws.com/hs_blog_content/images/path-logo-2x.png" alt="Path" width="146" height="65" /></a></div>
 
 

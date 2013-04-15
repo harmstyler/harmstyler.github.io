@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: eZ Publish | HarmsSite]]></title>
-  <link href="http://harmstyler.github.io/blog/categories/ez-publish/atom.xml" rel="self"/>
-  <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T13:50:11-05:00</updated>
-  <id>http://harmstyler.github.io/</id>
+  <link href="http://harmssite.com/blog/categories/ez-publish/atom.xml" rel="self"/>
+  <link href="http://harmssite.com/"/>
+  <updated>2013-04-15T11:40:59-05:00</updated>
+  <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[eZ Publish 5 - First Thoughts]]></title>
-    <link href="http://harmstyler.github.io/2013/01/ez-publish-5-first-thoughts/"/>
+    <link href="http://harmssite.com/2013/01/ez-publish-5-first-thoughts/"/>
     <updated>2013-01-19T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/2013/01/ez-publish-5-first-thoughts</id>
+    <id>http://harmssite.com/2013/01/ez-publish-5-first-thoughts</id>
     <content type="html"><![CDATA[<div class="pull-right"><img class="" alt="Syfomy Logo" title="Symfony Logo" src="https://s3.amazonaws.com/hs_blog_content/images/symfony-logo.png" width="206" height="205" /></div>
 
 
@@ -41,9 +41,9 @@
   
   <entry>
     <title type="html"><![CDATA[Learning Symfony]]></title>
-    <link href="http://harmstyler.github.io/2012/11/learning-symfony/"/>
+    <link href="http://harmssite.com/2012/11/learning-symfony/"/>
     <updated>2012-11-21T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/2012/11/learning-symfony</id>
+    <id>http://harmssite.com/2012/11/learning-symfony</id>
     <content type="html"><![CDATA[<div class="pull-right"><img title="Nashville Symfony" src="https://s3.amazonaws.com/hs_blog_content/images/symfony2.jpg" alt="Nashville Symfony" width="240" height="180" /></div>
 
 
@@ -55,9 +55,9 @@
   
   <entry>
     <title type="html"><![CDATA[Solr Query for Mimicking SQL IN Operator Functionality]]></title>
-    <link href="http://harmstyler.github.io/2012/09/solr-query-for-mimicking-sql-in-operator-functionality/"/>
+    <link href="http://harmssite.com/2012/09/solr-query-for-mimicking-sql-in-operator-functionality/"/>
     <updated>2012-09-13T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/2012/09/solr-query-for-mimicking-sql-in-operator-functionality</id>
+    <id>http://harmssite.com/2012/09/solr-query-for-mimicking-sql-in-operator-functionality</id>
     <content type="html"><![CDATA[<div class="pull-right"><img title="Learning SQL" src="https://s3.amazonaws.com/hs_blog_content/images/select-query.jpg" alt="Learning SQL" width="240" height="180" /></div>
 
 
@@ -103,9 +103,9 @@ This one I found from working with eZ Publish and eZ Find, and I happen to like 
   
   <entry>
     <title type="html"><![CDATA[Optimizing Solr to fit your needs Part 1]]></title>
-    <link href="http://harmstyler.github.io/2012/08/optimizing-solr-to-fit-your-needs-part-1/"/>
+    <link href="http://harmssite.com/2012/08/optimizing-solr-to-fit-your-needs-part-1/"/>
     <updated>2012-08-25T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/2012/08/optimizing-solr-to-fit-your-needs-part-1</id>
+    <id>http://harmssite.com/2012/08/optimizing-solr-to-fit-your-needs-part-1</id>
     <content type="html"><![CDATA[<div class="pull-right"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="https://s3.amazonaws.com/hs_blog_content/images/Solr-logo.png" alt="Solr logo" width="283" height="156" /></div>
 
 
@@ -136,9 +136,9 @@ This one I found from working with eZ Publish and eZ Find, and I happen to like 
   
   <entry>
     <title type="html"><![CDATA[EZ Publish with Sublime]]></title>
-    <link href="http://harmstyler.github.io/2012/06/ez-publish-with-sublime/"/>
+    <link href="http://harmssite.com/2012/06/ez-publish-with-sublime/"/>
     <updated>2012-06-30T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/2012/06/ez-publish-with-sublime</id>
+    <id>http://harmssite.com/2012/06/ez-publish-with-sublime</id>
     <content type="html"><![CDATA[<div class="pull-right"><img title="Sublime Text icon" src="https://s3.amazonaws.com/hs_blog_content/images/sublime_text_icon_2181-150x150.png" alt="Sublime Text icon" width="150" height="150" /></div>
 
 

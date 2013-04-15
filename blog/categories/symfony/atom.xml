@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Symfony | HarmsSite]]></title>
-  <link href="http://harmstyler.github.io/blog/categories/symfony/atom.xml" rel="self"/>
-  <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T13:50:11-05:00</updated>
-  <id>http://harmstyler.github.io/</id>
+  <link href="http://harmssite.com/blog/categories/symfony/atom.xml" rel="self"/>
+  <link href="http://harmssite.com/"/>
+  <updated>2013-04-15T11:40:59-05:00</updated>
+  <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Symfony2 Access Conrol]]></title>
-    <link href="http://harmstyler.github.io/2013/03/symfony2-access-conrol/"/>
+    <link href="http://harmssite.com/2013/03/symfony2-access-conrol/"/>
     <updated>2013-03-02T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/2013/03/symfony2-access-conrol</id>
+    <id>http://harmssite.com/2013/03/symfony2-access-conrol</id>
     <content type="html"><![CDATA[<p>I am very new to Symfony development. While developing a side project app I found I needed to control access to a certain area to logged in users only. Based on my previous development history I was expecting to have to determine if a user was logged in via the controller. I figured I would need to find an <code>is_logged_in</code> boolean and use it to determine user access control. What I found while doing my development is that Symfony2 takes care of access control in a much more eloquent way. Rather than having to determine if a user is logged in inside each controller, Symfony2 controls access using a system similar to its routing system. Inside a Symfony2 app there is, by default, a <code>security.yml</code> file that is used to control access. Inside the <code>security.yml</code> file locate the <code>access_control</code> declaration. By simply declaring a route inside the <code>access_control</code> yml array we can control which users have access to which routes, like so:
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -48,9 +48,9 @@ As you can see with my code, for anything beyond the <code>/admin/</code> route 
   
   <entry>
     <title type="html"><![CDATA[eZ Publish 5 - First Thoughts]]></title>
-    <link href="http://harmstyler.github.io/2013/01/ez-publish-5-first-thoughts/"/>
+    <link href="http://harmssite.com/2013/01/ez-publish-5-first-thoughts/"/>
     <updated>2013-01-19T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/2013/01/ez-publish-5-first-thoughts</id>
+    <id>http://harmssite.com/2013/01/ez-publish-5-first-thoughts</id>
     <content type="html"><![CDATA[<div class="pull-right"><img class="" alt="Syfomy Logo" title="Symfony Logo" src="https://s3.amazonaws.com/hs_blog_content/images/symfony-logo.png" width="206" height="205" /></div>
 
 
@@ -74,9 +74,9 @@ As you can see with my code, for anything beyond the <code>/admin/</code> route 
   
   <entry>
     <title type="html"><![CDATA[Learning Symfony]]></title>
-    <link href="http://harmstyler.github.io/2012/11/learning-symfony/"/>
+    <link href="http://harmssite.com/2012/11/learning-symfony/"/>
     <updated>2012-11-21T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/2012/11/learning-symfony</id>
+    <id>http://harmssite.com/2012/11/learning-symfony</id>
     <content type="html"><![CDATA[<div class="pull-right"><img title="Nashville Symfony" src="https://s3.amazonaws.com/hs_blog_content/images/symfony2.jpg" alt="Nashville Symfony" width="240" height="180" /></div>
 
 
@@ -88,9 +88,9 @@ As you can see with my code, for anything beyond the <code>/admin/</code> route 
   
   <entry>
     <title type="html"><![CDATA[Solr Query for Mimicking SQL IN Operator Functionality]]></title>
-    <link href="http://harmstyler.github.io/2012/09/solr-query-for-mimicking-sql-in-operator-functionality/"/>
+    <link href="http://harmssite.com/2012/09/solr-query-for-mimicking-sql-in-operator-functionality/"/>
     <updated>2012-09-13T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/2012/09/solr-query-for-mimicking-sql-in-operator-functionality</id>
+    <id>http://harmssite.com/2012/09/solr-query-for-mimicking-sql-in-operator-functionality</id>
     <content type="html"><![CDATA[<div class="pull-right"><img title="Learning SQL" src="https://s3.amazonaws.com/hs_blog_content/images/select-query.jpg" alt="Learning SQL" width="240" height="180" /></div>
 
 

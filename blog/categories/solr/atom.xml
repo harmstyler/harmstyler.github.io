@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Solr | HarmsSite]]></title>
-  <link href="http://harmstyler.github.io/blog/categories/solr/atom.xml" rel="self"/>
-  <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T13:50:11-05:00</updated>
-  <id>http://harmstyler.github.io/</id>
+  <link href="http://harmssite.com/blog/categories/solr/atom.xml" rel="self"/>
+  <link href="http://harmssite.com/"/>
+  <updated>2013-04-15T11:40:59-05:00</updated>
+  <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]]]></title>
-    <link href="http://harmstyler.github.io/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/"/>
+    <link href="http://harmssite.com/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/"/>
     <updated>2013-03-15T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost</id>
+    <id>http://harmssite.com/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost</id>
     <content type="html"><![CDATA[<p style="text-align:center;">This post is a repost of an article I wrote for <a title="Web and PHP Magazine" href="http://webandphp.com/" target="_blank">Web and PHP Magazine</a>'s <a title="Web and PHP February Issue" href="http://webandphp.com/issue-11" target="_blank">February issue</a>.</p>
 
 <h4>Solr has quickly become one of the most popular search engines available. Due to Solr's many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.</h4>
@@ -228,9 +228,9 @@ Solarium’s delete doc API is very useful in maintaining an up-to-date search i
   
   <entry>
     <title type="html"><![CDATA[Optimizing Solr To Fit Your Needs Part 2]]></title>
-    <link href="http://harmstyler.github.io/2012/12/optimizing-solr-to-fit-your-needs-part-2/"/>
+    <link href="http://harmssite.com/2012/12/optimizing-solr-to-fit-your-needs-part-2/"/>
     <updated>2012-12-07T00:00:00-06:00</updated>
-    <id>http://harmstyler.github.io/2012/12/optimizing-solr-to-fit-your-needs-part-2</id>
+    <id>http://harmssite.com/2012/12/optimizing-solr-to-fit-your-needs-part-2</id>
     <content type="html"><![CDATA[<p>I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default search field called <code>ezf_df_text</code>. The downside of searching one field is that field needs to be controlled, and the only way it can be controlled is by manually editing the Solr schema file. As you might expect, eZ Find does not control this file very well out of the box.
 <div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>schema.xml </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -258,9 +258,9 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
   
   <entry>
     <title type="html"><![CDATA[Optimizing Solr to fit your needs Part 1]]></title>
-    <link href="http://harmstyler.github.io/2012/08/optimizing-solr-to-fit-your-needs-part-1/"/>
+    <link href="http://harmssite.com/2012/08/optimizing-solr-to-fit-your-needs-part-1/"/>
     <updated>2012-08-25T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/2012/08/optimizing-solr-to-fit-your-needs-part-1</id>
+    <id>http://harmssite.com/2012/08/optimizing-solr-to-fit-your-needs-part-1</id>
     <content type="html"><![CDATA[<div class="pull-right"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="https://s3.amazonaws.com/hs_blog_content/images/Solr-logo.png" alt="Solr logo" width="283" height="156" /></div>
 
 
@@ -291,18 +291,18 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
   
   <entry>
     <title type="html"><![CDATA[Solr 3.6 Update]]></title>
-    <link href="http://harmstyler.github.io/2012/05/solr-3-6-update/"/>
+    <link href="http://harmssite.com/2012/05/solr-3-6-update/"/>
     <updated>2012-05-14T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/2012/05/solr-3-6-update</id>
+    <id>http://harmssite.com/2012/05/solr-3-6-update</id>
     <content type="html"><![CDATA[<p>Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.war file on GitHub (it is in <a href="https://github.com/harmstyler/ezfind" title="harmstyler eZ Find fork">my eZ Find branch</a>). Enjoy!</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Searching Multiple Solr Cores using Shards and eZ Find]]></title>
-    <link href="http://harmstyler.github.io/2012/05/ezfind-shards/"/>
+    <link href="http://harmssite.com/2012/05/ezfind-shards/"/>
     <updated>2012-05-08T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/2012/05/ezfind-shards</id>
+    <id>http://harmssite.com/2012/05/ezfind-shards</id>
     <content type="html"><![CDATA[<p><img src="https://s3.amazonaws.com/hs_blog_content/images/distributed_search.png" alt="Distributed Search" /></p>
 
 <p>Prerequisites:

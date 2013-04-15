@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: git | HarmsSite]]></title>
-  <link href="http://harmstyler.github.io/blog/categories/git/atom.xml" rel="self"/>
-  <link href="http://harmstyler.github.io/"/>
-  <updated>2013-04-14T13:50:11-05:00</updated>
-  <id>http://harmstyler.github.io/</id>
+  <link href="http://harmssite.com/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://harmssite.com/"/>
+  <updated>2013-04-15T11:40:59-05:00</updated>
+  <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Multiple .gitignore files versus .gitkeep files]]></title>
-    <link href="http://harmstyler.github.io/2012/08/gitignore-vs-gitkeep/"/>
+    <link href="http://harmssite.com/2012/08/gitignore-vs-gitkeep/"/>
     <updated>2012-08-18T00:00:00-05:00</updated>
-    <id>http://harmstyler.github.io/2012/08/gitignore-vs-gitkeep</id>
+    <id>http://harmssite.com/2012/08/gitignore-vs-gitkeep</id>
     <content type="html"><![CDATA[<div class="pull-right"><img src="https://s3.amazonaws.com/hs_blog_content/images/Git_icon.png" alt="Git" title="Git" width="256" height="256" /></div>
 
 
