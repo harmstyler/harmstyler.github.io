@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="Let me start by saying that eZ Find is a fantastic implementation of Solr functionality. With eZ Find you get a fantastic search, out of the box. eZ &hellip;">
+  <meta name="description" content="I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,99 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/09/solr-query-for-mimicking-sql-in-operator-functionality/">Solr Query for Mimicking SQL in Operator Functionality</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-13T00:00:00-05:00" pubdate data-updated="true">Sep 13<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="pull-right"><img title="Learning SQL" src="https://s3.amazonaws.com/hs_blog_content/images/select-query.jpg" alt="Learning SQL" width="240" height="180" /></div>
+
+
+<p>I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the <code>IN</code> operator. In Solr you have the option of specifying a field using the <code>qf</code> operator, but what if you have more search terms searching other fields? The problem becomes far more complex. Given the following SQL statement how would we query Solr?</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='mysql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span> <span class="n">table_name</span>
+</span><span class='line'><span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,...)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There are couple of ways to do this, but I think there is one very good and much easier way. The first obvious way to query solr is to match the fields to columns manually.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=*:*&amp;fq=column_name:value1 AND column_name:value2 AND other_colum:&#39;foo&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is all fine and dandy but what if I want to be able to add a list of content to the query? Adding the column name every time can become a chore and make the query unnecessarily large. To do an <code>IN</code> query try this:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=*:*&amp;fq=column_name:+(value1 value2) AND other_colum:&#39;foo&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Having used this one before, I can tell you it works for me using Solr 3.6 and that the placement of the + symbol is key.</p>
+
+<p>And what about a <code>NOT IN</code> query?</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='mysql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span> <span class="n">table_name</span>
+</span><span class='line'><span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,...)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The &#8216;bad&#8217; way:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=*:*&amp;fq=-column_namevalue1 AND -column_name:value2 AND other_colum:&#39;foo&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This one I found from working with eZ Publish and eZ Find, and I happen to like it a lot. It is a clever little Solr query that selects all from the column then filters out what we don&#8217;t want.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=*:*&amp;fq=other_colum:&#39;foo&#39; AND column_name:[* TO *] -column_name:(value1 value2)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>column_name:[* TO *]</code> is like saying select all from the column, but then we add <code>-column_name:(value1 value2)</code> to filter out what we don&#8217;t want.</p>
+
+<p>Cheers and good luck!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -502,56 +595,6 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/04/clear-cache-in-ez-publish-ezpedia/">Clear Cache in eZ Publish - eZpedia</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-12T00:00:00-05:00" pubdate data-updated="true">Apr 12<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.</p>
-
-<p><a href="http://www.ezpedia.org/solution/clear_cache_in_ez_publish">Clear Cache in eZ Publish / Solution / Root - eZpedia</a></p>
-
-<p>My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /path/to/ezpublish;
-</span><span class='line'>rm -vrf var/cache;
-</span><span class='line'>rm -vrf var/ezwebin_site/cache</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>rm -vrf</code> is very scary to run (remove all?!?), but so long as you are doing this to the specified directory you should be safe (but be careful).</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -569,6 +612,10 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/04/symfony2-coding-standards/">Symfony2 Coding Standards</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/04/new-site-theme/">New Site Theme</a>
       </li>
     
@@ -584,12 +631,10 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
         <a href="/2013/01/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a>
       </li>
     
-      <li class="post">
-        <a href="/2012/12/optimizing-solr-to-fit-your-needs-part-2/">Optimizing Solr To Fit Your Needs Part 2</a>
-      </li>
-    
   </ul>
 </section>
+<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/harmstyler" data-widget-id="329341729515900931">Tweets by @harmstyler</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 <section>
   <h1>GitHub Repos</h1>

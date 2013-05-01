@@ -4,7 +4,7 @@
   <title><![CDATA[HarmsSite]]></title>
   <link href="http://harmssite.com/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-04-15T11:54:01-05:00</updated>
+  <updated>2013-04-30T20:58:49-05:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Symfony2 Coding Standards]]></title>
+    <link href="http://harmssite.com/2013/04/symfony2-coding-standards/"/>
+    <updated>2013-04-30T13:30:00-05:00</updated>
+    <id>http://harmssite.com/2013/04/symfony2-coding-standards</id>
+    <content type="html"><![CDATA[<p>With eZ Publish moving to Symfony2, I found that I was in need of learning some new coding standards. I never really looked into PHP CodeSniffer while doing eZ Publish development (most of my code was in the templates), so I never really thought about PHP CodeSniffer as an option until starting work with Symphony2. To the point, I just wanted to share the <a href="https://github.com/opensky/Symfony2-coding-standard">Symfony2 PHP CodeSniffer Coding Standard on Github</a>. It is really easy to install and because phpcs works with PHPStorm and Sublime Text 2, sniffing out php files couldn&#8217;t be easier.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[New Site Theme]]></title>
@@ -942,29 +951,6 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
 <p>With this simple set of settings, we gain a lot of power over search. Combinations work here as well, if you don&#8217;t want to share the index, but want to search other available indexes, go for it.</p>
 
 <p>Best of luck to you, if I missed something don&#8217;t be afraid to let me know. Also, if you have questions be sure to ask.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Clear Cache in eZ Publish - eZpedia]]></title>
-    <link href="http://harmssite.com/2012/04/clear-cache-in-ez-publish-ezpedia/"/>
-    <updated>2012-04-12T00:00:00-05:00</updated>
-    <id>http://harmssite.com/2012/04/clear-cache-in-ez-publish-ezpedia</id>
-    <content type="html"><![CDATA[<p>As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.</p>
-
-<p><a href="http://www.ezpedia.org/solution/clear_cache_in_ez_publish">Clear Cache in eZ Publish / Solution / Root - eZpedia</a></p>
-
-<p>My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /path/to/ezpublish;
-</span><span class='line'>rm -vrf var/cache;
-</span><span class='line'>rm -vrf var/ezwebin_site/cache</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>rm -vrf</code> is very scary to run (remove all?!?), but so long as you are doing this to the specified directory you should be safe (but be careful).</p>
 ]]></content>
   </entry>
   
