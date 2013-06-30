@@ -343,21 +343,17 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
   </header>
 
 
-  <div class="entry-content"><p>As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.</p>
+  <div class="entry-content">As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.
 
-<p><a href="http://www.ezpedia.org/solution/clear_cache_in_ez_publish">Clear Cache in eZ Publish / Solution / Root &ndash; eZpedia</a></p>
+<a href="http://www.ezpedia.org/solution/clear_cache_in_ez_publish">Clear Cache in eZ Publish / Solution / Root - eZpedia</a>.
 
-<p>My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.</p>
+My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /path/to/ezpublish;
-</span><span class='line'>rm -vrf var/cache;
-</span><span class='line'>rm -vrf var/ezwebin_site/cache</span></code></pre></td></tr></table></div></figure>
+<code>cd /path/to/ezpublish;
+rm -vrf var/cache;
+rm -vrf var/ezwebin_site/cache</code>
 
-
-<p><code>rm -vrf</code> is very scary to run (remove all?!?), but so long as you are doing this to the specified directory you should be safe (but be careful).</p>
+rm -vrf is very scary to run (remove all?!?), but so long as you are doing this to the specified directory you should be safe (but be careful).
 </div>
   
   
@@ -393,17 +389,21 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
   </header>
 
 
-  <div class="entry-content">As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.
+  <div class="entry-content"><p>As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.</p>
 
-<a href="http://www.ezpedia.org/solution/clear_cache_in_ez_publish">Clear Cache in eZ Publish / Solution / Root - eZpedia</a>.
+<p><a href="http://www.ezpedia.org/solution/clear_cache_in_ez_publish">Clear Cache in eZ Publish / Solution / Root &ndash; eZpedia</a></p>
 
-My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.
+<p>My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.</p>
 
-<code>cd /path/to/ezpublish;
-rm -vrf var/cache;
-rm -vrf var/ezwebin_site/cache</code>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /path/to/ezpublish;
+</span><span class='line'>rm -vrf var/cache;
+</span><span class='line'>rm -vrf var/ezwebin_site/cache</span></code></pre></td></tr></table></div></figure>
 
-rm -vrf is very scary to run (remove all?!?), but so long as you are doing this to the specified directory you should be safe (but be careful).
+
+<p><code>rm -vrf</code> is very scary to run (remove all?!?), but so long as you are doing this to the specified directory you should be safe (but be careful).</p>
 </div>
   
   
@@ -477,15 +477,13 @@ rm -vrf is very scary to run (remove all?!?), but so long as you are doing this 
   </header>
 
 
-  <div class="entry-content"><div class="pull-right"><a href="https://s3.amazonaws.com/hs_blog_content/images/ezfind-extension.png"><img class=" wp-image-90 alignright" title="ezfind-extension" src="https://s3.amazonaws.com/hs_blog_content/images/small/ezfind-extension-small.png" alt="eZ Find extension in finder" width="271" height="153" /></a></div>
+  <div class="entry-content">&nbsp;
+<div><a href="http://harmssite.com/wp-content/uploads/2012/03/ezfind-extension.png"><img class=" wp-image-90 alignright" title="ezfind-extension" src="http://harmssite.com/wp-content/uploads/2012/03/ezfind-extension-300x169.png" alt="eZ Find extension in finder" width="270" height="152" /></a>Alright, so lets begin installing eZ Find by going out and downloading it from the github (<a title="eZ Find on GitHub" href="http://bit.ly/GEVOte ">https://github.com/ezsystems/ezfind</a>).</div>
+eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#8221;ezfind,&#8221; and then move the <em>ezfind</em> folder to the <em>extensions</em> directory of your eZ Publish install.
 
+So, as with any extension, we have to activate it. Go into your override site.ini.append.php (settings/override/site.ini.append.php) and add ezfind to your active extension list (ActiveExtensions[]=ezfind). I added mine just after my main site extension. Easy enough so far right?<a href="http://harmssite.com/wp-content/uploads/2012/03/solr-structure.png"><img class="size-medium wp-image-93 alignright" title="solr-structure" src="http://harmssite.com/wp-content/uploads/2012/03/solr-structure-176x300.png" alt="Solr installed locally" width="176" height="300" /></a>
 
-<p>Alright, so lets begin installing eZ Find by going out and downloading it from the Github => <a href="http://bit.ly/GEVOte" title="eZ Find on GitHub">https://github.com/ezsystems/ezfind</a>.
-eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#8221;ezfind,&ldquo; and then move the <em>ezfind</em> folder to the <em>extensions</em> directory of your eZ Publish install.</p>
-
-<p>So, as with any extension, we have to activate it. Go into your override <code>site.ini.append.php</code> (settings/override/site.ini.append.php) and add ezfind to your active extension list (<code>ActiveExtensions[]=ezfind</code>). I added mine just after my main site extension. Easy enough so far right?<div class="pull-left"><a href="https://s3.amazonaws.com/hs_blog_content/images/solr-structure.png"><img title="solr-structure" src="https://s3.amazonaws.com/hs_blog_content/images/small/solr-structure-small.png" alt="Solr installed locally" width="179" height="301" /></a></div></p>
-
-<p>As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a <em>java</em> directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish install and rename the folder &ldquo;Solr&rdquo; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on one Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.</div>
+As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a <em>java</em> directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish intall and rename the folder &#8220;Solr&#8221; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on 1 Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.</div>
   
   
     <footer>
@@ -524,13 +522,15 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
   </header>
 
 
-  <div class="entry-content">&nbsp;
-<div><a href="http://harmssite.com/wp-content/uploads/2012/03/ezfind-extension.png"><img class=" wp-image-90 alignright" title="ezfind-extension" src="http://harmssite.com/wp-content/uploads/2012/03/ezfind-extension-300x169.png" alt="eZ Find extension in finder" width="270" height="152" /></a>Alright, so lets begin installing eZ Find by going out and downloading it from the github (<a title="eZ Find on GitHub" href="http://bit.ly/GEVOte ">https://github.com/ezsystems/ezfind</a>).</div>
-eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#8221;ezfind,&#8221; and then move the <em>ezfind</em> folder to the <em>extensions</em> directory of your eZ Publish install.
+  <div class="entry-content"><div class="pull-right"><a href="https://s3.amazonaws.com/hs_blog_content/images/ezfind-extension.png"><img class=" wp-image-90 alignright" title="ezfind-extension" src="https://s3.amazonaws.com/hs_blog_content/images/small/ezfind-extension-small.png" alt="eZ Find extension in finder" width="271" height="153" /></a></div>
 
-So, as with any extension, we have to activate it. Go into your override site.ini.append.php (settings/override/site.ini.append.php) and add ezfind to your active extension list (ActiveExtensions[]=ezfind). I added mine just after my main site extension. Easy enough so far right?<a href="http://harmssite.com/wp-content/uploads/2012/03/solr-structure.png"><img class="size-medium wp-image-93 alignright" title="solr-structure" src="http://harmssite.com/wp-content/uploads/2012/03/solr-structure-176x300.png" alt="Solr installed locally" width="176" height="300" /></a>
 
-As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a <em>java</em> directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish intall and rename the folder &#8220;Solr&#8221; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on 1 Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.</div>
+<p>Alright, so lets begin installing eZ Find by going out and downloading it from the Github => <a href="http://bit.ly/GEVOte" title="eZ Find on GitHub">https://github.com/ezsystems/ezfind</a>.
+eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#8221;ezfind,&ldquo; and then move the <em>ezfind</em> folder to the <em>extensions</em> directory of your eZ Publish install.</p>
+
+<p>So, as with any extension, we have to activate it. Go into your override <code>site.ini.append.php</code> (settings/override/site.ini.append.php) and add ezfind to your active extension list (<code>ActiveExtensions[]=ezfind</code>). I added mine just after my main site extension. Easy enough so far right?<div class="pull-left"><a href="https://s3.amazonaws.com/hs_blog_content/images/solr-structure.png"><img title="solr-structure" src="https://s3.amazonaws.com/hs_blog_content/images/small/solr-structure-small.png" alt="Solr installed locally" width="179" height="301" /></a></div></p>
+
+<p>As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a <em>java</em> directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish install and rename the folder &ldquo;Solr&rdquo; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on one Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.</div>
   
   
     <footer>

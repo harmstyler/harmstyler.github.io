@@ -107,87 +107,18 @@
   </header>
 
 
-  <div class="entry-content"><p>I ran across a problem recently, I needed to get the contents of a page so that I could mimic a widget’s functionality without having access to the database that said page’s widget used (confused yet). Basically, one site had a widget that displayed an upcoming event (information with came from a database), I needed to copy that widget to another website. Moreover, I did not want to use JavaScript to accomplish my goal because I need the new site to be cached pretty heavily on the server. My first thought was to use cURL, but when I ran curl_exec my function would output the entire page contents onto my new site, something that I did not want, I only wanted a small portion of the website. My next option was to use <code>file_get_contents(“my_url”)</code>, as was pointed out to me, this will return the full page as a string. With this I could have accomplished my goal, but not with as much ease as I would hope. I ran into the <code>DOMDOcument()</code> php object a while back and was curious about what I could do with it so I decided to do some research on that. This would eventually lead me to my answer. It turns out that the script is very simple and I can see myself using it quite often so I decided to share it.
-Here it is:</p>
+  <div class="entry-content">I ran across a problem recently, I needed to get the contents of a page so that I could mimic a widget’s functionality without having access to the database that said page’s widget used (confused yet). Basically, one site had a widget that displayed an upcoming event (information with came from a database), I needed to copy that widget to another website. Moreover, I did not want to use JavaScript to accomplish my goal because I need the new site to be cached pretty heavily on the server. My first thought was to use cURL, but when I ran curl_exec my function would output the entire page contents onto my new site, something that I did not want, I only wanted a small portion of the website. My next option was to use file_get_contents(“my_url”), as was pointed out to me, this will return the full page as a string. With this I could have accomplished my goal, but not with as much ease as I would hope. I ran into the DOMDOcument() php object a while back and was curious about what I could do with it so I decided to do some research on that. This would eventually lead me to my answer. It turns out that the script is very simple and I can see myself using it quite often so I decided to share it.
+Here it is:
+<code>public function scrapePage($url,$id){
+    $d = new DOMDOcument();
+    libxml_use_internal_errors(true);
+    $d->loadHTMLFile($url);
+    $widget = $d->getElementById($id);
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">scrapePage</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span><span class="nv">$id</span><span class="p">){</span>
-</span><span class='line'>    <span class="nv">$d</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DOMDOcument</span><span class="p">();</span>
-</span><span class='line'>    <span class="nb">libxml_use_internal_errors</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
-</span><span class='line'>    <span class="nv">$d</span><span class="o">-&gt;</span><span class="na">loadHTMLFile</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
-</span><span class='line'>    <span class="nv">$widget</span> <span class="o">=</span> <span class="nv">$d</span><span class="o">-&gt;</span><span class="na">getElementById</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nv">$widget</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="nb">simplexml_import_dom</span><span class="p">(</span><span class="nv">$widget</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">asXML</span><span class="p">();</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/10/gradient-app/">Gradient App</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-20T00:00:00-05:00" pubdate data-updated="true">Oct 20<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">[caption id=&#8221;attachment_44&#8221; align=&#8221;alignright&#8221; width=&#8221;117&#8221; caption=&#8221;Gradient App&#8221;]<a href="http://harmssite.com/wp-content/uploads/2011/10/gradient-app.png"><img src="http://harmssite.com/wp-content/uploads/2011/10/gradient-app-117x300.png" alt="Gradient App" title="gradient-app" width="117" height="300" class="size-medium wp-image-44" /></a>[/caption]I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out gradients is easy enough, get your start color and your end color and then plug them into all the various browser specific gradient css elements (webkit, moz, etc&#8230;) and you get a gradient. Like I said, simple enough but time consuming because each browser gets its own line. 
-
-<a href="http://www.gradientapp.com/" title="Gradient App" target="_blank">Gradient App</a> makes life much simpler. As a Gradient App user all I have to do use the color picker, or manually enter my colors, then just choose my gradient direction and any other options I would be interested in! Gradient App then gives me the CSS code to use, again, making my life much easier.
-
-Sample Gradient Code:
-<blockquote>background-color: #69aece;
-background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(105, 174, 206)), to(rgb(201, 97, 103)));
-background-image: -webkit-linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
-background-image: -moz-linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
-background-image: -o-linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
-background-image: -ms-linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
-background-image: linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=&#8217;#69aece&#8217;, EndColorStr=&#8217;#c96167&#8217;);</blockquote>
-
-Obviously, looking at the above code, simple gradients are fairly straight forward. Remember to cover all your browsers (the filter is for Internet Explorer versions older than IE10 as they do not recognize gradients). Also obvious, making your own gradients can be a bit tedious, which is why I used Gradient App to make the code you see above.
-
-Get Gradient App here: <a href="http://www.gradientapp.com/" title="Gradient App">http://www.gradientapp.com/</a>
+    if ($widget !== null) {
+        return simplexml_import_dom($widget)->asXML();
+    }
+}</code>
 </div>
   
   
@@ -265,7 +196,7 @@ Get Gradient App here: <a href="http://www.gradientapp.com/" title="Gradient App
       
   <header>
     
-      <h1 class="entry-title"><a href="/2011/08/path-to-android/">Path to Android!</a></h1>
+      <h1 class="entry-title"><a href="/2011/10/gradient-app/">Gradient App</a></h1>
     
     
       <p class="meta">
@@ -281,14 +212,30 @@ Get Gradient App here: <a href="http://www.gradientapp.com/" title="Gradient App
   
 
 
-<time datetime="2011-08-26T00:00:00-05:00" pubdate data-updated="true">Aug 26<span>th</span>, 2011</time>
+<time datetime="2011-10-20T00:00:00-05:00" pubdate data-updated="true">Oct 20<span>th</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content">Finally, Path has come to Android. Path is one of those little known apps that I think a person would love, if they knew about it. Path is made to be <a href="http://path.com"><img class="alignleft size-full wp-image-56" title="path-logo" src="http://harmssite.com/wp-content/uploads/2012/01/path-logo-2x.png" alt="Path" width="146" height="65" /></a> built off of Facebook, but far more personal than that. Their slogan then makes sense, The Personal Network (vs the Social Network). At Path each person is only able to view a limited number of friends, making the social web experience more personal. They recognize the fact that each person in real life does not carry on relationships with 300 people, more likely 30 at the most. Because of this fact, they limit the web friends to the same number; this makes the social experience mean far more to the user. So, back to my original point, Path has been available for iPhone only since its inception. Path is not an internet app; unlike Facebook, I cannot upload photos online, I can only use my phone. Also, there are no status updates, Path is just you sharing photos with your closest friends. Path is a fantastic idea that I have been waiting to use for some time now, as I use Android. Path comes with it a simple and sleek UI, which I would expect being so limited on options and all. Just about the only bad part I can find is that not enough of my friends use it, yet. So my recommendation? Go out and get the app, it should be fun.
+  <div class="entry-content">[caption id=&#8221;attachment_44&#8221; align=&#8221;alignright&#8221; width=&#8221;117&#8221; caption=&#8221;Gradient App&#8221;]<a href="http://harmssite.com/wp-content/uploads/2011/10/gradient-app.png"><img src="http://harmssite.com/wp-content/uploads/2011/10/gradient-app-117x300.png" alt="Gradient App" title="gradient-app" width="117" height="300" class="size-medium wp-image-44" /></a>[/caption]I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out gradients is easy enough, get your start color and your end color and then plug them into all the various browser specific gradient css elements (webkit, moz, etc&#8230;) and you get a gradient. Like I said, simple enough but time consuming because each browser gets its own line. 
+
+<a href="http://www.gradientapp.com/" title="Gradient App" target="_blank">Gradient App</a> makes life much simpler. As a Gradient App user all I have to do use the color picker, or manually enter my colors, then just choose my gradient direction and any other options I would be interested in! Gradient App then gives me the CSS code to use, again, making my life much easier.
+
+Sample Gradient Code:
+<blockquote>background-color: #69aece;
+background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(105, 174, 206)), to(rgb(201, 97, 103)));
+background-image: -webkit-linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
+background-image: -moz-linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
+background-image: -o-linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
+background-image: -ms-linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
+background-image: linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
+filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=&#8217;#69aece&#8217;, EndColorStr=&#8217;#c96167&#8217;);</blockquote>
+
+Obviously, looking at the above code, simple gradients are fairly straight forward. Remember to cover all your browsers (the filter is for Internet Explorer versions older than IE10 as they do not recognize gradients). Also obvious, making your own gradients can be a bit tedious, which is why I used Gradient App to make the code you see above.
+
+Get Gradient App here: <a href="http://www.gradientapp.com/" title="Gradient App">http://www.gradientapp.com/</a>
 </div>
   
   
