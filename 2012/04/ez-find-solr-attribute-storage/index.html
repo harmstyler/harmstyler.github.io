@@ -104,26 +104,23 @@
   </header>
 
 
-<div class="entry-content"><p><img src="https://s3.amazonaws.com/hs_blog_content/images/enable-solr-attribute-storage.png" alt="Enable Solr Attribute Storage" /></p>
+<div class="entry-content">When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes <code>'as_objects', true()</code> eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.
 
-<p>When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes <code>'as_objects', true()</code> eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.</p>
+Another option, however, is to return all the information from Solr, no more object building from the DB. To do this all you have to do is enable <code>EnableSolrAttributeStorage</code> in the ezfind.ini. That way, if you are searching on a site that does not have access to the local database (cross-site search for instance) you can return all the content you need from Solr, because it is <em>all</em> stored.
 
-<p>Another option, however, is to return all the information from Solr, no more object building from the DB. To do this all you have to do is enable <code>EnableSolrAttributeStorage</code> in the ezfind.ini. That way, if you are searching on a site that does not have access to the local database (cross-site search for instance) you can return all the content you need from Solr, because it is <em>all</em> stored.</p>
+&nbsp;
 
-<p>So remember, set:
-<code>'as_objects', false()</code> in the fetch.</p>
+So remember, set:
+<code>'as_objects', false()</code> in the fetch.
 
-<p>and in the ezfind.ini</p>
+and in the ezfind.ini
 
-<figure class='code'><figcaption><span>ezfind.ini </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[IndexOptions]</span>
-</span><span class='line'><span class="na">EnableSolrAttributeStorage</span><span class="o">=</span><span class="s">true</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre>[IndexOptions]
+EnableSolrAttributeStorage=true</pre>
 
+Then just remember to re-index your content to get all the new attributes in there.
 
-<p>Then just remember to re-index your content to get all the new attributes in there.</p>
+&nbsp;
 </div>
 
 
@@ -148,12 +145,6 @@
 
 <time datetime="2012-04-26T00:00:00-05:00" pubdate data-updated="true">Apr 26<span>th</span>, 2012</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/ez-find/'>eZ Find</a>, <a class='category' href='/blog/categories/ez-publish/'>eZ Publish</a>
-  
-</span>
 
 
     </p>

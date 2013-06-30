@@ -104,17 +104,21 @@
   </header>
 
 
-<div class="entry-content">As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.
+<div class="entry-content"><p>As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.</p>
 
-<a href="http://www.ezpedia.org/solution/clear_cache_in_ez_publish">Clear Cache in eZ Publish / Solution / Root - eZpedia</a>.
+<p><a href="http://www.ezpedia.org/solution/clear_cache_in_ez_publish">Clear Cache in eZ Publish / Solution / Root &ndash; eZpedia</a></p>
 
-My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.
+<p>My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.</p>
 
-<code>cd /path/to/ezpublish;
-rm -vrf var/cache;
-rm -vrf var/ezwebin_site/cache</code>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /path/to/ezpublish;
+</span><span class='line'>rm -vrf var/cache;
+</span><span class='line'>rm -vrf var/ezwebin_site/cache</span></code></pre></td></tr></table></div></figure>
 
-rm -vrf is very scary to run (remove all?!?), but so long as you are doing this to the specified directory you should be safe (but be careful).
+
+<p><code>rm -vrf</code> is very scary to run (remove all?!?), but so long as you are doing this to the specified directory you should be safe (but be careful).</p>
 </div>
 
 
@@ -140,6 +144,12 @@ rm -vrf is very scary to run (remove all?!?), but so long as you are doing this 
 <time datetime="2012-04-12T00:00:00-05:00" pubdate data-updated="true">Apr 12<span>th</span>, 2012</time>
       
 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ez-publish/'>eZ Publish</a>
+  
+</span>
+
 
     </p>
     
@@ -162,6 +172,12 @@ rm -vrf is very scary to run (remove all?!?), but so long as you are doing this 
     </p>
   </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -218,7 +234,10 @@ rm -vrf is very scary to run (remove all?!?), but so long as you are doing this 
       var disqus_shortname = 'harmssite';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://harmssite.com/2012/04/clear-cache-in-ez-publish-ezpedia/';
+        var disqus_url = 'http://harmssite.com/2012/04/clear-cache-in-ez-publish-ezpedia/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

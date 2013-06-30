@@ -104,31 +104,19 @@
   </header>
 
 
-<div class="entry-content"><p>I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default search field called <code>ezf_df_text</code>. The downside of searching one field is that field needs to be controlled, and the only way it can be controlled is by manually editing the Solr schema file. As you might expect, eZ Find does not control this file very well out of the box.</p>
+<div class="entry-content">I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default search field called <code>ezf_df_text</code>. The downside of searching one field is that field needs to be controlled, and the only way it can be controlled is by manually editing the Solr schema file. As you might expect, eZ Find does not control this file very well out of the box.
+<pre>&lt;copyField source="*_lk" dest="ezf_df_text"/&gt;
+&lt;copyField source="*_k" dest="ezf_df_text"/&gt;
+&lt;copyField source="*_t" dest="ezf_df_text"/&gt;
+&lt;copyField source="*_s" dest="ezf_df_text"/&gt;</pre>
+A copyField will take any field you tell it to and <em>copy it</em> into another field. The code above is what ships with eZ Find, every single _lk (lckeyword), _k (keyword), _t (text), and _s (string) is added to the <code>ezf_df_text</code> field. For obvious reasons the average installation probably doesn&#8217;t need every piece of content searchable. The first step is to <strong>delete the default copyFields</strong> (e.g. your site users probably shouldn&#8217;t be searched by default).
 
-<figure class='code'><figcaption><span>schema.xml </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_lk&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_k&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_t&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_s&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<!--more-->Luckily, there is only one other step! Unfortunately, this one step can be very time consuming. Visit the <code>luke</code> output for your Solr install and make a list of all the fields you need to search. Make a copyField for every field you want to search, adding each field to the <code>ezf_df_text</code> field.
 
+Remember, this can offer major speed improvements in your searches, especially if you are managing a large amount of content. There are still other optimizations (stored/not stored, indexed/not indexed, term vectors, etc), but that is for another time.
 
-<p>A copyField will take any field you tell it to and <em>copy it</em> into another field. The code above is what ships with eZ Find, every single <code>*_lk</code> (lckeyword), <code>*_k</code> (keyword), <code>*_t</code> (text), and <code>*_s</code> (string) is added to the <code>ezf_df_text</code> field. For obvious reasons the average installation probably doesn&rsquo;t need every piece of content searchable. The first step is to <strong>delete the default copyFields</strong> (e.g. your site users probably shouldn&rsquo;t be searched by default).</p>
-
-<!--more-->
-
-
-<p>Luckily, there is only one other step! Unfortunately, this one step can be very time consuming. Visit the <code>luke</code> output for your Solr install and make a list of all the fields you need to search. Make a copyField for every field you want to search, adding each field to the <code>ezf_df_text</code> field.</p>
-
-<p>Remember, this can offer major speed improvements in your searches, especially if you are managing a large amount of content. There are still other optimizations (stored/not stored, indexed/not indexed, term vectors, etc), but that is for another time.</p>
-
-<p>Finally, I did submit a pull request to the eZ Find project. It adds a new search parameter allowing users to declare custom search fields.
-<a href="http://bit.ly/Vp98IU"><a href="https://github.com/ezsystems/ezfind/pull/93">https://github.com/ezsystems/ezfind/pull/93</a></a></p>
+Finally, I did submit a pull request to the eZ Find project. It adds a new search parameter allowing users to declare custom search fields.
+<a href="http://bit.ly/Vp98IU">https://github.com/ezsystems/ezfind/pull/93</a>
 </div>
 
 
@@ -153,12 +141,6 @@
 
 <time datetime="2012-12-07T00:00:00-06:00" pubdate data-updated="true">Dec 7<span>th</span>, 2012</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/solr/'>Solr</a>, <a class='category' href='/blog/categories/ez-find/'>eZ Find</a>
-  
-</span>
 
 
     </p>
