@@ -4,7 +4,7 @@
   <title><![CDATA[Category: eZ Find | HarmsSite]]></title>
   <link href="http://harmssite.com/blog/categories/ez-find/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-06-29T20:13:25-05:00</updated>
+  <updated>2013-06-29T20:22:00-05:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -29,7 +29,7 @@
 </span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_t&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
 </span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_s&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
-A copyField will take any field you tell it to and <em>copy it</em> into another field. The code above is what ships with eZ Find, every single <code>*_lk</code> (lckeyword), <code>*_k</code> (keyword), <code>*_t</code> (text), and <code>*_s</code> (string) is added to the <code>ezf_df_text</code> field. For obvious reasons the average installation probably doesn't need every piece of content searchable. The first step is to <strong>delete the default copyFields</strong> (e.g. your site users probably shouldn't be searched by default).</p>
+A copyField will take any field you tell it to and <em>copy it</em> into another field. The code above is what ships with eZ Find, every single <code>*_lk</code> (lckeyword), <code>*_k</code> (keyword), <code>*_t</code> (text), and <code>*_s</code> (string) is added to the <code>ezf_df_text</code> field. For obvious reasons the average installation probably doesn&rsquo;t need every piece of content searchable. The first step is to <strong>delete the default copyFields</strong> (e.g. your site users probably shouldn&rsquo;t be searched by default).</p>
 
 <!--more-->
 
@@ -39,7 +39,7 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
 <p>Remember, this can offer major speed improvements in your searches, especially if you are managing a large amount of content. There are still other optimizations (stored/not stored, indexed/not indexed, term vectors, etc), but that is for another time.</p>
 
 <p>Finally, I did submit a pull request to the eZ Find project. It adds a new search parameter allowing users to declare custom search fields.
-<a href="http://bit.ly/Vp98IU">https://github.com/ezsystems/ezfind/pull/93</a></p>
+<a href="http://bit.ly/Vp98IU"><a href="https://github.com/ezsystems/ezfind/pull/93">https://github.com/ezsystems/ezfind/pull/93</a></a></p>
 ]]></content>
   </entry>
   
@@ -51,9 +51,9 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
     <content type="html"><![CDATA[<div class="pull-right"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="https://s3.amazonaws.com/hs_blog_content/images/Solr-logo.png" alt="Solr logo" width="283" height="156" /></div>
 
 
-<p>Let me start by saying that eZ Find is a fantastic implementation of <a class="zem_slink" title="Apache Solr" href="http://lucene.apache.org/solr/" rel="homepage" target="_blank">Solr</a> functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an <a class="zem_slink" title="EZ Publish" href="http://ez.no/" rel="homepage" target="_blank">eZ Publish</a> keyword and know that it should thereby be a Solr keyword, again, all out of the box. There are however some serious limitations when it comes time to customize it to meet your system's needs. Do not underestimate the power found in customizing Solr to meet your website's needs. The default setup is great, it's made to fit into any system with very little effort; but, just because it's made to fit in any system does not mean that it should be used for every system.</p>
+<p>Let me start by saying that eZ Find is a fantastic implementation of <a class="zem_slink" title="Apache Solr" href="http://lucene.apache.org/solr/" rel="homepage" target="_blank">Solr</a> functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an <a class="zem_slink" title="EZ Publish" href="http://ez.no/" rel="homepage" target="_blank">eZ Publish</a> keyword and know that it should thereby be a Solr keyword, again, all out of the box. There are however some serious limitations when it comes time to customize it to meet your system&rsquo;s needs. Do not underestimate the power found in customizing Solr to meet your website&rsquo;s needs. The default setup is great, it&rsquo;s made to fit into any system with very little effort; but, just because it&rsquo;s made to fit in any system does not mean that it should be used for every system.</p>
 
-<p>One of the best things we could have ever done for a large Solr install was to customize a default search field. You might say, "But eZ Find already creates a default search field for you." And you'd be right.
+<p>One of the best things we could have ever done for a large Solr install was to customize a default search field. You might say, &ldquo;But eZ Find already creates a default search field for you.&rdquo; And you&rsquo;d be right.
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -68,9 +68,9 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
 </span><span class='line'><span class="nt">&lt;p&gt;&lt;defaultSearchField&gt;</span>ezf_df_text<span class="nt">&lt;/defaultSearchField&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>The thing that the default search field in eZ Find does not do, however, is get used. There is no way in eZ Find to tell it to search just one field (at least as far as I know). I did some testing in our environment, these numbers will change from system to system, but in our's each search took almost 10 times as long to search all fields individually vs searching just 1 field. We gave eZ Find the option to search one given field, if defined, and it vastly improved our search experience.</p>
+<p>The thing that the default search field in eZ Find does not do, however, is get used. There is no way in eZ Find to tell it to search just one field (at least as far as I know). I did some testing in our environment, these numbers will change from system to system, but in our&rsquo;s each search took almost 10 times as long to search all fields individually vs searching just 1 field. We gave eZ Find the option to search one given field, if defined, and it vastly improved our search experience.</p>
 
-<p>eZ Find by default looks at all 'searchable' fields and adds them to either the <a title="qf" href="http://wiki.apache.org/solr/DisMaxQParserPlugin#qf_.28Query_Fields.29"><code>qf</code></a> (if you are using the dismax search like you should be) or it searches every searchable field individually (<code>attr_title_t:(*:*)</code>, <code>attr_title_s:(*:*)</code>, etc, etc, for all searchable fields). All the 'searchable' fields are by default added to the <code>ezf_df_text</code> field, so you should really do yourself a favor and search just one field, it is a noticable speed improvement, especially in large systems.</p>
+<p>eZ Find by default looks at all &lsquo;searchable&rsquo; fields and adds them to either the <a title="qf" href="http://wiki.apache.org/solr/DisMaxQParserPlugin#qf_.28Query_Fields.29"><code>qf</code></a> (if you are using the dismax search like you should be) or it searches every searchable field individually (<code>attr_title_t:(*:*)</code>, <code>attr_title_s:(*:*)</code>, etc, etc, for all searchable fields). All the &lsquo;searchable&rsquo; fields are by default added to the <code>ezf_df_text</code> field, so you should really do yourself a favor and search just one field, it is a noticable speed improvement, especially in large systems.</p>
 
 <p>In Part 2 I will talk about how to better optimize the Solr <code>schema.xml</code> file using the <code>ezf_df_text</code> field.</p>
 ]]></content>
@@ -274,11 +274,11 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
 </span><span class='line'>
 </span><span class='line'><span class="err">&lt;h1&gt;Shards[]&lt;/h1&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="na">&lt;h1&gt;Shards[eng-GB]</span><span class="o">=</span><span class="s">http://localhost:8983/solr/eng-GB&lt;/h1&gt;</span>
+</span><span class='line'><span class="na">&lt;h1&gt;Shards[eng-GB]</span><span class="o">=</span><span class="s">&lt;a href=&quot;http://localhost:8983/solr/eng-GB&quot;&gt;http://localhost:8983/solr/eng-GB&lt;/a&gt;&lt;/h1&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="na">&lt;h1&gt;Shards[fre-FR]</span><span class="o">=</span><span class="s">http://localhost:8983/solr/fre-FR&lt;/h1&gt;</span>
+</span><span class='line'><span class="na">&lt;h1&gt;Shards[fre-FR]</span><span class="o">=</span><span class="s">&lt;a href=&quot;http://localhost:8983/solr/fre-FR&quot;&gt;http://localhost:8983/solr/fre-FR&lt;/a&gt;&lt;/h1&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="na">&lt;h1&gt;Shards[myforeignindex]</span><span class="o">=</span><span class="s">http://myotherhost:8983/solr&lt;/h1&gt;</span>
+</span><span class='line'><span class="na">&lt;h1&gt;Shards[myforeignindex]</span><span class="o">=</span><span class="s">&lt;a href=&quot;http://myotherhost:8983/solr&quot;&gt;http://myotherhost:8983/solr&lt;/a&gt;&lt;/h1&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="err">&lt;p&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
@@ -303,7 +303,7 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="ni">&amp;lt;</span>?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="ni">&amp;lt;</span>?xml version=<span class="ni">&amp;ldquo;</span>1.0<span class="ni">&amp;rdquo;</span> encoding=<span class="ni">&amp;ldquo;</span>UTF-8<span class="ni">&amp;rdquo;</span> ?&gt;
 </span><span class='line'><span class="nt">&lt;solr</span> <span class="na">persistent=</span><span class="s">&quot;true&quot;</span> <span class="na">sharedLib=</span><span class="s">&quot;lib&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;cores</span> <span class="na">adminPath=</span><span class="s">&quot;/admin/cores&quot;</span><span class="nt">&gt;&lt;/p&gt;</span>
 </span><span class='line'>
@@ -355,7 +355,7 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='smarty'><span class='line'><span class="cp">{</span><span class="nf">set</span> <span class="nv">$search</span><span class="o">=</span><span class="na">fetch</span><span class="o">(</span> <span class="s1">&#39;ezfind&#39;</span><span class="o">,</span> <span class="s1">&#39;search&#39;</span><span class="o">,&lt;/</span><span class="na">p</span><span class="o">&gt;</span>
+</pre></td><td class='code'><pre><code class='smarty'><span class='line'><span class="cp">{</span><span class="nf">set</span> <span class="nv">$search</span><span class="o">=</span><span class="na">fetch</span><span class="o">(</span> <span class="o">&amp;</span><span class="na">lsquo</span><span class="o">;</span><span class="na">ezfind</span><span class="o">&amp;</span><span class="na">rsquo</span><span class="o">;,</span> <span class="o">&amp;</span><span class="na">lsquo</span><span class="o">;</span><span class="na">search</span><span class="o">&amp;</span><span class="na">rsquo</span><span class="o">;,&lt;/</span><span class="na">p</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="na">pre</span><span class="o">&gt;&lt;</span><span class="na">code</span><span class="o">&gt;</span>                <span class="na">hash</span><span class="o">(</span> <span class="s1">&#39;query&#39;</span><span class="o">,</span> <span class="nv">$query</span><span class="o">,</span>
 </span><span class='line'>                      <span class="s1">&#39;sort_by&#39;</span><span class="o">,</span> <span class="nv">$sort_by</span><span class="o">,</span>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: eZ Publish | HarmsSite]]></title>
   <link href="http://harmssite.com/blog/categories/ez-publish/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-06-29T20:13:25-05:00</updated>
+  <updated>2013-06-29T20:22:00-05:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -21,17 +21,17 @@
     <content type="html"><![CDATA[<div class="pull-right"><img class="" alt="Syfomy Logo" title="Symfony Logo" src="https://s3.amazonaws.com/hs_blog_content/images/symfony-logo.png" width="206" height="205" /></div>
 
 
-<p>I finally decided on my first eZ Publish 5 project... my site of course. I am currently in the middle of upgrading my wordpress install to eZ Publish. Honestly, I don't really need anything more than a simple Wordpress install, but it will be nice to get an eZ5 site under my belt.</p>
+<p>I finally decided on my first eZ Publish 5 project&hellip; my site of course. I am currently in the middle of upgrading my wordpress install to eZ Publish. Honestly, I don&rsquo;t really need anything more than a simple Wordpress install, but it will be nice to get an eZ5 site under my belt.</p>
 
-<p>Seeing as I am in the middle of development, there have been a few bumps in the development road that I have found and would like to share. Firstly, I can find no way to run eZ Publish 5 completely in legacy mode, no matter what I do my pagelayout template needs to be a twig template. I posed the question to the eZ Community and it sounds like this should be possible, but it just wouldn't work for me (see the discussion <a href="http://bit.ly/WhVHwu" title="Overriding templates in eZ 5">here</a>). I actually don't have a problem with this, it's not like being forced to use Symfony is a bad thing.</p>
+<p>Seeing as I am in the middle of development, there have been a few bumps in the development road that I have found and would like to share. Firstly, I can find no way to run eZ Publish 5 completely in legacy mode, no matter what I do my pagelayout template needs to be a twig template. I posed the question to the eZ Community and it sounds like this should be possible, but it just wouldn&rsquo;t work for me (see the discussion <a href="http://bit.ly/WhVHwu" title="Overriding templates in eZ 5">here</a>). I actually don&rsquo;t have a problem with this, it&rsquo;s not like being forced to use Symfony is a bad thing.</p>
 
 <p>Second, I do not see a strait-forward way to run multiple sites in one eZ Publish 5 install right now. Site settings are declared in the <code>ezpublish.yml</code> file and are grouped appropriately. My problem is that the <code>parameters.yml</code> file only allows for the declaration of one default template. In my opinion the default template declaration should be tied to a siteaccess or a siteaccess group.</p>
 
-<p>Third, the <code>index_dev.php</code> file doesn't work for some reason. It would be nice to be able to use the Symfony dev toolbar. So far my only workaround has been to add the dev params to the index.php file. Either fixing this or allowing <code>DebugOutput</code> on a Symfony generated page would suffice.</p>
+<p>Third, the <code>index_dev.php</code> file doesn&rsquo;t work for some reason. It would be nice to be able to use the Symfony dev toolbar. So far my only workaround has been to add the dev params to the index.php file. Either fixing this or allowing <code>DebugOutput</code> on a Symfony generated page would suffice.</p>
 
-<p>It wouldn't be fair to simply criticize eZ5, because it does work. The eZ Team did a hell of a job with eZ5, far more than I would have expected for a first iteration. Honestly I was expecting eZ5 to switch to the Symfony Components for round 1 and work on the rest later.</p>
+<p>It wouldn&rsquo;t be fair to simply criticize eZ5, because it does work. The eZ Team did a hell of a job with eZ5, far more than I would have expected for a first iteration. Honestly I was expecting eZ5 to switch to the Symfony Components for round 1 and work on the rest later.</p>
 
-<p>I think that far and above any other nicety of eZ5 is the ability to generate custom routes. Creating a custom module in eZ 4 was not exactly easy, but now with Symfony, creating a custom route/controller/view is extremely straight-forward and borderline easy. If a person has ever worked with Symfony in the past, creating custom 'modules' will be a snap.</p>
+<p>I think that far and above any other nicety of eZ5 is the ability to generate custom routes. Creating a custom module in eZ 4 was not exactly easy, but now with Symfony, creating a custom route/controller/view is extremely straight-forward and borderline easy. If a person has ever worked with Symfony in the past, creating custom &lsquo;modules&rsquo; will be a snap.</p>
 
 <p>Another awesome part of eZ5 is the full REST API. Although I have yet to use it, I know it is there and that the eZ Team put a lot of work into it, so I have to give it props.</p>
 
@@ -47,9 +47,9 @@
     <content type="html"><![CDATA[<div class="pull-right"><img title="Nashville Symfony" src="https://s3.amazonaws.com/hs_blog_content/images/symfony2.jpg" alt="Nashville Symfony" width="240" height="180" /></div>
 
 
-<p> I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that eZ Systems announced that they were adopting the Symfony framework I knew that I would be be spending some time with it. I have found that Symfony doesn't have the lowest barrier to entry so it has been a process, to say the least. I have a blog that has helped matters a great deal and so I wanted to give it some props here. If you are like me, wanting to learn Symfony but lacking time and resources, you should really check this site out: <a href="http://tutorial.symblog.co.uk/" title="Symblog: Creating a Blog in Symfony2">Symblog: Creating a Blog in Symfony2</a></p>
+<p> I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that eZ Systems announced that they were adopting the Symfony framework I knew that I would be be spending some time with it. I have found that Symfony doesn&rsquo;t have the lowest barrier to entry so it has been a process, to say the least. I have a blog that has helped matters a great deal and so I wanted to give it some props here. If you are like me, wanting to learn Symfony but lacking time and resources, you should really check this site out: <a href="http://tutorial.symblog.co.uk/" title="Symblog: Creating a Blog in Symfony2">Symblog: Creating a Blog in Symfony2</a></p>
 
-<p>The blog starts with the basics and explores a good deal of Symfony components in detail. In the end you will be left with a barley usable blog, but that is alright, it leaves you with a project to fix. It is a tutorial for Symfony 2.0, and because Symfony is currently on 2.1.3 you will notice some part don't work the way you expect (but I think that forces you to learn more anyway). The tutorial also doesn't use Composer at all; so remember, when the blog tells you to install something, use Composer and skip over the way they tell you how to do it. I hope you enjoy the tutorial, I know I did (I have not currently completed the tutorial but am nearing completion at the time of this writing).</p>
+<p>The blog starts with the basics and explores a good deal of Symfony components in detail. In the end you will be left with a barley usable blog, but that is alright, it leaves you with a project to fix. It is a tutorial for Symfony 2.0, and because Symfony is currently on 2.1.3 you will notice some part don&rsquo;t work the way you expect (but I think that forces you to learn more anyway). The tutorial also doesn&rsquo;t use Composer at all; so remember, when the blog tells you to install something, use Composer and skip over the way they tell you how to do it. I hope you enjoy the tutorial, I know I did (I have not currently completed the tutorial but am nearing completion at the time of this writing).</p>
 ]]></content>
   </entry>
   
@@ -67,15 +67,15 @@
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='mysql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span>
 </span><span class='line'><span class="k">FROM</span> <span class="n">table_name</span>
-</span><span class='line'><span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,...)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span>
+</span><span class='line'><span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">foo</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 There are couple of ways to do this, but I think there is one very good and much easier way. The first obvious way to query solr is to match the fields to columns manually.
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=column_name:value1 AND column_name:value2 AND other_colum:&#39;foo&#39;</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=column_name:value1 AND column_name:value2 AND other_colum:&amp;lsquo;foo&amp;rsquo;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 This is all fine and dandy but what if I want to be able to add a list of content to the query? Adding the column name every time can become a chore and make the query unnecessarily large. To do an <code>IN</code> query try this:
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=column_name:+(value1 value2) AND other_colum:&#39;foo&#39;</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=column_name:+(value1 value2) AND other_colum:&amp;lsquo;foo&amp;rsquo;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 Having used this one before, I can tell you it works for me using Solr 3.6 and that the placement of the + symbol is key.</p>
 
@@ -85,17 +85,17 @@ Having used this one before, I can tell you it works for me using Solr 3.6 and t
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='mysql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span>
 </span><span class='line'><span class="k">FROM</span> <span class="n">table_name</span>
-</span><span class='line'><span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,...)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span>
+</span><span class='line'><span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">foo</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
-The 'bad' way:
+The &lsquo;bad&rsquo; way:
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=-column_namevalue1 AND -column_name:value2 AND other_colum:&#39;foo&#39;</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=-column_namevalue1 AND -column_name:value2 AND other_colum:&amp;lsquo;foo&amp;rsquo;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
-This one I found from working with eZ Publish and eZ Find, and I happen to like it a lot. It is a clever little Solr query that selects all from the column then filters out what we don't want.
+This one I found from working with eZ Publish and eZ Find, and I happen to like it a lot. It is a clever little Solr query that selects all from the column then filters out what we don&rsquo;t want.
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=other_colum:&#39;foo&#39; AND column_name:[&lt;em&gt; TO &lt;/em&gt;] -column_name:(value1 value2)</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=other_colum:&amp;lsquo;foo&amp;rsquo; AND column_name:[&lt;em&gt; TO &lt;/em&gt;] -column_name:(value1 value2)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
-<code>column_name:[* TO *]</code> is like saying select all from the column, but then we add <code>-column_name:(value1 value2)</code> to filter out what we don't want.</p>
+<code>column_name:[* TO *]</code> is like saying select all from the column, but then we add <code>-column_name:(value1 value2)</code> to filter out what we don&rsquo;t want.</p>
 
 <p>Cheers and good luck!</p>
 ]]></content>
@@ -109,9 +109,9 @@ This one I found from working with eZ Publish and eZ Find, and I happen to like 
     <content type="html"><![CDATA[<div class="pull-right"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="https://s3.amazonaws.com/hs_blog_content/images/Solr-logo.png" alt="Solr logo" width="283" height="156" /></div>
 
 
-<p>Let me start by saying that eZ Find is a fantastic implementation of <a class="zem_slink" title="Apache Solr" href="http://lucene.apache.org/solr/" rel="homepage" target="_blank">Solr</a> functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an <a class="zem_slink" title="EZ Publish" href="http://ez.no/" rel="homepage" target="_blank">eZ Publish</a> keyword and know that it should thereby be a Solr keyword, again, all out of the box. There are however some serious limitations when it comes time to customize it to meet your system's needs. Do not underestimate the power found in customizing Solr to meet your website's needs. The default setup is great, it's made to fit into any system with very little effort; but, just because it's made to fit in any system does not mean that it should be used for every system.</p>
+<p>Let me start by saying that eZ Find is a fantastic implementation of <a class="zem_slink" title="Apache Solr" href="http://lucene.apache.org/solr/" rel="homepage" target="_blank">Solr</a> functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an <a class="zem_slink" title="EZ Publish" href="http://ez.no/" rel="homepage" target="_blank">eZ Publish</a> keyword and know that it should thereby be a Solr keyword, again, all out of the box. There are however some serious limitations when it comes time to customize it to meet your system&rsquo;s needs. Do not underestimate the power found in customizing Solr to meet your website&rsquo;s needs. The default setup is great, it&rsquo;s made to fit into any system with very little effort; but, just because it&rsquo;s made to fit in any system does not mean that it should be used for every system.</p>
 
-<p>One of the best things we could have ever done for a large Solr install was to customize a default search field. You might say, "But eZ Find already creates a default search field for you." And you'd be right.
+<p>One of the best things we could have ever done for a large Solr install was to customize a default search field. You might say, &ldquo;But eZ Find already creates a default search field for you.&rdquo; And you&rsquo;d be right.
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -126,9 +126,9 @@ This one I found from working with eZ Publish and eZ Find, and I happen to like 
 </span><span class='line'><span class="nt">&lt;p&gt;&lt;defaultSearchField&gt;</span>ezf_df_text<span class="nt">&lt;/defaultSearchField&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>The thing that the default search field in eZ Find does not do, however, is get used. There is no way in eZ Find to tell it to search just one field (at least as far as I know). I did some testing in our environment, these numbers will change from system to system, but in our's each search took almost 10 times as long to search all fields individually vs searching just 1 field. We gave eZ Find the option to search one given field, if defined, and it vastly improved our search experience.</p>
+<p>The thing that the default search field in eZ Find does not do, however, is get used. There is no way in eZ Find to tell it to search just one field (at least as far as I know). I did some testing in our environment, these numbers will change from system to system, but in our&rsquo;s each search took almost 10 times as long to search all fields individually vs searching just 1 field. We gave eZ Find the option to search one given field, if defined, and it vastly improved our search experience.</p>
 
-<p>eZ Find by default looks at all 'searchable' fields and adds them to either the <a title="qf" href="http://wiki.apache.org/solr/DisMaxQParserPlugin#qf_.28Query_Fields.29"><code>qf</code></a> (if you are using the dismax search like you should be) or it searches every searchable field individually (<code>attr_title_t:(*:*)</code>, <code>attr_title_s:(*:*)</code>, etc, etc, for all searchable fields). All the 'searchable' fields are by default added to the <code>ezf_df_text</code> field, so you should really do yourself a favor and search just one field, it is a noticable speed improvement, especially in large systems.</p>
+<p>eZ Find by default looks at all &lsquo;searchable&rsquo; fields and adds them to either the <a title="qf" href="http://wiki.apache.org/solr/DisMaxQParserPlugin#qf_.28Query_Fields.29"><code>qf</code></a> (if you are using the dismax search like you should be) or it searches every searchable field individually (<code>attr_title_t:(*:*)</code>, <code>attr_title_s:(*:*)</code>, etc, etc, for all searchable fields). All the &lsquo;searchable&rsquo; fields are by default added to the <code>ezf_df_text</code> field, so you should really do yourself a favor and search just one field, it is a noticable speed improvement, especially in large systems.</p>
 
 <p>In Part 2 I will talk about how to better optimize the Solr <code>schema.xml</code> file using the <code>ezf_df_text</code> field.</p>
 ]]></content>

@@ -114,7 +114,7 @@
 <!--more-->
 
 
-<p>First, the <code>.gitignore</code> file. We can add as my <code>.gitignore</code> files as we need. You can place these files in any directory you want tracked that wouldn&#8217;t be already (technically you can put them anywhere you want and have as many as you want, but don&#8217;t go excessive). <code>.gitignore</code> files are technically the preferred way to go about tracking empty directories because these files are actually read by git. The <code>.gitignore</code> file structure is pretty simple, for defining how to ignore the contents of the logs file you just need to tell git the relative path (relative to the path of the <code>.gitignore</code> file).
+<p>First, the <code>.gitignore</code> file. We can add as my <code>.gitignore</code> files as we need. You can place these files in any directory you want tracked that wouldn&rsquo;t be already (technically you can put them anywhere you want and have as many as you want, but don&rsquo;t go excessive). <code>.gitignore</code> files are technically the preferred way to go about tracking empty directories because these files are actually read by git. The <code>.gitignore</code> file structure is pretty simple, for defining how to ignore the contents of the logs file you just need to tell git the relative path (relative to the path of the <code>.gitignore</code> file).
 <code>.gitignore</code> file:</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -133,7 +133,7 @@
 
 <p>So, as you can see this is pretty simple, but I think that multiple <code>.gitignore</code> files can become confusing.</p>
 
-<p>Second, the <code>.gitkeep</code> file. This is a git hack that was first adopted by the Rails community. <code>.gitkeep</code> files are not an official file recognized by git. That said, because they start with a <code>'.'</code> they will be a hidden file in any system as well as have it&#8217;s changes tracked by git. Technically our file name could be <code>.foobar</code> and it would still work. The reason I like the <code>.gitkeep</code> files is because it&#8217;s purpose is directly implied by the name of the file (keep the directory in git even if it&#8217;s directory is empty). Another reason I like the use of <code>.gitkeep</code> files over <code>.gitignore</code> is I like to keep all ignored files in one spot, it can be hard to track what is ignored if there are multiple <code>.gitignore</code> files at work in a system.
+<p>Second, the <code>.gitkeep</code> file. This is a git hack that was first adopted by the Rails community. <code>.gitkeep</code> files are not an official file recognized by git. That said, because they start with a <code>'.'</code> they will be a hidden file in any system as well as have it&rsquo;s changes tracked by git. Technically our file name could be <code>.foobar</code> and it would still work. The reason I like the <code>.gitkeep</code> files is because it&rsquo;s purpose is directly implied by the name of the file (keep the directory in git even if it&rsquo;s directory is empty). Another reason I like the use of <code>.gitkeep</code> files over <code>.gitignore</code> is I like to keep all ignored files in one spot, it can be hard to track what is ignored if there are multiple <code>.gitignore</code> files at work in a system.
 The <code>.gitkeep</code> file at work:</p>
 
 <div class="pull-right"><img src="https://s3.amazonaws.com/hs_blog_content/images/gitkeep.png" alt="" title="gitkeep" width="283" height="132" class="alignnone size-full wp-image-206" /></div>
@@ -176,7 +176,7 @@ The <code>.gitkeep</code> file at work:</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://harmssite.com/2012/08/gitignore-vs-gitkeep/" data-via="harmstyler" data-counturl="http://harmssite.com/2012/08/gitignore-vs-gitkeep/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://harmssite.com/2012/08/gitignore-vs-gitkeep/" data-via="harmstyler" data-counturl="http://harmssite.com/2012/08/gitignore-vs-gitkeep/" >Tweet</a>
   
   
   
@@ -188,7 +188,7 @@ The <code>.gitkeep</code> file at work:</p>
         <a class="basic-alignment left" href="/2012/06/ez-publish-with-sublime/" title="Previous Post: EZ Publish with Sublime">&laquo; EZ Publish with Sublime</a>
       
       
-        <a class="basic-alignment right" href="/2012/08/optimizing-solr-to-fit-your-needs-part-1/" title="Next Post: Optimizing Solr to fit your needs Part 1">Optimizing Solr to fit your needs Part 1 &raquo;</a>
+        <a class="basic-alignment right" href="/2012/08/gitignore-vs-gitkeep/" title="Next Post: Multiple .gitignore files versus .gitkeep files">Multiple .gitignore files versus .gitkeep files &raquo;</a>
       
     </p>
   </footer>
@@ -269,7 +269,7 @@ The <code>.gitkeep</code> file at work:</p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

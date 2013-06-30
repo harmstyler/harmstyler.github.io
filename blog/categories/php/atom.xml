@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PHP | HarmsSite]]></title>
   <link href="http://harmssite.com/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-06-29T20:13:25-05:00</updated>
+  <updated>2013-06-29T20:22:00-05:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -18,7 +18,7 @@
     <link href="http://harmssite.com/2013/04/symfony2-coding-standards/"/>
     <updated>2013-04-30T13:30:00-05:00</updated>
     <id>http://harmssite.com/2013/04/symfony2-coding-standards</id>
-    <content type="html"><![CDATA[<p>With eZ Publish moving to Symfony2, I found that I was in need of learning some new coding standards. I never really looked into PHP CodeSniffer while doing eZ Publish development (most of my code was in the templates), so I never really thought about PHP CodeSniffer as an option until starting work with Symphony2. To the point, I just wanted to share the <a href="https://github.com/opensky/Symfony2-coding-standard">Symfony2 PHP CodeSniffer Coding Standard on Github</a>. It is really easy to install and because phpcs works with PHPStorm and Sublime Text 2, sniffing out php files couldn't be easier.</p>
+    <content type="html"><![CDATA[<p>With eZ Publish moving to Symfony2, I found that I was in need of learning some new coding standards. I never really looked into PHP CodeSniffer while doing eZ Publish development (most of my code was in the templates), so I never really thought about PHP CodeSniffer as an option until starting work with Symphony2. To the point, I just wanted to share the <a href="https://github.com/opensky/Symfony2-coding-standard">Symfony2 PHP CodeSniffer Coding Standard on Github</a>. It is really easy to install and because phpcs works with PHPStorm and Sublime Text 2, sniffing out php files couldn&rsquo;t be easier.</p>
 ]]></content>
   </entry>
   
@@ -27,9 +27,9 @@
     <link href="http://harmssite.com/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/"/>
     <updated>2013-03-15T00:00:00-05:00</updated>
     <id>http://harmssite.com/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost</id>
-    <content type="html"><![CDATA[<p style="text-align:center;">This post is a repost of an article I wrote for <a title="Web and PHP Magazine" href="http://webandphp.com/" target="_blank">Web and PHP Magazine</a>'s <a title="Web and PHP February Issue" href="http://webandphp.com/issue-11" target="_blank">February issue</a>.</p>
+    <content type="html"><![CDATA[<p style="text-align:center;">This post is a repost of an article I wrote for <a title="Web and PHP Magazine" href="http://webandphp.com/" target="_blank">Web and PHP Magazine</a>&rsquo;s <a title="Web and PHP February Issue" href="http://webandphp.com/issue-11" target="_blank">February issue</a>.</p>
 
-<h4>Solr has quickly become one of the most popular search engines available. Due to Solr's many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.</h4>
+<h4>Solr has quickly become one of the most popular search engines available. Due to Solr&rsquo;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.</h4>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Listing 1 </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -38,10 +38,10 @@
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
-</span><span class='line'><span class="err"> </span> <span class="err"> </span> <span class="nt">&quot;require&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class='line'><span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="nt">&quot;solarium/solarium&quot;</span><span class="p">:</span> <span class="s2">&quot;3.0.0&quot;</span>
+</span><span class='line'><span class="err"> </span> <span class="err"> </span> <span class="err">&amp;ldquo;require&amp;rdquo;:</span> <span class="err">{</span>
+</span><span class='line'><span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err">&amp;ldquo;solarium/solarium&amp;rdquo;:</span> <span class="err">&amp;ldquo;3.0.0&amp;rdquo;</span>
 </span><span class='line'><span class="err"> </span> <span class="err"> </span> <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="err">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 <div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Listing 2 </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -61,9 +61,9 @@
 <span class='line-number'>15</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php</span>
 </span><span class='line'><span class="x">$config = array(</span>
-</span><span class='line'><span class="x">    &#39;endpoint&#39; =&gt; array(</span>
-</span><span class='line'><span class="x">        &#39;localhost&#39; =&gt; array(</span>
-</span><span class='line'><span class="x">            &#39;host&#39; =&gt; &#39;127.0.0.1&#39;, &#39;port&#39; =&gt; &#39;8983&#39;, &#39;path&#39; =&gt; &#39;/solr/&#39;&lt;/p&gt;</span>
+</span><span class='line'><span class="x">    &amp;lsquo;endpoint&amp;rsquo; =&gt; array(</span>
+</span><span class='line'><span class="x">        &amp;lsquo;localhost&amp;rsquo; =&gt; array(</span>
+</span><span class='line'><span class="x">            &amp;lsquo;host&amp;rsquo; =&gt; &amp;lsquo;127.0.0.1&amp;rsquo;, &amp;lsquo;port&amp;rsquo; =&gt; &amp;lsquo;8983&amp;rsquo;, &amp;lsquo;path&amp;rsquo; =&gt; &amp;lsquo;/solr/&amp;rsquo;&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;    )</span>
 </span><span class='line'><span class="x">)</span>
@@ -118,14 +118,14 @@ With the newly created <code>$doc</code>, begin adding content to Solr fields as
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$doc1-&gt;id = 123;</span>
-</span><span class='line'><span class="x">$doc1-&gt;name = &#39;First Document&#39;;</span>
-</span><span class='line'><span class="x">$doc1-&gt;text = &#39;This is the first document\&#39;s content&#39;;&lt;/p&gt;</span>
+</span><span class='line'><span class="x">$doc1-&gt;name = &amp;lsquo;First Document&amp;rsquo;;</span>
+</span><span class='line'><span class="x">$doc1-&gt;text = &amp;lsquo;This is the first document\&amp;rsquo;s content&amp;rsquo;;&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;p&gt;// Create another doc</span>
 </span><span class='line'><span class="x">$doc2 = $update-&gt;createDocument();</span>
 </span><span class='line'><span class="x">$doc2-&gt;id = 234;</span>
-</span><span class='line'><span class="x">$doc2-&gt;name = &#39;Next Document&#39;;</span>
-</span><span class='line'><span class="x">$doc2-&gt;text = &#39;This is the next document\&#39;s content&#39;;</span>
+</span><span class='line'><span class="x">$doc2-&gt;name = &amp;lsquo;Next Document&amp;rsquo;;</span>
+</span><span class='line'><span class="x">$doc2-&gt;text = &amp;lsquo;This is the next document\&amp;rsquo;s content&amp;rsquo;;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 In this example, the Solr schema would have to be set up to accept the id, name and text fields. Solr ships with an example search app with a good demo of a Solr schema; each field will need to be added to the schema in order for Solr to add the docs to the search index (Listing 3). Next, add each <code>$doc</code> created to an array so that <code>addDocuments()</code> can be called on the array. This will run the Solr add command for every document in the array:
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -147,7 +147,7 @@ The new docs should now exist and be searchable using Solr.</p>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query = $client=&gt;createSelect();&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;p&gt;// &lt;em&gt;:&lt;/em&gt; is equivalent to telling solr to return all docs</span>
-</span><span class='line'><span class="x">$query-&gt;setQuery(&#39;&lt;em&gt;:&lt;/em&gt;&#39;);</span>
+</span><span class='line'><span class="x">$query-&gt;setQuery(&amp;lsquo;&lt;em&gt;:&lt;/em&gt;&amp;rsquo;);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 Because the <code>createSelect()</code> function is being used to generate the query, the <code>select()</code> function should be used when executing the query:
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -166,7 +166,7 @@ Use the $resultSet array to iterate over the array and display the results:
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">echo &#39;&lt;div class=&quot;search-results&quot;&gt;&#39;;</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">echo &amp;lsquo;&lt;div class=&quot;search-results&quot;&gt;&amp;rsquo;;</span>
 </span><span class='line'><span class="x">foreach ($resultSet as $result) {&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;echo &#39;&amp;lt;div class=&quot;search-result&quot;&amp;gt;&#39;;</span>
@@ -177,15 +177,15 @@ Use the $resultSet array to iterate over the array and display the results:
 </span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;p&gt;}</span>
-</span><span class='line'><span class="x">echo &#39;&lt;/div&gt;&#39;;</span>
+</span><span class='line'><span class="x">echo &amp;lsquo;&lt;/div&gt;&amp;rsquo;;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 The <code>$resultSet</code> can also be refined. Setting up pagination, for instance, is very easy:
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query-&gt;setStart(0)-&gt;setRows(10);</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query-&gt;setStart(0)&amp;ndash;&gt;setRows(10);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 Sorting is also very easy (note that Solr will sort by score if no sort is set):
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query-&gt;addSort(&#39;name&#39;, Select::SORT_ASC);</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query-&gt;addSort(&amp;lsquo;name&amp;rsquo;, Select::SORT_ASC);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 Filtering, setting query fields, boosting, and faceting are also possible ways of searching Solr. Filtering is another way of narrowing search results without using a query. Query fields allow for control over what fields are searched. Boosting gives certain field’s higher precedence in the Search. Facets give users a way to better navigate search results. Solarium gives easy access to all the various ways of searching Solr content.</p>
 
@@ -207,7 +207,7 @@ Deleting by query, however, can be incredibly powerful and useful. When starting
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$update-&gt;addDeleteQuery(&#39;name:test&lt;em&gt;&#39;);</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$update-&gt;addDeleteQuery(&amp;lsquo;name:test&lt;em&gt;&amp;rsquo;);</span>
 </span><span class='line'><span class="x">$update-&gt;addCommit();</span>
 </span><span class='line'><span class="x">$client-&gt;update($update);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -215,7 +215,7 @@ Another common practice is to wipe the index and start fresh. Using delete by qu
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$update-&gt;addDeleteQuery(&#39;&lt;/em&gt;:*&#39;);</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$update-&gt;addDeleteQuery(&amp;lsquo;&lt;/em&gt;:*&amp;rsquo;);</span>
 </span><span class='line'><span class="x">$update-&gt;addCommit();</span>
 </span><span class='line'><span class="x">$client-&gt;update($update);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -228,8 +228,8 @@ Solarium’s delete doc API is very useful in maintaining an up-to-date search i
 <h4>References</h4>
 
 <ol>
-<li>Apache Solr: http://projects.apache.org/projects/solr.html</li>
-<li>The Solarium Project: http://www.solarium-project.org/</li>
+<li>Apache Solr: <a href="http://projects.apache.org/projects/solr.html">http://projects.apache.org/projects/solr.html</a></li>
+<li>The Solarium Project: <a href="http://www.solarium-project.org/">http://www.solarium-project.org/</a></li>
 </ol>
 
 ]]></content>

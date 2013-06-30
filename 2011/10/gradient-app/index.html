@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out &hellip;">
+  <meta name="description" content="[caption id=&#8221;attachment_44&#8221; align=&#8221;alignright&#8221; width=&#8221;117&#8221; caption=&#8221;Gradient App&#8221;][/caption]I am well &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,36 +104,23 @@
   </header>
 
 
-<div class="entry-content"><div class="pull-right"><a href="https://s3.amazonaws.com/hs_blog_content/images/gradient-app.png"><img src="https://s3.amazonaws.com/hs_blog_content/images/small/gradient-app-117x300.png" alt="Gradient App" title="gradient-app" width="117" height="300" /></a></div>
+<div class="entry-content">[caption id=&#8221;attachment_44&#8221; align=&#8221;alignright&#8221; width=&#8221;117&#8221; caption=&#8221;Gradient App&#8221;]<a href="http://harmssite.com/wp-content/uploads/2011/10/gradient-app.png"><img src="http://harmssite.com/wp-content/uploads/2011/10/gradient-app-117x300.png" alt="Gradient App" title="gradient-app" width="117" height="300" class="size-medium wp-image-44" /></a>[/caption]I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out gradients is easy enough, get your start color and your end color and then plug them into all the various browser specific gradient css elements (webkit, moz, etc&#8230;) and you get a gradient. Like I said, simple enough but time consuming because each browser gets its own line. 
 
+<a href="http://www.gradientapp.com/" title="Gradient App" target="_blank">Gradient App</a> makes life much simpler. As a Gradient App user all I have to do use the color picker, or manually enter my colors, then just choose my gradient direction and any other options I would be interested in! Gradient App then gives me the CSS code to use, again, making my life much easier.
 
-<p>I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out gradients is easy enough, get your start color and your end color and then plug them into all the various browser specific gradient css elements (webkit, moz, etc&#8230;) and you get a gradient. Like I said, simple enough but time consuming because each browser gets its own line.</p>
+Sample Gradient Code:
+<blockquote>background-color: #69aece;
+background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(105, 174, 206)), to(rgb(201, 97, 103)));
+background-image: -webkit-linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
+background-image: -moz-linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
+background-image: -o-linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
+background-image: -ms-linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
+background-image: linear-gradient(top, rgb(105, 174, 206), rgb(201, 97, 103));
+filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=&#8217;#69aece&#8217;, EndColorStr=&#8217;#c96167&#8217;);</blockquote>
 
-<p><a href="http://www.gradientapp.com/" title="Gradient App" target="_blank">Gradient App</a> makes life much simpler. As a Gradient App user all I have to do use the color picker, or manually enter my colors, then just choose my gradient direction and any other options I would be interested in! Gradient App then gives me the CSS code to use, again, making my life much easier.</p>
+Obviously, looking at the above code, simple gradients are fairly straight forward. Remember to cover all your browsers (the filter is for Internet Explorer versions older than IE10 as they do not recognize gradients). Also obvious, making your own gradients can be a bit tedious, which is why I used Gradient App to make the code you see above.
 
-<figure class='code'><figcaption><span>Sample Gradient Code </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">background-color</span><span class="o">:</span> <span class="nf">#69aece</span><span class="o">;</span>
-</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-webkit-gradient</span><span class="o">(</span><span class="nt">linear</span><span class="o">,</span> <span class="nt">left</span> <span class="nt">top</span><span class="o">,</span> <span class="nt">left</span> <span class="nt">bottom</span><span class="o">,</span> <span class="nt">from</span><span class="o">(</span><span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">)),</span> <span class="nt">to</span><span class="o">(</span><span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">)));</span>
-</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-webkit-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
-</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-moz-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
-</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-o-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
-</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-ms-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
-</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
-</span><span class='line'><span class="nt">filter</span><span class="o">:</span> <span class="nt">progid</span><span class="nd">:DXImageTransform</span><span class="nc">.Microsoft.gradient</span><span class="o">(</span><span class="nt">startColorStr</span><span class="o">=</span><span class="s1">&#39;#69aece&#39;</span><span class="o">,</span> <span class="nt">EndColorStr</span><span class="o">=</span><span class="s1">&#39;#c96167&#39;</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Obviously, looking at the above code, simple gradients are fairly straight forward. Remember to cover all your browsers (the filter is for Internet Explorer versions older than IE10 as they do not recognize gradients). Also obvious, making your own gradients can be a bit tedious, which is why I used Gradient App to make the code you see above.</p>
-
-<p>Get Gradient App here: <a href="http://www.gradientapp.com/" title="Gradient App">http://www.gradientapp.com/</a></p>
+Get Gradient App here: <a href="http://www.gradientapp.com/" title="Gradient App">http://www.gradientapp.com/</a>
 </div>
 
 
@@ -159,18 +146,12 @@
 <time datetime="2011-10-20T00:00:00-05:00" pubdate data-updated="true">Oct 20<span>th</span>, 2011</time>
       
 
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/css/'>CSS</a>, <a class='category' href='/blog/categories/development/'>Development</a>, <a class='category' href='/blog/categories/technology/'>Technology</a>
-  
-</span>
-
 
     </p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://harmssite.com/2011/10/gradient-app/" data-via="harmstyler" data-counturl="http://harmssite.com/2011/10/gradient-app/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://harmssite.com/2011/10/gradient-app/" data-via="harmstyler" data-counturl="http://harmssite.com/2011/10/gradient-app/" >Tweet</a>
   
   
   
@@ -182,7 +163,7 @@
         <a class="basic-alignment left" href="/2011/08/path-to-android/" title="Previous Post: Path to Android!">&laquo; Path to Android!</a>
       
       
-        <a class="basic-alignment right" href="/2012/01/scraping-a-page-with-php/" title="Next Post: Scraping a page with php">Scraping a page with php &raquo;</a>
+        <a class="basic-alignment right" href="/2011/10/gradient-app/" title="Next Post: Gradient App">Gradient App &raquo;</a>
       
     </p>
   </footer>
@@ -263,7 +244,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

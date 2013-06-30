@@ -104,7 +104,7 @@
   </header>
 
 
-<div class="entry-content"><p>I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. <strong>The Problem</strong>: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&#8217;s speed; let Solr do the work). Now, the book I was using, <a title="Apache Solr Enterprise Search Server" href="http://www.packtpub.com/apache-solr-3-enterprise-search-server/book" target="_blank">Apache Solr Enterprise Search Server</a>, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the <code>SynonymFilterFactory</code>. So for starters lets look at the fieldType:</p>
+<div class="entry-content"><p>I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. <strong>The Problem</strong>: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&rsquo;s speed; let Solr do the work). Now, the book I was using, <a title="Apache Solr Enterprise Search Server" href="http://www.packtpub.com/apache-solr-3-enterprise-search-server/book" target="_blank">Apache Solr Enterprise Search Server</a>, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the <code>SynonymFilterFactory</code>. So for starters lets look at the fieldType:</p>
 
 <figure class='code'><figcaption><span>schema.xml </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -221,7 +221,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://harmssite.com/2012/02/solr-buckets/" data-via="harmstyler" data-counturl="http://harmssite.com/2012/02/solr-buckets/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://harmssite.com/2012/02/solr-buckets/" data-via="harmstyler" data-counturl="http://harmssite.com/2012/02/solr-buckets/" >Tweet</a>
   
   
   
@@ -233,7 +233,7 @@
         <a class="basic-alignment left" href="/2012/02/tylers-weekly-update-for-2012-02-24-2/" title="Previous Post: Tyler's Weekly Update for 2012-02-24">&laquo; Tyler's Weekly Update for 2012-02-24</a>
       
       
-        <a class="basic-alignment right" href="/2012/03/tylers-weekly-update-for-2012-03-02-2/" title="Next Post: Tyler's Weekly Update for 2012-03-02">Tyler's Weekly Update for 2012-03-02 &raquo;</a>
+        <a class="basic-alignment right" href="/2012/02/solr-buckets/" title="Next Post: Solr Buckets">Solr Buckets &raquo;</a>
       
     </p>
   </footer>
@@ -314,7 +314,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

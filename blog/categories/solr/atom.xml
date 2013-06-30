@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Solr | HarmsSite]]></title>
   <link href="http://harmssite.com/blog/categories/solr/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-06-29T20:13:25-05:00</updated>
+  <updated>2013-06-29T20:22:00-05:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -18,9 +18,9 @@
     <link href="http://harmssite.com/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/"/>
     <updated>2013-03-15T00:00:00-05:00</updated>
     <id>http://harmssite.com/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost</id>
-    <content type="html"><![CDATA[<p style="text-align:center;">This post is a repost of an article I wrote for <a title="Web and PHP Magazine" href="http://webandphp.com/" target="_blank">Web and PHP Magazine</a>'s <a title="Web and PHP February Issue" href="http://webandphp.com/issue-11" target="_blank">February issue</a>.</p>
+    <content type="html"><![CDATA[<p style="text-align:center;">This post is a repost of an article I wrote for <a title="Web and PHP Magazine" href="http://webandphp.com/" target="_blank">Web and PHP Magazine</a>&rsquo;s <a title="Web and PHP February Issue" href="http://webandphp.com/issue-11" target="_blank">February issue</a>.</p>
 
-<h4>Solr has quickly become one of the most popular search engines available. Due to Solr's many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.</h4>
+<h4>Solr has quickly become one of the most popular search engines available. Due to Solr&rsquo;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.</h4>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Listing 1 </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -29,10 +29,10 @@
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
-</span><span class='line'><span class="err"> </span> <span class="err"> </span> <span class="nt">&quot;require&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class='line'><span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="nt">&quot;solarium/solarium&quot;</span><span class="p">:</span> <span class="s2">&quot;3.0.0&quot;</span>
+</span><span class='line'><span class="err"> </span> <span class="err"> </span> <span class="err">&amp;ldquo;require&amp;rdquo;:</span> <span class="err">{</span>
+</span><span class='line'><span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err">&amp;ldquo;solarium/solarium&amp;rdquo;:</span> <span class="err">&amp;ldquo;3.0.0&amp;rdquo;</span>
 </span><span class='line'><span class="err"> </span> <span class="err"> </span> <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="err">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 <div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Listing 2 </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -52,9 +52,9 @@
 <span class='line-number'>15</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php</span>
 </span><span class='line'><span class="x">$config = array(</span>
-</span><span class='line'><span class="x">    &#39;endpoint&#39; =&gt; array(</span>
-</span><span class='line'><span class="x">        &#39;localhost&#39; =&gt; array(</span>
-</span><span class='line'><span class="x">            &#39;host&#39; =&gt; &#39;127.0.0.1&#39;, &#39;port&#39; =&gt; &#39;8983&#39;, &#39;path&#39; =&gt; &#39;/solr/&#39;&lt;/p&gt;</span>
+</span><span class='line'><span class="x">    &amp;lsquo;endpoint&amp;rsquo; =&gt; array(</span>
+</span><span class='line'><span class="x">        &amp;lsquo;localhost&amp;rsquo; =&gt; array(</span>
+</span><span class='line'><span class="x">            &amp;lsquo;host&amp;rsquo; =&gt; &amp;lsquo;127.0.0.1&amp;rsquo;, &amp;lsquo;port&amp;rsquo; =&gt; &amp;lsquo;8983&amp;rsquo;, &amp;lsquo;path&amp;rsquo; =&gt; &amp;lsquo;/solr/&amp;rsquo;&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;    )</span>
 </span><span class='line'><span class="x">)</span>
@@ -109,14 +109,14 @@ With the newly created <code>$doc</code>, begin adding content to Solr fields as
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$doc1-&gt;id = 123;</span>
-</span><span class='line'><span class="x">$doc1-&gt;name = &#39;First Document&#39;;</span>
-</span><span class='line'><span class="x">$doc1-&gt;text = &#39;This is the first document\&#39;s content&#39;;&lt;/p&gt;</span>
+</span><span class='line'><span class="x">$doc1-&gt;name = &amp;lsquo;First Document&amp;rsquo;;</span>
+</span><span class='line'><span class="x">$doc1-&gt;text = &amp;lsquo;This is the first document\&amp;rsquo;s content&amp;rsquo;;&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;p&gt;// Create another doc</span>
 </span><span class='line'><span class="x">$doc2 = $update-&gt;createDocument();</span>
 </span><span class='line'><span class="x">$doc2-&gt;id = 234;</span>
-</span><span class='line'><span class="x">$doc2-&gt;name = &#39;Next Document&#39;;</span>
-</span><span class='line'><span class="x">$doc2-&gt;text = &#39;This is the next document\&#39;s content&#39;;</span>
+</span><span class='line'><span class="x">$doc2-&gt;name = &amp;lsquo;Next Document&amp;rsquo;;</span>
+</span><span class='line'><span class="x">$doc2-&gt;text = &amp;lsquo;This is the next document\&amp;rsquo;s content&amp;rsquo;;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 In this example, the Solr schema would have to be set up to accept the id, name and text fields. Solr ships with an example search app with a good demo of a Solr schema; each field will need to be added to the schema in order for Solr to add the docs to the search index (Listing 3). Next, add each <code>$doc</code> created to an array so that <code>addDocuments()</code> can be called on the array. This will run the Solr add command for every document in the array:
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -138,7 +138,7 @@ The new docs should now exist and be searchable using Solr.</p>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query = $client=&gt;createSelect();&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;p&gt;// &lt;em&gt;:&lt;/em&gt; is equivalent to telling solr to return all docs</span>
-</span><span class='line'><span class="x">$query-&gt;setQuery(&#39;&lt;em&gt;:&lt;/em&gt;&#39;);</span>
+</span><span class='line'><span class="x">$query-&gt;setQuery(&amp;lsquo;&lt;em&gt;:&lt;/em&gt;&amp;rsquo;);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 Because the <code>createSelect()</code> function is being used to generate the query, the <code>select()</code> function should be used when executing the query:
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -157,7 +157,7 @@ Use the $resultSet array to iterate over the array and display the results:
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">echo &#39;&lt;div class=&quot;search-results&quot;&gt;&#39;;</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">echo &amp;lsquo;&lt;div class=&quot;search-results&quot;&gt;&amp;rsquo;;</span>
 </span><span class='line'><span class="x">foreach ($resultSet as $result) {&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;echo &#39;&amp;lt;div class=&quot;search-result&quot;&amp;gt;&#39;;</span>
@@ -168,15 +168,15 @@ Use the $resultSet array to iterate over the array and display the results:
 </span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;p&gt;}</span>
-</span><span class='line'><span class="x">echo &#39;&lt;/div&gt;&#39;;</span>
+</span><span class='line'><span class="x">echo &amp;lsquo;&lt;/div&gt;&amp;rsquo;;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 The <code>$resultSet</code> can also be refined. Setting up pagination, for instance, is very easy:
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query-&gt;setStart(0)-&gt;setRows(10);</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query-&gt;setStart(0)&amp;ndash;&gt;setRows(10);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 Sorting is also very easy (note that Solr will sort by score if no sort is set):
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query-&gt;addSort(&#39;name&#39;, Select::SORT_ASC);</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query-&gt;addSort(&amp;lsquo;name&amp;rsquo;, Select::SORT_ASC);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 Filtering, setting query fields, boosting, and faceting are also possible ways of searching Solr. Filtering is another way of narrowing search results without using a query. Query fields allow for control over what fields are searched. Boosting gives certain field’s higher precedence in the Search. Facets give users a way to better navigate search results. Solarium gives easy access to all the various ways of searching Solr content.</p>
 
@@ -198,7 +198,7 @@ Deleting by query, however, can be incredibly powerful and useful. When starting
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$update-&gt;addDeleteQuery(&#39;name:test&lt;em&gt;&#39;);</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$update-&gt;addDeleteQuery(&amp;lsquo;name:test&lt;em&gt;&amp;rsquo;);</span>
 </span><span class='line'><span class="x">$update-&gt;addCommit();</span>
 </span><span class='line'><span class="x">$client-&gt;update($update);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -206,7 +206,7 @@ Another common practice is to wipe the index and start fresh. Using delete by qu
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$update-&gt;addDeleteQuery(&#39;&lt;/em&gt;:*&#39;);</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$update-&gt;addDeleteQuery(&amp;lsquo;&lt;/em&gt;:*&amp;rsquo;);</span>
 </span><span class='line'><span class="x">$update-&gt;addCommit();</span>
 </span><span class='line'><span class="x">$client-&gt;update($update);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
@@ -219,8 +219,8 @@ Solarium’s delete doc API is very useful in maintaining an up-to-date search i
 <h4>References</h4>
 
 <ol>
-<li>Apache Solr: http://projects.apache.org/projects/solr.html</li>
-<li>The Solarium Project: http://www.solarium-project.org/</li>
+<li>Apache Solr: <a href="http://projects.apache.org/projects/solr.html">http://projects.apache.org/projects/solr.html</a></li>
+<li>The Solarium Project: <a href="http://www.solarium-project.org/">http://www.solarium-project.org/</a></li>
 </ol>
 
 ]]></content>
@@ -242,7 +242,7 @@ Solarium’s delete doc API is very useful in maintaining an up-to-date search i
 </span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_t&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
 </span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_s&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
-A copyField will take any field you tell it to and <em>copy it</em> into another field. The code above is what ships with eZ Find, every single <code>*_lk</code> (lckeyword), <code>*_k</code> (keyword), <code>*_t</code> (text), and <code>*_s</code> (string) is added to the <code>ezf_df_text</code> field. For obvious reasons the average installation probably doesn't need every piece of content searchable. The first step is to <strong>delete the default copyFields</strong> (e.g. your site users probably shouldn't be searched by default).</p>
+A copyField will take any field you tell it to and <em>copy it</em> into another field. The code above is what ships with eZ Find, every single <code>*_lk</code> (lckeyword), <code>*_k</code> (keyword), <code>*_t</code> (text), and <code>*_s</code> (string) is added to the <code>ezf_df_text</code> field. For obvious reasons the average installation probably doesn&rsquo;t need every piece of content searchable. The first step is to <strong>delete the default copyFields</strong> (e.g. your site users probably shouldn&rsquo;t be searched by default).</p>
 
 <!--more-->
 
@@ -252,7 +252,7 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
 <p>Remember, this can offer major speed improvements in your searches, especially if you are managing a large amount of content. There are still other optimizations (stored/not stored, indexed/not indexed, term vectors, etc), but that is for another time.</p>
 
 <p>Finally, I did submit a pull request to the eZ Find project. It adds a new search parameter allowing users to declare custom search fields.
-<a href="http://bit.ly/Vp98IU">https://github.com/ezsystems/ezfind/pull/93</a></p>
+<a href="http://bit.ly/Vp98IU"><a href="https://github.com/ezsystems/ezfind/pull/93">https://github.com/ezsystems/ezfind/pull/93</a></a></p>
 ]]></content>
   </entry>
   
@@ -264,9 +264,9 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
     <content type="html"><![CDATA[<div class="pull-right"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="https://s3.amazonaws.com/hs_blog_content/images/Solr-logo.png" alt="Solr logo" width="283" height="156" /></div>
 
 
-<p>Let me start by saying that eZ Find is a fantastic implementation of <a class="zem_slink" title="Apache Solr" href="http://lucene.apache.org/solr/" rel="homepage" target="_blank">Solr</a> functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an <a class="zem_slink" title="EZ Publish" href="http://ez.no/" rel="homepage" target="_blank">eZ Publish</a> keyword and know that it should thereby be a Solr keyword, again, all out of the box. There are however some serious limitations when it comes time to customize it to meet your system's needs. Do not underestimate the power found in customizing Solr to meet your website's needs. The default setup is great, it's made to fit into any system with very little effort; but, just because it's made to fit in any system does not mean that it should be used for every system.</p>
+<p>Let me start by saying that eZ Find is a fantastic implementation of <a class="zem_slink" title="Apache Solr" href="http://lucene.apache.org/solr/" rel="homepage" target="_blank">Solr</a> functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an <a class="zem_slink" title="EZ Publish" href="http://ez.no/" rel="homepage" target="_blank">eZ Publish</a> keyword and know that it should thereby be a Solr keyword, again, all out of the box. There are however some serious limitations when it comes time to customize it to meet your system&rsquo;s needs. Do not underestimate the power found in customizing Solr to meet your website&rsquo;s needs. The default setup is great, it&rsquo;s made to fit into any system with very little effort; but, just because it&rsquo;s made to fit in any system does not mean that it should be used for every system.</p>
 
-<p>One of the best things we could have ever done for a large Solr install was to customize a default search field. You might say, "But eZ Find already creates a default search field for you." And you'd be right.
+<p>One of the best things we could have ever done for a large Solr install was to customize a default search field. You might say, &ldquo;But eZ Find already creates a default search field for you.&rdquo; And you&rsquo;d be right.
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -281,9 +281,9 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
 </span><span class='line'><span class="nt">&lt;p&gt;&lt;defaultSearchField&gt;</span>ezf_df_text<span class="nt">&lt;/defaultSearchField&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>The thing that the default search field in eZ Find does not do, however, is get used. There is no way in eZ Find to tell it to search just one field (at least as far as I know). I did some testing in our environment, these numbers will change from system to system, but in our's each search took almost 10 times as long to search all fields individually vs searching just 1 field. We gave eZ Find the option to search one given field, if defined, and it vastly improved our search experience.</p>
+<p>The thing that the default search field in eZ Find does not do, however, is get used. There is no way in eZ Find to tell it to search just one field (at least as far as I know). I did some testing in our environment, these numbers will change from system to system, but in our&rsquo;s each search took almost 10 times as long to search all fields individually vs searching just 1 field. We gave eZ Find the option to search one given field, if defined, and it vastly improved our search experience.</p>
 
-<p>eZ Find by default looks at all 'searchable' fields and adds them to either the <a title="qf" href="http://wiki.apache.org/solr/DisMaxQParserPlugin#qf_.28Query_Fields.29"><code>qf</code></a> (if you are using the dismax search like you should be) or it searches every searchable field individually (<code>attr_title_t:(*:*)</code>, <code>attr_title_s:(*:*)</code>, etc, etc, for all searchable fields). All the 'searchable' fields are by default added to the <code>ezf_df_text</code> field, so you should really do yourself a favor and search just one field, it is a noticable speed improvement, especially in large systems.</p>
+<p>eZ Find by default looks at all &lsquo;searchable&rsquo; fields and adds them to either the <a title="qf" href="http://wiki.apache.org/solr/DisMaxQParserPlugin#qf_.28Query_Fields.29"><code>qf</code></a> (if you are using the dismax search like you should be) or it searches every searchable field individually (<code>attr_title_t:(*:*)</code>, <code>attr_title_s:(*:*)</code>, etc, etc, for all searchable fields). All the &lsquo;searchable&rsquo; fields are by default added to the <code>ezf_df_text</code> field, so you should really do yourself a favor and search just one field, it is a noticable speed improvement, especially in large systems.</p>
 
 <p>In Part 2 I will talk about how to better optimize the Solr <code>schema.xml</code> file using the <code>ezf_df_text</code> field.</p>
 ]]></content>
@@ -336,11 +336,11 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
 </span><span class='line'>
 </span><span class='line'><span class="err">&lt;h1&gt;Shards[]&lt;/h1&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="na">&lt;h1&gt;Shards[eng-GB]</span><span class="o">=</span><span class="s">http://localhost:8983/solr/eng-GB&lt;/h1&gt;</span>
+</span><span class='line'><span class="na">&lt;h1&gt;Shards[eng-GB]</span><span class="o">=</span><span class="s">&lt;a href=&quot;http://localhost:8983/solr/eng-GB&quot;&gt;http://localhost:8983/solr/eng-GB&lt;/a&gt;&lt;/h1&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="na">&lt;h1&gt;Shards[fre-FR]</span><span class="o">=</span><span class="s">http://localhost:8983/solr/fre-FR&lt;/h1&gt;</span>
+</span><span class='line'><span class="na">&lt;h1&gt;Shards[fre-FR]</span><span class="o">=</span><span class="s">&lt;a href=&quot;http://localhost:8983/solr/fre-FR&quot;&gt;http://localhost:8983/solr/fre-FR&lt;/a&gt;&lt;/h1&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="na">&lt;h1&gt;Shards[myforeignindex]</span><span class="o">=</span><span class="s">http://myotherhost:8983/solr&lt;/h1&gt;</span>
+</span><span class='line'><span class="na">&lt;h1&gt;Shards[myforeignindex]</span><span class="o">=</span><span class="s">&lt;a href=&quot;http://myotherhost:8983/solr&quot;&gt;http://myotherhost:8983/solr&lt;/a&gt;&lt;/h1&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="err">&lt;p&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
@@ -365,7 +365,7 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="ni">&amp;lt;</span>?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="ni">&amp;lt;</span>?xml version=<span class="ni">&amp;ldquo;</span>1.0<span class="ni">&amp;rdquo;</span> encoding=<span class="ni">&amp;ldquo;</span>UTF-8<span class="ni">&amp;rdquo;</span> ?&gt;
 </span><span class='line'><span class="nt">&lt;solr</span> <span class="na">persistent=</span><span class="s">&quot;true&quot;</span> <span class="na">sharedLib=</span><span class="s">&quot;lib&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;cores</span> <span class="na">adminPath=</span><span class="s">&quot;/admin/cores&quot;</span><span class="nt">&gt;&lt;/p&gt;</span>
 </span><span class='line'>
@@ -417,7 +417,7 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='smarty'><span class='line'><span class="cp">{</span><span class="nf">set</span> <span class="nv">$search</span><span class="o">=</span><span class="na">fetch</span><span class="o">(</span> <span class="s1">&#39;ezfind&#39;</span><span class="o">,</span> <span class="s1">&#39;search&#39;</span><span class="o">,&lt;/</span><span class="na">p</span><span class="o">&gt;</span>
+</pre></td><td class='code'><pre><code class='smarty'><span class='line'><span class="cp">{</span><span class="nf">set</span> <span class="nv">$search</span><span class="o">=</span><span class="na">fetch</span><span class="o">(</span> <span class="o">&amp;</span><span class="na">lsquo</span><span class="o">;</span><span class="na">ezfind</span><span class="o">&amp;</span><span class="na">rsquo</span><span class="o">;,</span> <span class="o">&amp;</span><span class="na">lsquo</span><span class="o">;</span><span class="na">search</span><span class="o">&amp;</span><span class="na">rsquo</span><span class="o">;,&lt;/</span><span class="na">p</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="na">pre</span><span class="o">&gt;&lt;</span><span class="na">code</span><span class="o">&gt;</span>                <span class="na">hash</span><span class="o">(</span> <span class="s1">&#39;query&#39;</span><span class="o">,</span> <span class="nv">$query</span><span class="o">,</span>
 </span><span class='line'>                      <span class="s1">&#39;sort_by&#39;</span><span class="o">,</span> <span class="nv">$sort_by</span><span class="o">,</span>

@@ -109,12 +109,12 @@
 <div class="pull-right"><img title="solr-dir" src="https://s3.amazonaws.com/hs_blog_content/images/solr-dir.png" alt="Solr Directory" width="300" height="186" /></div>
 
 
-<p>So, to start. Let&#8217;s assume that if you are reading this, you already read through my previous eZ Find tutorial (<a href="/2012/03/installing-ez-find/" title="Installing eZ Find">Installing eZ Find</a>). Since we already have our sever up and running there won&#8217;t be a lot of work to do there. But, we need to move our config files to the Solr multicore directory. Last time we used the Solr directory, this time we need to use the directory <code>solr.multicore</code>. Inside the multicore directory there are a couple of demo cores for languages. What I did is duplicated the english directory a couple times and renamed them for each site.</p>
+<p>So, to start. Let&rsquo;s assume that if you are reading this, you already read through my previous eZ Find tutorial (<a href="/2012/03/installing-ez-find/" title="Installing eZ Find">Installing eZ Find</a>). Since we already have our sever up and running there won&rsquo;t be a lot of work to do there. But, we need to move our config files to the Solr multicore directory. Last time we used the Solr directory, this time we need to use the directory <code>solr.multicore</code>. Inside the multicore directory there are a couple of demo cores for languages. What I did is duplicated the english directory a couple times and renamed them for each site.</p>
 
 <!--more-->
 
 
-<p>I think this is the time for a nice FYI. We can go about this next part in a couple of different ways. The way we choose depends on the desired consequence. So, ask yourself this question, &#8216;Do I want the siteaccesses to share content?&#8217; If you answered yes, you only need 1 core for you sites to share off of, if you answered no, then create a core for each site that you wish to keep separate from the others. Another note, this effect can also be achieved by adjusting an ini setting, but if you know you want your stuff separate, then create multiple cores, it is safer that way. The way I set mine up is I have 2 cores. 1 core has 3 siteaccess sharing content, the other has just 1 site on it (that way its index content will not get mixed by accident).</p>
+<p>I think this is the time for a nice FYI. We can go about this next part in a couple of different ways. The way we choose depends on the desired consequence. So, ask yourself this question, &lsquo;Do I want the siteaccesses to share content?&rsquo; If you answered yes, you only need 1 core for you sites to share off of, if you answered no, then create a core for each site that you wish to keep separate from the others. Another note, this effect can also be achieved by adjusting an ini setting, but if you know you want your stuff separate, then create multiple cores, it is safer that way. The way I set mine up is I have 2 cores. 1 core has 3 siteaccess sharing content, the other has just 1 site on it (that way its index content will not get mixed by accident).</p>
 
 <p>Now that we are using Solr in a multi-core environment, starting Solr is a bit different.</p>
 
@@ -147,9 +147,9 @@
 
 <p>Notice that I have the settings commented it out here. I set it in the siteaccess specific override files, and if it is not commented out it overrides my content. Remember, this setting only applies to content that shares a core, if the content is not sharing a core it will not be able to search the other installations.</p>
 
-<p>With this simple set of settings, we gain a lot of power over search. Combinations work here as well, if you don&#8217;t want to share the index, but want to search other available indexes, go for it.</p>
+<p>With this simple set of settings, we gain a lot of power over search. Combinations work here as well, if you don&rsquo;t want to share the index, but want to search other available indexes, go for it.</p>
 
-<p>Best of luck to you, if I missed something don&#8217;t be afraid to let me know. Also, if you have questions be sure to ask.</p>
+<p>Best of luck to you, if I missed something don&rsquo;t be afraid to let me know. Also, if you have questions be sure to ask.</p>
 </div>
 
 
@@ -186,7 +186,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://harmssite.com/2012/04/ez-find-multi-core/" data-via="harmstyler" data-counturl="http://harmssite.com/2012/04/ez-find-multi-core/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://harmssite.com/2012/04/ez-find-multi-core/" data-via="harmstyler" data-counturl="http://harmssite.com/2012/04/ez-find-multi-core/" >Tweet</a>
   
   
   
@@ -198,7 +198,7 @@
         <a class="basic-alignment left" href="/2012/04/clear-cache-in-ez-publish-ezpedia/" title="Previous Post: Clear Cache in eZ Publish - eZpedia">&laquo; Clear Cache in eZ Publish - eZpedia</a>
       
       
-        <a class="basic-alignment right" href="/2012/04/dogs-underwater/" title="Next Post: Dogs Underwater">Dogs Underwater &raquo;</a>
+        <a class="basic-alignment right" href="/2012/04/ez-find-multi-core/" title="Next Post: eZ Find Multi-Core">eZ Find Multi-Core &raquo;</a>
       
     </p>
   </footer>
@@ -288,7 +288,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

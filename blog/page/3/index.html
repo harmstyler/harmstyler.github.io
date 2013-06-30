@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in &hellip;">
+  <meta name="description" content="I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,7 +84,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2012/04/clear-cache-in-ez-publish-ezpedia/">Clear Cache in eZ Publish - eZpedia</a></h1>
+      <h1 class="entry-title"><a href="/2012/08/gitignore-vs-gitkeep/">Multiple .gitignore Files Versus .gitkeep Files</a></h1>
     
     
       <p class="meta">
@@ -100,114 +100,22 @@
   
 
 
-<time datetime="2012-04-12T00:00:00-05:00" pubdate data-updated="true">Apr 12<span>th</span>, 2012</time>
+<time datetime="2012-08-18T00:00:00-05:00" pubdate data-updated="true">Aug 18<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.</p>
+  <div class="entry-content"><a href="http://harmssite.com/wp-content/uploads/2012/08/Git.png"><img src="http://harmssite.com/wp-content/uploads/2012/08/Git.png" alt="" title="Git" width="110" height="46" class="alignright size-full wp-image-196" /></a>I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my friends who used svn have told me.
 
-<p><a href="http://www.ezpedia.org/solution/clear_cache_in_ez_publish">Clear Cache in eZ Publish / Solution / Root - eZpedia</a></p>
+The cool thing about git is that it tracks changes, not files or directories. When I create a new empty directory that directory is not tracked by git because it has no file changes inside, hence, the directory will never make it into git until I add a file to that directory. For this example I am going to use the logs directory of a&nbsp;virtual&nbsp;site. In my logs directory I have two files, an <code>error_log</code> and an <code>access_log</code>. Apache error logs and access logs should never be tracked by version control because they are logs that are specific to the given system the site is installed on. However, we should try to track the logs directory in version control. As hinted at before, we can do this in one of two ways.
 
-<p>My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /path/to/ezpublish;
-</span><span class='line'>rm -vrf var/cache;
-</span><span class='line'>rm -vrf var/ezwebin_site/cache</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>rm -vrf</code> is very scary to run (remove all?!?), but so long as you are doing this to the specified directory you should be safe (but be careful).</p>
 </div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/03/despite-bings-rise-google-still-dominates-search-infographic/">Despite Bings Rise, Google Still Dominates Search [INFOGRAPHIC]</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-26T00:00:00-05:00" pubdate data-updated="true">Mar 26<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Very interesting, Bing is on the rise but it appears to be at the expense of Yahoo! not Google.
-
-<a href="http://mashable.com/2012/03/26/search-stats-infographic/">Despite Bings Rise, Google Still Dominates Search [INFOGRAPHIC]</a>.
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/03/installing-ez-find/">Installing eZ Find</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-22T00:00:00-05:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class="pull-right"><a href="https://s3.amazonaws.com/hs_blog_content/images/ezfind-extension.png"><img class=" wp-image-90 alignright" title="ezfind-extension" src="https://s3.amazonaws.com/hs_blog_content/images/small/ezfind-extension-small.png" alt="eZ Find extension in finder" width="271" height="153" /></a></div>
-
-
-<p>Alright, so lets begin installing eZ Find by going out and downloading it from the Github => <a href="http://bit.ly/GEVOte" title="eZ Find on GitHub">https://github.com/ezsystems/ezfind</a>.
-eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#8221;ezfind,&#8221; and then move the <em>ezfind</em> folder to the <em>extensions</em> directory of your eZ Publish install.</p>
-
-<p>So, as with any extension, we have to activate it. Go into your override <code>site.ini.append.php</code> (settings/override/site.ini.append.php) and add ezfind to your active extension list (<code>ActiveExtensions[]=ezfind</code>). I added mine just after my main site extension. Easy enough so far right?<div class="pull-left"><a href="https://s3.amazonaws.com/hs_blog_content/images/solr-structure.png"><img title="solr-structure" src="https://s3.amazonaws.com/hs_blog_content/images/small/solr-structure-small.png" alt="Solr installed locally" width="179" height="301" /></a></div></p>
-
-<p>As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a <em>java</em> directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish install and rename the folder &#8220;Solr&#8221; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on one Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.</div>
   
   
     <footer>
-      <a rel="full-article" href="/2012/03/installing-ez-find/">Read on &rarr;</a>
+      <a rel="full-article" href="/2012/08/gitignore-vs-gitkeep/">Read on &rarr;</a>
     </footer>
   
 
@@ -219,7 +127,7 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
       
   <header>
     
-      <h1 class="entry-title"><a href="/2012/03/ez-find-basics/">eZ Find Basics</a></h1>
+      <h1 class="entry-title"><a href="/2012/08/gitignore-vs-gitkeep/">Multiple .gitignore Files Versus .gitkeep Files</a></h1>
     
     
       <p class="meta">
@@ -235,22 +143,63 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
   
 
 
-<time datetime="2012-03-19T00:00:00-05:00" pubdate data-updated="true">Mar 19<span>th</span>, 2012</time>
+<time datetime="2012-08-18T00:00:00-05:00" pubdate data-updated="true">Aug 18<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I have been thinking a long time about different topics I could use this blog for. I have settled for the moment on an eZ Publish extension that I have used extensively for a while, eZ Find. eZ Find is an ultra-powerful Solr powered search engine made for eZ Publish, authored by <a title="@paulborgermans" href="https://twitter.com/#!/paulborgermans" target="_blank">Paul Borgermans</a>.</p>
+  <div class="entry-content"><div class="pull-right"><img src="https://s3.amazonaws.com/hs_blog_content/images/Git_icon.png" alt="Git" title="Git" width="256" height="256" /></div>
 
-<p>For starters, an introduction to eZ Find &amp; Solr.</p>
 
-<p>Solr is an ultra-powerful search engine built in Java on top of the Apache Lucene project. It is highly scalable, just like eZ Publish, and can be adapted to work in almost any environment. eZ Find for instance uses a php interface with Solr to perform extremely fast and reliable searches.</p>
+<p>I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my friends who used svn have told me.</p>
 
-<p>eZ Find is a standalone extension that can be installed eZ Publish with great ease (my next post). eZ Find can be found in a couple of different places. First, on the <a title="eZ Publish 4.4 with Extensions" href="http://share.ez.no/downloads/downloads/ez-publish-community-project-4.4-fuji" target="_blank">eZ Publish Share</a> site. Unfortunatly the &#8220;free&#8221; stable version (2.3) is a little behind, it still uses Solr 1.4. I recommend downloading the extension from <a title="eZ Find on Github" href="https://github.com/ezsystems/ezfind" target="_blank">github</a>. Being open source the codebase gets updated often, even better it uses a more up to date version of Solr (3.1).</p>
+<p>The cool thing about git is that it tracks changes, not files or directories. When I create a new empty directory that directory is not tracked by git because it has no file changes inside, hence, the directory will never make it into git until I add a file to that directory. For this example I am going to use the logs directory of a virtual site. In my logs directory I have two files, an <code>error_log</code> and an <code>access_log</code>. Apache error logs and access logs should never be tracked by version control because they are logs that are specific to the given system the site is installed on. However, we should try to track the logs directory in version control. As hinted at before, we can do this in one of two ways.</p>
 
-<p>In conclusion, eZ Find is highly powerful and scalable. If you use eZ Publish I strongly suggest you look into eZ Find as an alternative search engine. Look forward to my next post about how to install eZ Find into your website.</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/08/gitignore-vs-gitkeep/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/06/ez-publish-with-sublime/">EZ Publish With Sublime</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-30T00:00:00-05:00" pubdate data-updated="true">Jun 30<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="pull-right"><img title="Sublime Text icon" src="https://s3.amazonaws.com/hs_blog_content/images/sublime_text_icon_2181-150x150.png" alt="Sublime Text icon" width="150" height="150" /></div>
+
+
+<p>A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/MHuK34" target="_blank">Sublime Text 2</a> and its&#8217; many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ. So what I decided to do was use the Smarty package as a template for adding more language support for eZ Publish. What I have is far from complete; I usually only add to it when I use a method that is not already supported. You can find it out on <a title="ez sublime on GitHub" href="http://bit.ly/N4eTcp" target="_blank">GitHub</a>. It is my hope that there are some eZ Publish devs out there that really enjoy Sublime as I do and want to help me grow the package. Remember, it is far from complete, but nonetheless, I really hope that you enjoy the language highlighting, and if you do feel free to contribute.</p>
 </div>
   
   
@@ -263,7 +212,7 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
       
   <header>
     
-      <h1 class="entry-title"><a href="/2012/03/tylers-weekly-update-for-2012-03-16-2/">Tyler&#8217;s Weekly Update for 2012-03-16</a></h1>
+      <h1 class="entry-title"><a href="/2012/06/ez-publish-with-sublime/">EZ Publish With Sublime</a></h1>
     
     
       <p class="meta">
@@ -279,33 +228,18 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
   
 
 
-<time datetime="2012-03-16T00:00:00-05:00" pubdate data-updated="true">Mar 16<span>th</span>, 2012</time>
+<time datetime="2012-06-30T00:00:00-05:00" pubdate data-updated="true">Jun 30<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><ul class="aktt_tweet_digest">
-	<li>“@adamsbaldwin: This Frickin&#039; Guy, Again? #<a href="http://search.twitter.com/search?q=%23BreathMintPlease" class="aktt_hashtag">BreathMintPlease</a>  ~ <a href="http://t.co/ezWyj8TT”" rel="nofollow">http://t.co/ezWyj8TT”</a> #<a href="http://search.twitter.com/search?q=%23Firefly" class="aktt_hashtag">Firefly</a> <a href="http://twitter.com/harmsy85/statuses/180380146434457600" class="aktt_tweet_time">#</a></li>
-	<li>I don&#039;t always test my code&#8230; <a href="http://t.co/Y1caSSbS" rel="nofollow">http://t.co/Y1caSSbS</a> <a href="http://twitter.com/harmsy85/statuses/180374826811260928" class="aktt_tweet_time">#</a></li>
-	<li>We have the craziest dog ever! (with Leah) [pic] — <a href="http://t.co/Vh6No9fq" rel="nofollow">http://t.co/Vh6No9fq</a> <a href="http://twitter.com/harmsy85/statuses/180072738818494464" class="aktt_tweet_time">#</a></li>
-	<li>How Real People Will Use Windows 8 - YouTube <a href="http://t.co/xgyaxmkr" rel="nofollow">http://t.co/xgyaxmkr</a> <a href="http://twitter.com/harmsy85/statuses/179957341121294340" class="aktt_tweet_time">#</a></li>
-	<li>Ex-Microsoft Employee Launches &#039;Fixing Windows 8&#039; Site <a href="http://t.co/Yf9rQ2YU" rel="nofollow">http://t.co/Yf9rQ2YU</a> <a href="http://twitter.com/harmsy85/statuses/179957129082441730" class="aktt_tweet_time">#</a></li>
-	<li>Happy Pie Day! 3.1415926535897932384 - <a href="http://t.co/gRi1ja5g" rel="nofollow">http://t.co/gRi1ja5g</a> <a href="http://twitter.com/harmsy85/statuses/179938072014757889" class="aktt_tweet_time">#</a></li>
-	<li>HAHA! Once again, GO YOTES! <a href="http://t.co/XVaAqweq" rel="nofollow">http://t.co/XVaAqweq</a> <a href="http://twitter.com/harmsy85/statuses/179696014222032897" class="aktt_tweet_time">#</a></li>
-	<li>Go Yotes! South Dakota State Jackrabbits Ladies Arch Applique Midweight Zip Hoodie - Royal Blue <a href="http://t.co/10ZEt4Nb" rel="nofollow">http://t.co/10ZEt4Nb</a> <a href="http://twitter.com/harmsy85/statuses/179695063364927489" class="aktt_tweet_time">#</a></li>
-	<li>Forget Titanic! Watch a Battleship go down in style! - <a href="http://t.co/7UxqS45i" rel="nofollow">http://t.co/7UxqS45i</a> <a href="http://twitter.com/harmsy85/statuses/179671258835849216" class="aktt_tweet_time">#</a></li>
-	<li>My wife&#039;s reminder that it is my day to bring soup. [pic] — <a href="http://t.co/S2Fn7X3n" rel="nofollow">http://t.co/S2Fn7X3n</a> <a href="http://twitter.com/harmsy85/statuses/179552837498441729" class="aktt_tweet_time">#</a></li>
-	<li>At the Addy&#039;s. (with @<a href="http://twitter.com/MrVilhauer" class="aktt_username">MrVilhauer</a>, Joe, and 4 others at @<a href="http://twitter.com/mysect" class="aktt_username">mysect</a>) [pic] — <a href="http://t.co/exUCLMT6" rel="nofollow">http://t.co/exUCLMT6</a> <a href="http://twitter.com/harmsy85/statuses/178661479401271297" class="aktt_tweet_time">#</a></li>
-	<li>Just watched a guy plunge 3 aero presses at once, so I made French press. (with Leah) <a href="http://twitter.com/harmsy85/statuses/178602774563532800" class="aktt_tweet_time">#</a></li>
-	<li>Next time they should point the helmet cam up a bit, still an awesome ride though! - <a href="http://t.co/CB1qhf4T" rel="nofollow">http://t.co/CB1qhf4T</a> <a href="http://twitter.com/harmsy85/statuses/178503941405933568" class="aktt_tweet_time">#</a></li>
-	<li>14-y-o Florida girl buys foreclosed house with money from Craigslist furniture-selling hobby - <a href="http://t.co/LnaF3PGD" rel="nofollow">http://t.co/LnaF3PGD</a> <a href="http://twitter.com/harmsy85/statuses/178495604392083457" class="aktt_tweet_time">#</a></li>
-	<li>New Challenger Video: Super 8 Film Of Space Shuttle Disaster Uncovered - <a href="http://t.co/mPP8MESK" rel="nofollow">http://t.co/mPP8MESK</a> <a href="http://twitter.com/harmsy85/statuses/178173281881423873" class="aktt_tweet_time">#</a></li>
-	<li>I must love INFOGRAPHICS! Social Demographics: Who&#039;s Using Today&#039;s Biggest Networks - <a href="http://t.co/QYv7NohH" rel="nofollow">http://t.co/QYv7NohH</a> INFOGRAPHICS <a href="http://twitter.com/harmsy85/statuses/178157158037327872" class="aktt_tweet_time">#</a></li>
-	<li>Director No has the worlds largest red pen. #<a href="http://search.twitter.com/search?q=%23Addys" class="aktt_hashtag">Addys</a> <a href="http://twitter.com/harmsy85/statuses/178129121732337664" class="aktt_tweet_time">#</a></li>
-</ul>
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a></p>
+  <div class="entry-content"><img class="size-thumbnail wp-image-184 alignright" title="Sublime Text icon" src="http://harmssite.com/wp-content/uploads/2012/06/sublime_text_icon_2181-150x150.png" alt="Sublime Text icon" width="150" height="150" />
+
+A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/MHuK34" target="_blank">Sublime Text 2</a> and its&#8217; many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ. So what I decided to do was use the Smarty package as a template for adding more language support for eZ Publish. What I have is far from complete; I usually only add to it when I use a method that is not already supported. You can find it out on <a title="ez sublime on GitHub" href="http://bit.ly/N4eTcp" target="_blank">GitHub</a>. It is my hope that there are some eZ Publish devs out there that really enjoy Sublime as I do and want to help me grow the package. Remember, it is far from complete, but nonetheless, I really hope that you enjoy the language highlighting, and if you do feel free to contribute
+
+.
 </div>
   
   
@@ -318,7 +252,7 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
       
   <header>
     
-      <h1 class="entry-title"><a href="/2012/03/tylers-weekly-update-for-2012-03-09-2/">Tyler&#8217;s Weekly Update for 2012-03-09</a></h1>
+      <h1 class="entry-title"><a href="/2012/06/fixing-shards-in-ez-find/">Fixing Shards in eZ Find</a></h1>
     
     
       <p class="meta">
@@ -334,36 +268,97 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
   
 
 
-<time datetime="2012-03-09T00:00:00-06:00" pubdate data-updated="true">Mar 9<span>th</span>, 2012</time>
+<time datetime="2012-06-29T00:00:00-05:00" pubdate data-updated="true">Jun 29<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><ul class="aktt_tweet_digest">
-	<li>Sorry, New iPad, I&#039;m Still Hunting for a Cheaper Old Model <a href="http://t.co/AVlZXzaO" rel="nofollow">http://t.co/AVlZXzaO</a> <a href="http://twitter.com/harmsy85/statuses/177877056380604416" class="aktt_tweet_time">#</a></li>
-	<li>“@sclarson: TIL: Jimmy Johns has an iPhone app.  Now to properly combine this with siri” Order me a sandwich! <a href="http://twitter.com/harmsy85/statuses/177875035300700160" class="aktt_tweet_time">#</a></li>
-	<li>Monster update to @<a href="http://twitter.com/path" class="aktt_username">path</a> today! Looks pretty nice! <a href="http://twitter.com/harmsy85/statuses/177848534270357504" class="aktt_tweet_time">#</a></li>
-	<li>New version of Git #<a href="http://search.twitter.com/search?q=%23Tower" class="aktt_hashtag">Tower</a>  back on the new weekly update train I see. <a href="http://twitter.com/harmsy85/statuses/177796555116511232" class="aktt_tweet_time">#</a></li>
-	<li>Oh #<a href="http://search.twitter.com/search?q=%23Apple" class="aktt_hashtag">Apple</a>  you would think they had enough money already&#8230; U.S. Accuses Apple, Publishers of #<a href="http://search.twitter.com/search?q=%23Ebook" class="aktt_hashtag">Ebook</a> Price Fixing - <a href="http://t.co/g4cQxiu9" rel="nofollow">http://t.co/g4cQxiu9</a> <a href="http://twitter.com/harmsy85/statuses/177777679712534529" class="aktt_tweet_time">#</a></li>
-	<li>Good to know. Who&#039;s Advertising On Rush Limbaugh? | Media Matters for America -  <a href="http://t.co/yx1QOp7F" rel="nofollow">http://t.co/yx1QOp7F</a> <a href="http://twitter.com/harmsy85/statuses/177540331775074306" class="aktt_tweet_time">#</a></li>
-	<li>I know that #<a href="http://search.twitter.com/search?q=%23Luck" class="aktt_hashtag">Luck</a> is awesome, I still had hope for #<a href="http://search.twitter.com/search?q=%23Manning" class="aktt_hashtag">Manning</a>  Indianapolis Colts to part with Peyton Manning Wednesday - <a href="http://t.co/GDV9asH1" rel="nofollow">http://t.co/GDV9asH1</a> <a href="http://twitter.com/harmsy85/statuses/177207101049929728" class="aktt_tweet_time">#</a></li>
-	<li>It arrived!! (with Leah) [pic] — <a href="http://t.co/ideLVd2S" rel="nofollow">http://t.co/ideLVd2S</a> <a href="http://twitter.com/harmsy85/statuses/177182985366417409" class="aktt_tweet_time">#</a></li>
-	<li>Stupid Fox! Fox cancels pricey drama ‘Terra Nova’ -  <a href="http://t.co/SnlRdK9D" rel="nofollow">http://t.co/SnlRdK9D</a> <a href="http://twitter.com/harmsy85/statuses/177130097604702208" class="aktt_tweet_time">#</a></li>
-	<li>I earned the &#039;Social Networking Master&#039; achievement on @<a href="http://twitter.com/klout" class="aktt_username">klout</a>, check it out! <a href="http://t.co/NjqiBLxC" rel="nofollow">http://t.co/NjqiBLxC</a> <a href="http://twitter.com/harmsy85/statuses/177117434795409410" class="aktt_tweet_time">#</a></li>
-	<li>Impressive, DocuTap receives $12 million investment - <a href="http://t.co/DJDZp0vN" rel="nofollow">http://t.co/DJDZp0vN</a> <a href="http://twitter.com/harmsy85/statuses/177116554125770753" class="aktt_tweet_time">#</a></li>
-	<li>Is the Tea Party Mov&#039;t over? - Sturgis republican aims to challenge Kristi Noem in GOP primary | The Argus Leader | <a href="http://t.co/dGzXpQcy" rel="nofollow">http://t.co/dGzXpQcy</a> <a href="http://twitter.com/harmsy85/statuses/177096897679470592" class="aktt_tweet_time">#</a></li>
-	<li>Wow, an Edison 13 year old faces marijuana possession, sales charges - <a href="http://t.co/y16h5lQ9" rel="nofollow">http://t.co/y16h5lQ9</a> <a href="http://twitter.com/harmsy85/statuses/177081882163425280" class="aktt_tweet_time">#</a></li>
-	<li>Jon Stewart takes on the Rush Limbaugh - <a href="http://t.co/KzV3svkU" rel="nofollow">http://t.co/KzV3svkU</a> <a href="http://twitter.com/harmsy85/statuses/177067908013371394" class="aktt_tweet_time">#</a></li>
-	<li>Gnarly! Keanu Reeves says that Bill &amp; Ted 3 script is ready -  <a href="http://t.co/ZOtDtqa2" rel="nofollow">http://t.co/ZOtDtqa2</a> <a href="http://twitter.com/harmsy85/statuses/176778778423476224" class="aktt_tweet_time">#</a></li>
-	<li>Lunch has never looked so horrifying [Pic] <a href="http://t.co/tkJeY3nk" rel="nofollow">http://t.co/tkJeY3nk</a> <a href="http://twitter.com/harmsy85/statuses/176717750813728769" class="aktt_tweet_time">#</a></li>
-	<li>Things just got serious! (with Leah at Rug &amp; Relic) [pic] — <a href="http://t.co/ip5cZXXM" rel="nofollow">http://t.co/ip5cZXXM</a> <a href="http://twitter.com/harmsy85/statuses/175756499455447040" class="aktt_tweet_time">#</a></li>
-	<li>On some wine tasting adventure. Discovering all sorts of craziness along the way&#8230; (with Leah) [pic] — <a href="http://t.co/oiQooOfR" rel="nofollow">http://t.co/oiQooOfR</a> <a href="http://twitter.com/harmsy85/statuses/175754288608456704" class="aktt_tweet_time">#</a></li>
-	<li>1st Hunger Games clip shows off Katniss&#039; deadly archer accuracy | Blastr <a href="http://t.co/gQCb8kSo" rel="nofollow">http://t.co/gQCb8kSo</a> #<a href="http://search.twitter.com/search?q=%23CantWait" class="aktt_hashtag">CantWait</a> <a href="http://twitter.com/harmsy85/statuses/175606903332802560" class="aktt_tweet_time">#</a></li>
-	<li>I don&#039;t know too much about Rush Limbaugh, but this tells me enough to not like the guy - <a href="http://t.co/jtPwk7oC" rel="nofollow">http://t.co/jtPwk7oC</a> #<a href="http://search.twitter.com/search?q=%23Really" class="aktt_hashtag">Really</a> <a href="http://twitter.com/harmsy85/statuses/175421558972616704" class="aktt_tweet_time">#</a></li>
-</ul>
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a></p>
+  <div class="entry-content">I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the <code>$shardQuery</code> is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the <code>$queryHandler</code> switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/06/fixing-shards-in-ez-find/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/06/fixing-shards-in-ez-find/">Fixing Shards in eZ Find</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-29T00:00:00-05:00" pubdate data-updated="true">Jun 29<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the <code>$shardQuery</code> is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the <code>$queryHandler</code> switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/06/fixing-shards-in-ez-find/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/05/solr-3-6-update/">Solr 3.6 Update</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-14T00:00:00-05:00" pubdate data-updated="true">May 14<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.war file on GitHub (it is in <a href="https://github.com/harmstyler/ezfind" title="harmstyler eZ Find" target="_blank">my eZ Find branch</a>). Enjoy! 
+
 </div>
   
   
@@ -376,7 +371,7 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
       
   <header>
     
-      <h1 class="entry-title"><a href="/2012/03/tylers-weekly-update-for-2012-03-02-2/">Tyler&#8217;s Weekly Update for 2012-03-02</a></h1>
+      <h1 class="entry-title"><a href="/2012/05/solr-3-6-update/">Solr 3.6 Update</a></h1>
     
     
       <p class="meta">
@@ -392,26 +387,14 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
   
 
 
-<time datetime="2012-03-02T00:00:00-06:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2012</time>
+<time datetime="2012-05-14T00:00:00-05:00" pubdate data-updated="true">May 14<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><ul class="aktt_tweet_digest">
-	<li>Leonard Nimoy to Guest Star on The Big Bang Theory <a href="http://t.co/HD6AYN0Y" rel="nofollow">http://t.co/HD6AYN0Y</a> <a href="http://twitter.com/harmsy85/statuses/175328940683051008" class="aktt_tweet_time">#</a></li>
-	<li>20 Infamous Crimes Committed and Solved on Facebook [INFOGRAPHIC] <a href="http://t.co/mSuXZ4Ne" rel="nofollow">http://t.co/mSuXZ4Ne</a> <a href="http://twitter.com/harmsy85/statuses/175317001986785281" class="aktt_tweet_time">#</a></li>
-	<li>The Most Viral News Sources <a href="http://t.co/XPdpa7pe" rel="nofollow">http://t.co/XPdpa7pe</a> HuffPost&#039;s Facebook footprint is larger than ABC, FOX, MSNBC combined RT @<a href="http://twitter.com/mashable" class="aktt_username">mashable</a> <a href="http://twitter.com/harmsy85/statuses/175291556289445888" class="aktt_tweet_time">#</a></li>
-	<li>New episode of psych tonight! It&#039;s been so long&#8230; (with Leah) <a href="http://twitter.com/harmsy85/statuses/175062171611430914" class="aktt_tweet_time">#</a></li>
-	<li>Why You’re a Bad PHP Programmer | Nettuts+ <a href="http://t.co/XaopP2vB" rel="nofollow">http://t.co/XaopP2vB</a> <a href="http://twitter.com/harmsy85/statuses/174633878164742144" class="aktt_tweet_time">#</a></li>
-	<li>Living a life of luxury. (with Leah) [pic] — <a href="http://t.co/6LpWNTuu" rel="nofollow">http://t.co/6LpWNTuu</a> <a href="http://twitter.com/harmsy85/statuses/173971025497825280" class="aktt_tweet_time">#</a></li>
-	<li>#<a href="http://search.twitter.com/search?q=%23TheDictator" class="aktt_hashtag">TheDictator</a> just dumped ashes all over Ryan Seacrest! Yes!! <a href="http://twitter.com/harmsy85/statuses/173926501455101952" class="aktt_tweet_time">#</a></li>
-	<li>If you have a second, check out this amazing short film - <a href="http://t.co/kiMJ27Ao" rel="nofollow">http://t.co/kiMJ27Ao</a> <a href="http://twitter.com/harmsy85/statuses/173547868852977665" class="aktt_tweet_time">#</a></li>
-	<li>I just spent an hour trying to figure out why the admin side of my site doesn&#039;t work, turns out spelling is important in my .ini files #<a href="http://search.twitter.com/search?q=%23FAIL" class="aktt_hashtag">FAIL</a> <a href="http://twitter.com/harmsy85/statuses/173544741894492161" class="aktt_tweet_time">#</a></li>
-	<li>The Organizational Charts of our favorite companies <a href="http://t.co/8U6cZkLb" rel="nofollow">http://t.co/8U6cZkLb</a> <a href="http://twitter.com/harmsy85/statuses/173123387760197633" class="aktt_tweet_time">#</a></li>
-</ul>
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a></p>
+  <div class="entry-content"><p>Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.war file on GitHub (it is in <a href="https://github.com/harmstyler/ezfind" title="harmstyler eZ Find fork">my eZ Find branch</a>). Enjoy!</p>
 </div>
   
   
@@ -424,7 +407,7 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
       
   <header>
     
-      <h1 class="entry-title"><a href="/2012/02/solr-buckets/">Solr Buckets</a></h1>
+      <h1 class="entry-title"><a href="/2012/05/ezfind-shards/">Searching Multiple Solr Cores Using Shards and eZ Find</a></h1>
     
     
       <p class="meta">
@@ -440,38 +423,73 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
   
 
 
-<time datetime="2012-02-25T00:00:00-06:00" pubdate data-updated="true">Feb 25<span>th</span>, 2012</time>
+<time datetime="2012-05-08T00:00:00-05:00" pubdate data-updated="true">May 8<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. <strong>The Problem</strong>: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&#8217;s speed; let Solr do the work). Now, the book I was using, <a title="Apache Solr Enterprise Search Server" href="http://www.packtpub.com/apache-solr-3-enterprise-search-server/book" target="_blank">Apache Solr Enterprise Search Server</a>, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the <code>SynonymFilterFactory</code>. So for starters lets look at the fieldType:</p>
+  <div class="entry-content">Prerequisites:
+	eZ Publish with eZ Find installed
 
-<figure class='code'><figcaption><span>schema.xml </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;fieldType</span> <span class="na">name=</span><span class="s">&quot;bucketFirstLetterGroup&quot;</span> <span class="na">class=</span><span class="s">&quot;solr.TextField&quot;</span> <span class="na">sortMissingLast=</span><span class="s">&quot;true&quot;</span> <span class="na">omitNorms=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;analyzer</span> <span class="na">type=</span><span class="s">&quot;index&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;tokenizer</span> <span class="na">class=</span><span class="s">&quot;solr.PatternTokenizerFactory&quot;</span> <span class="na">pattern=</span><span class="s">&quot;^([a-zA-Z]).*&quot;</span> <span class="na">group=</span><span class="s">&quot;1&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.SynonymFilterFactory&quot;</span> <span class="na">synonyms=</span><span class="s">&quot;mb_letterBuckets.txt&quot;</span> <span class="na">ignoreCase=</span><span class="s">&quot;true&quot;</span> <span class="na">expand=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/analyzer&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;analyzer</span> <span class="na">type=</span><span class="s">&quot;query&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;tokenizer</span> <span class="na">class=</span><span class="s">&quot;solr.KeywordTokenizerFactory&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/analyzer&gt;</span>
-</span><span class='line'><span class="nt">&lt;/fieldType&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+The following post is based on the option in the eZ Find <code>solr.ini</code> referring to Shards.
+<pre style="display:block;"><span style="color: #000066; font-weight:bold;">[SolrBase]</span>
+<span style="color: #000099;">#SearchServerURI=http://localhost:8983/solr</span>
+<span style="color: #009292;">#Shards mapping, can be to multicores in one servlet or even a crosss servers</span>
+<span style="color: #009292;">#typical use is multilingual setups, but also for external index support</span>
+<span style="color: #009292;">#the keys are used as shorthands in template functions</span>
+<span style="color: #000099;">#Shards[]</span>
+<span style="color: #000099;">#Shards[eng-GB]=</span><span style="color: #660066;">http://localhost:8983/solr/eng-GB</span>
+<span style="color: #000099;">#Shards[fre-FR]=</span><span style="color: #660066;">http://localhost:8983/solr/fre-FR</span>
+<span style="color: #000099;">#Shards[myforeignindex]=</span><span style="color: #660066;">http://myotherhost:8983/solr</span></pre>
+
+What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/05/ezfind-shards/">Read on &rarr;</a>
+    </footer>
+  
 
 
-<p>It is actually pretty straight forward. It uses a <code>PatternTokenizerFactory</code> to ignore case but grab only letters and then the SynonymFilterFactory looks at a text file to see how to group all the letters. That is where the book got fuzzy. It told me to look at the default <code>synonyms.txt</code> file for reference and it sent me on my merry way. I scoured the internet for the answer to my dilemma and finally found my answer though trial and error. The default <code>synonyms.txt</code> file looks like this:</p>
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/05/ezfind-shards/">Searching Multiple Solr Cores Using Shards and eZ Find</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-08T00:00:00-05:00" pubdate data-updated="true">May 8<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="https://s3.amazonaws.com/hs_blog_content/images/distributed_search.png" alt="Distributed Search" /></p>
+
+<p>Prerequisites:
+  eZ Publish with eZ Find installed</p>
+
+<p>The following post is based on the option in the eZ Find <code>solr.ini</code> referring to Shards.</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -481,150 +499,25 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#some test synonym mappings unlikely to appear in real input text</span>
-</span><span class='line'><span class="nv">aaafoo</span> <span class="o">=</span>&gt; aaabar
-</span><span class='line'><span class="nv">bbbfoo</span> <span class="o">=</span>&gt; bbbfoo bbbbar
-</span><span class='line'><span class="nv">cccfoo</span> <span class="o">=</span>&gt; cccbar cccbaz
-</span><span class='line'>fooaaa,baraaa,bazaaa
-</span><span class='line'>
-</span><span class='line'><span class="c"># Some synonym groups specific to this example</span>
-</span><span class='line'>GB,gib,gigabyte,gigabytes
-</span><span class='line'>MB,mib,megabyte,megabytes
-</span><span class='line'>Television, Televisions, TV, TVs
-</span><span class='line'><span class="c">#notice we use &quot;gib&quot; instead of &quot;GiB&quot; so any WordDelimiterFilter coming</span>
-</span><span class='line'><span class="c">#after us won&#39;t split it into two words.</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># Synonym mappings can be used for spelling correction too</span>
-</span><span class='line'><span class="nv">pixima</span> <span class="o">=</span>&gt; pixma
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[SolrBase]</span>
+</span><span class='line'><span class="c1">#Shards mapping, can be to multicores in one servlet or even a crosss servers</span>
+</span><span class='line'><span class="c1">#typical use is multilingual setups, but also for external index support</span>
+</span><span class='line'><span class="c1">#the keys are used as shorthands in template functions</span>
+</span><span class='line'><span class="c1">#Shards[]</span>
+</span><span class='line'><span class="c1">#Shards[eng-GB]=http://localhost:8983/solr/eng-GB</span>
+</span><span class='line'><span class="c1">#Shards[fre-FR]=http://localhost:8983/solr/fre-FR</span>
+</span><span class='line'><span class="c1">#Shards[myforeignindex]=http://myotherhost:8983/solr</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>From this file I concluded that my buckets should be grouped as <code>a-c=&gt;a b c</code> and so on. But that is not the case (it will actually appear to bucket the letters but also leave all the letters as their own bucket at the same time (A-C 150 results A 50 results and so on). It actually works opposite of the example. What is on the left is the solr fieldType and the right is the bucket/synonym. To work it must be <code>a,b,c=&gt;a-c</code>.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>a,b,c<span class="o">=</span>&gt;A-C
-</span><span class='line'>d,e,f<span class="o">=</span>&gt;D-F
-</span><span class='line'>g,h,i<span class="o">=</span>&gt;G-I
-</span><span class='line'>j,k,l<span class="o">=</span>&gt;J-L
-</span><span class='line'>m,n,o<span class="o">=</span>&gt;M-O
-</span><span class='line'>p,q,r<span class="o">=</span>&gt;P-R
-</span><span class='line'>s,t,u<span class="o">=</span>&gt;S-U
-</span><span class='line'>v,w,x,y,z<span class="o">=</span>&gt;V-Z
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So yeah, I have been meaning to post this for a while as I could find no meaningful help on the matter elsewhere on the internet. Also, remember to reindex!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/02/tylers-weekly-update-for-2012-02-24-2/">Tyler&#8217;s Weekly Update for 2012-02-24</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-24T00:00:00-06:00" pubdate data-updated="true">Feb 24<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul class="aktt_tweet_digest">
-	<li>If PHP Were British - Added Bytes - Brighton Web Application Development: <a href="http://t.co/pyeQMwH7" rel="nofollow">http://t.co/pyeQMwH7</a> via @<a href="http://twitter.com/brianrupert" class="aktt_username">brianrupert</a> <a href="http://twitter.com/harmsy85/statuses/172832078096896001" class="aktt_tweet_time">#</a></li>
-	<li>As if Corey needed a bigger ego&#8230; He is being inter&#8230; (w/ @<a href="http://twitter.com/MrVilhauer" class="aktt_username">MrVilhauer</a>, @<a href="http://twitter.com/sclarson" class="aktt_username">sclarson</a>, &amp; 5 others at @<a href="http://twitter.com/blendtweets" class="aktt_username">blendtweets</a>) [pic] — <a href="http://t.co/Ofsty5sR" rel="nofollow">http://t.co/Ofsty5sR</a> <a href="http://twitter.com/harmsy85/statuses/172424833685131265" class="aktt_tweet_time">#</a></li>
-	<li>Wow, that was probably the best episode of Glee ever&#8230; Love the way that glee attacks the issues that plague society head-on! (with Leah) <a href="http://twitter.com/harmsy85/statuses/172139080392519682" class="aktt_tweet_time">#</a></li>
-	<li>Spaceballs is on and the dog enjoys it, who knew? (with Leah) [pic] — <a href="http://t.co/OeWtMqfL" rel="nofollow">http://t.co/OeWtMqfL</a> <a href="http://twitter.com/harmsy85/statuses/171810415867736064" class="aktt_tweet_time">#</a></li>
-	<li>Windows #<a href="http://search.twitter.com/search?q=%23ProductPlacement" class="aktt_hashtag">ProductPlacement</a> in Hawaii 5-0 gets real old. At least the Chevy stuff is cool. <a href="http://twitter.com/harmsy85/statuses/171797959590162433" class="aktt_tweet_time">#</a></li>
-	<li>Such a great background image #<a href="http://search.twitter.com/search?q=%23Path" class="aktt_hashtag">Path</a>  Love It! <a href="http://t.co/jhxeeisJ" rel="nofollow">http://t.co/jhxeeisJ</a> <a href="http://twitter.com/harmsy85/statuses/171773608216113152" class="aktt_tweet_time">#</a></li>
-	<li>I just beat Ben by 8 points! Think you can beat me? #<a href="http://search.twitter.com/search?q=%23GamesWithFriends" class="aktt_hashtag">GamesWithFriends</a> <a href="http://t.co/IEKGc4Ca" rel="nofollow">http://t.co/IEKGc4Ca</a> <a href="http://twitter.com/harmsy85/statuses/171408384258613248" class="aktt_tweet_time">#</a></li>
-	<li>Humor: Best. Technical College. Ad. Ever. - @<a href="http://twitter.com/Gizmodo" class="aktt_username">Gizmodo</a> <a href="http://t.co/LL4ZKMB7" rel="nofollow">http://t.co/LL4ZKMB7</a> <a href="http://twitter.com/harmsy85/statuses/170594779552428032" class="aktt_tweet_time">#</a></li>
-	<li>Can&#039;t believe I made it all the way to work before I realized I forgot my computer. If only I lived in Sioux Falls&#8230; <a href="http://twitter.com/harmsy85/statuses/170519962698526720" class="aktt_tweet_time">#</a></li>
-	<li>Someone is ready to play! (with Leah) [pic] — <a href="http://t.co/Z3zdYfpm" rel="nofollow">http://t.co/Z3zdYfpm</a> <a href="http://twitter.com/harmsy85/statuses/170321171613626368" class="aktt_tweet_time">#</a></li>
-	<li>In other news… #<a href="http://search.twitter.com/search?q=%23Apple" class="aktt_hashtag">Apple</a> realized they ran out of cat names, so they settled on &#039;OSX Domestic Short Hair&#039; as 10.9 <a href="http://twitter.com/harmsy85/statuses/170286453736218624" class="aktt_tweet_time">#</a></li>
-	<li>“@SFHumaneSociety: Who thinks this is the cutest thing? <a href="http://t.co/5ltNi1yE”" rel="nofollow">http://t.co/5ltNi1yE”</a> - That is awesome! <a href="http://twitter.com/harmsy85/statuses/170236856921882624" class="aktt_tweet_time">#</a></li>
-	<li>Chris Brown Isn&#039;t Dead, But His Twitter Handle Almost Is <a href="http://t.co/0fpW2Vv8" rel="nofollow">http://t.co/0fpW2Vv8</a>  RT @<a href="http://twitter.com/mashable" class="aktt_username">mashable</a> <a href="http://twitter.com/harmsy85/statuses/169881780697038848" class="aktt_tweet_time">#</a></li>
-	<li>My mom is doing a Polar Plunge this year to raise money for the Special Olympics, you can give here: <a href="http://t.co/AWzTwgV3" rel="nofollow">http://t.co/AWzTwgV3</a> <a href="http://twitter.com/harmsy85/statuses/169877262903148544" class="aktt_tweet_time">#</a></li>
-	<li>That&#039;s right, I just lifted a car! (with Takayuki at @<a href="http://twitter.com/washpav" class="aktt_username">washpav</a>) [pic] — <a href="http://t.co/UAARBz59" rel="nofollow">http://t.co/UAARBz59</a> <a href="http://twitter.com/harmsy85/statuses/169857991259062272" class="aktt_tweet_time">#</a></li>
-	<li>How did I wait so long to watch the season premier of The Walking?!? <a href="http://twitter.com/harmsy85/statuses/169623083303436288" class="aktt_tweet_time">#</a></li>
-	<li>What supper is like in the Harms household. (with Leah) [pic] — <a href="http://t.co/q2EOqzRD" rel="nofollow">http://t.co/q2EOqzRD</a> <a href="http://twitter.com/harmsy85/statuses/169577233344774145" class="aktt_tweet_time">#</a></li>
-	<li>Never seems to get old ♫ Somebody That I Used to Know by Gotye (at @<a href="http://twitter.com/blendtweets" class="aktt_username">blendtweets</a>) — <a href="http://t.co/kHNelmku" rel="nofollow">http://t.co/kHNelmku</a> <a href="http://twitter.com/harmsy85/statuses/169461093784240129" class="aktt_tweet_time">#</a></li>
-	<li>RIM Director to BlackBerry Critics: No, You’re the Idiots <a href="http://t.co/qrlUncY4" rel="nofollow">http://t.co/qrlUncY4</a> <a href="http://twitter.com/harmsy85/statuses/169162615988293632" class="aktt_tweet_time">#</a></li>
-	<li>&quot;There&#039;s no kill switch on awesome&quot; - Dilbert <a href="http://twitter.com/harmsy85/statuses/169146513346412544" class="aktt_tweet_time">#</a></li>
-</ul>
-<p class="aktt_credit">Powered by <a href="http://alexking.org/projects/wordpress">Twitter Tools</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/02/photoshoping-goodness/">Photoshopping Goodness</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-11T00:00:00-06:00" pubdate data-updated="true">Feb 11<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">I truly do wish that I were better with photoshop. That said I am very blessed to know some people that are photoshop gurus. Yesterday when we came across a fantastic <a href="http://imgur.com/gallery/RP2pC" title="Full Hipster" target="_blank">picture</a> and I could not help but think, what would that picture look like with <a href="https://twitter.com/#!/jacksonmurtha" title="Jackson Murtha" target="_blank">@jacksonmurtha</a>&#8217;s head on it. Knowing that I could never do it right I asked <a href="https://twitter.com/#!/rmvelgersdyk" title="Ryan" target="_blank">@rmvelgersdyk</a> if he could do it. What he sent me back really made me wish that I knew photoshop better. It really is such a fantastic picture of Jackson. Major props goes to Ryan for <a href="https://s3.amazonaws.com/hs_blog_content/images/Jackson-1.jpg" title="Jackson">this</a>!
+<p>What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).</p>
 
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/2012/05/ezfind-shards/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -655,7 +548,7 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
       </li>
     
       <li class="post">
-        <a href="/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/">Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium [REPOST]</a>
+        <a href="/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/">Start Searching With Solr - Integrating Solr Into Any PHP Project Is Easy With Solarium [REPOST]</a>
       </li>
     
       <li class="post">
@@ -738,7 +631,7 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
