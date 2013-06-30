@@ -545,104 +545,6 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2013/01/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-19T00:00:00-06:00" pubdate data-updated="true">Jan 19<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">[caption id=&#8221;&#8221; align=&#8221;alignright&#8221; width=&#8221;206&#8221;]<img class="  " alt="" src="http://www.forouzani.com/blogs.dir/4/files/2012/09/symfony-logo.png" width="206" height="205" /> Symfony Logo[/caption]
-
-I finally decided on my first eZ Publish 5 project&#8230; my site of course. I am currently in the middle of upgrading my wordpress install to eZ Publish. Honestly, I don&#8217;t really need anything more than a simple Wordpress install, but it will be nice to get an eZ5 site under my belt.
-
-Seeing as I am in the middle of development, there have been a few bumps in the development road that I have found and would like to share. Firstly, I can find no way to run eZ Publish 5 completely in legacy mode, no matter what I do my pagelayout template needs to be a twig template. I posed the question to the eZ Community and it sounds like this should be possible, but it just wouldn&#8217;t work for me (see the discussion <a title="Overriding templates in eZ 5" href="http://bit.ly/WhVHwu" target="_blank">here</a>). I actually don&#8217;t have a problem with this, it&#8217;s not like being forced to use Symfony is a bad thing.
-
-Second, I do not see a strait-forward way to run multiple sites in one eZ Publish 5 install right now. Site settings are declared in the <code>ezpublish.yml</code> file and are grouped appropriately. My problem is that the <code>parameters.yml</code> file only allows for the declaration of one default template. In my opinion the default template declaration should be tied to a siteaccess or a siteaccess group.
-
-Third, the <code>index_dev.php</code> file doesn&#8217;t work for some reason. It would be nice to be able to use the Symfony dev toolbar. So far my only workaround has been to add the dev params to the index.php file. Either fixing this or allowing <code>DebugOutput</code> on a Symfony generated page would suffice.
-
-It wouldn&#8217;t be fair to simply criticize eZ5, because it does work. The eZ Team did a hell of a job with eZ5, far more than I would have expected for a first iteration. Honestly I was expecting eZ5 to switch to the Symfony Components for round 1 and work on the rest later.
-
-I think that far and above any other nicety of eZ5 is the ability to generate custom routes. Creating a custom module in eZ 4 was not exactly easy, but now with Symfony, creating a custom route/controller/view is extremely straight-forward and borderline easy. If a person has ever worked with Symfony in the past, creating custom &#8216;modules&#8217; will be a snap.
-
-Another awesome part of eZ5 is the full REST API. Although I have yet to use it, I know it is there and that the eZ Team put a lot of work into it, so I have to give it props.
-
-Finally, twig is awesome to work with.
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/12/optimizing-solr-to-fit-your-needs-part-2/">Optimizing Solr to Fit Your Needs Part 2</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-07T00:00:00-06:00" pubdate data-updated="true">Dec 7<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default search field called <code>ezf_df_text</code>. The downside of searching one field is that field needs to be controlled, and the only way it can be controlled is by manually editing the Solr schema file. As you might expect, eZ Find does not control this file very well out of the box.
-<pre>&lt;copyField source="*_lk" dest="ezf_df_text"/&gt;
-&lt;copyField source="*_k" dest="ezf_df_text"/&gt;
-&lt;copyField source="*_t" dest="ezf_df_text"/&gt;
-&lt;copyField source="*_s" dest="ezf_df_text"/&gt;</pre>
-A copyField will take any field you tell it to and <em>copy it</em> into another field. The code above is what ships with eZ Find, every single _lk (lckeyword), _k (keyword), _t (text), and _s (string) is added to the <code>ezf_df_text</code> field. For obvious reasons the average installation probably doesn&#8217;t need every piece of content searchable. The first step is to <strong>delete the default copyFields</strong> (e.g. your site users probably shouldn&#8217;t be searched by default).
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/12/optimizing-solr-to-fit-your-needs-part-2/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/2012/12/optimizing-solr-to-fit-your-needs-part-2/">Optimizing Solr to Fit Your Needs Part 2</a></h1>
     
     
@@ -721,14 +623,14 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
   </header>
 
 
-  <div class="entry-content">[caption id=&#8221;&#8221; align=&#8221;alignright&#8221; width=&#8221;240&#8221;]<a href="http://www.flickr.com/photos/56871496@N00/3774065516" target="_blank"><img class="zemanta-img-inserted zemanta-img-configured" title="Nashville Symfony" src="http://farm4.static.flickr.com/3456/3774065516_d5f54dce34_m.jpg" alt="Nashville Symfony" width="240" height="180" /></a> Photo credit: stephenyeargin[/caption] I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that eZ Systems announced that they were adopting the Symfony framework I knew that I would be be spending some time with it. I have found that Symfony doesn&#8217;t have the lowest barrier to entry so it has been a process, to say the least. I have a blog that has helped matters a great deal and so I wanted to give it some props here. If you are like me, wanting to learn Symfony but lacking time and resources, you should really check this site out:&nbsp;<a href="http://tutorial.symblog.co.uk/">Symblog: Creating a Blog in Symfony2</a>
+  <div class="entry-content"><div class="pull-right"><img title="Nashville Symfony" src="https://s3.amazonaws.com/hs_blog_content/images/symfony2.jpg" alt="Nashville Symfony" width="240" height="180" /></div>
 
+
+<p> I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that eZ Systems announced that they were adopting the Symfony framework I knew that I would be be spending some time with it. I have found that Symfony doesn&rsquo;t have the lowest barrier to entry so it has been a process, to say the least. I have a blog that has helped matters a great deal and so I wanted to give it some props here. If you are like me, wanting to learn Symfony but lacking time and resources, you should really check this site out: <a href="http://tutorial.symblog.co.uk/" title="Symblog: Creating a Blog in Symfony2">Symblog: Creating a Blog in Symfony2</a></p>
+
+<p>The blog starts with the basics and explores a good deal of Symfony components in detail. In the end you will be left with a barley usable blog, but that is alright, it leaves you with a project to fix. It is a tutorial for Symfony 2.0, and because Symfony is currently on 2.1.3 you will notice some part don&rsquo;t work the way you expect (but I think that forces you to learn more anyway). The tutorial also doesn&rsquo;t use Composer at all; so remember, when the blog tells you to install something, use Composer and skip over the way they tell you how to do it. I hope you enjoy the tutorial, I know I did (I have not currently completed the tutorial but am nearing completion at the time of this writing).</p>
 </div>
   
-  
-    <footer>
-      <a rel="full-article" href="/2012/11/learning-symfony/">Read on &rarr;</a>
-    </footer>
   
 
 
@@ -739,7 +641,7 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
       
   <header>
     
-      <h1 class="entry-title"><a href="/2012/11/learning-symfony/">Learning Symfony</a></h1>
+      <h1 class="entry-title"><a href="/2012/11/skype-version-6/">Skype Version 6</a></h1>
     
     
       <p class="meta">
@@ -755,19 +657,103 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
   
 
 
-<time datetime="2012-11-21T00:00:00-06:00" pubdate data-updated="true">Nov 21<span>st</span>, 2012</time>
+<time datetime="2012-11-01T00:00:00-05:00" pubdate data-updated="true">Nov 1<span>st</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><div class="pull-right"><img title="Nashville Symfony" src="https://s3.amazonaws.com/hs_blog_content/images/symfony2.jpg" alt="Nashville Symfony" width="240" height="180" /></div>
+  <div class="entry-content"><div class="pull-right"><img title="MessageViewVersion" src="https://s3.amazonaws.com/hs_blog_content/images/skype-screenshot.png" alt="Message View Version" width="352" height="229" /></div>
 
 
-<p> I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that eZ Systems announced that they were adopting the Symfony framework I knew that I would be be spending some time with it. I have found that Symfony doesn&rsquo;t have the lowest barrier to entry so it has been a process, to say the least. I have a blog that has helped matters a great deal and so I wanted to give it some props here. If you are like me, wanting to learn Symfony but lacking time and resources, you should really check this site out: <a href="http://tutorial.symblog.co.uk/" title="Symblog: Creating a Blog in Symfony2">Symblog: Creating a Blog in Symfony2</a></p>
+<p>I recently updated to Skype 6 and found something interesting out. My style package that worked in Skype 5 would not work in Skype 6. With some digging, we found out that in order to make your Skype 5 style work in Skype 6 you need to update the <code>MessageViewVersion</code> to version 7 (I have no idea why). So, with that, have fun updating your Skype to the latest version while still getting use out of your favorite Skype theme.</p>
+</div>
+  
+  
 
-<p>The blog starts with the basics and explores a good deal of Symfony components in detail. In the end you will be left with a barley usable blog, but that is alright, it leaves you with a project to fix. It is a tutorial for Symfony 2.0, and because Symfony is currently on 2.1.3 you will notice some part don&rsquo;t work the way you expect (but I think that forces you to learn more anyway). The tutorial also doesn&rsquo;t use Composer at all; so remember, when the blog tells you to install something, use Composer and skip over the way they tell you how to do it. I hope you enjoy the tutorial, I know I did (I have not currently completed the tutorial but am nearing completion at the time of this writing).</p>
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/10/american-politics/">American Politics</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T00:00:00-05:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I try as hard as I can to stay out of politics. I have my opinions like everybody else and I try to not start arguments as often as possible because I also value my friends and family. But with the American presidential election around the corner, I just had to share this bit of gold.</p>
+
+<div class='embed tweet'><blockquote class="twitter-tweet"><p>Michele Bachman is on the U.S. Intelligence Committee, and Todd Akin on the Science Committee. Let that sink in for a minute.</p>&mdash; Jorge Villalobos (@minusfive) <a href="https://twitter.com/minusfive/status/253246165108277248">October 2, 2012</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+
+
+<ul>
+<li><a href="http://articles.cnn.com/2012-07-30/opinion/opinion_tarin-bachmann-muslims_1_witch-hunt-michele-bachmann-muslim-brotherhood" title="Michele Bachmann and Muslim witch hunts">Michele Bachmann and Muslim witch hunts</a></li>
+<li><a href="http://gawker.com/5936050/republican-senate-nominee-explains-that-women-dont-really-get-pregnant-from-legitimate-rape" title="Republican Senate Nominee Explains That Women Don’t Really Get Pregnant From ‘Legitimate Rape’">Republican Senate Nominee Explains That Women Don’t Really Get Pregnant From ‘Legitimate Rape’</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/09/aws-authorize-security-groups-across-acounts-shellrunner/">AWS Authorize Security Groups Across Acounts « ShellRunner</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-28T00:00:00-05:00" pubdate data-updated="true">Sep 28<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Just had to share this post since I helped a little bit with it. Very handy little tip about authorizing security groups across AWS accounts.</p>
+
+<p><a href="http://shellrunner.com/2012/09/28/aws-authorize-security-groups-across-acounts/" title="AWS authorize security groups across acounts « ShellRunner">AWS authorize security groups across acounts « ShellRunner</a>.</p>
+
+<p>It is a post by <a title="Jackson Murtha on Twitter" href="https://twitter.com/jacksonmurtha" target="_blank">@jacksonmurtha</a> so we can trust that it is good.</p>
 </div>
   
   

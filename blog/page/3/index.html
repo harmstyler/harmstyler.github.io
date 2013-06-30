@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my &hellip;">
+  <meta name="description" content="As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,7 +84,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2012/08/gitignore-vs-gitkeep/">Multiple .gitignore Files Versus .gitkeep Files</a></h1>
+      <h1 class="entry-title"><a href="/2012/04/clear-cache-in-ez-publish-ezpedia/">Clear Cache in eZ Publish - eZpedia</a></h1>
     
     
       <p class="meta">
@@ -100,22 +100,114 @@
   
 
 
-<time datetime="2012-08-18T00:00:00-05:00" pubdate data-updated="true">Aug 18<span>th</span>, 2012</time>
+<time datetime="2012-04-12T00:00:00-05:00" pubdate data-updated="true">Apr 12<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><a href="http://harmssite.com/wp-content/uploads/2012/08/Git.png"><img src="http://harmssite.com/wp-content/uploads/2012/08/Git.png" alt="" title="Git" width="110" height="46" class="alignright size-full wp-image-196" /></a>I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my friends who used svn have told me.
+  <div class="entry-content"><p>As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.</p>
 
-The cool thing about git is that it tracks changes, not files or directories. When I create a new empty directory that directory is not tracked by git because it has no file changes inside, hence, the directory will never make it into git until I add a file to that directory. For this example I am going to use the logs directory of a&nbsp;virtual&nbsp;site. In my logs directory I have two files, an <code>error_log</code> and an <code>access_log</code>. Apache error logs and access logs should never be tracked by version control because they are logs that are specific to the given system the site is installed on. However, we should try to track the logs directory in version control. As hinted at before, we can do this in one of two ways.
+<p><a href="http://www.ezpedia.org/solution/clear_cache_in_ez_publish">Clear Cache in eZ Publish / Solution / Root &ndash; eZpedia</a></p>
 
+<p>My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /path/to/ezpublish;
+</span><span class='line'>rm -vrf var/cache;
+</span><span class='line'>rm -vrf var/ezwebin_site/cache</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>rm -vrf</code> is very scary to run (remove all?!?), but so long as you are doing this to the specified directory you should be safe (but be careful).</p>
 </div>
   
   
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/03/despite-bings-rise-google-still-dominates-search-infographic/">Despite Bings Rise, Google Still Dominates Search [INFOGRAPHIC]</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-26T00:00:00-05:00" pubdate data-updated="true">Mar 26<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Very interesting, Bing is on the rise but it appears to be at the expense of Yahoo! not Google.
+
+<a href="http://mashable.com/2012/03/26/search-stats-infographic/">Despite Bings Rise, Google Still Dominates Search [INFOGRAPHIC]</a>.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/03/installing-ez-find/">Installing eZ Find</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-22T00:00:00-05:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="pull-right"><a href="https://s3.amazonaws.com/hs_blog_content/images/ezfind-extension.png"><img class=" wp-image-90 alignright" title="ezfind-extension" src="https://s3.amazonaws.com/hs_blog_content/images/small/ezfind-extension-small.png" alt="eZ Find extension in finder" width="271" height="153" /></a></div>
+
+
+<p>Alright, so lets begin installing eZ Find by going out and downloading it from the Github => <a href="http://bit.ly/GEVOte" title="eZ Find on GitHub">https://github.com/ezsystems/ezfind</a>.
+eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#8221;ezfind,&ldquo; and then move the <em>ezfind</em> folder to the <em>extensions</em> directory of your eZ Publish install.</p>
+
+<p>So, as with any extension, we have to activate it. Go into your override <code>site.ini.append.php</code> (settings/override/site.ini.append.php) and add ezfind to your active extension list (<code>ActiveExtensions[]=ezfind</code>). I added mine just after my main site extension. Easy enough so far right?<div class="pull-left"><a href="https://s3.amazonaws.com/hs_blog_content/images/solr-structure.png"><img title="solr-structure" src="https://s3.amazonaws.com/hs_blog_content/images/small/solr-structure-small.png" alt="Solr installed locally" width="179" height="301" /></a></div></p>
+
+<p>As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a <em>java</em> directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish install and rename the folder &ldquo;Solr&rdquo; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on one Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.</div>
+  
+  
     <footer>
-      <a rel="full-article" href="/2012/08/gitignore-vs-gitkeep/">Read on &rarr;</a>
+      <a rel="full-article" href="/2012/03/installing-ez-find/">Read on &rarr;</a>
     </footer>
   
 
@@ -127,7 +219,7 @@ The cool thing about git is that it tracks changes, not files or directories. Wh
       
   <header>
     
-      <h1 class="entry-title"><a href="/2012/08/gitignore-vs-gitkeep/">Multiple .gitignore Files Versus .gitkeep Files</a></h1>
+      <h1 class="entry-title"><a href="/2012/03/ez-find-basics/">eZ Find Basics</a></h1>
     
     
       <p class="meta">
@@ -143,64 +235,22 @@ The cool thing about git is that it tracks changes, not files or directories. Wh
   
 
 
-<time datetime="2012-08-18T00:00:00-05:00" pubdate data-updated="true">Aug 18<span>th</span>, 2012</time>
+<time datetime="2012-03-19T00:00:00-05:00" pubdate data-updated="true">Mar 19<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><div class="pull-right"><img src="https://s3.amazonaws.com/hs_blog_content/images/Git_icon.png" alt="Git" title="Git" width="256" height="256" /></div>
+  <div class="entry-content"><p>I have been thinking a long time about different topics I could use this blog for. I have settled for the moment on an eZ Publish extension that I have used extensively for a while, eZ Find. eZ Find is an ultra-powerful Solr powered search engine made for eZ Publish, authored by <a title="@paulborgermans" href="https://twitter.com/#!/paulborgermans" target="_blank">Paul Borgermans</a>.</p>
 
+<p>For starters, an introduction to eZ Find &amp; Solr.</p>
 
-<p>I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my friends who used svn have told me.</p>
+<p>Solr is an ultra-powerful search engine built in Java on top of the Apache Lucene project. It is highly scalable, just like eZ Publish, and can be adapted to work in almost any environment. eZ Find for instance uses a php interface with Solr to perform extremely fast and reliable searches.</p>
 
-<p>The cool thing about git is that it tracks changes, not files or directories. When I create a new empty directory that directory is not tracked by git because it has no file changes inside, hence, the directory will never make it into git until I add a file to that directory. For this example I am going to use the logs directory of a virtual site. In my logs directory I have two files, an <code>error_log</code> and an <code>access_log</code>. Apache error logs and access logs should never be tracked by version control because they are logs that are specific to the given system the site is installed on. However, we should try to track the logs directory in version control. As hinted at before, we can do this in one of two ways.</p>
+<p>eZ Find is a standalone extension that can be installed eZ Publish with great ease (my next post). eZ Find can be found in a couple of different places. First, on the <a title="eZ Publish 4.4 with Extensions" href="http://share.ez.no/downloads/downloads/ez-publish-community-project-4.4-fuji" target="_blank">eZ Publish Share</a> site. Unfortunatly the &ldquo;free&rdquo; stable version (2.3) is a little behind, it still uses Solr 1.4. I recommend downloading the extension from <a title="eZ Find on Github" href="https://github.com/ezsystems/ezfind" target="_blank">github</a>. Being open source the codebase gets updated often, even better it uses a more up to date version of Solr (3.1).</p>
 
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/08/gitignore-vs-gitkeep/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/06/ez-publish-with-sublime/">EZ Publish With Sublime</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-30T00:00:00-05:00" pubdate data-updated="true">Jun 30<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><img class="size-thumbnail wp-image-184 alignright" title="Sublime Text icon" src="http://harmssite.com/wp-content/uploads/2012/06/sublime_text_icon_2181-150x150.png" alt="Sublime Text icon" width="150" height="150" />
-
-A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/MHuK34" target="_blank">Sublime Text 2</a> and its&#8217; many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ. So what I decided to do was use the Smarty package as a template for adding more language support for eZ Publish. What I have is far from complete; I usually only add to it when I use a method that is not already supported. You can find it out on <a title="ez sublime on GitHub" href="http://bit.ly/N4eTcp" target="_blank">GitHub</a>. It is my hope that there are some eZ Publish devs out there that really enjoy Sublime as I do and want to help me grow the package. Remember, it is far from complete, but nonetheless, I really hope that you enjoy the language highlighting, and if you do feel free to contribute
-
-.
+<p>In conclusion, eZ Find is highly powerful and scalable. If you use eZ Publish I strongly suggest you look into eZ Find as an alternative search engine. Look forward to my next post about how to install eZ Find into your website.</p>
 </div>
   
   
@@ -213,7 +263,7 @@ A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/M
       
   <header>
     
-      <h1 class="entry-title"><a href="/2012/06/ez-publish-with-sublime/">EZ Publish With Sublime</a></h1>
+      <h1 class="entry-title"><a href="/2012/02/solr-buckets/">Solr Buckets</a></h1>
     
     
       <p class="meta">
@@ -229,213 +279,38 @@ A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/M
   
 
 
-<time datetime="2012-06-30T00:00:00-05:00" pubdate data-updated="true">Jun 30<span>th</span>, 2012</time>
+<time datetime="2012-02-25T00:00:00-06:00" pubdate data-updated="true">Feb 25<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><div class="pull-right"><img title="Sublime Text icon" src="https://s3.amazonaws.com/hs_blog_content/images/sublime_text_icon_2181-150x150.png" alt="Sublime Text icon" width="150" height="150" /></div>
-
-
-<p>A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/MHuK34" target="_blank">Sublime Text 2</a> and its&#8217; many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ. So what I decided to do was use the Smarty package as a template for adding more language support for eZ Publish. What I have is far from complete; I usually only add to it when I use a method that is not already supported. You can find it out on <a title="ez sublime on GitHub" href="http://bit.ly/N4eTcp" target="_blank">GitHub</a>. It is my hope that there are some eZ Publish devs out there that really enjoy Sublime as I do and want to help me grow the package. Remember, it is far from complete, but nonetheless, I really hope that you enjoy the language highlighting, and if you do feel free to contribute.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/06/fixing-shards-in-ez-find/">Fixing Shards in eZ Find</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-29T00:00:00-05:00" pubdate data-updated="true">Jun 29<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the <code>$shardQuery</code> is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the <code>$queryHandler</code> switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/06/fixing-shards-in-ez-find/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/06/fixing-shards-in-ez-find/">Fixing Shards in eZ Find</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-29T00:00:00-05:00" pubdate data-updated="true">Jun 29<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the <code>$shardQuery</code> is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the <code>$queryHandler</code> switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/06/fixing-shards-in-ez-find/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/solr-3-6-update/">Solr 3.6 Update</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-14T00:00:00-05:00" pubdate data-updated="true">May 14<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.war file on GitHub (it is in <a href="https://github.com/harmstyler/ezfind" title="harmstyler eZ Find fork">my eZ Find branch</a>). Enjoy!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/solr-3-6-update/">Solr 3.6 Update</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-14T00:00:00-05:00" pubdate data-updated="true">May 14<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.war file on GitHub (it is in <a href="https://github.com/harmstyler/ezfind" title="harmstyler eZ Find" target="_blank">my eZ Find branch</a>). Enjoy! 
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/ezfind-shards/">Searching Multiple Solr Cores Using Shards and eZ Find</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-08T00:00:00-05:00" pubdate data-updated="true">May 8<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="https://s3.amazonaws.com/hs_blog_content/images/distributed_search.png" alt="Distributed Search" /></p>
-
-<p>Prerequisites:
-  eZ Publish with eZ Find installed</p>
-
-<p>The following post is based on the option in the eZ Find <code>solr.ini</code> referring to Shards.</p>
+  <div class="entry-content"><p>I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. <strong>The Problem</strong>: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&rsquo;s speed; let Solr do the work). Now, the book I was using, <a title="Apache Solr Enterprise Search Server" href="http://www.packtpub.com/apache-solr-3-enterprise-search-server/book" target="_blank">Apache Solr Enterprise Search Server</a>, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the <code>SynonymFilterFactory</code>. So for starters lets look at the fieldType:</p>
+
+<figure class='code'><figcaption><span>schema.xml </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;fieldType</span> <span class="na">name=</span><span class="s">&quot;bucketFirstLetterGroup&quot;</span> <span class="na">class=</span><span class="s">&quot;solr.TextField&quot;</span> <span class="na">sortMissingLast=</span><span class="s">&quot;true&quot;</span> <span class="na">omitNorms=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;analyzer</span> <span class="na">type=</span><span class="s">&quot;index&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;tokenizer</span> <span class="na">class=</span><span class="s">&quot;solr.PatternTokenizerFactory&quot;</span> <span class="na">pattern=</span><span class="s">&quot;^([a-zA-Z]).*&quot;</span> <span class="na">group=</span><span class="s">&quot;1&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.SynonymFilterFactory&quot;</span> <span class="na">synonyms=</span><span class="s">&quot;mb_letterBuckets.txt&quot;</span> <span class="na">ignoreCase=</span><span class="s">&quot;true&quot;</span> <span class="na">expand=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/analyzer&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;analyzer</span> <span class="na">type=</span><span class="s">&quot;query&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;tokenizer</span> <span class="na">class=</span><span class="s">&quot;solr.KeywordTokenizerFactory&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/analyzer&gt;</span>
+</span><span class='line'><span class="nt">&lt;/fieldType&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It is actually pretty straight forward. It uses a <code>PatternTokenizerFactory</code> to ignore case but grab only letters and then the SynonymFilterFactory looks at a text file to see how to group all the letters. That is where the book got fuzzy. It told me to look at the default <code>synonyms.txt</code> file for reference and it sent me on my merry way. I scoured the internet for the answer to my dilemma and finally found my answer though trial and error. The default <code>synonyms.txt</code> file looks like this:</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -445,25 +320,55 @@ A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/M
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[SolrBase]</span>
-</span><span class='line'><span class="c1">#Shards mapping, can be to multicores in one servlet or even a crosss servers</span>
-</span><span class='line'><span class="c1">#typical use is multilingual setups, but also for external index support</span>
-</span><span class='line'><span class="c1">#the keys are used as shorthands in template functions</span>
-</span><span class='line'><span class="c1">#Shards[]</span>
-</span><span class='line'><span class="c1">#Shards[eng-GB]=http://localhost:8983/solr/eng-GB</span>
-</span><span class='line'><span class="c1">#Shards[fre-FR]=http://localhost:8983/solr/fre-FR</span>
-</span><span class='line'><span class="c1">#Shards[myforeignindex]=http://myotherhost:8983/solr</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#some test synonym mappings unlikely to appear in real input text</span>
+</span><span class='line'><span class="nv">aaafoo</span> <span class="o">=</span>&gt; aaabar
+</span><span class='line'><span class="nv">bbbfoo</span> <span class="o">=</span>&gt; bbbfoo bbbbar
+</span><span class='line'><span class="nv">cccfoo</span> <span class="o">=</span>&gt; cccbar cccbaz
+</span><span class='line'>fooaaa,baraaa,bazaaa
+</span><span class='line'>
+</span><span class='line'><span class="c"># Some synonym groups specific to this example</span>
+</span><span class='line'>GB,gib,gigabyte,gigabytes
+</span><span class='line'>MB,mib,megabyte,megabytes
+</span><span class='line'>Television, Televisions, TV, TVs
+</span><span class='line'><span class="c">#notice we use &quot;gib&quot; instead of &quot;GiB&quot; so any WordDelimiterFilter coming</span>
+</span><span class='line'><span class="c">#after us won&#39;t split it into two words.</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Synonym mappings can be used for spelling correction too</span>
+</span><span class='line'><span class="nv">pixima</span> <span class="o">=</span>&gt; pixma
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).</p>
+<p>From this file I concluded that my buckets should be grouped as <code>a-c=&gt;a b c</code> and so on. But that is not the case (it will actually appear to bucket the letters but also leave all the letters as their own bucket at the same time (A-C 150 results A 50 results and so on). It actually works opposite of the example. What is on the left is the solr fieldType and the right is the bucket/synonym. To work it must be <code>a,b,c=&gt;a-c</code>.</p>
 
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>a,b,c<span class="o">=</span>&gt;A-C
+</span><span class='line'>d,e,f<span class="o">=</span>&gt;D-F
+</span><span class='line'>g,h,i<span class="o">=</span>&gt;G-I
+</span><span class='line'>j,k,l<span class="o">=</span>&gt;J-L
+</span><span class='line'>m,n,o<span class="o">=</span>&gt;M-O
+</span><span class='line'>p,q,r<span class="o">=</span>&gt;P-R
+</span><span class='line'>s,t,u<span class="o">=</span>&gt;S-U
+</span><span class='line'>v,w,x,y,z<span class="o">=</span>&gt;V-Z
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So yeah, I have been meaning to post this for a while as I could find no meaningful help on the matter elsewhere on the internet. Also, remember to reindex!</p>
 </div>
   
-  
-    <footer>
-      <a rel="full-article" href="/2012/05/ezfind-shards/">Read on &rarr;</a>
-    </footer>
   
 
 
@@ -474,7 +379,7 @@ A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/M
       
   <header>
     
-      <h1 class="entry-title"><a href="/2012/05/ezfind-shards/">Searching Multiple Solr Cores Using Shards and eZ Find</a></h1>
+      <h1 class="entry-title"><a href="/2012/02/photoshoping-goodness/">Photoshopping Goodness</a></h1>
     
     
       <p class="meta">
@@ -490,42 +395,227 @@ A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/M
   
 
 
-<time datetime="2012-05-08T00:00:00-05:00" pubdate data-updated="true">May 8<span>th</span>, 2012</time>
+<time datetime="2012-02-11T00:00:00-06:00" pubdate data-updated="true">Feb 11<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content">Prerequisites:
-	eZ Publish with eZ Find installed
+  <div class="entry-content">I truly do wish that I were better with photoshop. That said I am very blessed to know some people that are photoshop gurus. Yesterday when we came across a fantastic <a href="http://imgur.com/gallery/RP2pC" title="Full Hipster" target="_blank">picture</a> and I could not help but think, what would that picture look like with <a href="https://twitter.com/#!/jacksonmurtha" title="Jackson Murtha" target="_blank">@jacksonmurtha</a>&#8217;s head on it. Knowing that I could never do it right I asked <a href="https://twitter.com/#!/rmvelgersdyk" title="Ryan" target="_blank">@rmvelgersdyk</a> if he could do it. What he sent me back really made me wish that I knew photoshop better. It really is such a fantastic picture of Jackson. Major props goes to Ryan for <a href="https://s3.amazonaws.com/hs_blog_content/images/Jackson-1.jpg" title="Jackson">this</a>!
 
-The following post is based on the option in the eZ Find <code>solr.ini</code> referring to Shards.
-<pre style="display:block;"><span style="color: #000066; font-weight:bold;">[SolrBase]</span>
-<span style="color: #000099;">#SearchServerURI=http://localhost:8983/solr</span>
-<span style="color: #009292;">#Shards mapping, can be to multicores in one servlet or even a crosss servers</span>
-<span style="color: #009292;">#typical use is multilingual setups, but also for external index support</span>
-<span style="color: #009292;">#the keys are used as shorthands in template functions</span>
-<span style="color: #000099;">#Shards[]</span>
-<span style="color: #000099;">#Shards[eng-GB]=</span><span style="color: #660066;">http://localhost:8983/solr/eng-GB</span>
-<span style="color: #000099;">#Shards[fre-FR]=</span><span style="color: #660066;">http://localhost:8983/solr/fre-FR</span>
-<span style="color: #000099;">#Shards[myforeignindex]=</span><span style="color: #660066;">http://myotherhost:8983/solr</span></pre>
-
-What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).
 </div>
   
   
-    <footer>
-      <a rel="full-article" href="/2012/05/ezfind-shards/">Read on &rarr;</a>
-    </footer>
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/01/scraping-a-page-with-php/">Scraping a Page With Php</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-24T00:00:00-06:00" pubdate data-updated="true">Jan 24<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I ran across a problem recently, I needed to get the contents of a page so that I could mimic a widget’s functionality without having access to the database that said page’s widget used (confused yet). Basically, one site had a widget that displayed an upcoming event (information with came from a database), I needed to copy that widget to another website. Moreover, I did not want to use JavaScript to accomplish my goal because I need the new site to be cached pretty heavily on the server. My first thought was to use cURL, but when I ran curl_exec my function would output the entire page contents onto my new site, something that I did not want, I only wanted a small portion of the website. My next option was to use <code>file_get_contents(“my_url”)</code>, as was pointed out to me, this will return the full page as a string. With this I could have accomplished my goal, but not with as much ease as I would hope. I ran into the <code>DOMDOcument()</code> php object a while back and was curious about what I could do with it so I decided to do some research on that. This would eventually lead me to my answer. It turns out that the script is very simple and I can see myself using it quite often so I decided to share it.
+Here it is:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">scrapePage</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span><span class="nv">$id</span><span class="p">){</span>
+</span><span class='line'>    <span class="nv">$d</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DOMDOcument</span><span class="p">();</span>
+</span><span class='line'>    <span class="nb">libxml_use_internal_errors</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+</span><span class='line'>    <span class="nv">$d</span><span class="o">-&gt;</span><span class="na">loadHTMLFile</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+</span><span class='line'>    <span class="nv">$widget</span> <span class="o">=</span> <span class="nv">$d</span><span class="o">-&gt;</span><span class="na">getElementById</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nv">$widget</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nb">simplexml_import_dom</span><span class="p">(</span><span class="nv">$widget</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">asXML</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/10/gradient-app/">Gradient App</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-20T00:00:00-05:00" pubdate data-updated="true">Oct 20<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="pull-right"><a href="https://s3.amazonaws.com/hs_blog_content/images/gradient-app.png"><img src="https://s3.amazonaws.com/hs_blog_content/images/small/gradient-app-117x300.png" alt="Gradient App" title="gradient-app" width="117" height="300" /></a></div>
+
+
+<p>I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out gradients is easy enough, get your start color and your end color and then plug them into all the various browser specific gradient css elements (webkit, moz, etc&hellip;) and you get a gradient. Like I said, simple enough but time consuming because each browser gets its own line.</p>
+
+<p><a href="http://www.gradientapp.com/" title="Gradient App" target="_blank">Gradient App</a> makes life much simpler. As a Gradient App user all I have to do use the color picker, or manually enter my colors, then just choose my gradient direction and any other options I would be interested in! Gradient App then gives me the CSS code to use, again, making my life much easier.</p>
+
+<figure class='code'><figcaption><span>Sample Gradient Code </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">background-color</span><span class="o">:</span> <span class="nf">#69aece</span><span class="o">;</span>
+</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-webkit-gradient</span><span class="o">(</span><span class="nt">linear</span><span class="o">,</span> <span class="nt">left</span> <span class="nt">top</span><span class="o">,</span> <span class="nt">left</span> <span class="nt">bottom</span><span class="o">,</span> <span class="nt">from</span><span class="o">(</span><span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">)),</span> <span class="nt">to</span><span class="o">(</span><span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">)));</span>
+</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-webkit-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
+</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-moz-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
+</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-o-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
+</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-ms-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
+</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
+</span><span class='line'><span class="nt">filter</span><span class="o">:</span> <span class="nt">progid</span><span class="nd">:DXImageTransform</span><span class="nc">.Microsoft.gradient</span><span class="o">(</span><span class="nt">startColorStr</span><span class="o">=</span><span class="s1">&#39;#69aece&#39;</span><span class="o">,</span> <span class="nt">EndColorStr</span><span class="o">=</span><span class="s1">&#39;#c96167&#39;</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Obviously, looking at the above code, simple gradients are fairly straight forward. Remember to cover all your browsers (the filter is for Internet Explorer versions older than IE10 as they do not recognize gradients). Also obvious, making your own gradients can be a bit tedious, which is why I used Gradient App to make the code you see above.</p>
+
+<p>Get Gradient App here: <a href="http://www.gradientapp.com/" title="Gradient App"><a href="http://www.gradientapp.com/">http://www.gradientapp.com/</a></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/08/path-to-android/">Path to Android!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-26T00:00:00-05:00" pubdate data-updated="true">Aug 26<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="pull-right"><a href="http://path.com"><img class="alignleft size-full wp-image-56" title="path-logo" src="https://s3.amazonaws.com/hs_blog_content/images/path-logo-2x.png" alt="Path" width="146" height="65" /></a></div>
+
+
+<p>Finally, Path has come to Android. Path is one of those little known apps that I think a person would love, if they knew about it. Path is made to be  built off of Facebook, but far more personal than that. Their slogan then makes sense, The Personal Network (vs the Social Network). At Path each person is only able to view a limited number of friends, making the social web experience more personal. They recognize the fact that each person in real life does not carry on relationships with 300 people, more likely 30 at the most. Because of this fact, they limit the web friends to the same number; this makes the social experience mean far more to the user. So, back to my original point, Path has been available for iPhone only since its inception. Path is not an internet app; unlike Facebook, I cannot upload photos online, I can only use my phone. Also, there are no status updates, Path is just you sharing photos with your closest friends. Path is a fantastic idea that I have been waiting to use for some time now, as I use Android. Path comes with it a simple and sleek UI, which I would expect being so limited on options and all. Just about the only bad part I can find is that not enough of my friends use it, yet. So my recommendation? Go out and get the app, it should be fun.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/08/new-site/">New Site</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-24T00:00:00-05:00" pubdate data-updated="true">Aug 24<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Obviously this is a new site yet again. I just got sick of working with PyroCMS and decided to go to good &#8216;ol Wordpress, for reliability sake. Luckily I happen to have a licence for an awesome theme, hence the awesome site design. Currently it is not customized but the theme is designed to be customized. Also the site has full access to all the awesome add-ons that wordpress developers have created. With 15% of all created sites out there being Wordpress sites, chances are somebody has thought of it first. What that means to me and possible clients, I can create sites fast and there is a large support structure to back up any work done.
+</div>
+  
   
 
 
     </article>
   
   <div class="pagination">
-    
-      <a class="prev" href="/blog/page/4/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     

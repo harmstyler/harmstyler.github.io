@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="[caption id=&#8221;&#8221; align=&#8221;alignright&#8221; width=&#8221;283&#8221;] (Photo credit: Wikipedia)[/caption] Let me start by saying that eZ &hellip;">
+  <meta name="description" content="Let me start by saying that eZ Find is a fantastic implementation of Solr functionality. With eZ Find you get a fantastic search, out of the box. eZ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,17 +104,25 @@
   </header>
 
 
-<div class="entry-content">[caption id=&#8221;&#8221; align=&#8221;alignright&#8221; width=&#8221;283&#8221;]<a href="http://en.wikipedia.org/wiki/File:Solr.png" target="_blank"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="http://upload.wikimedia.org/wikipedia/en/3/3e/Solr.png" alt="Solr logo" width="283" height="156" /></a> (Photo credit: Wikipedia)[/caption]
+<div class="entry-content"><div class="pull-right"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="https://s3.amazonaws.com/hs_blog_content/images/Solr-logo.png" alt="Solr logo" width="283" height="156" /></div>
 
-Let me start by saying that eZ Find is a fantastic implementation of <a class="zem_slink" title="Apache Solr" href="http://lucene.apache.org/solr/" rel="homepage" target="_blank">Solr</a> functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an <a class="zem_slink" title="EZ Publish" href="http://ez.no/" rel="homepage" target="_blank">eZ Publish</a> keyword and know that it should thereby be a Solr keyword, again, all out of the box. There are however some serious limitations when it comes time to customize it to meet your system&#8217;s needs. Do not underestimate the power found in customizing Solr to meet your website&#8217;s needs. The default setup is great, it&#8217;s made to fit into any system with very little effort; but, just because it&#8217;s made to fit in any system does not mean that it&nbsp;should be used for every system.
 
-One of the best things we could have ever done for a large Solr install was to customize a default search field. You might say, &#8220;But eZ Find already creates a default search field for you.&#8221; And you&#8217;d be right.<!--more-->
-<pre id="LC743">&nbsp;&lt;!-- field for the QueryParser to use when an explicit fieldname is absent --&gt;
-&nbsp;&lt;defaultSearchField&gt;ezf_df_text&lt;/defaultSearchField&gt;</pre>
-<div>The thing that the default search field in eZ Find does not do, however, is get used. There is no way in eZ Find to tell it to search just one field (at least as far as I know). I did some testing in our environment, these numbers will change from system to system, but in our&#8217;s each search took almost 10 times as long to search all fields individually vs searching just 1 field. We gave eZ Find the option to search one given field, if defined, and it vastly improved our search experience.</div>
-eZ Find by default looks at all &#8216;searchable&#8217; fields and adds them to either the <a title="qf" href="http://wiki.apache.org/solr/DisMaxQParserPlugin#qf_.28Query_Fields.29"><code>qf</code></a> (if you are using the dismax search like you should be) or it searches every searchable field individually (<code>attr_title_t:(*:*), attr_title_s:(*:*)</code>, etc, etc, for all searchable fields). All the &#8216;searchable&#8217; fields are by default added to the <code>ezf_df_text</code> field, so you should really do yourself a favor and search just one field, it is a noticable speed improvement, especially in large systems.
+<p>Let me start by saying that eZ Find is a fantastic implementation of <a class="zem_slink" title="Apache Solr" href="http://lucene.apache.org/solr/" rel="homepage" target="_blank">Solr</a> functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an <a class="zem_slink" title="EZ Publish" href="http://ez.no/" rel="homepage" target="_blank">eZ Publish</a> keyword and know that it should thereby be a Solr keyword, again, all out of the box. There are however some serious limitations when it comes time to customize it to meet your system&rsquo;s needs. Do not underestimate the power found in customizing Solr to meet your website&rsquo;s needs. The default setup is great, it&rsquo;s made to fit into any system with very little effort; but, just because it&rsquo;s made to fit in any system does not mean that it should be used for every system.</p>
 
-In Part 2 I will talk about how to better optimize the Solr schema.xml file using the ezf_df_text field.
+<p>One of the best things we could have ever done for a large Solr install was to customize a default search field. You might say, &ldquo;But eZ Find already creates a default search field for you.&rdquo; And you&rsquo;d be right.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="c">&lt;!-- field for the QueryParser to use when an explicit fieldname is absent --&gt;</span>
+</span><span class='line'><span class="nt">&lt;defaultSearchField&gt;</span>ezf_df_text<span class="nt">&lt;/defaultSearchField&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The thing that the default search field in eZ Find does not do, however, is get used. There is no way in eZ Find to tell it to search just one field (at least as far as I know). I did some testing in our environment, these numbers will change from system to system, but in our&rsquo;s each search took almost 10 times as long to search all fields individually vs searching just 1 field. We gave eZ Find the option to search one given field, if defined, and it vastly improved our search experience.</p>
+
+<p>eZ Find by default looks at all &lsquo;searchable&rsquo; fields and adds them to either the <a title="qf" href="http://wiki.apache.org/solr/DisMaxQParserPlugin#qf_.28Query_Fields.29"><code>qf</code></a> (if you are using the dismax search like you should be) or it searches every searchable field individually (<code>attr_title_t:(*:*)</code>, <code>attr_title_s:(*:*)</code>, etc, etc, for all searchable fields). All the &lsquo;searchable&rsquo; fields are by default added to the <code>ezf_df_text</code> field, so you should really do yourself a favor and search just one field, it is a noticable speed improvement, especially in large systems.</p>
+
+<p>In Part 2 I will talk about how to better optimize the Solr <code>schema.xml</code> file using the <code>ezf_df_text</code> field.</p>
 </div>
 
 
@@ -140,6 +148,12 @@ In Part 2 I will talk about how to better optimize the Solr schema.xml file usin
 <time datetime="2012-08-25T00:00:00-05:00" pubdate data-updated="true">Aug 25<span>th</span>, 2012</time>
       
 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/development/'>Development</a>, <a class='category' href='/blog/categories/solr/'>Solr</a>, <a class='category' href='/blog/categories/ez-find/'>eZ Find</a>, <a class='category' href='/blog/categories/ez-publish/'>eZ Publish</a>
+  
+</span>
+
 
     </p>
     
@@ -157,11 +171,17 @@ In Part 2 I will talk about how to better optimize the Solr schema.xml file usin
         <a class="basic-alignment left" href="/2012/08/gitignore-vs-gitkeep/" title="Previous Post: Multiple .gitignore files versus .gitkeep files">&laquo; Multiple .gitignore files versus .gitkeep files</a>
       
       
-        <a class="basic-alignment right" href="/2012/08/optimizing-solr-to-fit-your-needs-part-1/" title="Next Post: Optimizing Solr to fit your needs Part 1">Optimizing Solr to fit your needs Part 1 &raquo;</a>
+        <a class="basic-alignment right" href="/2012/09/solr-query-for-mimicking-sql-in-operator-functionality/" title="Next Post: Solr Query for Mimicking SQL IN Operator Functionality">Solr Query for Mimicking SQL IN Operator Functionality &raquo;</a>
       
     </p>
   </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -218,7 +238,10 @@ In Part 2 I will talk about how to better optimize the Solr schema.xml file usin
       var disqus_shortname = 'harmssite';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://harmssite.com/2012/08/optimizing-solr-to-fit-your-needs-part-1/';
+        var disqus_url = 'http://harmssite.com/2012/08/optimizing-solr-to-fit-your-needs-part-1/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -104,74 +104,150 @@
   </header>
 
 
-<div class="entry-content">I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the <code>$shardQuery</code> is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the <code>$queryHandler</code> switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)
+<div class="entry-content"><p>I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the <code>$shardQuery</code> is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the <code>$queryHandler</code> switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)</p>
 
 <!--more-->
-<pre>switch ( $queryHandler )
-{
-    case 'standard':
-        // @todo: this is more complicated
-        // build the query against all "text" like fields
-        // should take into account all the filter fields and class filters to shorten the query
-        // need to build: Solr q
-        if ( array_key_exists( 'fields', $boostFunctions ) )
-        {
-            if (false != $shardQuery) {
-            $handlerParameters = array ( 'q' =&gt; $this-&gt;buildMultiFieldQuery( $searchText, array_merge( $queryFields, $extraFieldsToSearch ), $boostFunctions['fields'] ),
-                                     'qt' =&gt; 'standard',
-                                     'shards' =&gt; $shardQuery);
-            }
-            else {
-            $handlerParameters = array ( 'q' =&gt; $this-&gt;buildMultiFieldQuery( $searchText, array_merge( $queryFields, $extraFieldsToSearch ), $boostFunctions['fields'] ),
-                                     'qt' =&gt; 'standard', );
-            }
 
-        }
-        else
-        {
-            if (false != $shardQuery) {
-            $handlerParameters = array ( 'q' =&gt; $this-&gt;buildMultiFieldQuery( $searchText, array_merge( $queryFields, $extraFieldsToSearch ) ),
-                                     'qt' =&gt; 'standard',
-                                     'shards' =&gt; $shardQuery);
-            }
-            else{
-                $handlerParameters = array ( 'q' =&gt; $this-&gt;buildMultiFieldQuery( $searchText, array_merge( $queryFields, $extraFieldsToSearch ) ),
-                                     'qt' =&gt; 'standard' );
-            }
-        }
-        break;
 
-    case 'simplestandard':
-        // not to do much, searching is against the default aggregated field
-        // only highlightfields
-        $highLightFields = array ( 'ezf_df_text' );
-        $handlerParameters = array ( 'q' =&gt; $searchText,
-                                     'qt' =&gt; 'standard',
-                                     'hl.usePhraseHighlighter' =&gt; 'true',
-                                     'hl.highlightMultiTerm' =&gt; 'true' );
-        break;
-    case 'ezpublish':
-        // the dismax based handler, just keywordss input, most useful for ordinary queries by users
-        // need to build: Solr q, qf, dismax specific parameters
 
-    default:
-        // ezpublish of course, this to not break BC and is the most "general"
-        // if another value is specified, it is supposed to be a dismax like handler
-        // with possible other tuning variables then the stock provided 'ezpublish' in solrconfi.xml
-        // remark it should be lowercase in solrconfig.xml!
-        if (false != $shardQuery) {
-            $handlerParameters = array ( 'q' =&gt; $searchText,
-                                         'qf' =&gt; implode( ' ', array_merge( $queryFields, $extraFieldsToSearch ) ),
-                                         'qt' =&gt; $queryHandler,
-                                         'shards' =&gt; $shardQuery );
-        } else {
-            $handlerParameters = array ( 'q' =&gt; $searchText,
-                                         'qf' =&gt; implode( ' ', array_merge( $queryFields, $extraFieldsToSearch ) ),
-                                         'qt' =&gt; $queryHandler );
 
-        }
+<figure class='code'><figcaption><span>ezfezpsolrquerybuilder.php </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="k">switch</span> <span class="p">(</span> <span class="nv">$queryHandler</span> <span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">case</span> <span class="s1">&#39;standard&#39;</span><span class="o">:</span>
+</span><span class='line'>        <span class="c1">// @todo: this is more complicated</span>
+</span><span class='line'>        <span class="c1">// build the query against all &quot;text&quot; like fields</span>
+</span><span class='line'>        <span class="c1">// should take into account all the filter fields and class filters to shorten the query</span>
+</span><span class='line'>        <span class="c1">// need to build: Solr q</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span> <span class="nb">array_key_exists</span><span class="p">(</span> <span class="s1">&#39;fields&#39;</span><span class="p">,</span> <span class="nv">$boostFunctions</span> <span class="p">)</span> <span class="p">)</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="k">false</span> <span class="o">!=</span> <span class="nv">$shardQuery</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nv">$handlerParameters</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span> <span class="s1">&#39;q&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">buildMultiFieldQuery</span><span class="p">(</span> <span class="nv">$searchText</span><span class="p">,</span> <span class="nb">array_merge</span><span class="p">(</span> <span class="nv">$queryFields</span><span class="p">,</span> <span class="nv">$extraFieldsToSearch</span> <span class="p">),</span> <span class="nv">$boostFunctions</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">]</span> <span class="p">),</span>
+</span><span class='line'>                                     <span class="s1">&#39;qt&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;standard&#39;</span><span class="p">,</span>
+</span><span class='line'>                                     <span class="s1">&#39;shards&#39;</span> <span class="o">=&gt;</span> <span class="nv">$shardQuery</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>            <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nv">$handlerParameters</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span> <span class="s1">&#39;q&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">buildMultiFieldQuery</span><span class="p">(</span> <span class="nv">$searchText</span><span class="p">,</span> <span class="nb">array_merge</span><span class="p">(</span> <span class="nv">$queryFields</span><span class="p">,</span> <span class="nv">$extraFieldsToSearch</span> <span class="p">),</span> <span class="nv">$boostFunctions</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">]</span> <span class="p">),</span>
+</span><span class='line'>                                     <span class="s1">&#39;qt&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;standard&#39;</span><span class="p">,</span> <span class="p">);</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">else</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="k">false</span> <span class="o">!=</span> <span class="nv">$shardQuery</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nv">$handlerParameters</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span> <span class="s1">&#39;q&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">buildMultiFieldQuery</span><span class="p">(</span> <span class="nv">$searchText</span><span class="p">,</span> <span class="nb">array_merge</span><span class="p">(</span> <span class="nv">$queryFields</span><span class="p">,</span> <span class="nv">$extraFieldsToSearch</span> <span class="p">)</span> <span class="p">),</span>
+</span><span class='line'>                                     <span class="s1">&#39;qt&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;standard&#39;</span><span class="p">,</span>
+</span><span class='line'>                                     <span class="s1">&#39;shards&#39;</span> <span class="o">=&gt;</span> <span class="nv">$shardQuery</span><span class="p">);</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>            <span class="k">else</span><span class="p">{</span>
+</span><span class='line'>                <span class="nv">$handlerParameters</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span> <span class="s1">&#39;q&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">buildMultiFieldQuery</span><span class="p">(</span> <span class="nv">$searchText</span><span class="p">,</span> <span class="nb">array_merge</span><span class="p">(</span> <span class="nv">$queryFields</span><span class="p">,</span> <span class="nv">$extraFieldsToSearch</span> <span class="p">)</span> <span class="p">),</span>
+</span><span class='line'>                                     <span class="s1">&#39;qt&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;standard&#39;</span> <span class="p">);</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">case</span> <span class="s1">&#39;simplestandard&#39;</span><span class="o">:</span>
+</span><span class='line'>        <span class="c1">// not to do much, searching is against the default aggregated field</span>
+</span><span class='line'>        <span class="c1">// only highlightfields</span>
+</span><span class='line'>        <span class="nv">$highLightFields</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span> <span class="s1">&#39;ezf_df_text&#39;</span> <span class="p">);</span>
+</span><span class='line'>        <span class="nv">$handlerParameters</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span> <span class="s1">&#39;q&#39;</span> <span class="o">=&gt;</span> <span class="nv">$searchText</span><span class="p">,</span>
+</span><span class='line'>                                     <span class="s1">&#39;qt&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;standard&#39;</span><span class="p">,</span>
+</span><span class='line'>                                     <span class="s1">&#39;hl.usePhraseHighlighter&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span>
+</span><span class='line'>                                     <span class="s1">&#39;hl.highlightMultiTerm&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;true&#39;</span> <span class="p">);</span>
+</span><span class='line'>        <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="s1">&#39;ezpublish&#39;</span><span class="o">:</span>
+</span><span class='line'>        <span class="c1">// the dismax based handler, just keywordss input, most useful for ordinary queries by users</span>
+</span><span class='line'>        <span class="c1">// need to build: Solr q, qf, dismax specific parameters</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">default</span><span class="o">:</span>
+</span><span class='line'>        <span class="c1">// ezpublish of course, this to not break BC and is the most &quot;general&quot;</span>
+</span><span class='line'>        <span class="c1">// if another value is specified, it is supposed to be a dismax like handler</span>
+</span><span class='line'>        <span class="c1">// with possible other tuning variables then the stock provided &#39;ezpublish&#39; in solrconfi.xml</span>
+</span><span class='line'>        <span class="c1">// remark it should be lowercase in solrconfig.xml!</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="k">false</span> <span class="o">!=</span> <span class="nv">$shardQuery</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nv">$handlerParameters</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span> <span class="s1">&#39;q&#39;</span> <span class="o">=&gt;</span> <span class="nv">$searchText</span><span class="p">,</span>
+</span><span class='line'>                                         <span class="s1">&#39;qf&#39;</span> <span class="o">=&gt;</span> <span class="nb">implode</span><span class="p">(</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="nb">array_merge</span><span class="p">(</span> <span class="nv">$queryFields</span><span class="p">,</span> <span class="nv">$extraFieldsToSearch</span> <span class="p">)</span> <span class="p">),</span>
+</span><span class='line'>                                         <span class="s1">&#39;qt&#39;</span> <span class="o">=&gt;</span> <span class="nv">$queryHandler</span><span class="p">,</span>
+</span><span class='line'>                                         <span class="s1">&#39;shards&#39;</span> <span class="o">=&gt;</span> <span class="nv">$shardQuery</span> <span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nv">$handlerParameters</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span> <span class="s1">&#39;q&#39;</span> <span class="o">=&gt;</span> <span class="nv">$searchText</span><span class="p">,</span>
+</span><span class='line'>                                         <span class="s1">&#39;qf&#39;</span> <span class="o">=&gt;</span> <span class="nb">implode</span><span class="p">(</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="nb">array_merge</span><span class="p">(</span> <span class="nv">$queryFields</span><span class="p">,</span> <span class="nv">$extraFieldsToSearch</span> <span class="p">)</span> <span class="p">),</span>
+</span><span class='line'>                                         <span class="s1">&#39;qt&#39;</span> <span class="o">=&gt;</span> <span class="nv">$queryHandler</span> <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-}</pre>
+
+
 </div>
 
 
@@ -197,6 +273,12 @@
 <time datetime="2012-06-29T00:00:00-05:00" pubdate data-updated="true">Jun 29<span>th</span>, 2012</time>
       
 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/development/'>Development</a>, <a class='category' href='/blog/categories/ez-find/'>eZ Find</a>, <a class='category' href='/blog/categories/ez-publish/'>eZ Publish</a>
+  
+</span>
+
 
     </p>
     
@@ -214,7 +296,7 @@
         <a class="basic-alignment left" href="/2012/05/solr-3-6-update/" title="Previous Post: Solr 3.6 Update">&laquo; Solr 3.6 Update</a>
       
       
-        <a class="basic-alignment right" href="/2012/06/fixing-shards-in-ez-find/" title="Next Post: Fixing Shards in eZ Find">Fixing Shards in eZ Find &raquo;</a>
+        <a class="basic-alignment right" href="/2012/06/ez-publish-with-sublime/" title="Next Post: EZ Publish with Sublime">EZ Publish with Sublime &raquo;</a>
       
     </p>
   </footer>
