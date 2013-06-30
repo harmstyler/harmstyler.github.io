@@ -4,7 +4,7 @@
   <title><![CDATA[HarmsSite]]></title>
   <link href="http://harmssite.com/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-06-29T20:31:47-05:00</updated>
+  <updated>2013-06-29T21:07:24-05:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[IE10 Conditional Comments]]></title>
+    <link href="http://harmssite.com/2013/06/ie10-conditional-comments/"/>
+    <updated>2013-06-29T20:43:00-05:00</updated>
+    <id>http://harmssite.com/2013/06/ie10-conditional-comments</id>
+    <content type="html"><![CDATA[<p>Let me start by saying that I was very excited by IE10. Internet Explorer 10 was supposed to be <strong>the</strong> premier IE web browser. Microsoft was so confident that they created a browser that could meet modern standards that they dropped conditional comments in IE10. If you don&rsquo;t know anything about developing for IE, just know that it sucks; it <em>was</em>, however, aleviated some by conditional comments that allowed for custom styles/js/whatever for IE versions. My first time working with IE10 I was made harshly aware that conditional comments no longer work. What&rsquo;s worse, my site that functioned and looked great in IE9 no longer functioned in IE10. How does this happen?</p>
+
+<p>The more I work with IE10 the more issues I find with it, Microsoft needs to bring conditional comments back. Until then, however, there is a simple script you can stick in your javascripts that will identify when IE10 is being used so that you can target it in your css or javascript.</p>
+
+<p>The javascript:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Add IE10 class to IE10</span>
+</span><span class='line'><span class="c1">// $.browser requires jquery &lt; 1.9</span>
+</span><span class='line'><span class="c1">// $.browser can be used in jquery &gt; 1.9 with plugin</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span> <span class="o">&amp;&amp;</span> <span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">version</span> <span class="o">===</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;html&quot;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;ie10&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or if you use coffeescript:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='coffee-script'><span class='line'><span class="c1"># Add IE10 class to IE10</span>
+</span><span class='line'><span class="c1"># $.browser requires jquery &lt; 1.9</span>
+</span><span class='line'><span class="c1"># $.browser can be used in jquery &gt; 1.9 with plugin</span>
+</span><span class='line'><span class="k">if</span> <span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span> <span class="o">and</span> <span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">version</span> <span class="o">is</span> <span class="mi">10</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s">&quot;html&quot;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s">&quot;ie10&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It is sad that we must do this for a supposed modern browser; nevertheless, I hope this helps for when you have to work with IE10.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Symfony2 Coding Standards]]></title>
@@ -897,60 +942,6 @@ The <code>.gitkeep</code> file at work:</p>
 [nggallery id=2]
 
 I found the original author of the pictures <a title="Underwater Dogs" href="http://www.littlefriendsphoto.com/index2.php" target="_blank">here</a> (the email had no information about the author).
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[eZ Find Multi-Core]]></title>
-    <link href="http://harmssite.com/2012/04/ez-find-multi-core/"/>
-    <updated>2012-04-20T00:00:00-05:00</updated>
-    <id>http://harmssite.com/2012/04/ez-find-multi-core</id>
-    <content type="html"><![CDATA[<p>One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.</p>
-
-<div class="pull-right"><img title="solr-dir" src="https://s3.amazonaws.com/hs_blog_content/images/solr-dir.png" alt="Solr Directory" width="300" height="186" /></div>
-
-
-<p>So, to start. Let&rsquo;s assume that if you are reading this, you already read through my previous eZ Find tutorial (<a href="http://harmssite.com/2012/03/installing-ez-find/" title="Installing eZ Find">Installing eZ Find</a>). Since we already have our sever up and running there won&rsquo;t be a lot of work to do there. But, we need to move our config files to the Solr multicore directory. Last time we used the Solr directory, this time we need to use the directory <code>solr.multicore</code>. Inside the multicore directory there are a couple of demo cores for languages. What I did is duplicated the english directory a couple times and renamed them for each site.</p>
-
-<!--more-->
-
-
-<p>I think this is the time for a nice FYI. We can go about this next part in a couple of different ways. The way we choose depends on the desired consequence. So, ask yourself this question, &lsquo;Do I want the siteaccesses to share content?&rsquo; If you answered yes, you only need 1 core for you sites to share off of, if you answered no, then create a core for each site that you wish to keep separate from the others. Another note, this effect can also be achieved by adjusting an ini setting, but if you know you want your stuff separate, then create multiple cores, it is safer that way. The way I set mine up is I have 2 cores. 1 core has 3 siteaccess sharing content, the other has just 1 site on it (that way its index content will not get mixed by accident).</p>
-
-<p>Now that we are using Solr in a multi-core environment, starting Solr is a bit different.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>java -Dsolr.solr.home<span class="o">=</span>solr.multicore -jar start.jar
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Notice, we just sent the start.jar a new place for solr to call its&#8217; home directory <code>solr.multicore</code>.</p>
-
-<p>Now that we have Solr re-configured for multi-core work we have to set up our solr.ini files. Inside the siteaccess specific override folders we need to drop in and edit a solr.ini.append.php file. Inside the ini file we need to point eZ Find at the right Solr cores.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[SolrBase]</span>
-</span><span class='line'><span class="na">SearchServerURI</span><span class="o">=</span><span class="s">http://localhost:8983/solr/&lt;core-name&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>With that one ini setting set we can fully update our index with the same command as before (the update script inside the eZ Fnd extension). So, after we have that set there is 1 last setting that we need to set, it is inside the ezfind.ini.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[SiteSettings]</span>
-</span><span class='line'><span class="c1">#IndexPubliclyAvailable=disabled</span>
-</span><span class='line'><span class="c1">#SearchOtherInstallations=disabled</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Notice that I have the settings commented it out here. I set it in the siteaccess specific override files, and if it is not commented out it overrides my content. Remember, this setting only applies to content that shares a core, if the content is not sharing a core it will not be able to search the other installations.</p>
-
-<p>With this simple set of settings, we gain a lot of power over search. Combinations work here as well, if you don&rsquo;t want to share the index, but want to search other available indexes, go for it.</p>
-
-<p>Best of luck to you, if I missed something don&rsquo;t be afraid to let me know. Also, if you have questions be sure to ask.</p>
 ]]></content>
   </entry>
   

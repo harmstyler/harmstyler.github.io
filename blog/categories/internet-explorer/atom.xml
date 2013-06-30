@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Internet Explorer | HarmsSite]]></title>
+  <link href="http://harmssite.com/blog/categories/internet-explorer/atom.xml" rel="self"/>
+  <link href="http://harmssite.com/"/>
+  <updated>2013-06-29T21:07:24-05:00</updated>
+  <id>http://harmssite.com/</id>
+  <author>
+    <name><![CDATA[Tyler Harms]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[IE10 Conditional Comments]]></title>
+    <link href="http://harmssite.com/2013/06/ie10-conditional-comments/"/>
+    <updated>2013-06-29T20:43:00-05:00</updated>
+    <id>http://harmssite.com/2013/06/ie10-conditional-comments</id>
+    <content type="html"><![CDATA[<p>Let me start by saying that I was very excited by IE10. Internet Explorer 10 was supposed to be <strong>the</strong> premier IE web browser. Microsoft was so confident that they created a browser that could meet modern standards that they dropped conditional comments in IE10. If you don&rsquo;t know anything about developing for IE, just know that it sucks; it <em>was</em>, however, aleviated some by conditional comments that allowed for custom styles/js/whatever for IE versions. My first time working with IE10 I was made harshly aware that conditional comments no longer work. What&rsquo;s worse, my site that functioned and looked great in IE9 no longer functioned in IE10. How does this happen?</p>
+
+<p>The more I work with IE10 the more issues I find with it, Microsoft needs to bring conditional comments back. Until then, however, there is a simple script you can stick in your javascripts that will identify when IE10 is being used so that you can target it in your css or javascript.</p>
+
+<p>The javascript:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Add IE10 class to IE10</span>
+</span><span class='line'><span class="c1">// $.browser requires jquery &amp;lt; 1.9</span>
+</span><span class='line'><span class="c1">// $.browser can be used in jquery &gt; 1.9 with plugin</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">version</span> <span class="o">===</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">html</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;).</span><span class="nx">addClass</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">ie10</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Or if you use coffeescript:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='coffee-script'><span class='line'><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Add</span> <span class="nx">IE10</span> <span class="k">class</span> <span class="nx">to</span> <span class="nx">IE10</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">.</span><span class="nx">browser</span> <span class="nx">requires</span> <span class="nx">jquery</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="mf">1.9</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">.</span><span class="nx">browser</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">used</span> <span class="k">in</span> <span class="nx">jquery</span> <span class="o">&gt;</span> <span class="mf">1.9</span> <span class="nx">with</span> <span class="nx">plugin</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">if</span> <span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span> <span class="o">and</span> <span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">version</span> <span class="o">is</span> <span class="mi">10</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">html</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;).</span><span class="nx">addClass</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">ie10</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>It is sad that we must do this for a supposed modern browser; nevertheless, I hope this helps for when you have to work with IE10.</p>
+]]></content>
+  </entry>
+  
+</feed>

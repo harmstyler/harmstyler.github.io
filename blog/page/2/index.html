@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. &hellip;">
+  <meta name="description" content="Just had to share this post since I helped a little bit with it. Very handy little tip about authorizing security groups across AWS accounts. AWS &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +24,7 @@
   <link href="/atom.xml" rel="alternate" title="HarmsSite" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -78,6 +78,46 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/09/aws-authorize-security-groups-across-acounts-shellrunner/">AWS Authorize Security Groups Across Acounts « ShellRunner</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-28T00:00:00-05:00" pubdate data-updated="true">Sep 28<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Just had to share this post since I helped a little bit with it. Very handy little tip about authorizing security groups across AWS accounts.</p>
+
+<p><a href="http://shellrunner.com/2012/09/28/aws-authorize-security-groups-across-acounts/" title="AWS authorize security groups across acounts « ShellRunner">AWS authorize security groups across acounts « ShellRunner</a>.</p>
+
+<p>It is a post by <a title="Jackson Murtha on Twitter" href="https://twitter.com/jacksonmurtha" target="_blank">@jacksonmurtha</a> so we can trust that it is good.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -550,52 +590,6 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/04/ez-find-multi-core/">eZ Find Multi-Core</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-20T00:00:00-05:00" pubdate data-updated="true">Apr 20<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.</p>
-
-<div class="pull-right"><img title="solr-dir" src="https://s3.amazonaws.com/hs_blog_content/images/solr-dir.png" alt="Solr Directory" width="300" height="186" /></div>
-
-
-<p>So, to start. Let&rsquo;s assume that if you are reading this, you already read through my previous eZ Find tutorial (<a href="/2012/03/installing-ez-find/" title="Installing eZ Find">Installing eZ Find</a>). Since we already have our sever up and running there won&rsquo;t be a lot of work to do there. But, we need to move our config files to the Solr multicore directory. Last time we used the Solr directory, this time we need to use the directory <code>solr.multicore</code>. Inside the multicore directory there are a couple of demo cores for languages. What I did is duplicated the english directory a couple times and renamed them for each site.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/04/ez-find-multi-core/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -613,6 +607,10 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/06/ie10-conditional-comments/">IE10 Conditional Comments</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/04/symfony2-coding-standards/">Symfony2 Coding Standards</a>
       </li>
     
@@ -626,10 +624,6 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
     
       <li class="post">
         <a href="/2013/03/symfony2-access-conrol/">Symfony2 Access Conrol</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a>
       </li>
     
   </ul>

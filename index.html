@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="With eZ Publish moving to Symfony2, I found that I was in need of learning some new coding standards. I never really looked into PHP CodeSniffer &hellip;">
+  <meta name="description" content="Let me start by saying that I was very excited by IE10. Internet Explorer 10 was supposed to be the premier IE web browser. Microsoft was so &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +24,7 @@
   <link href="/atom.xml" rel="alternate" title="HarmsSite" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -78,6 +78,78 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/06/ie10-conditional-comments/">IE10 Conditional Comments</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-29T20:43:00-05:00" pubdate data-updated="true">Jun 29<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Let me start by saying that I was very excited by IE10. Internet Explorer 10 was supposed to be <strong>the</strong> premier IE web browser. Microsoft was so confident that they created a browser that could meet modern standards that they dropped conditional comments in IE10. If you don&rsquo;t know anything about developing for IE, just know that it sucks; it <em>was</em>, however, aleviated some by conditional comments that allowed for custom styles/js/whatever for IE versions. My first time working with IE10 I was made harshly aware that conditional comments no longer work. What&rsquo;s worse, my site that functioned and looked great in IE9 no longer functioned in IE10. How does this happen?</p>
+
+<p>The more I work with IE10 the more issues I find with it, Microsoft needs to bring conditional comments back. Until then, however, there is a simple script you can stick in your javascripts that will identify when IE10 is being used so that you can target it in your css or javascript.</p>
+
+<p>The javascript:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Add IE10 class to IE10</span>
+</span><span class='line'><span class="c1">// $.browser requires jquery &lt; 1.9</span>
+</span><span class='line'><span class="c1">// $.browser can be used in jquery &gt; 1.9 with plugin</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span> <span class="o">&amp;&amp;</span> <span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">version</span> <span class="o">===</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;html&quot;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;ie10&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or if you use coffeescript:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='coffee-script'><span class='line'><span class="c1"># Add IE10 class to IE10</span>
+</span><span class='line'><span class="c1"># $.browser requires jquery &lt; 1.9</span>
+</span><span class='line'><span class="c1"># $.browser can be used in jquery &gt; 1.9 with plugin</span>
+</span><span class='line'><span class="k">if</span> <span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span> <span class="o">and</span> <span class="nx">$</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">version</span> <span class="o">is</span> <span class="mi">10</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s">&quot;html&quot;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s">&quot;ie10&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It is sad that we must do this for a supposed modern browser; nevertheless, I hope this helps for when you have to work with IE10.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -721,46 +793,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/09/aws-authorize-security-groups-across-acounts-shellrunner/">AWS Authorize Security Groups Across Acounts « ShellRunner</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-28T00:00:00-05:00" pubdate data-updated="true">Sep 28<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Just had to share this post since I helped a little bit with it. Very handy little tip about authorizing security groups across AWS accounts.</p>
-
-<p><a href="http://shellrunner.com/2012/09/28/aws-authorize-security-groups-across-acounts/" title="AWS authorize security groups across acounts « ShellRunner">AWS authorize security groups across acounts « ShellRunner</a>.</p>
-
-<p>It is a post by <a title="Jackson Murtha on Twitter" href="https://twitter.com/jacksonmurtha" target="_blank">@jacksonmurtha</a> so we can trust that it is good.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -776,6 +808,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/06/ie10-conditional-comments/">IE10 Conditional Comments</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/04/symfony2-coding-standards/">Symfony2 Coding Standards</a>
       </li>
     
@@ -789,10 +825,6 @@
     
       <li class="post">
         <a href="/2013/03/symfony2-access-conrol/">Symfony2 Access Conrol</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a>
       </li>
     
   </ul>
