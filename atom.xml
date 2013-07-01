@@ -4,7 +4,7 @@
   <title><![CDATA[HarmsSite]]></title>
   <link href="http://harmssite.com/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-06-29T21:07:24-05:00</updated>
+  <updated>2013-07-01T14:35:54-05:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Chrome Webfont Mimetypes]]></title>
+    <link href="http://harmssite.com/2013/07/chrome-webfont-mimetypes/"/>
+    <updated>2013-07-01T14:27:00-05:00</updated>
+    <id>http://harmssite.com/2013/07/chrome-webfont-mimetypes</id>
+    <content type="html"><![CDATA[<p>As a web developer whose browser of choice is Google Chome, I use the Chrome console a lot. Chrome is already the best browser out there and always getting better. More than the browsing experience though, I maintain that it has the best dev environment available. It is the little things that really make Chrome so much better than its compeditors (docking to the right for instance). As if you needed any more reasons to like Chrome, the Chrome team just pushed an update to &lsquo;clean up the console.&rsquo; This was a fix that did nothing for end user usablity, but fixes that annoying little message telling you about your font mimetypes. This was not a fix that I needed for development, just a nicity that the Chome team provided.</p>
+
+<div class='embed tweet'><blockquote class="twitter-tweet"><p>Chrome&#39;s console will now bitch less about webfont mimetypes. <a href="https://t.co/rG4uI5fyhP">https://t.co/rG4uI5fyhP</a> This bothered me so I fixed it! <a href="http://t.co/Tmn8xuTVun">pic.twitter.com/Tmn8xuTVun</a></p>&mdash; Paul Irish (@paul_irish) <a href="https://twitter.com/paul_irish/statuses/351783000154992641">July 1, 2013</a></blockquote>
+<script async src="http://harmssite.com//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+
+
+<p>The fix: <a href="https://chromiumcodereview.appspot.com/18308003/patch/1/2">https://chromiumcodereview.appspot.com/18308003/patch/1/2</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[IE10 Conditional Comments]]></title>
@@ -929,19 +944,6 @@ The <code>.gitkeep</code> file at work:</p>
 
 
 <p>Then just remember to re-index your content to get all the new attributes in there.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Dogs Underwater]]></title>
-    <link href="http://harmssite.com/2012/04/dogs-underwater/"/>
-    <updated>2012-04-23T00:00:00-05:00</updated>
-    <id>http://harmssite.com/2012/04/dogs-underwater</id>
-    <content type="html"><![CDATA[I am usually not one for email forwards. I got one today that I absolutely love, however. So, instead of re-forwarding it, I will share it here.
-
-[nggallery id=2]
-
-I found the original author of the pictures <a title="Underwater Dogs" href="http://www.littlefriendsphoto.com/index2.php" target="_blank">here</a> (the email had no information about the author).
 ]]></content>
   </entry>
   
