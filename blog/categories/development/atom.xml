@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Development | HarmsSite]]></title>
   <link href="http://harmssite.com/blog/categories/development/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-07-29T16:38:42-05:00</updated>
+  <updated>2013-07-29T16:41:13-05:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -18,13 +18,13 @@
     <link href="http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis/"/>
     <updated>2013-07-29T16:05:00-05:00</updated>
     <id>http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis</id>
-    <content type="html"><![CDATA[<p>I recently faced a strange problem. I was faceting off of multiple <code>facet.fields</code> and I found the need to sort them independantly of each other. As far as I knew up to this point is that that <code>facet.sort</code> could only be set once. When I read the doc, however, it was claimed that the <code>facet.sort</code> could be set on a per field basis; sadly no examples were provided nor was it explained.</p>
+    <content type="html"><![CDATA[<p>I recently faced a strange problem. I was faceting off of multiple <code>facet.fields</code> and I found the need to sort them independently of each other. As far as I knew up to this point is that that <code>facet.sort</code> could only be set once. When I read the doc, however, it was claimed that the <code>facet.sort</code> could be set on a per field basis; sadly no examples were provided nor was it explained.</p>
 
-<p>It turns out, though, that setting the sort (index or count) on a per field is very easy. A typcial solr fetch with facets might look like this (assuming <code>type_s</code> is indexed):
+<p>It turns out, though, that setting the sort (index or count) on a per field is very easy. A typical solr fetch with facets might look like this (assuming <code>type_s</code> is indexed):
 <code>
 /solr/directory/select?q=*:*&amp;wt=json&amp;indent=true&amp;facet=true&amp;facet.field=type_s
 </code>
-Solr sets <code>facet.sort</code> to count by default, so that can be left undelcared or can be explicitly declared, it does not matter. A problem arises, however, when you have multiple <code>facet.field</code>s and you want them sorted differently. To solve this you need to follow this format for the declared sort: <code>f.&lt;facetted_field&gt;.facet.sort=&lt;index|count&gt;</code>. Using the same example as before, but with an extra field it would look like this:
+Solr sets <code>facet.sort</code> to count by default, so that can be left undeclared or can be explicitly declared, it does not matter. A problem arises, however, when you have multiple <code>facet.field</code>s and you want them sorted differently. To solve this you need to follow this format for the declared sort: <code>f.&lt;facetted_field&gt;.facet.sort=&lt;index|count&gt;</code>. Using the same example as before, but with an extra field it would look like this:
 <code>
 /solr/directory/select?q=*:*&amp;wt=json&amp;indent=true&amp;facet=true&amp;facet.field=type_s&amp;facet.field=location_s&amp;f.location_s.facet.sort=index
 </code>
