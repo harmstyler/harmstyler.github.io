@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Development | HarmsSite]]></title>
   <link href="http://harmssite.com/blog/categories/development/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-07-29T16:43:28-05:00</updated>
+  <updated>2013-07-29T16:44:01-05:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -18,8 +18,9 @@
     <link href="http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis/"/>
     <updated>2013-07-29T16:05:00-05:00</updated>
     <id>http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis</id>
-    <content type="html"><![CDATA[<p>I recently faced a strange problem. I was faceting off of multiple <code>facet.fields</code> and I found the need to sort them independently of each other. As far as I knew up to this point <code>facet.sort</code> could only be set once. When I read the doc, however, it was claimed that the <code>facet.sort</code> could be set on a per field basis; sadly no examples were provided nor was it explained any further. Luckily, after some digging, I found out that setting the sort (index or count) on a per field is very easy.
-A typical solr fetch with facets might look like this (assuming <code>type_s</code> is indexed):
+    <content type="html"><![CDATA[<p>I recently faced a strange problem. I was faceting off of multiple <code>facet.fields</code> and I found the need to sort them independently of each other. As far as I knew up to this point <code>facet.sort</code> could only be set once. When I read the doc, however, it was claimed that the <code>facet.sort</code> could be set on a per field basis; sadly no examples were provided nor was it explained any further. Luckily, after some digging, I found out that setting the sort (index or count) on a per field is very easy.</p>
+
+<p>A typical solr fetch with facets might look like this (assuming <code>type_s</code> is indexed):
 <code>
 /solr/directory/select?q=*:*&amp;wt=json&amp;indent=true&amp;facet=true&amp;facet.field=type_s
 </code>
