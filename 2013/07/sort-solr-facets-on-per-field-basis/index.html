@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>HarmsSite</title>
+  <title>Sort Solr Facets on Per Field Basis - HarmsSite</title>
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="Recent Posts Sort Solr Facets on Per Field Basis Chrome Webfont Mimetypes IE10 Conditional Comments Symfony2 Coding Standards New Site Theme Tweets &hellip;">
-  
+  <meta name="description" content="How to sort solr facats on a per field basis">
+  <meta name="keywords" content="facet.sort, facet.fields, solr facet sort, facet sort">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://harmssite.com/tags">
+  <link rel="canonical" href="http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="HarmsSite" type="application/atom+xml">
@@ -77,46 +77,118 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
-  <div id="blog-archives" class="tag">
+  <header>
+    
+      <h1 class="entry-title">Sort Solr Facets on Per Field Basis</h1>
+    
+    
+      <p class="meta">
+        
 
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-29T16:05:00-05:00" pubdate data-updated="true">Jul 29<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I recently faced a strange problem. I was faceting off of multiple <code>facet.fields</code> and I found the need to sort them independantly of each other. As far as I knew up to this point is that that <code>facet.sort</code> could only be set once. When I read the doc, however, it was claimed that the <code>facet.sort</code> could be set on a per field basis; sadly no examples were provided nor was it explained.</p>
+
+<p>It turns out, though, that setting the sort (index or count) on a per field is very easy. A typcial solr fetch with facets might look like this (assuming <code>type_s</code> is indexed):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/solr/directory/select?q=*:*&wt=json&indent=true&facet=true&facet.field=type_s</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Solr sets <code>facet.sort</code> to count by default, so that can be left undelcared or can be explicitly declared, it does not matter. A problem arises, however, when you have multiple <code>facet.field</code>s and you want them sorted differently. To solve this you need to follow this format for the declared sort: <code>f.&lt;facetted_field&gt;.facet.sort=&lt;index|count&gt;</code>. Using the same example as before, but with an extra field it would look like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/solr/directory/select?q=*:*&wt=json&indent=true&facet=true&facet.field=type_s&facet.field=location_s&f.location_s.facet.sort=index</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This would sort <code>type_s</code> by count (default) and sort <code>location_s</code> by index.
+The opposite would also work.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/solr/directory/select?q=*:*&wt=json&indent=true&facet=true&facet.field=type_s&facet.field=location_s&facet.sort=index&f.location_s.facet.sort=count</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This would change the default sort order to use index for sort and <code>location_s</code> would use count for sorting.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Tyler Harms</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-29T16:05:00-05:00" pubdate data-updated="true">Jul 29<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/development/'>Development</a>, <a class='category' href='/blog/categories/solr/'>Solr</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis/" data-via="harmstyler" data-counturl="http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/07/chrome-webfont-mimetypes/" title="Previous Post: Chrome Webfont Mimetypes">&laquo; Chrome Webfont Mimetypes</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
 <aside class="sidebar">
   
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/2013/07/sort-solr-facets-on-per-field-basis/">Sort Solr Facets on Per Field Basis</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/07/chrome-webfont-mimetypes/">Chrome Webfont Mimetypes</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/06/ie10-conditional-comments/">IE10 Conditional Comments</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/symfony2-coding-standards/">Symfony2 Coding Standards</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/new-site-theme/">New Site Theme</a>
-      </li>
-    
-  </ul>
-</section>
-<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/harmstyler" data-widget-id="329341729515900931">Tweets by @harmstyler</a>
+    <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/harmstyler" data-widget-id="329341729515900931">Tweets by @harmstyler</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 <section>
@@ -167,7 +239,10 @@
       var disqus_shortname = 'harmssite';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis/';
+        var disqus_url = 'http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -4,7 +4,7 @@
   <title><![CDATA[HarmsSite]]></title>
   <link href="http://harmssite.com/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-07-01T14:35:54-05:00</updated>
+  <updated>2013-07-29T16:38:42-05:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sort Solr Facets on Per Field Basis]]></title>
+    <link href="http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis/"/>
+    <updated>2013-07-29T16:05:00-05:00</updated>
+    <id>http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis</id>
+    <content type="html"><![CDATA[<p>I recently faced a strange problem. I was faceting off of multiple <code>facet.fields</code> and I found the need to sort them independantly of each other. As far as I knew up to this point is that that <code>facet.sort</code> could only be set once. When I read the doc, however, it was claimed that the <code>facet.sort</code> could be set on a per field basis; sadly no examples were provided nor was it explained.</p>
+
+<p>It turns out, though, that setting the sort (index or count) on a per field is very easy. A typcial solr fetch with facets might look like this (assuming <code>type_s</code> is indexed):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/solr/directory/select?q=*:*&wt=json&indent=true&facet=true&facet.field=type_s</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Solr sets <code>facet.sort</code> to count by default, so that can be left undelcared or can be explicitly declared, it does not matter. A problem arises, however, when you have multiple <code>facet.field</code>s and you want them sorted differently. To solve this you need to follow this format for the declared sort: <code>f.&lt;facetted_field&gt;.facet.sort=&lt;index|count&gt;</code>. Using the same example as before, but with an extra field it would look like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/solr/directory/select?q=*:*&wt=json&indent=true&facet=true&facet.field=type_s&facet.field=location_s&f.location_s.facet.sort=index</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This would sort <code>type_s</code> by count (default) and sort <code>location_s</code> by index.
+The opposite would also work.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/solr/directory/select?q=*:*&wt=json&indent=true&facet=true&facet.field=type_s&facet.field=location_s&facet.sort=index&f.location_s.facet.sort=count</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This would change the default sort order to use index for sort and <code>location_s</code> would use count for sorting.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Chrome Webfont Mimetypes]]></title>
@@ -916,34 +946,6 @@ The <code>.gitkeep</code> file at work:</p>
 <p>Note that we have to send the <code>distributed_search</code> parameter as a hashed array. In this case we are telling eZ Find to search both shards. We can have eZ Find search whatever core we want it to at this point, just harmssite, just counterhelix, both, or even new cores that we might add later. The advantages are obvious, separated indexes allowing for much larger sets of data is a huge upgrade. The downside is that searching multiple cores at once is a little slower, so really you should not use this option unless you are in need of scaling Solr out more; this would be a touch overkill for my site.</p>
 
 <p>If you have followed me up to this point and have tried running this, you may have noticed that it does not work out of the box. The <code>ezfezpsolrquerybuilder.php</code> is still a work in process and has not been set up to handle shards just yet. Out of the box, should you send the distributed search shards array to eZ Find, eZ Find will take it, generate the shard urls and then do nothing with them. The task I leave you is to try and fix this problem for eZ Find. I have a fix for this, but would love to see what other people come up with (I will post my code here next week). The <a href="https://github.com/ezsystems/ezfind/blob/stable-2.7/classes/ezfezpsolrquerybuilder.php">file in question</a>. Remember, all we need to do is send the shards parameter to the search plugin should one be sent to eZ Find; the search plugin is already setup to handle shards.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[eZ Find: Enable Attribute Storage]]></title>
-    <link href="http://harmssite.com/2012/04/ez-find-solr-attribute-storage/"/>
-    <updated>2012-04-26T00:00:00-05:00</updated>
-    <id>http://harmssite.com/2012/04/ez-find-solr-attribute-storage</id>
-    <content type="html"><![CDATA[<p><img src="https://s3.amazonaws.com/hs_blog_content/images/enable-solr-attribute-storage.png" alt="Enable Solr Attribute Storage" /></p>
-
-<p>When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes <code>'as_objects', true()</code> eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.</p>
-
-<p>Another option, however, is to return all the information from Solr, no more object building from the DB. To do this all you have to do is enable <code>EnableSolrAttributeStorage</code> in the ezfind.ini. That way, if you are searching on a site that does not have access to the local database (cross-site search for instance) you can return all the content you need from Solr, because it is <em>all</em> stored.</p>
-
-<p>So remember, set:
-<code>'as_objects', false()</code> in the fetch.</p>
-
-<p>and in the ezfind.ini</p>
-
-<figure class='code'><figcaption><span>ezfind.ini </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[IndexOptions]</span>
-</span><span class='line'><span class="na">EnableSolrAttributeStorage</span><span class="o">=</span><span class="s">true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Then just remember to re-index your content to get all the new attributes in there.</p>
 ]]></content>
   </entry>
   

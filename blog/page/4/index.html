@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="Finally, Path has come to Android. Path is one of those little known apps that I think a person would love, if they knew about it. Path is made to &hellip;">
+  <meta name="description" content="I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,71 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/10/gradient-app/">Gradient App</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-20T00:00:00-05:00" pubdate data-updated="true">Oct 20<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="pull-right"><a href="https://s3.amazonaws.com/hs_blog_content/images/gradient-app.png"><img src="https://s3.amazonaws.com/hs_blog_content/images/small/gradient-app-117x300.png" alt="Gradient App" title="gradient-app" width="117" height="300" /></a></div>
+
+
+<p>I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out gradients is easy enough, get your start color and your end color and then plug them into all the various browser specific gradient css elements (webkit, moz, etc&hellip;) and you get a gradient. Like I said, simple enough but time consuming because each browser gets its own line.</p>
+
+<p><a href="http://www.gradientapp.com/" title="Gradient App" target="_blank">Gradient App</a> makes life much simpler. As a Gradient App user all I have to do use the color picker, or manually enter my colors, then just choose my gradient direction and any other options I would be interested in! Gradient App then gives me the CSS code to use, again, making my life much easier.</p>
+
+<figure class='code'><figcaption><span>Sample Gradient Code </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">background-color</span><span class="o">:</span> <span class="nf">#69aece</span><span class="o">;</span>
+</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-webkit-gradient</span><span class="o">(</span><span class="nt">linear</span><span class="o">,</span> <span class="nt">left</span> <span class="nt">top</span><span class="o">,</span> <span class="nt">left</span> <span class="nt">bottom</span><span class="o">,</span> <span class="nt">from</span><span class="o">(</span><span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">)),</span> <span class="nt">to</span><span class="o">(</span><span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">)));</span>
+</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-webkit-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
+</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-moz-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
+</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-o-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
+</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-ms-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
+</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
+</span><span class='line'><span class="nt">filter</span><span class="o">:</span> <span class="nt">progid</span><span class="nd">:DXImageTransform</span><span class="nc">.Microsoft.gradient</span><span class="o">(</span><span class="nt">startColorStr</span><span class="o">=</span><span class="s1">&#39;#69aece&#39;</span><span class="o">,</span> <span class="nt">EndColorStr</span><span class="o">=</span><span class="s1">&#39;#c96167&#39;</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Obviously, looking at the above code, simple gradients are fairly straight forward. Remember to cover all your browsers (the filter is for Internet Explorer versions older than IE10 as they do not recognize gradients). Also obvious, making your own gradients can be a bit tedious, which is why I used Gradient App to make the code you see above.</p>
+
+<p>Get Gradient App here: <a href="http://www.gradientapp.com/" title="Gradient App"><a href="http://www.gradientapp.com/">http://www.gradientapp.com/</a></a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -169,6 +234,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/07/sort-solr-facets-on-per-field-basis/">Sort Solr Facets on Per Field Basis</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/07/chrome-webfont-mimetypes/">Chrome Webfont Mimetypes</a>
       </li>
     
@@ -182,10 +251,6 @@
     
       <li class="post">
         <a href="/2013/04/new-site-theme/">New Site Theme</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/">Start Searching With Solr - Integrating Solr Into Any PHP Project Is Easy With Solarium [REPOST]</a>
       </li>
     
   </ul>

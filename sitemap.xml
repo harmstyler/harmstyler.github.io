@@ -118,7 +118,7 @@
         <loc>
             http://harmssite.com/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/
         </loc>
-        <lastmod>2013-06-29T20:21:35-05:00</lastmod>
+        <lastmod>2013-07-29T16:37:58-05:00</lastmod>
     </url>
     <url>
         <loc>http://harmssite.com/2013/04/new-site-theme/</loc>
@@ -137,8 +137,12 @@
         <lastmod>2013-07-01T14:35:54-05:00</lastmod>
     </url>
     <url>
+        <loc>http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis/</loc>
+        <lastmod>2013-07-29T16:34:19-05:00</lastmod>
+    </url>
+    <url>
         <loc>http://harmssite.com/blog/archives/</loc>
-        <lastmod>2013-07-01T14:35:54-05:00</lastmod>
+        <lastmod>2013-07-29T16:37:58-05:00</lastmod>
     </url>
     <url>
         <loc>http://harmssite.com/contact/</loc>
@@ -146,7 +150,7 @@
     </url>
     <url>
         <loc>http://harmssite.com/</loc>
-        <lastmod>2013-07-01T14:35:54-05:00</lastmod>
+        <lastmod>2013-07-29T16:37:58-05:00</lastmod>
     </url>
     <url>
         <loc>http://harmssite.com/robots.txt</loc>
@@ -154,6 +158,6 @@
     </url>
     <url>
         <loc>http://harmssite.com/tags/</loc>
-        <lastmod>2013-07-01T14:35:54-05:00</lastmod>
+        <lastmod>2013-07-29T16:37:58-05:00</lastmod>
     </url>
 </urlset>

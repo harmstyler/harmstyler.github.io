@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="As a web developer whose browser of choice is Google Chome, I use the Chrome console a lot. Chrome is already the best browser out there and always &hellip;">
+  <meta name="description" content="I recently faced a strange problem. I was faceting off of multiple facet.fields and I found the need to sort them independantly of each other. As far &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,63 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/07/sort-solr-facets-on-per-field-basis/">Sort Solr Facets on Per Field Basis</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-29T16:05:00-05:00" pubdate data-updated="true">Jul 29<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently faced a strange problem. I was faceting off of multiple <code>facet.fields</code> and I found the need to sort them independantly of each other. As far as I knew up to this point is that that <code>facet.sort</code> could only be set once. When I read the doc, however, it was claimed that the <code>facet.sort</code> could be set on a per field basis; sadly no examples were provided nor was it explained.</p>
+
+<p>It turns out, though, that setting the sort (index or count) on a per field is very easy. A typcial solr fetch with facets might look like this (assuming <code>type_s</code> is indexed):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/solr/directory/select?q=*:*&wt=json&indent=true&facet=true&facet.field=type_s</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Solr sets <code>facet.sort</code> to count by default, so that can be left undelcared or can be explicitly declared, it does not matter. A problem arises, however, when you have multiple <code>facet.field</code>s and you want them sorted differently. To solve this you need to follow this format for the declared sort: <code>f.&lt;facetted_field&gt;.facet.sort=&lt;index|count&gt;</code>. Using the same example as before, but with an extra field it would look like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/solr/directory/select?q=*:*&wt=json&indent=true&facet=true&facet.field=type_s&facet.field=location_s&f.location_s.facet.sort=index</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This would sort <code>type_s</code> by count (default) and sort <code>location_s</code> by index.
+The opposite would also work.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/solr/directory/select?q=*:*&wt=json&indent=true&facet=true&facet.field=type_s&facet.field=location_s&facet.sort=index&f.location_s.facet.sort=count</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This would change the default sort order to use index for sort and <code>location_s</code> would use count for sorting.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -750,45 +807,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/11/skype-version-6/">Skype Version 6</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-01T00:00:00-05:00" pubdate data-updated="true">Nov 1<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class="pull-right"><img title="MessageViewVersion" src="https://s3.amazonaws.com/hs_blog_content/images/skype-screenshot.png" alt="Message View Version" width="352" height="229" /></div>
-
-
-<p>I recently updated to Skype 6 and found something interesting out. My style package that worked in Skype 5 would not work in Skype 6. With some digging, we found out that in order to make your Skype 5 style work in Skype 6 you need to update the <code>MessageViewVersion</code> to version 7 (I have no idea why). So, with that, have fun updating your Skype to the latest version while still getting use out of your favorite Skype theme.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -804,6 +822,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/07/sort-solr-facets-on-per-field-basis/">Sort Solr Facets on Per Field Basis</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/07/chrome-webfont-mimetypes/">Chrome Webfont Mimetypes</a>
       </li>
     
@@ -817,10 +839,6 @@
     
       <li class="post">
         <a href="/2013/04/new-site-theme/">New Site Theme</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/">Start Searching With Solr - Integrating Solr Into Any PHP Project Is Easy With Solarium [REPOST]</a>
       </li>
     
   </ul>
