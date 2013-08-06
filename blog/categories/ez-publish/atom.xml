@@ -4,7 +4,7 @@
   <title><![CDATA[Category: eZ Publish | HarmsSite]]></title>
   <link href="http://harmssite.com/blog/categories/ez-publish/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-08-02T09:37:15-05:00</updated>
+  <updated>2013-08-06T17:06:46-05:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -54,54 +54,6 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Solr Query for Mimicking SQL IN Operator Functionality]]></title>
-    <link href="http://harmssite.com/2012/09/solr-query-for-mimicking-sql-in-operator-functionality/"/>
-    <updated>2012-09-13T00:00:00-05:00</updated>
-    <id>http://harmssite.com/2012/09/solr-query-for-mimicking-sql-in-operator-functionality</id>
-    <content type="html"><![CDATA[<div class="pull-right"><img title="Learning SQL" src="https://s3.amazonaws.com/hs_blog_content/images/select-query.jpg" alt="Learning SQL" width="240" height="180" /></div>
-
-
-<p>I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the <code>IN</code> operator. In Solr you have the option of specifying a field using the <code>qf</code> operator, but what if you have more search terms searching other fields? The problem becomes far more complex. Given the following SQL statement how would we query Solr?
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='mysql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span>
-</span><span class='line'><span class="k">FROM</span> <span class="n">table_name</span>
-</span><span class='line'><span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">foo</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-There are couple of ways to do this, but I think there is one very good and much easier way. The first obvious way to query solr is to match the fields to columns manually.
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=column_name:value1 AND column_name:value2 AND other_colum:&amp;lsquo;foo&amp;rsquo;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-This is all fine and dandy but what if I want to be able to add a list of content to the query? Adding the column name every time can become a chore and make the query unnecessarily large. To do an <code>IN</code> query try this:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=column_name:+(value1 value2) AND other_colum:&amp;lsquo;foo&amp;rsquo;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-Having used this one before, I can tell you it works for me using Solr 3.6 and that the placement of the + symbol is key.</p>
-
-<p>And what about a <code>NOT IN</code> query?
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='mysql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span>
-</span><span class='line'><span class="k">FROM</span> <span class="n">table_name</span>
-</span><span class='line'><span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">foo</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-The &lsquo;bad&rsquo; way:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=-column_namevalue1 AND -column_name:value2 AND other_colum:&amp;lsquo;foo&amp;rsquo;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-This one I found from working with eZ Publish and eZ Find, and I happen to like it a lot. It is a clever little Solr query that selects all from the column then filters out what we don&rsquo;t want.
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=other_colum:&amp;lsquo;foo&amp;rsquo; AND column_name:[&lt;em&gt; TO &lt;/em&gt;] -column_name:(value1 value2)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-<code>column_name:[* TO *]</code> is like saying select all from the column, but then we add <code>-column_name:(value1 value2)</code> to filter out what we don&rsquo;t want.</p>
-
-<p>Cheers and good luck!</p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Optimizing Solr to fit your needs Part 1]]></title>
     <link href="http://harmssite.com/2012/08/optimizing-solr-to-fit-your-needs-part-1/"/>
     <updated>2012-08-25T00:00:00-05:00</updated>
@@ -143,6 +95,157 @@ This one I found from working with eZ Publish and eZ Find, and I happen to like 
 
 
 <p>A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/MHuK34" target="_blank">Sublime Text 2</a> and its' many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ. So what I decided to do was use the Smarty package as a template for adding more language support for eZ Publish. What I have is far from complete; I usually only add to it when I use a method that is not already supported. You can find it out on <a title="ez sublime on GitHub" href="http://bit.ly/N4eTcp" target="_blank">GitHub</a>. It is my hope that there are some eZ Publish devs out there that really enjoy Sublime as I do and want to help me grow the package. Remember, it is far from complete, but nonetheless, I really hope that you enjoy the language highlighting, and if you do feel free to contribute.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fixing Shards in eZ Find]]></title>
+    <link href="http://harmssite.com/2012/06/fixing-shards-in-ez-find/"/>
+    <updated>2012-06-29T00:00:00-05:00</updated>
+    <id>http://harmssite.com/2012/06/fixing-shards-in-ez-find</id>
+    <content type="html"><![CDATA[<p>I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the <code>$shardQuery</code> is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the <code>$queryHandler</code> switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)</p>
+
+<!--more-->
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>ezfezpsolrquerybuilder.php </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php</span>
+</span><span class='line'><span class="x">switch ( $queryHandler )</span>
+</span><span class='line'><span class="x">{&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;case &#39;standard&#39;:</span>
+</span><span class='line'><span class="x">    // @todo: this is more complicated</span>
+</span><span class='line'><span class="x">    // build the query against all &quot;text&quot; like fields</span>
+</span><span class='line'><span class="x">    // should take into account all the filter fields and class filters to shorten the query</span>
+</span><span class='line'><span class="x">    // need to build: Solr q</span>
+</span><span class='line'><span class="x">    if ( array_key_exists( &#39;fields&#39;, $boostFunctions ) )</span>
+</span><span class='line'><span class="x">    {</span>
+</span><span class='line'><span class="x">        if (false != $shardQuery) {</span>
+</span><span class='line'><span class="x">        $handlerParameters = array ( &#39;q&#39; =&amp;gt; $this-&amp;gt;buildMultiFieldQuery( $searchText, array_merge( $queryFields, $extraFieldsToSearch ), $boostFunctions[&#39;fields&#39;] ),</span>
+</span><span class='line'><span class="x">                                 &#39;qt&#39; =&amp;gt; &#39;standard&#39;,</span>
+</span><span class='line'><span class="x">                                 &#39;shards&#39; =&amp;gt; $shardQuery);</span>
+</span><span class='line'><span class="x">        }</span>
+</span><span class='line'><span class="x">        else {</span>
+</span><span class='line'><span class="x">        $handlerParameters = array ( &#39;q&#39; =&amp;gt; $this-&amp;gt;buildMultiFieldQuery( $searchText, array_merge( $queryFields, $extraFieldsToSearch ), $boostFunctions[&#39;fields&#39;] ),</span>
+</span><span class='line'><span class="x">                                 &#39;qt&#39; =&amp;gt; &#39;standard&#39;, );</span>
+</span><span class='line'><span class="x">        }</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">    }</span>
+</span><span class='line'><span class="x">    else</span>
+</span><span class='line'><span class="x">    {</span>
+</span><span class='line'><span class="x">        if (false != $shardQuery) {</span>
+</span><span class='line'><span class="x">        $handlerParameters = array ( &#39;q&#39; =&amp;gt; $this-&amp;gt;buildMultiFieldQuery( $searchText, array_merge( $queryFields, $extraFieldsToSearch ) ),</span>
+</span><span class='line'><span class="x">                                 &#39;qt&#39; =&amp;gt; &#39;standard&#39;,</span>
+</span><span class='line'><span class="x">                                 &#39;shards&#39; =&amp;gt; $shardQuery);</span>
+</span><span class='line'><span class="x">        }</span>
+</span><span class='line'><span class="x">        else{</span>
+</span><span class='line'><span class="x">            $handlerParameters = array ( &#39;q&#39; =&amp;gt; $this-&amp;gt;buildMultiFieldQuery( $searchText, array_merge( $queryFields, $extraFieldsToSearch ) ),</span>
+</span><span class='line'><span class="x">                                 &#39;qt&#39; =&amp;gt; &#39;standard&#39; );</span>
+</span><span class='line'><span class="x">        }</span>
+</span><span class='line'><span class="x">    }</span>
+</span><span class='line'><span class="x">    break;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">case &#39;simplestandard&#39;:</span>
+</span><span class='line'><span class="x">    // not to do much, searching is against the default aggregated field</span>
+</span><span class='line'><span class="x">    // only highlightfields</span>
+</span><span class='line'><span class="x">    $highLightFields = array ( &#39;ezf_df_text&#39; );</span>
+</span><span class='line'><span class="x">    $handlerParameters = array ( &#39;q&#39; =&amp;gt; $searchText,</span>
+</span><span class='line'><span class="x">                                 &#39;qt&#39; =&amp;gt; &#39;standard&#39;,</span>
+</span><span class='line'><span class="x">                                 &#39;hl.usePhraseHighlighter&#39; =&amp;gt; &#39;true&#39;,</span>
+</span><span class='line'><span class="x">                                 &#39;hl.highlightMultiTerm&#39; =&amp;gt; &#39;true&#39; );</span>
+</span><span class='line'><span class="x">    break;</span>
+</span><span class='line'><span class="x">case &#39;ezpublish&#39;:</span>
+</span><span class='line'><span class="x">    // the dismax based handler, just keywordss input, most useful for ordinary queries by users</span>
+</span><span class='line'><span class="x">    // need to build: Solr q, qf, dismax specific parameters</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">default:</span>
+</span><span class='line'><span class="x">    // ezpublish of course, this to not break BC and is the most &quot;general&quot;</span>
+</span><span class='line'><span class="x">    // if another value is specified, it is supposed to be a dismax like handler</span>
+</span><span class='line'><span class="x">    // with possible other tuning variables then the stock provided &#39;ezpublish&#39; in solrconfi.xml</span>
+</span><span class='line'><span class="x">    // remark it should be lowercase in solrconfig.xml!</span>
+</span><span class='line'><span class="x">    if (false != $shardQuery) {</span>
+</span><span class='line'><span class="x">        $handlerParameters = array ( &#39;q&#39; =&amp;gt; $searchText,</span>
+</span><span class='line'><span class="x">                                     &#39;qf&#39; =&amp;gt; implode( &#39; &#39;, array_merge( $queryFields, $extraFieldsToSearch ) ),</span>
+</span><span class='line'><span class="x">                                     &#39;qt&#39; =&amp;gt; $queryHandler,</span>
+</span><span class='line'><span class="x">                                     &#39;shards&#39; =&amp;gt; $shardQuery );</span>
+</span><span class='line'><span class="x">    } else {</span>
+</span><span class='line'><span class="x">        $handlerParameters = array ( &#39;q&#39; =&amp;gt; $searchText,</span>
+</span><span class='line'><span class="x">                                     &#39;qf&#39; =&amp;gt; implode( &#39; &#39;, array_merge( $queryFields, $extraFieldsToSearch ) ),</span>
+</span><span class='line'><span class="x">                                     &#39;qt&#39; =&amp;gt; $queryHandler );</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">    }</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

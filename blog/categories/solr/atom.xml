@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Solr | HarmsSite]]></title>
   <link href="http://harmssite.com/blog/categories/solr/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-08-02T09:37:15-05:00</updated>
+  <updated>2013-08-06T17:06:46-05:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -281,6 +281,54 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[Solr Query for Mimicking SQL IN Operator Functionality]]></title>
+    <link href="http://harmssite.com/2012/09/solr-query-for-mimicking-sql-in-operator-functionality/"/>
+    <updated>2012-09-13T00:00:00-05:00</updated>
+    <id>http://harmssite.com/2012/09/solr-query-for-mimicking-sql-in-operator-functionality</id>
+    <content type="html"><![CDATA[<div class="pull-right"><img title="Learning SQL" src="https://s3.amazonaws.com/hs_blog_content/images/select-query.jpg" alt="Learning SQL" width="240" height="180" /></div>
+
+
+<p>I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the <code>IN</code> operator. In Solr you have the option of specifying a field using the <code>qf</code> operator, but what if you have more search terms searching other fields? The problem becomes far more complex. Given the following SQL statement how would we query Solr?
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='mysql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span> <span class="n">table_name</span>
+</span><span class='line'><span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">foo</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+There are couple of ways to do this, but I think there is one very good and much easier way. The first obvious way to query solr is to match the fields to columns manually.
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=column_name:value1 AND column_name:value2 AND other_colum:&amp;lsquo;foo&amp;rsquo;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+This is all fine and dandy but what if I want to be able to add a list of content to the query? Adding the column name every time can become a chore and make the query unnecessarily large. To do an <code>IN</code> query try this:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=column_name:+(value1 value2) AND other_colum:&amp;lsquo;foo&amp;rsquo;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Having used this one before, I can tell you it works for me using Solr 3.6 and that the placement of the + symbol is key.</p>
+
+<p>And what about a <code>NOT IN</code> query?
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='mysql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span> <span class="n">table_name</span>
+</span><span class='line'><span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">foo</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+The &lsquo;bad&rsquo; way:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=-column_namevalue1 AND -column_name:value2 AND other_colum:&amp;lsquo;foo&amp;rsquo;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+This one I found from working with eZ Publish and eZ Find, and I happen to like it a lot. It is a clever little Solr query that selects all from the column then filters out what we don&rsquo;t want.
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='http'><span class='line'><span class="err">/select?q=&lt;em&gt;:&lt;/em&gt;&amp;amp;fq=other_colum:&amp;lsquo;foo&amp;rsquo; AND column_name:[&lt;em&gt; TO &lt;/em&gt;] -column_name:(value1 value2)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<code>column_name:[* TO *]</code> is like saying select all from the column, but then we add <code>-column_name:(value1 value2)</code> to filter out what we don&rsquo;t want.</p>
+
+<p>Cheers and good luck!</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Optimizing Solr to fit your needs Part 1]]></title>
     <link href="http://harmssite.com/2012/08/optimizing-solr-to-fit-your-needs-part-1/"/>
     <updated>2012-08-25T00:00:00-05:00</updated>
@@ -310,15 +358,6 @@ A copyField will take any field you tell it to and <em>copy it</em> into another
 <p>eZ Find by default looks at all &lsquo;searchable&rsquo; fields and adds them to either the <a title="qf" href="http://wiki.apache.org/solr/DisMaxQParserPlugin#qf_.28Query_Fields.29"><code>qf</code></a> (if you are using the dismax search like you should be) or it searches every searchable field individually (<code>attr_title_t:(*:*)</code>, <code>attr_title_s:(*:*)</code>, etc, etc, for all searchable fields). All the &lsquo;searchable&rsquo; fields are by default added to the <code>ezf_df_text</code> field, so you should really do yourself a favor and search just one field, it is a noticable speed improvement, especially in large systems.</p>
 
 <p>In Part 2 I will talk about how to better optimize the Solr <code>schema.xml</code> file using the <code>ezf_df_text</code> field.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Solr 3.6 Update]]></title>
-    <link href="http://harmssite.com/2012/05/solr-3-6-update/"/>
-    <updated>2012-05-14T00:00:00-05:00</updated>
-    <id>http://harmssite.com/2012/05/solr-3-6-update</id>
-    <content type="html"><![CDATA[<p>Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.war file on GitHub (it is in <a href="https://github.com/harmstyler/ezfind" title="harmstyler eZ Find fork">my eZ Find branch</a>). Enjoy!</p>
 ]]></content>
   </entry>
   
