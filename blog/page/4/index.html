@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out &hellip;">
+  <meta name="description" content="I ran across a problem recently, I needed to get the contents of a page so that I could mimic a widget’s functionality without having access to the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,70 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/01/scraping-a-page-with-php/">Scraping a Page With Php</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-24T00:00:00-06:00" pubdate data-updated="true">Jan 24<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I ran across a problem recently, I needed to get the contents of a page so that I could mimic a widget’s functionality without having access to the database that said page’s widget used (confused yet). Basically, one site had a widget that displayed an upcoming event (information with came from a database), I needed to copy that widget to another website. Moreover, I did not want to use JavaScript to accomplish my goal because I need the new site to be cached pretty heavily on the server. My first thought was to use cURL, but when I ran curl_exec my function would output the entire page contents onto my new site, something that I did not want, I only wanted a small portion of the website. My next option was to use <code>file_get_contents(“my_url”)</code>, as was pointed out to me, this will return the full page as a string. With this I could have accomplished my goal, but not with as much ease as I would hope. I ran into the <code>DOMDOcument()</code> php object a while back and was curious about what I could do with it so I decided to do some research on that. This would eventually lead me to my answer. It turns out that the script is very simple and I can see myself using it quite often so I decided to share it.
+Here it is:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">scrapePage</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span><span class="nv">$id</span><span class="p">){</span>
+</span><span class='line'>    <span class="nv">$d</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DOMDOcument</span><span class="p">();</span>
+</span><span class='line'>    <span class="nb">libxml_use_internal_errors</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+</span><span class='line'>    <span class="nv">$d</span><span class="o">-&gt;</span><span class="na">loadHTMLFile</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+</span><span class='line'>    <span class="nv">$widget</span> <span class="o">=</span> <span class="nv">$d</span><span class="o">-&gt;</span><span class="na">getElementById</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nv">$widget</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nb">simplexml_import_dom</span><span class="p">(</span><span class="nv">$widget</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">asXML</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -235,6 +299,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/08/jquery-animate-body-for-all-browsers/">jQuery Animate Body Scroll for All Browsers</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/07/sort-solr-facets-on-per-field-basis/">Sort Solr Facets on Per Field Basis</a>
       </li>
     
@@ -248,10 +316,6 @@
     
       <li class="post">
         <a href="/2013/04/symfony2-coding-standards/">Symfony2 Coding Standards</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/new-site-theme/">New Site Theme</a>
       </li>
     
   </ul>

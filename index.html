@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="I recently faced a strange problem. I was faceting off of multiple facet.fields and I found the need to sort them independently of each other. As far &hellip;">
+  <meta name="description" content="It turns out that when trying to use jQuery&rsquo;s animate to scrollTop on the main body of an html document different browsers require different &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,79 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/08/jquery-animate-body-for-all-browsers/">jQuery Animate Body Scroll for All Browsers</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-09T08:52:00-05:00" pubdate data-updated="true">Aug 9<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It turns out that when trying to use jQuery&rsquo;s <code>animate</code> to <code>scrollTop</code> on the main body of an html document different browsers require different targets to scroll to. Webkit requires targeting the <code>body</code> of the document while all other browsers that I know of use <code>html</code>. The typical solution is to target both in the same call:</p>
+
+<figure class='code'><figcaption><span>Problematic Callback </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;html, body&#39;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">scrollTop</span><span class="o">:</span> <span class="s1">&#39;0px&#39;</span><span class="p">,</span><span class="s1">&#39;fast&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="c1">// Code to be fired when complete goes here (fired twice)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This solution is problematic, however, because even though the scrollTop will only work once, the callback is fired twice. That means that if we were relying on the callback to tell us that the function is complete, our complete function would fire twice.
+Luckily, there is a relatively simple solution to this problem. Using jQuery&rsquo;s browser plugin we can have webkit browsers target the <code>body</code> and all others target the <code>html</code>.</p>
+
+<figure class='code'><figcaption><span>Single Callback </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// If using a newer version (&gt;= 1.9) of jQuery a separate browser </span>
+</span><span class='line'><span class="c1">// plugin is required</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">webkit</span> <span class="o">?</span> <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="s2">&quot;html&quot;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">scrollTop</span><span class="o">:</span> <span class="s1">&#39;0px&#39;</span><span class="p">,</span><span class="s1">&#39;fast&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="c1">// Code to be fired when complete goes here</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This solution worked well for me. I am open to different ideas or solutions if you know of any.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -767,47 +840,6 @@ The opposite would also work.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/11/learning-symfony/">Learning Symfony</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-21T00:00:00-06:00" pubdate data-updated="true">Nov 21<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class="pull-right"><img title="Nashville Symfony" src="https://s3.amazonaws.com/hs_blog_content/images/symfony2.jpg" alt="Nashville Symfony" width="240" height="180" /></div>
-
-
-<p> I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that eZ Systems announced that they were adopting the Symfony framework I knew that I would be be spending some time with it. I have found that Symfony doesn&rsquo;t have the lowest barrier to entry so it has been a process, to say the least. I have a blog that has helped matters a great deal and so I wanted to give it some props here. If you are like me, wanting to learn Symfony but lacking time and resources, you should really check this site out: <a href="http://tutorial.symblog.co.uk/" title="Symblog: Creating a Blog in Symfony2">Symblog: Creating a Blog in Symfony2</a></p>
-
-<p>The blog starts with the basics and explores a good deal of Symfony components in detail. In the end you will be left with a barley usable blog, but that is alright, it leaves you with a project to fix. It is a tutorial for Symfony 2.0, and because Symfony is currently on 2.1.3 you will notice some part don&rsquo;t work the way you expect (but I think that forces you to learn more anyway). The tutorial also doesn&rsquo;t use Composer at all; so remember, when the blog tells you to install something, use Composer and skip over the way they tell you how to do it. I hope you enjoy the tutorial, I know I did (I have not currently completed the tutorial but am nearing completion at the time of this writing).</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -823,6 +855,10 @@ The opposite would also work.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/08/jquery-animate-body-for-all-browsers/">jQuery Animate Body Scroll for All Browsers</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/07/sort-solr-facets-on-per-field-basis/">Sort Solr Facets on Per Field Basis</a>
       </li>
     
@@ -836,10 +872,6 @@ The opposite would also work.</p>
     
       <li class="post">
         <a href="/2013/04/symfony2-coding-standards/">Symfony2 Coding Standards</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/new-site-theme/">New Site Theme</a>
       </li>
     
   </ul>

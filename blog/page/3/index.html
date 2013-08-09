@@ -9,7 +9,12 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, &hellip;">
+  <meta name="description" content="Prerequisites: eZ Publish with eZ Find installed The following post is based on the option in the eZ Find solr.ini referring to Shards. 1
+2
+3
+4
+5
+6 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +84,73 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/05/ezfind-shards/">Searching Multiple Solr Cores Using Shards and eZ Find</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-08T00:00:00-05:00" pubdate data-updated="true">May 8<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="https://s3.amazonaws.com/hs_blog_content/images/distributed_search.png" alt="Distributed Search" /></p>
+
+<p>Prerequisites:
+  eZ Publish with eZ Find installed</p>
+
+<p>The following post is based on the option in the eZ Find <code>solr.ini</code> referring to Shards.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[SolrBase]</span>
+</span><span class='line'><span class="c1">#Shards mapping, can be to multicores in one servlet or even a crosss servers</span>
+</span><span class='line'><span class="c1">#typical use is multilingual setups, but also for external index support</span>
+</span><span class='line'><span class="c1">#the keys are used as shorthands in template functions</span>
+</span><span class='line'><span class="c1">#Shards[]</span>
+</span><span class='line'><span class="c1">#Shards[eng-GB]=http://localhost:8983/solr/eng-GB</span>
+</span><span class='line'><span class="c1">#Shards[fre-FR]=http://localhost:8983/solr/fre-FR</span>
+</span><span class='line'><span class="c1">#Shards[myforeignindex]=http://myotherhost:8983/solr</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/05/ezfind-shards/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -553,70 +625,6 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/01/scraping-a-page-with-php/">Scraping a Page With Php</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-24T00:00:00-06:00" pubdate data-updated="true">Jan 24<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I ran across a problem recently, I needed to get the contents of a page so that I could mimic a widget’s functionality without having access to the database that said page’s widget used (confused yet). Basically, one site had a widget that displayed an upcoming event (information with came from a database), I needed to copy that widget to another website. Moreover, I did not want to use JavaScript to accomplish my goal because I need the new site to be cached pretty heavily on the server. My first thought was to use cURL, but when I ran curl_exec my function would output the entire page contents onto my new site, something that I did not want, I only wanted a small portion of the website. My next option was to use <code>file_get_contents(“my_url”)</code>, as was pointed out to me, this will return the full page as a string. With this I could have accomplished my goal, but not with as much ease as I would hope. I ran into the <code>DOMDOcument()</code> php object a while back and was curious about what I could do with it so I decided to do some research on that. This would eventually lead me to my answer. It turns out that the script is very simple and I can see myself using it quite often so I decided to share it.
-Here it is:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">scrapePage</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span><span class="nv">$id</span><span class="p">){</span>
-</span><span class='line'>    <span class="nv">$d</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DOMDOcument</span><span class="p">();</span>
-</span><span class='line'>    <span class="nb">libxml_use_internal_errors</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
-</span><span class='line'>    <span class="nv">$d</span><span class="o">-&gt;</span><span class="na">loadHTMLFile</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
-</span><span class='line'>    <span class="nv">$widget</span> <span class="o">=</span> <span class="nv">$d</span><span class="o">-&gt;</span><span class="na">getElementById</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nv">$widget</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="nb">simplexml_import_dom</span><span class="p">(</span><span class="nv">$widget</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">asXML</span><span class="p">();</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -634,6 +642,10 @@ Here it is:</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/08/jquery-animate-body-for-all-browsers/">jQuery Animate Body Scroll for All Browsers</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/07/sort-solr-facets-on-per-field-basis/">Sort Solr Facets on Per Field Basis</a>
       </li>
     
@@ -647,10 +659,6 @@ Here it is:</p>
     
       <li class="post">
         <a href="/2013/04/symfony2-coding-standards/">Symfony2 Coding Standards</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/new-site-theme/">New Site Theme</a>
       </li>
     
   </ul>

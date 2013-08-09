@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sort Solr Facets on Per Field Basis - HarmsSite</title>
+  <title>jQuery Animate Body Scroll For All Browsers - HarmsSite</title>
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="How to sort solr facets on a per field basis">
-  <meta name="keywords" content="facet.sort, facet.fields, solr facet sort, facet sort">
+  <meta name="description" content="How to use jQuery's animate / scrollTop on main body of a page.">
+  <meta name="keywords" content="jQuery, animate, scrollTop, animate callback, called twice">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis">
+  <link rel="canonical" href="http://harmssite.com/2013/08/jquery-animate-body-for-all-browsers">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/Harmssite" rel="alternate" title="HarmsSite" type="application/atom+xml">
@@ -82,7 +82,7 @@
   
   <header>
     
-      <h1 class="entry-title">Sort Solr Facets on Per Field Basis</h1>
+      <h1 class="entry-title">jQuery Animate Body Scroll for All Browsers</h1>
     
     
       <p class="meta">
@@ -98,35 +98,51 @@
   
 
 
-<time datetime="2013-07-29T16:05:00-05:00" pubdate data-updated="true">Jul 29<span>th</span>, 2013</time>
+<time datetime="2013-08-09T08:52:00-05:00" pubdate data-updated="true">Aug 9<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>I recently faced a strange problem. I was faceting off of multiple <code>facet.fields</code> and I found the need to sort them independently of each other. As far as I knew up to this point <code>facet.sort</code> could only be set once. When I read the doc, however, it was claimed that the <code>facet.sort</code> could be set on a per field basis; sadly no examples were provided nor was it explained any further. Luckily, after some digging, I found out that setting the sort (index or count) on a per field is very easy.</p>
+<div class="entry-content"><p>It turns out that when trying to use jQuery&rsquo;s <code>animate</code> to <code>scrollTop</code> on the main body of an html document different browsers require different targets to scroll to. Webkit requires targeting the <code>body</code> of the document while all other browsers that I know of use <code>html</code>. The typical solution is to target both in the same call:</p>
 
-<p>A typical solr fetch with facets might look like this (assuming <code>type_s</code> is indexed):</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/solr/directory/select?q=*:*&wt=json&indent=true&facet=true&facet.field=type_s</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Solr sets <code>facet.sort</code> to count by default, so that can be left undeclared or can be explicitly declared, it does not matter. A problem arises, however, when you have multiple <code>facet.field</code>s and you want them sorted differently. To solve this you need to follow this format for the declared sort: <code>f.&lt;facetted_field&gt;.facet.sort=&lt;index|count&gt;</code>. Using the same example as before, but with an extra field it would look like this:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/solr/directory/select?q=*:*&wt=json&indent=true&facet=true&facet.field=type_s&facet.field=location_s&f.location_s.facet.sort=index</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This would sort <code>type_s</code> by count (default) and sort <code>location_s</code> by index.
-The opposite would also work.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/solr/directory/select?q=*:*&wt=json&indent=true&facet=true&facet.field=type_s&facet.field=location_s&facet.sort=index&f.location_s.facet.sort=count</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span>Problematic Callback </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;html, body&#39;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">scrollTop</span><span class="o">:</span> <span class="s1">&#39;0px&#39;</span><span class="p">,</span><span class="s1">&#39;fast&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="c1">// Code to be fired when complete goes here (fired twice)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>This would change the default sort order to use index for sort and <code>location_s</code> would use count for sorting.</p>
+<p>This solution is problematic, however, because even though the scrollTop will only work once, the callback is fired twice. That means that if we were relying on the callback to tell us that the function is complete, our complete function would fire twice.
+Luckily, there is a relatively simple solution to this problem. Using jQuery&rsquo;s browser plugin we can have webkit browsers target the <code>body</code> and all others target the <code>html</code>.</p>
+
+<figure class='code'><figcaption><span>Single Callback </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// If using a newer version (&gt;= 1.9) of jQuery a separate browser </span>
+</span><span class='line'><span class="c1">// plugin is required</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">webkit</span> <span class="o">?</span> <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="s2">&quot;html&quot;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">scrollTop</span><span class="o">:</span> <span class="s1">&#39;0px&#39;</span><span class="p">,</span><span class="s1">&#39;fast&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="c1">// Code to be fired when complete goes here</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This solution worked well for me. I am open to different ideas or solutions if you know of any.</p>
 </div>
 
 
@@ -149,12 +165,12 @@ The opposite would also work.</p>
   
 
 
-<time datetime="2013-07-29T16:05:00-05:00" pubdate data-updated="true">Jul 29<span>th</span>, 2013</time>
+<time datetime="2013-08-09T08:52:00-05:00" pubdate data-updated="true">Aug 9<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/development/'>Development</a>, <a class='category' href='/blog/categories/solr/'>Solr</a>
+    <a class='category' href='/blog/categories/development/'>Development</a>, <a class='category' href='/blog/categories/jquery/'>jQuery</a>
   
 </span>
 
@@ -163,7 +179,7 @@ The opposite would also work.</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis/" data-via="harmstyler" data-counturl="http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://harmssite.com/2013/08/jquery-animate-body-for-all-browsers/" data-via="harmstyler" data-counturl="http://harmssite.com/2013/08/jquery-animate-body-for-all-browsers/" >Tweet</a>
   
   
   
@@ -172,10 +188,8 @@ The opposite would also work.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2013/07/chrome-webfont-mimetypes/" title="Previous Post: Chrome Webfont Mimetypes">&laquo; Chrome Webfont Mimetypes</a>
+        <a class="basic-alignment left" href="/2013/07/sort-solr-facets-on-per-field-basis/" title="Previous Post: Sort Solr Facets on Per Field Basis">&laquo; Sort Solr Facets on Per Field Basis</a>
       
-      
-        <a class="basic-alignment right" href="/2013/08/jquery-animate-body-for-all-browsers/" title="Next Post: jQuery Animate Body Scroll For All Browsers">jQuery Animate Body Scroll For All Browsers &raquo;</a>
       
     </p>
   </footer>
@@ -243,8 +257,8 @@ The opposite would also work.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis/';
-        var disqus_url = 'http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis/';
+        var disqus_identifier = 'http://harmssite.com/2013/08/jquery-animate-body-for-all-browsers/';
+        var disqus_url = 'http://harmssite.com/2013/08/jquery-animate-body-for-all-browsers/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Development | HarmsSite]]></title>
   <link href="http://harmssite.com/blog/categories/development/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-08-06T17:06:46-05:00</updated>
+  <updated>2013-08-09T09:41:16-05:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -12,6 +12,58 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[jQuery Animate Body Scroll For All Browsers]]></title>
+    <link href="http://harmssite.com/2013/08/jquery-animate-body-for-all-browsers/"/>
+    <updated>2013-08-09T08:52:00-05:00</updated>
+    <id>http://harmssite.com/2013/08/jquery-animate-body-for-all-browsers</id>
+    <content type="html"><![CDATA[<p>It turns out that when trying to use jQuery&rsquo;s <code>animate</code> to <code>scrollTop</code> on the main body of an html document different browsers require different targets to scroll to. Webkit requires targeting the <code>body</code> of the document while all other browsers that I know of use <code>html</code>. The typical solution is to target both in the same call:
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Problematic Callback </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">html</span><span class="p">,</span> <span class="nx">body</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;).</span><span class="nx">animate</span><span class="p">({</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">scrollTop</span><span class="o">:</span> <span class="s1">&#39;0px&#39;</span><span class="p">,</span><span class="s1">&#39;fast&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="c1">// Code to be fired when complete goes here (fired twice)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+This solution is problematic, however, because even though the scrollTop will only work once, the callback is fired twice. That means that if we were relying on the callback to tell us that the function is complete, our complete function would fire twice.
+Luckily, there is a relatively simple solution to this problem. Using jQuery&rsquo;s browser plugin we can have webkit browsers target the <code>body</code> and all others target the <code>html</code>.
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Single Callback </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// If using a newer version (&gt;= 1.9) of jQuery a separate browser</span>
+</span><span class='line'><span class="c1">// plugin is required</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">webkit</span> <span class="o">?</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">body</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">html</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;).</span><span class="nx">animate</span><span class="p">({</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">scrollTop</span><span class="o">:</span> <span class="s1">&#39;0px&#39;</span><span class="p">,</span><span class="s1">&#39;fast&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="c1">// Code to be fired when complete goes here</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+This solution worked well for me. I am open to different ideas or solutions if you know of any.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sort Solr Facets on Per Field Basis]]></title>
@@ -311,39 +363,6 @@ Solarium’s delete doc API is very useful in maintaining an up-to-date search i
 <li>The Solarium Project: <a href="http://www.solarium-project.org/">http://www.solarium-project.org/</a></li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Symfony2 Access Conrol]]></title>
-    <link href="http://harmssite.com/2013/03/symfony2-access-conrol/"/>
-    <updated>2013-03-02T00:00:00-06:00</updated>
-    <id>http://harmssite.com/2013/03/symfony2-access-conrol</id>
-    <content type="html"><![CDATA[<p>I am very new to Symfony development. While developing a side project app I found I needed to control access to a certain area to logged in users only. Based on my previous development history I was expecting to have to determine if a user was logged in via the controller. I figured I would need to find an <code>is_logged_in</code> boolean and use it to determine user access control. What I found while doing my development is that Symfony2 takes care of access control in a much more eloquent way. Rather than having to determine if a user is logged in inside each controller, Symfony2 controls access using a system similar to its routing system. Inside a Symfony2 app there is, by default, a <code>security.yml</code> file that is used to control access. Inside the <code>security.yml</code> file locate the <code>access_control</code> declaration. By simply declaring a route inside the <code>access_control</code> yml array we can control which users have access to which routes, like so:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">access_control:&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;pre&gt;&lt;code&gt;- { path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">^/login$, role</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">IS_AUTHENTICATED_ANONYMOUSLY }</span>
-</span><span class='line'><span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">path</span><span class="p-Indicator">:</span> <span class="nv">^/register</span><span class="p-Indicator">,</span> <span class="nv">role</span><span class="p-Indicator">:</span> <span class="nv">IS_AUTHENTICATED_ANONYMOUSLY</span> <span class="p-Indicator">}</span>
-</span><span class='line'><span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">path</span><span class="p-Indicator">:</span> <span class="nv">^/resetting</span><span class="p-Indicator">,</span> <span class="nv">role</span><span class="p-Indicator">:</span> <span class="nv">IS_AUTHENTICATED_ANONYMOUSLY</span> <span class="p-Indicator">}</span>
-</span><span class='line'><span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">path</span><span class="p-Indicator">:</span> <span class="nv">^/admin/</span><span class="p-Indicator">,</span> <span class="nv">role</span><span class="p-Indicator">:</span> <span class="nv">ROLE_ADMIN</span> <span class="p-Indicator">}</span>
-</span><span class='line'><span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">path</span><span class="p-Indicator">:</span> <span class="nv">^/new</span><span class="p-Indicator">,</span> <span class="nv">role</span><span class="p-Indicator">:</span> <span class="nv">ROLE_USER</span> <span class="p-Indicator">}</span>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-As you can see with my code, for anything beyond the <code>/admin/</code> route the <code>ROLE_ADMIN</code> is required. And for anyone accessing the <code>/new</code> route the <code>ROLE_USER</code> is required.</p>
-
-<p>This is obviously pretty trivial stuff, but for somebody new to Symfony2 development like myself, I found it an incredibly simple and powerful way of controlling access to my app.</p>
 ]]></content>
   </entry>
   
