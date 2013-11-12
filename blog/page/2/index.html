@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that &hellip;">
+  <meta name="description" content="I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,61 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/12/optimizing-solr-to-fit-your-needs-part-2/">Optimizing Solr to Fit Your Needs Part 2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-07T00:00:00-06:00" pubdate data-updated="true">Dec 7<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default search field called <code>ezf_df_text</code>. The downside of searching one field is that field needs to be controlled, and the only way it can be controlled is by manually editing the Solr schema file. As you might expect, eZ Find does not control this file very well out of the box.</p>
+
+<figure class='code'><figcaption><span>schema.xml </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_lk&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_k&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_t&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_s&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A copyField will take any field you tell it to and <em>copy it</em> into another field. The code above is what ships with eZ Find, every single <code>*_lk</code> (lckeyword), <code>*_k</code> (keyword), <code>*_t</code> (text), and <code>*_s</code> (string) is added to the <code>ezf_df_text</code> field. For obvious reasons the average installation probably doesn&rsquo;t need every piece of content searchable. The first step is to <strong>delete the default copyFields</strong> (e.g. your site users probably shouldn&rsquo;t be searched by default).</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/12/optimizing-solr-to-fit-your-needs-part-2/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -520,42 +575,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/solr-3-6-update/">Solr 3.6 Update</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-14T00:00:00-05:00" pubdate data-updated="true">May 14<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.war file on GitHub (it is in <a href="https://github.com/harmstyler/ezfind" title="harmstyler eZ Find fork">my eZ Find branch</a>). Enjoy!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -573,6 +592,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/11/south-dakota-code-camp-2013/">South Dakota Code Camp 2013</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/08/jquery-animate-body-for-all-browsers/">jQuery Animate Body Scroll for All Browsers</a>
       </li>
     
@@ -586,10 +609,6 @@
     
       <li class="post">
         <a href="/2013/06/ie10-conditional-comments/">IE10 Conditional Comments</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/symfony2-coding-standards/">Symfony2 Coding Standards</a>
       </li>
     
   </ul>

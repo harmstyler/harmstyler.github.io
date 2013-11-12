@@ -4,7 +4,7 @@
   <title><![CDATA[HarmsSite]]></title>
   <link href="http://harmssite.com/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-09-16T09:41:37-05:00</updated>
+  <updated>2013-11-11T20:20:55-06:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[South Dakota Code Camp 2013]]></title>
+    <link href="http://harmssite.com/2013/11/south-dakota-code-camp-2013/"/>
+    <updated>2013-11-11T19:47:00-06:00</updated>
+    <id>http://harmssite.com/2013/11/south-dakota-code-camp-2013</id>
+    <content type="html"><![CDATA[<p>I would say that South Dakota Code Camp 2013 was another huge success. The organizers were once again able to find some great speakers that cover a wide array of topics. Moreover, this year I had the opportunity to speak. I chose to speak about Django, one of my favorite web frameworks. Anyway, here is a link to my slides.</p>
+
+<p><a class="embedly-card" href="http://harmssite.com/intro-to-django/">An Introduction to Django / Tyler Harms</a></p>
+
+<script>!function(a){var b="embedly-platform",c="script";if(!a.getElementById(b)){var d=a.createElement(c);d.id=b,d.src=("https:"===document.location.protocol?"https":"http")+"://cdn.embedly.com/widgets/platform.js";var e=document.getElementsByTagName(c)[0];e.parentNode.insertBefore(d,e)}}(document);</script>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[jQuery Animate Body Scroll For All Browsers]]></title>
@@ -864,15 +880,6 @@ The <code>.gitkeep</code> file at work:</p>
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Solr 3.6 Update]]></title>
-    <link href="http://harmssite.com/2012/05/solr-3-6-update/"/>
-    <updated>2012-05-14T00:00:00-05:00</updated>
-    <id>http://harmssite.com/2012/05/solr-3-6-update</id>
-    <content type="html"><![CDATA[<p>Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.war file on GitHub (it is in <a href="https://github.com/harmstyler/ezfind" title="harmstyler eZ Find fork">my eZ Find branch</a>). Enjoy!</p>
 ]]></content>
   </entry>
   

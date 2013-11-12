@@ -9,12 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="Prerequisites: eZ Publish with eZ Find installed The following post is based on the option in the eZ Find solr.ini referring to Shards. 1
-2
-3
-4
-5
-6 &hellip;">
+  <meta name="description" content="Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +80,42 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/05/solr-3-6-update/">Solr 3.6 Update</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-14T00:00:00-05:00" pubdate data-updated="true">May 14<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.war file on GitHub (it is in <a href="https://github.com/harmstyler/ezfind" title="harmstyler eZ Find fork">my eZ Find branch</a>). Enjoy!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -589,43 +620,6 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/02/photoshoping-goodness/">Photoshopping Goodness</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-11T00:00:00-06:00" pubdate data-updated="true">Feb 11<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">I truly do wish that I were better with photoshop. That said I am very blessed to know some people that are photoshop gurus. Yesterday when we came across a fantastic <a href="http://imgur.com/gallery/RP2pC" title="Full Hipster" target="_blank">picture</a> and I could not help but think, what would that picture look like with <a href="https://twitter.com/#!/jacksonmurtha" title="Jackson Murtha" target="_blank">@jacksonmurtha</a>&#8217;s head on it. Knowing that I could never do it right I asked <a href="https://twitter.com/#!/rmvelgersdyk" title="Ryan" target="_blank">@rmvelgersdyk</a> if he could do it. What he sent me back really made me wish that I knew photoshop better. It really is such a fantastic picture of Jackson. Major props goes to Ryan for <a href="https://s3.amazonaws.com/hs_blog_content/images/Jackson-1.jpg" title="Jackson">this</a>!
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -643,6 +637,10 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/11/south-dakota-code-camp-2013/">South Dakota Code Camp 2013</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/08/jquery-animate-body-for-all-browsers/">jQuery Animate Body Scroll for All Browsers</a>
       </li>
     
@@ -656,10 +654,6 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
     
       <li class="post">
         <a href="/2013/06/ie10-conditional-comments/">IE10 Conditional Comments</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/symfony2-coding-standards/">Symfony2 Coding Standards</a>
       </li>
     
   </ul>
