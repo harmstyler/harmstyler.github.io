@@ -606,7 +606,7 @@ The opposite would also work.</p>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query = $client=&gt;createSelect();</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query = $client-&gt;createSelect();</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">// *:* is equivalent to telling solr to return all docs</span>
 </span><span class='line'><span class="x">$query-&gt;setQuery(&#39;*:*&#39;);</span>
@@ -653,7 +653,7 @@ The opposite would also work.</p>
 <p>Sorting is also very easy (note that Solr will sort by score if no sort is set):</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query-&gt;addSort(&#39;name&#39;, Select::SORT_ASC);</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query-&gt;addSort(&#39;name&#39;, Solarium_Query_Select::SORT_ASC);</span>
 </span></code></pre></td></tr></table></div></figure>
 
 

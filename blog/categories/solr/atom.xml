@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Solr | HarmsSite]]></title>
   <link href="http://harmssite.com/blog/categories/solr/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-11-11T20:20:55-06:00</updated>
+  <updated>2013-11-18T09:09:22-06:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -159,7 +159,7 @@ The new docs should now exist and be searchable using Solr.</p>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query = $client=&gt;createSelect();&lt;/p&gt;</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query = $client-&gt;createSelect();&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;p&gt;// &lt;em&gt;:&lt;/em&gt; is equivalent to telling solr to return all docs</span>
 </span><span class='line'><span class="x">$query-&gt;setQuery(&amp;lsquo;&lt;em&gt;:&lt;/em&gt;&amp;rsquo;);</span>
@@ -200,7 +200,7 @@ The <code>$resultSet</code> can also be refined. Setting up pagination, for inst
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 Sorting is also very easy (note that Solr will sort by score if no sort is set):
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query-&gt;addSort(&amp;lsquo;name&amp;rsquo;, Select::SORT_ASC);</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">$query-&gt;addSort(&amp;lsquo;name&amp;rsquo;, Solarium_Query_Select::SORT_ASC);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 Filtering, setting query fields, boosting, and faceting are also possible ways of searching Solr. Filtering is another way of narrowing search results without using a query. Query fields allow for control over what fields are searched. Boosting gives certain field’s higher precedence in the Search. Facets give users a way to better navigate search results. Solarium gives easy access to all the various ways of searching Solr content.</p>
 
