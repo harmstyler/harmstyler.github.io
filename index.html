@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="I would say that South Dakota Code Camp 2013 was another huge success. The organizers were once again able to find some great speakers that cover a &hellip;">
+  <meta name="description" content="Administrating Solr is for developers and Solr administrators who have basic knowledge of Solr and are looking for ways to keep their Solr server &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/11/administrating-solr-a-review/">Administrating Solr: A Review</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-29T10:15:00-06:00" pubdate data-updated="true">Nov 29<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>Administrating Solr is for developers and Solr administrators who have basic knowledge of Solr and are looking for ways to keep their Solr server healthy and well maintained. Basic working knowledge on Apache Lucene is recommended, but is not mandatory.</p></blockquote>
+
+
+<p>Pact Publishing released a new book in October 2013 called <a href="http://bit.ly/1cNmREG">Administrating Solr</a>. In the book readers can find out all sorts of information about, you guessed it, administrating your Solr installation. Whether it be Searching Solr, Monitoring Solr, Managing Solr, or Optimizing Solr the book has your bases covered.</p>
+
+<p>At the start, Administrating Solr gets readers familiar with Solr terminology. The Solr Request, Response and RequestHandler are rightfully given their due explanation, as they are the foundation of the Solr configuration. Throughout the rest of Chapter 1 readers can find a plethora of information about searching Solr; whether by query, filter, facet, geospacial, or any combination of the various searching methods, Administrating Solr has readers covered. Chapter 1: Searching Solr reads like a Solr Cookbook when it comes to the different ways to search Solr.</p>
+
+<p>Chapter 2: Monitoring Solr is all about how to set up your own Solr monitoring; monitoring that goes beyond what is presented to users of the Solr Admin. All of what is described is easy to enable/install for those who want deaper Solr monitoring. The chapter finishes with an overview of some of the more popular monitoring tools, intended for those who don&rsquo;t want to do all the monitoring setup themselves and would prefer to rely on some third party service. Coverered in the Monitoring Tools section are: Opsview, New Relic, and SPM. The author seems partial to SPM and I have only ever used New Relic&rsquo;s integration, but it seems fair to say that you will be provided very high quality Solr monitoring with any of the listed tools.</p>
+
+<p>The 3rd Chapter: Magaging Solr is all about various scripts you can create to help you manage your Solr isntall better. This chapter again reads like a cookbook, which is very handy if you are looking for infomation about backing up Solr, Solr Replication. Also covered in the chapter is Solr Logging. Solr logging was refigured in Solr 4.3 to be more flexible, so included are some ways to get better logging in your install.</p>
+
+<p>The final chapter, Optimizing Solr Tools and Scripts is by far the best chapter. Before this book I had never heard of such as tool as Drools. This book not only gives readers an understanging of what Drools is, but it also provides an overview of how to use it with real examples. Also covered is setting up Language Detection inside Solr so that the right fields are searched depending on language. Sentence detection and splitting, Tokinization, Part-Of-Speech tagging, and Named entity recognition are all given minor coverage. Each of these topics could be deserving of there own book, so it is understandable that they receive only a paragraph telling the reader what the topic is. The chapter finishes with a case study in Drupal, though the author&rsquo;s suggestions could be implemented into any platform.</p>
+
+<p>All in all, this book is very useful to those wishing to get their feet wet with Solr. Solr is an incredibly useful search engine capable of some pretty amazing feats. The book is worth it for the last chapter alone. This book was short and to the point and oh so useful. Check it out at <a href="http://bit.ly/1cNmREG">Pact Publishing&rsquo;s store</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -776,59 +825,6 @@ The opposite would also work.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/01/ez-publish-5-first-thoughts/">eZ Publish 5 - First Thoughts</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-19T00:00:00-06:00" pubdate data-updated="true">Jan 19<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class="pull-right"><img class="" alt="Syfomy Logo" title="Symfony Logo" src="https://s3.amazonaws.com/hs_blog_content/images/symfony-logo.png" width="206" height="205" /></div>
-
-
-<p>I finally decided on my first eZ Publish 5 project&hellip; my site of course. I am currently in the middle of upgrading my wordpress install to eZ Publish. Honestly, I don&rsquo;t really need anything more than a simple Wordpress install, but it will be nice to get an eZ5 site under my belt.</p>
-
-<p>Seeing as I am in the middle of development, there have been a few bumps in the development road that I have found and would like to share. Firstly, I can find no way to run eZ Publish 5 completely in legacy mode, no matter what I do my pagelayout template needs to be a twig template. I posed the question to the eZ Community and it sounds like this should be possible, but it just wouldn&rsquo;t work for me (see the discussion <a href="http://bit.ly/WhVHwu" title="Overriding templates in eZ 5">here</a>). I actually don&rsquo;t have a problem with this, it&rsquo;s not like being forced to use Symfony is a bad thing.</p>
-
-<p>Second, I do not see a strait-forward way to run multiple sites in one eZ Publish 5 install right now. Site settings are declared in the <code>ezpublish.yml</code> file and are grouped appropriately. My problem is that the <code>parameters.yml</code> file only allows for the declaration of one default template. In my opinion the default template declaration should be tied to a siteaccess or a siteaccess group.</p>
-
-<p>Third, the <code>index_dev.php</code> file doesn&rsquo;t work for some reason. It would be nice to be able to use the Symfony dev toolbar. So far my only workaround has been to add the dev params to the index.php file. Either fixing this or allowing <code>DebugOutput</code> on a Symfony generated page would suffice.</p>
-
-<p>It wouldn&rsquo;t be fair to simply criticize eZ5, because it does work. The eZ Team did a hell of a job with eZ5, far more than I would have expected for a first iteration. Honestly I was expecting eZ5 to switch to the Symfony Components for round 1 and work on the rest later.</p>
-
-<p>I think that far and above any other nicety of eZ5 is the ability to generate custom routes. Creating a custom module in eZ 4 was not exactly easy, but now with Symfony, creating a custom route/controller/view is extremely straight-forward and borderline easy. If a person has ever worked with Symfony in the past, creating custom &lsquo;modules&rsquo; will be a snap.</p>
-
-<p>Another awesome part of eZ5 is the full REST API. Although I have yet to use it, I know it is there and that the eZ Team put a lot of work into it, so I have to give it props.</p>
-
-<p>Finally, twig is awesome to work with.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -844,6 +840,10 @@ The opposite would also work.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/11/administrating-solr-a-review/">Administrating Solr: A Review</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/11/south-dakota-code-camp-2013/">South Dakota Code Camp 2013</a>
       </li>
     
@@ -857,10 +857,6 @@ The opposite would also work.</p>
     
       <li class="post">
         <a href="/2013/07/chrome-webfont-mimetypes/">Chrome Webfont Mimetypes</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/06/ie10-conditional-comments/">IE10 Conditional Comments</a>
       </li>
     
   </ul>

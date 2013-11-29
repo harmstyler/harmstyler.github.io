@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Solr | HarmsSite]]></title>
   <link href="http://harmssite.com/blog/categories/solr/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-11-18T09:09:22-06:00</updated>
+  <updated>2013-11-29T12:01:16-06:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Administrating Solr: A Review]]></title>
+    <link href="http://harmssite.com/2013/11/administrating-solr-a-review/"/>
+    <updated>2013-11-29T10:15:00-06:00</updated>
+    <id>http://harmssite.com/2013/11/administrating-solr-a-review</id>
+    <content type="html"><![CDATA[<p><blockquote><p>Administrating Solr is for developers and Solr administrators who have basic knowledge of Solr and are looking for ways to keep their Solr server healthy and well maintained. Basic working knowledge on Apache Lucene is recommended, but is not mandatory.</p></blockquote></p>
+
+<p>Pact Publishing released a new book in October 2013 called <a href="http://bit.ly/1cNmREG">Administrating Solr</a>. In the book readers can find out all sorts of information about, you guessed it, administrating your Solr installation. Whether it be Searching Solr, Monitoring Solr, Managing Solr, or Optimizing Solr the book has your bases covered.</p>
+
+<p>At the start, Administrating Solr gets readers familiar with Solr terminology. The Solr Request, Response and RequestHandler are rightfully given their due explanation, as they are the foundation of the Solr configuration. Throughout the rest of Chapter 1 readers can find a plethora of information about searching Solr; whether by query, filter, facet, geospacial, or any combination of the various searching methods, Administrating Solr has readers covered. Chapter 1: Searching Solr reads like a Solr Cookbook when it comes to the different ways to search Solr.</p>
+
+<p>Chapter 2: Monitoring Solr is all about how to set up your own Solr monitoring; monitoring that goes beyond what is presented to users of the Solr Admin. All of what is described is easy to enable/install for those who want deaper Solr monitoring. The chapter finishes with an overview of some of the more popular monitoring tools, intended for those who don&rsquo;t want to do all the monitoring setup themselves and would prefer to rely on some third party service. Coverered in the Monitoring Tools section are: Opsview, New Relic, and SPM. The author seems partial to SPM and I have only ever used New Relic&rsquo;s integration, but it seems fair to say that you will be provided very high quality Solr monitoring with any of the listed tools.</p>
+
+<p>The 3rd Chapter: Magaging Solr is all about various scripts you can create to help you manage your Solr isntall better. This chapter again reads like a cookbook, which is very handy if you are looking for infomation about backing up Solr, Solr Replication. Also covered in the chapter is Solr Logging. Solr logging was refigured in Solr 4.3 to be more flexible, so included are some ways to get better logging in your install.</p>
+
+<p>The final chapter, Optimizing Solr Tools and Scripts is by far the best chapter. Before this book I had never heard of such as tool as Drools. This book not only gives readers an understanging of what Drools is, but it also provides an overview of how to use it with real examples. Also covered is setting up Language Detection inside Solr so that the right fields are searched depending on language. Sentence detection and splitting, Tokinization, Part-Of-Speech tagging, and Named entity recognition are all given minor coverage. Each of these topics could be deserving of there own book, so it is understandable that they receive only a paragraph telling the reader what the topic is. The chapter finishes with a case study in Drupal, though the author&rsquo;s suggestions could be implemented into any platform.</p>
+
+<p>All in all, this book is very useful to those wishing to get their feet wet with Solr. Solr is an incredibly useful search engine capable of some pretty amazing feats. The book is worth it for the last chapter alone. This book was short and to the point and oh so useful. Check it out at <a href="http://bit.ly/1cNmREG">Pact Publishing&rsquo;s store</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sort Solr Facets on Per Field Basis]]></title>
@@ -325,39 +346,6 @@ This one I found from working with eZ Publish and eZ Find, and I happen to like 
 <code>column_name:[* TO *]</code> is like saying select all from the column, but then we add <code>-column_name:(value1 value2)</code> to filter out what we don&rsquo;t want.</p>
 
 <p>Cheers and good luck!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Optimizing Solr to fit your needs Part 1]]></title>
-    <link href="http://harmssite.com/2012/08/optimizing-solr-to-fit-your-needs-part-1/"/>
-    <updated>2012-08-25T00:00:00-05:00</updated>
-    <id>http://harmssite.com/2012/08/optimizing-solr-to-fit-your-needs-part-1</id>
-    <content type="html"><![CDATA[<div class="pull-right"><img class="zemanta-img-inserted zemanta-img-configured" title="Solr logo" src="https://s3.amazonaws.com/hs_blog_content/images/Solr-logo.png" alt="Solr logo" width="283" height="156" /></div>
-
-
-<p>Let me start by saying that eZ Find is a fantastic implementation of <a class="zem_slink" title="Apache Solr" href="http://lucene.apache.org/solr/" rel="homepage" target="_blank">Solr</a> functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an <a class="zem_slink" title="EZ Publish" href="http://ez.no/" rel="homepage" target="_blank">eZ Publish</a> keyword and know that it should thereby be a Solr keyword, again, all out of the box. There are however some serious limitations when it comes time to customize it to meet your system&rsquo;s needs. Do not underestimate the power found in customizing Solr to meet your website&rsquo;s needs. The default setup is great, it&rsquo;s made to fit into any system with very little effort; but, just because it&rsquo;s made to fit in any system does not mean that it should be used for every system.</p>
-
-<p>One of the best things we could have ever done for a large Solr install was to customize a default search field. You might say, &ldquo;But eZ Find already creates a default search field for you.&rdquo; And you&rsquo;d be right.
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c">&lt;!-- field for the QueryParser to use when an explicit fieldname is absent --&gt;</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;&lt;defaultSearchField&gt;</span>ezf_df_text<span class="nt">&lt;/defaultSearchField&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>The thing that the default search field in eZ Find does not do, however, is get used. There is no way in eZ Find to tell it to search just one field (at least as far as I know). I did some testing in our environment, these numbers will change from system to system, but in our&rsquo;s each search took almost 10 times as long to search all fields individually vs searching just 1 field. We gave eZ Find the option to search one given field, if defined, and it vastly improved our search experience.</p>
-
-<p>eZ Find by default looks at all &lsquo;searchable&rsquo; fields and adds them to either the <a title="qf" href="http://wiki.apache.org/solr/DisMaxQParserPlugin#qf_.28Query_Fields.29"><code>qf</code></a> (if you are using the dismax search like you should be) or it searches every searchable field individually (<code>attr_title_t:(*:*)</code>, <code>attr_title_s:(*:*)</code>, etc, etc, for all searchable fields). All the &lsquo;searchable&rsquo; fields are by default added to the <code>ezf_df_text</code> field, so you should really do yourself a favor and search just one field, it is a noticable speed improvement, especially in large systems.</p>
-
-<p>In Part 2 I will talk about how to better optimize the Solr <code>schema.xml</code> file using the <code>ezf_df_text</code> field.</p>
 ]]></content>
   </entry>
   
