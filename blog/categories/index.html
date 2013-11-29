@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>eZ Find: Enable Attribute Storage - HarmsSite</title>
+  <title>Categories - HarmsSite</title>
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, &hellip;">
+  <meta name="description" content="Site Categories">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://harmssite.com/2012/04/ez-find-solr-attribute-storage">
+  <link rel="canonical" href="http://harmssite.comblog/categories">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/Harmssite" rel="alternate" title="HarmsSite" type="application/atom+xml">
@@ -79,112 +79,89 @@
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">eZ Find: Enable Attribute Storage</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-26T00:00:00-05:00" pubdate data-updated="true">Apr 26<span>th</span>, 2012</time>
-        
-      </p>
+    <h1 class="entry-title">Categories</h1>
     
   </header>
+  
+  <div id="blog-archives" class="categories">
+    <ul class="categories-list">
 
+    <li><a class='category' href='/blog/categories/development' >Development[18]</a></li>
 
-<div class="entry-content"><p><img src="https://s3.amazonaws.com/hs_blog_content/images/enable-solr-attribute-storage.png" alt="Enable Solr Attribute Storage" /></p>
+    <li><a class='category' href='/blog/categories/css' >CSS[2]</a></li>
 
-<p>When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes <code>'as_objects', true()</code> eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.</p>
+    <li><a class='category' href='/blog/categories/technology' >Technology[4]</a></li>
 
-<p>Another option, however, is to return all the information from Solr, no more object building from the DB. To do this all you have to do is enable <code>EnableSolrAttributeStorage</code> in the ezfind.ini. That way, if you are searching on a site that does not have access to the local database (cross-site search for instance) you can return all the content you need from Solr, because it is <em>all</em> stored.</p>
+    <li><a class='category' href='/blog/categories/php' >PHP[3]</a></li>
 
-<p>So remember, set:
-<code>'as_objects', false()</code> in the fetch.</p>
+    <li><a class='category' href='/blog/categories/solr' >Solr[10]</a></li>
 
-<p>and in the ezfind.ini</p>
+    <li><a class='category' href='/blog/categories/ez-publish' >eZ Publish[11]</a></li>
 
-<figure class='code'><figcaption><span>ezfind.ini </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="k">[IndexOptions]</span>
-</span><span class='line'><span class="na">EnableSolrAttributeStorage</span><span class="o">=</span><span class="s">true</span>
-</span></code></pre></td></tr></table></div></figure>
+    <li><a class='category' href='/blog/categories/ez-find' >eZ Find[9]</a></li>
 
+    <li><a class='category' href='/blog/categories/git' >git[1]</a></li>
 
-<p>Then just remember to re-index your content to get all the new attributes in there.</p>
+    <li><a class='category' href='/blog/categories/symfony' >Symfony[3]</a></li>
+
+    <li><a class='category' href='/blog/categories/wordpress' >Wordpress[1]</a></li>
+
+    <li><a class='category' href='/blog/categories/octopress' >Octopress[1]</a></li>
+
+    <li><a class='category' href='/blog/categories/symfony2' >Symfony2,[1]</a></li>
+
+    <li><a class='category' href='/blog/categories/codesniffer' >CodeSniffer[1]</a></li>
+
+    <li><a class='category' href='/blog/categories/internet-explorer' >Internet Explorer[1]</a></li>
+
+    <li><a class='category' href='/blog/categories/chrome' >Chrome[1]</a></li>
+
+    <li><a class='category' href='/blog/categories/jquery' >jQuery[1]</a></li>
+
+    <li><a class='category' href='/blog/categories/django' >Django[1]</a></li>
+
+    <li><a class='category' href='/blog/categories/python' >Python[1]</a></li>
+
+    </ul>
 </div>
 
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">Tyler Harms</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-26T00:00:00-05:00" pubdate data-updated="true">Apr 26<span>th</span>, 2012</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/ez-find/'>eZ Find</a>, <a class='category' href='/blog/categories/ez-publish/'>eZ Publish</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://harmssite.com/2012/04/ez-find-solr-attribute-storage/" data-via="harmstyler" data-counturl="http://harmssite.com/2012/04/ez-find-solr-attribute-storage/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/2012/04/dogs-underwater/" title="Previous Post: Dogs Underwater">&laquo; Dogs Underwater</a>
-      
-      
-        <a class="basic-alignment right" href="/2012/05/ezfind-shards/" title="Next Post: Searching Multiple Solr Cores using Shards and eZ Find">Searching Multiple Solr Cores using Shards and eZ Find &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
 </div>
 
 <aside class="sidebar">
   
-    <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/harmstyler" data-widget-id="329341729515900931">Tweets by @harmstyler</a>
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/11/administrating-solr-a-review/">Administrating Solr: A Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/south-dakota-code-camp-2013/">South Dakota Code Camp 2013</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/08/jquery-animate-body-for-all-browsers/">jQuery Animate Body Scroll for All Browsers</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/sort-solr-facets-on-per-field-basis/">Sort Solr Facets on Per Field Basis</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/chrome-webfont-mimetypes/">Chrome Webfont Mimetypes</a>
+      </li>
+    
+  </ul>
+</section>
+<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/harmstyler" data-widget-id="329341729515900931">Tweets by @harmstyler</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 <section>
