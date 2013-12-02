@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="Administrating Solr is for developers and Solr administrators who have basic knowledge of Solr and are looking for ways to keep their Solr server &hellip;">
+  <meta name="description" content="Readers would be pleased to know that I have teamed up with Packt Publishing to organize a Giveaway of the book &ldquo;Administrating Solr.&rdquo; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,8 +70,7 @@
 </form>
   
 <ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog">Archives</a></li>
+  <li><a href="/blog">Blog Archives</a></li>
   <li><a href="/blog/categories">Categories</a></li>
   <li><a href="/contact">Contact</a></li>
 </ul>
@@ -81,6 +80,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/12/free-giveaway-of-administrating-solr/">Free Giveaway of Administrating Solr</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-02T12:17:00-06:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="right" src="/images/posts/admin_solr.jpg" width="175" height="213" title="Administrating Solr" alt="Administrating Solr cover">
+Readers would be pleased to know that I have teamed up with Packt Publishing to organize a Giveaway of the book &ldquo;<a href="http://bit.ly/1cNmREG">Administrating Solr</a>.&rdquo;</p>
+
+<p>Three lucky winners stand a chance to win a digital copy of the book. Keep reading to find out how you can be one of the Lucky Winners.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2013/12/free-giveaway-of-administrating-solr/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -771,61 +814,6 @@ The opposite would also work.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/03/symfony2-access-conrol/">Symfony2 Access Conrol</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-02T00:00:00-06:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I am very new to Symfony development. While developing a side project app I found I needed to control access to a certain area to logged in users only. Based on my previous development history I was expecting to have to determine if a user was logged in via the controller. I figured I would need to find an <code>is_logged_in</code> boolean and use it to determine user access control. What I found while doing my development is that Symfony2 takes care of access control in a much more eloquent way. Rather than having to determine if a user is logged in inside each controller, Symfony2 controls access using a system similar to its routing system. Inside a Symfony2 app there is, by default, a <code>security.yml</code> file that is used to control access. Inside the <code>security.yml</code> file locate the <code>access_control</code> declaration. By simply declaring a route inside the <code>access_control</code> yml array we can control which users have access to which routes, like so:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">access_control</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">path</span><span class="p-Indicator">:</span> <span class="nv">^/login$</span><span class="p-Indicator">,</span> <span class="nv">role</span><span class="p-Indicator">:</span> <span class="nv">IS_AUTHENTICATED_ANONYMOUSLY</span> <span class="p-Indicator">}</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">path</span><span class="p-Indicator">:</span> <span class="nv">^/register</span><span class="p-Indicator">,</span> <span class="nv">role</span><span class="p-Indicator">:</span> <span class="nv">IS_AUTHENTICATED_ANONYMOUSLY</span> <span class="p-Indicator">}</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">path</span><span class="p-Indicator">:</span> <span class="nv">^/resetting</span><span class="p-Indicator">,</span> <span class="nv">role</span><span class="p-Indicator">:</span> <span class="nv">IS_AUTHENTICATED_ANONYMOUSLY</span> <span class="p-Indicator">}</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">path</span><span class="p-Indicator">:</span> <span class="nv">^/admin/</span><span class="p-Indicator">,</span> <span class="nv">role</span><span class="p-Indicator">:</span> <span class="nv">ROLE_ADMIN</span> <span class="p-Indicator">}</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">path</span><span class="p-Indicator">:</span> <span class="nv">^/new</span><span class="p-Indicator">,</span> <span class="nv">role</span><span class="p-Indicator">:</span> <span class="nv">ROLE_USER</span> <span class="p-Indicator">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>As you can see with my code, for anything beyond the <code>/admin/</code> route the <code>ROLE_ADMIN</code> is required. And for anyone accessing the <code>/new</code> route the <code>ROLE_USER</code> is required.</p>
-
-<p>This is obviously pretty trivial stuff, but for somebody new to Symfony2 development like myself, I found it an incredibly simple and powerful way of controlling access to my app.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -841,6 +829,10 @@ The opposite would also work.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/12/free-giveaway-of-administrating-solr/">Free Giveaway of Administrating Solr</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/11/administrating-solr-a-review/">Administrating Solr: A Review</a>
       </li>
     
@@ -854,10 +846,6 @@ The opposite would also work.</p>
     
       <li class="post">
         <a href="/2013/07/sort-solr-facets-on-per-field-basis/">Sort Solr Facets on Per Field Basis</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/07/chrome-webfont-mimetypes/">Chrome Webfont Mimetypes</a>
       </li>
     
   </ul>

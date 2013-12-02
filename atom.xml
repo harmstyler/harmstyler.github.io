@@ -4,7 +4,7 @@
   <title><![CDATA[HarmsSite]]></title>
   <link href="http://harmssite.com/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2013-11-29T13:28:19-06:00</updated>
+  <updated>2013-12-02T12:40:25-06:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Free Giveaway of Administrating Solr]]></title>
+    <link href="http://harmssite.com/2013/12/free-giveaway-of-administrating-solr/"/>
+    <updated>2013-12-02T12:17:00-06:00</updated>
+    <id>http://harmssite.com/2013/12/free-giveaway-of-administrating-solr</id>
+    <content type="html"><![CDATA[<p><img class="right" src="http://harmssite.com/images/posts/admin_solr.jpg" width="175" height="213" title="Administrating Solr" alt="Administrating Solr cover">
+Readers would be pleased to know that I have teamed up with Packt Publishing to organize a Giveaway of the book &ldquo;<a href="http://bit.ly/1cNmREG">Administrating Solr</a>.&rdquo;</p>
+
+<p>Three lucky winners stand a chance to win a digital copy of the book. Keep reading to find out how you can be one of the Lucky Winners.</p>
+
+<!-- more -->
+
+
+<h2>Overview of &ldquo;<a href="http://bit.ly/1cNmREG">Administrating Solr</a>&rdquo;</h2>
+
+<ul>
+<li>Learn how to work with monitoring tools like OpsView, New Relic, and SPM</li>
+<li>Utilize Solr scripts and Collection Distribution scripts to manage Solr</li>
+<li>Employ search features like querying, categorizing, search based on location, and distributed search</li>
+</ul>
+
+
+<h2>How to Enter?</h2>
+
+<p>All you need to do is head on over to the <a href="http://bit.ly/1cNmREG">Book Page</a> , look through the product description of the book and drop a line via the comments below this post to let us know what interests you the most about this book. It’s that simple!</p>
+
+<p>The Winners will get an e-copy of the Book.</p>
+
+<h2>Deadline</h2>
+
+<p><strong>The contest will close on December 13, 2013. Winners will be contacted by email, so be sure to use your real email address when you comment!</strong></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Administrating Solr: A Review]]></title>
@@ -738,18 +772,6 @@ The <code>.gitkeep</code> file at work:</p>
 
 
 <p>Pretty simple right? So, I have my preference, what is yours?</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[EZ Publish with Sublime]]></title>
-    <link href="http://harmssite.com/2012/06/ez-publish-with-sublime/"/>
-    <updated>2012-06-30T00:00:00-05:00</updated>
-    <id>http://harmssite.com/2012/06/ez-publish-with-sublime</id>
-    <content type="html"><![CDATA[<div class="pull-right"><img title="Sublime Text icon" src="https://s3.amazonaws.com/hs_blog_content/images/sublime_text_icon_2181-150x150.png" alt="Sublime Text icon" width="150" height="150" /></div>
-
-
-<p>A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/MHuK34" target="_blank">Sublime Text 2</a> and its&#8217; many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ. So what I decided to do was use the Smarty package as a template for adding more language support for eZ Publish. What I have is far from complete; I usually only add to it when I use a method that is not already supported. You can find it out on <a title="ez sublime on GitHub" href="http://bit.ly/N4eTcp" target="_blank">GitHub</a>. It is my hope that there are some eZ Publish devs out there that really enjoy Sublime as I do and want to help me grow the package. Remember, it is far from complete, but nonetheless, I really hope that you enjoy the language highlighting, and if you do feel free to contribute.</p>
 ]]></content>
   </entry>
   
