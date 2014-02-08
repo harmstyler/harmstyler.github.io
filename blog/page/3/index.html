@@ -9,7 +9,7 @@
   <meta name="author" content="Tyler Harms">
 
   
-  <meta name="description" content="A while back I fell in love with Sublime Text 2 and its&#8217; many advantages over TextMate. What it lacked however was any real support for the eZ &hellip;">
+  <meta name="description" content="I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/08/gitignore-vs-gitkeep/">Multiple .gitignore Files Versus .gitkeep Files</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-18T00:00:00-05:00" pubdate data-updated="true">Aug 18<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="pull-right"><img src="https://s3.amazonaws.com/hs_blog_content/images/Git_icon.png" alt="Git" title="Git" width="256" height="256" /></div>
+
+
+<p>I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my friends who used svn have told me.</p>
+
+<p>The cool thing about git is that it tracks changes, not files or directories. When I create a new empty directory that directory is not tracked by git because it has no file changes inside, hence, the directory will never make it into git until I add a file to that directory. For this example I am going to use the logs directory of a virtual site. In my logs directory I have two files, an <code>error_log</code> and an <code>access_log</code>. Apache error logs and access logs should never be tracked by version control because they are logs that are specific to the given system the site is installed on. However, we should try to track the logs directory in version control. As hinted at before, we can do this in one of two ways.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/08/gitignore-vs-gitkeep/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -495,53 +541,6 @@ I found the original author of the pictures <a title="Underwater Dogs" href="htt
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/03/installing-ez-find/">Installing eZ Find</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-22T00:00:00-05:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class="pull-right"><a href="https://s3.amazonaws.com/hs_blog_content/images/ezfind-extension.png"><img class=" wp-image-90 alignright" title="ezfind-extension" src="https://s3.amazonaws.com/hs_blog_content/images/small/ezfind-extension-small.png" alt="eZ Find extension in finder" width="271" height="153" /></a></div>
-
-
-<p>Alright, so lets begin installing eZ Find by going out and downloading it from the Github => <a href="http://bit.ly/GEVOte" title="eZ Find on GitHub">https://github.com/ezsystems/ezfind</a>.
-eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#8221;ezfind,&ldquo; and then move the <em>ezfind</em> folder to the <em>extensions</em> directory of your eZ Publish install.</p>
-
-<p>So, as with any extension, we have to activate it. Go into your override <code>site.ini.append.php</code> (settings/override/site.ini.append.php) and add ezfind to your active extension list (<code>ActiveExtensions[]=ezfind</code>). I added mine just after my main site extension. Easy enough so far right?<div class="pull-left"><a href="https://s3.amazonaws.com/hs_blog_content/images/solr-structure.png"><img title="solr-structure" src="https://s3.amazonaws.com/hs_blog_content/images/small/solr-structure-small.png" alt="Solr installed locally" width="179" height="301" /></a></div></p>
-
-<p>As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a <em>java</em> directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish install and rename the folder &ldquo;Solr&rdquo; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on one Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/03/installing-ez-find/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -559,6 +558,10 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/02/abstract-time-stamped-entity-in-symfony2/">Abstract Time Stamped Entity in Symfony2</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/12/free-giveaway-of-administrating-solr/">Free Giveaway of Administrating Solr</a>
       </li>
     
@@ -572,10 +575,6 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#82
     
       <li class="post">
         <a href="/2013/08/jquery-animate-body-for-all-browsers/">jQuery Animate Body Scroll for All Browsers</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/07/sort-solr-facets-on-per-field-basis/">Sort Solr Facets on Per Field Basis</a>
       </li>
     
   </ul>
