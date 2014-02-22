@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Development | HarmsSite]]></title>
   <link href="http://harmssite.com/blog/categories/development/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2014-02-07T21:08:34-06:00</updated>
+  <updated>2014-02-22T15:39:09-06:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -203,6 +203,11 @@
 <span class='line-number'>93</span>
 <span class='line-number'>94</span>
 <span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php</span>
 </span><span class='line'><span class="x">/&lt;em&gt;*</span>
 </span><span class='line'><span class="x"> * TimeStampedEntity.php</span>
@@ -233,12 +238,6 @@
 </span><span class='line'><span class="x"> * @ORM\Column(name=&quot;updated&quot;, type=&quot;datetime&quot;)</span>
 </span><span class='line'><span class="x"> */</span>
 </span><span class='line'><span class="x">private $updated;</span>
-</span><span class='line'>
-</span><span class='line'><span class="x">public function __construct()</span>
-</span><span class='line'><span class="x">{</span>
-</span><span class='line'><span class="x">    $this-&amp;gt;setCreated(new \DateTime());</span>
-</span><span class='line'><span class="x">    $this-&amp;gt;setUpdated(new \DateTime());</span>
-</span><span class='line'><span class="x">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">/**</span>
 </span><span class='line'><span class="x"> * Set created</span>
@@ -295,6 +294,17 @@
 </span><span class='line'><span class="x">{</span>
 </span><span class='line'><span class="x">   $this-&amp;gt;setUpdated(new \DateTime());</span>
 </span><span class='line'><span class="x">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">/**</span>
+</span><span class='line'><span class="x"> * Set initial value for created/updated values</span>
+</span><span class='line'><span class="x"> *</span>
+</span><span class='line'><span class="x"> * @ORM\PrePersist</span>
+</span><span class='line'><span class="x"> */</span>
+</span><span class='line'><span class="x">public function setCreatedValues()</span>
+</span><span class='line'><span class="x">{</span>
+</span><span class='line'><span class="x">    $this-&amp;gt;setCreated(new \DateTime());</span>
+</span><span class='line'><span class="x">    $this-&amp;gt;setUpdated(new \DateTime());</span>
+</span><span class='line'><span class="x">}</span>
 </span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;p&gt;}</span>
@@ -332,6 +342,8 @@
 </span><span class='line'><span class="x">class Post extends TimeStampedEntity</span>
 </span><span class='line'><span class="x">{</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><em>edited to add setCreatedValues()</em></p>
 ]]></content>
   </entry>
   
