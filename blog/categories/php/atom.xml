@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PHP | HarmsSite]]></title>
   <link href="http://harmssite.com/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://harmssite.com/"/>
-  <updated>2014-02-22T15:39:09-06:00</updated>
+  <updated>2014-03-24T09:20:45-05:00</updated>
   <id>http://harmssite.com/</id>
   <author>
     <name><![CDATA[Tyler Harms]]></name>
@@ -327,11 +327,13 @@
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
+<span class='line-number'>15</span>
 </pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;p&gt;namespace Blend\Iterate\BlogBundle\Entity;&lt;/p&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="x">&lt;p&gt;use Doctrine\ORM\Mapping as ORM;&lt;/p&gt;</span>
+</span><span class='line'><span class="x">&lt;p&gt;use HarmsTyler\Common\Entity\TimeStampedEntity;</span>
+</span><span class='line'><span class="x">use Doctrine\ORM\Mapping as ORM;&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="x">&lt;p&gt;/&lt;em&gt;*</span>
 </span><span class='line'><span class="x"> * Post</span>
