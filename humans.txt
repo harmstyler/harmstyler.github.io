@@ -7,11 +7,11 @@
 
 # THANKS
 
-    Octopress (blog), Github (host)
+    Jekyll (static site generator), Github (host)
 
 # TECHNOLOGY COLOPHON
 
-    Octopress, Jekyll
+    Jekyll, Ruby
     Github
     HTML5, CSS3
     jQuery, Modernizr

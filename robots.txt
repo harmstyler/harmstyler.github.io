@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: 
+Disallow:
 
 Sitemap: http://harmssite.com/sitemap.xml 

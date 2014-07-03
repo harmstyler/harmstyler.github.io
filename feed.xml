@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HarmsSite</title>
+    <description>A Web Development Blog</description>
+    <link>http://harmssite.com/</link>
+    <atom:link href="http://harmssite.com/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Abstract Time Stamped Entity in Symfony2</title>
+        <description>&lt;p&gt;One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2.&lt;/p&gt;
+
+&lt;p&gt;Luckily, adding and updated and created fields to an entity in Symfony2 with Doctrine is quite easy:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * @var \DateTime&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; *&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * @ORM\Column(name=&amp;quot;created&amp;quot;, type=&amp;quot;datetime&amp;quot;)&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$created&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * @var \DateTime&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; *&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * @ORM\Column(name=&amp;quot;updated&amp;quot;, type=&amp;quot;datetime&amp;quot;)&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$updated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__construct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setCreated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;\DateTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setUpdated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;\DateTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// getters &amp;amp; setters&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * Auto set the updated date&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; *&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * @ORM\PreUpdate&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setUpdatedValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setUpdated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;\DateTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The code should be pretty self explanitory, we have two DateTime field types that get initially set on entity creation in the contstructor. I then add a &lt;code&gt;setUpdatedValue()&lt;/code&gt; function that runs when on PreUpdate of the entity.&lt;/p&gt;
+
+&lt;p&gt;The above code works very well, but it is not an ideal solution for working with multiple models. Of course, we could add the updated/created values to every entity, but that wouldn’t be very &lt;a href=&quot;http://en.wikipedia.org/wiki/Don&#39;t_repeat_yourself&quot; title=&quot;Don&#39;t Repeat Yourself&quot;&gt;DRY&lt;/a&gt; of us.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;The solution is to use an &lt;a href=&quot;http://www.php.net/manual/en/language.oop5.abstract.php&quot;&gt;Abstract Class&lt;/a&gt; that our entity can extend. The abstract class, &lt;code&gt;TimeStampedEntity&lt;/code&gt;, will have two entity variables &lt;code&gt;$updated&lt;/code&gt; and &lt;code&gt;$created&lt;/code&gt; and will look nearly identical to the code above when it is complete. The key that will make this work with Doctrine and Symfony2 is Doctrine’s &lt;a href=&quot;http://docs.doctrine-project.org/en/latest/reference/inheritance-mapping.html#mapped-superclasses&quot;&gt;&lt;code&gt;MappedSuperclass&lt;/code&gt;&lt;/a&gt; declaration that tells Symfony and Doctrine that the abstract class is a Superclass with declared entity attributes. What we are left with is a Superclass that can extend any model to add &lt;code&gt;updated&lt;/code&gt; and &lt;code&gt;created&lt;/code&gt; attributes to your data.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * TimeStampedEntity.php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;HarmsTyler\Common\Entity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Doctrine\ORM\Mapping&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ORM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * Post&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; *&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * @ORM\MappedSuperclass&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * @ORM\HasLifecycleCallbacks&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TimeStampedEntity&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * @var \DateTime&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     *&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * @ORM\Column(name=&amp;quot;created&amp;quot;, type=&amp;quot;datetime&amp;quot;)&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     */&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$created&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * @var \DateTime&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     *&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * @ORM\Column(name=&amp;quot;updated&amp;quot;, type=&amp;quot;datetime&amp;quot;)&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     */&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$updated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * Set created&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     *&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * @param \DateTime $created&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * @return Post&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     */&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setCreated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$created&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;created&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$created&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * Get created&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     *&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * @return \DateTime&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     */&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getCreated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;created&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * Set updated&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     *&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * @param \DateTime $updated&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * @return Post&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     */&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setUpdated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$updated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;updated&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$updated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * Get updated&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     *&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * @return \DateTime&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     */&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getUpdated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;updated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * Auto set the updated date&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     *&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * @ORM\PreUpdate&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     */&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setUpdatedValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setUpdated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;\DateTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * Set initial value for created/updated values&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     *&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     * @ORM\PrePersist&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;     */&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setCreatedValues&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setCreated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;\DateTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setUpdated&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;\DateTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;An example in use:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * Post.php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Blend\Iterate\BlogBundle\Entity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;HarmsTyler\Common\Entity\TimeStampedEntity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Doctrine\ORM\Mapping&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ORM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * Post&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; *&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * @ORM\Table()&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; * @ORM\Entity&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Post&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TimeStampedEntity&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;edited to add setCreatedValues()&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 07 Feb 2014 16:56:00 -0600</pubDate>
+        <link>http://harmssite.com/2014/02/abstract-time-stamped-entity-in-symfony2</link>
+        <guid isPermaLink="true">http://harmssite.com/2014/02/abstract-time-stamped-entity-in-symfony2</guid>
+      </item>
+    
+      <item>
+        <title>Free Giveaway of Administrating Solr</title>
+        <description>&lt;p&gt;&lt;img class=&quot;right&quot; src=&quot;/images/posts/admin_solr.jpg&quot; width=&quot;175&quot; height=&quot;213&quot; title=&quot;Administrating Solr&quot; alt=&quot;Administrating Solr cover&quot; /&gt;
+Readers would be pleased to know that I have teamed up with Packt Publishing to organize a Giveaway of the book “&lt;a href=&quot;http://bit.ly/1cNmREG&quot;&gt;Administrating Solr&lt;/a&gt;.”&lt;/p&gt;
+
+&lt;p&gt;Three lucky winners stand a chance to win a digital copy of the book. Keep reading to find out how you can be one of the Lucky Winners.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;overview-of-administrating-solrhttpbitly1cnmreg&quot;&gt;Overview of “&lt;a href=&quot;http://bit.ly/1cNmREG&quot;&gt;Administrating Solr&lt;/a&gt;”&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Learn how to work with monitoring tools like OpsView, New Relic, and SPM&lt;/li&gt;
+  &lt;li&gt;Utilize Solr scripts and Collection Distribution scripts to manage Solr&lt;/li&gt;
+  &lt;li&gt;Employ search features like querying, categorizing, search based on location, and distributed search&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-to-enter&quot;&gt;How to Enter?&lt;/h2&gt;
+&lt;p&gt;All you need to do is head on over to the &lt;a href=&quot;http://bit.ly/1cNmREG&quot;&gt;Book Page&lt;/a&gt; , look through the product description of the book and drop a line via the comments below this post to let us know what interests you the most about this book. It’s that simple!&lt;/p&gt;
+
+&lt;p&gt;The Winners will get an e-copy of the Book.&lt;/p&gt;
+
+&lt;h2 id=&quot;deadline&quot;&gt;Deadline&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;The contest will close on December 13, 2013. Winners will be contacted by email, so be sure to use your real email address when you comment!&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 02 Dec 2013 12:17:00 -0600</pubDate>
+        <link>http://harmssite.com/2013/12/free-giveaway-of-administrating-solr</link>
+        <guid isPermaLink="true">http://harmssite.com/2013/12/free-giveaway-of-administrating-solr</guid>
+      </item>
+    
+      <item>
+        <title>Administrating Solr: A Review</title>
+        <description>&lt;blockquote&gt;&lt;p&gt;Administrating Solr is for developers and Solr administrators who have basic knowledge of Solr and are looking for ways to keep their Solr server healthy and well maintained. Basic working knowledge on Apache Lucene is recommended, but is not mandatory.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;Pact Publishing released a new book in October 2013 called &lt;a href=&quot;http://bit.ly/1cNmREG&quot;&gt;Administrating Solr&lt;/a&gt;. In the book readers can find out all sorts of information about, you guessed it, administrating your Solr installation. Whether it be Searching Solr, Monitoring Solr, Managing Solr, or Optimizing Solr the book has your bases covered.&lt;/p&gt;
+
+&lt;p&gt;At the start, Administrating Solr gets readers familiar with Solr terminology. The Solr Request, Response and RequestHandler are rightfully given their due explanation, as they are the foundation of the Solr configuration. Throughout the rest of Chapter 1 readers can find a plethora of information about searching Solr; whether by query, filter, facet, geospacial, or any combination of the various searching methods, Administrating Solr has readers covered. Chapter 1: Searching Solr reads like a Solr Cookbook when it comes to the different ways to search Solr.&lt;/p&gt;
+
+&lt;p&gt;Chapter 2: Monitoring Solr is all about how to set up your own Solr monitoring; monitoring that goes beyond what is presented to users of the Solr Admin. All of what is described is easy to enable/install for those who want deaper Solr monitoring. The chapter finishes with an overview of some of the more popular monitoring tools, intended for those who don’t want to do all the monitoring setup themselves and would prefer to rely on some third party service. Coverered in the Monitoring Tools section are: Opsview, New Relic, and SPM. The author seems partial to SPM and I have only ever used New Relic’s integration, but it seems fair to say that you will be provided very high quality Solr monitoring with any of the listed tools.&lt;/p&gt;
+
+&lt;p&gt;The 3rd Chapter: Magaging Solr is all about various scripts you can create to help you manage your Solr isntall better. This chapter again reads like a cookbook, which is very handy if you are looking for infomation about backing up Solr, Solr Replication. Also covered in the chapter is Solr Logging. Solr logging was refigured in Solr 4.3 to be more flexible, so included are some ways to get better logging in your install.&lt;/p&gt;
+
+&lt;p&gt;The final chapter, Optimizing Solr Tools and Scripts is by far the best chapter. Before this book I had never heard of such as tool as Drools. This book not only gives readers an understanging of what Drools is, but it also provides an overview of how to use it with real examples. Also covered is setting up Language Detection inside Solr so that the right fields are searched depending on language. Sentence detection and splitting, Tokinization, Part-Of-Speech tagging, and Named entity recognition are all given minor coverage. Each of these topics could be deserving of there own book, so it is understandable that they receive only a paragraph telling the reader what the topic is. The chapter finishes with a case study in Drupal, though the author’s suggestions could be implemented into any platform.&lt;/p&gt;
+
+&lt;p&gt;All in all, this book is very useful to those wishing to get their feet wet with Solr. Solr is an incredibly useful search engine capable of some pretty amazing feats. The book is worth it for the last chapter alone. This book was short and to the point and oh so useful. Check it out at &lt;a href=&quot;http://bit.ly/1cNmREG&quot;&gt;Pact Publishing’s store&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 29 Nov 2013 10:15:00 -0600</pubDate>
+        <link>http://harmssite.com/2013/11/administrating-solr-a-review</link>
+        <guid isPermaLink="true">http://harmssite.com/2013/11/administrating-solr-a-review</guid>
+      </item>
+    
+      <item>
+        <title>South Dakota Code Camp 2013</title>
+        <description>&lt;p&gt;I would say that South Dakota Code Camp 2013 was another huge success. The organizers were once again able to find some great speakers that cover a wide array of topics. Moreover, this year I had the opportunity to speak. I chose to speak about Django, one of my favorite web frameworks. Anyway, here is a link to my slides.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;embedly-card&quot; href=&quot;http://harmssite.com/intro-to-django/&quot;&gt;An Introduction to Django / Tyler Harms&lt;/a&gt;
+&lt;script&gt;!function(a){var b=&quot;embedly-platform&quot;,c=&quot;script&quot;;if(!a.getElementById(b)){var d=a.createElement(c);d.id=b,d.src=(&quot;https:&quot;===document.location.protocol?&quot;https&quot;:&quot;http&quot;)+&quot;://cdn.embedly.com/widgets/platform.js&quot;;var e=document.getElementsByTagName(c)[0];e.parentNode.insertBefore(d,e)}}(document);&lt;/script&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 11 Nov 2013 19:47:00 -0600</pubDate>
+        <link>http://harmssite.com/2013/11/south-dakota-code-camp-2013</link>
+        <guid isPermaLink="true">http://harmssite.com/2013/11/south-dakota-code-camp-2013</guid>
+      </item>
+    
+      <item>
+        <title>jQuery Animate Body Scroll For All Browsers</title>
+        <description>&lt;p&gt;It turns out that when trying to use jQuery’s &lt;code&gt;animate&lt;/code&gt; to &lt;code&gt;scrollTop&lt;/code&gt; on the main body of an html document different browsers require different targets to scroll to. Webkit requires targeting the &lt;code&gt;body&lt;/code&gt; of the document while all other browsers that I know of use &lt;code&gt;html&lt;/code&gt;. The typical solution is to target both in the same call:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;html, body&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0px&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;fast&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Code to be fired when complete goes here (fired twice)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This solution is problematic, however, because even though the scrollTop will only work once, the callback is fired twice. That means that if we were relying on the callback to tell us that the function is complete, our complete function would fire twice.
+Luckily, there is a relatively simple solution to this problem. Using jQuery’s browser plugin we can have webkit browsers target the &lt;code&gt;body&lt;/code&gt; and all others target the &lt;code&gt;html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// If using a newer version (&amp;gt;= 1.9) of jQuery a separate browser&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// plugin is required&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;webkit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;html&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0px&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;fast&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Code to be fired when complete goes here&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This solution worked well for me. I am open to different ideas or solutions if you know of any.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 09 Aug 2013 08:52:00 -0500</pubDate>
+        <link>http://harmssite.com/2013/08/jquery-animate-body-for-all-browsers</link>
+        <guid isPermaLink="true">http://harmssite.com/2013/08/jquery-animate-body-for-all-browsers</guid>
+      </item>
+    
+      <item>
+        <title>Sort Solr Facets on Per Field Basis</title>
+        <description>&lt;p&gt;I recently faced a strange problem. I was faceting off of multiple &lt;code&gt;facet.fields&lt;/code&gt; and I found the need to sort them independently of each other. As far as I knew up to this point &lt;code&gt;facet.sort&lt;/code&gt; could only be set once. When I read the doc, however, it was claimed that the &lt;code&gt;facet.sort&lt;/code&gt; could be set on a per field basis; sadly no examples were provided nor was it explained any further. Luckily, after some digging, I found out that setting the sort (index or count) on a per field is very easy. &lt;/p&gt;
+
+&lt;p&gt;A typical solr fetch with facets might look like this (assuming &lt;code&gt;type_s&lt;/code&gt; is indexed):
+&lt;code&gt;
+/solr/directory/select?q=*:*&amp;amp;wt=json&amp;amp;indent=true&amp;amp;facet=true&amp;amp;facet.field=type_s
+&lt;/code&gt;
+Solr sets &lt;code&gt;facet.sort&lt;/code&gt; to count by default, so that can be left undeclared or can be explicitly declared, it does not matter. A problem arises, however, when you have multiple &lt;code&gt;facet.field&lt;/code&gt;s and you want them sorted differently. To solve this you need to follow this format for the declared sort: &lt;code&gt;f.&amp;lt;facetted_field&amp;gt;.facet.sort=&amp;lt;index|count&amp;gt;&lt;/code&gt;. Using the same example as before, but with an extra field it would look like this:
+&lt;code&gt;
+/solr/directory/select?q=*:*&amp;amp;wt=json&amp;amp;indent=true&amp;amp;facet=true&amp;amp;facet.field=type_s&amp;amp;facet.field=location_s&amp;amp;f.location_s.facet.sort=index
+&lt;/code&gt;
+This would sort &lt;code&gt;type_s&lt;/code&gt; by count (default) and sort &lt;code&gt;location_s&lt;/code&gt; by index.
+The opposite would also work.
+&lt;code&gt;
+/solr/directory/select?q=*:*&amp;amp;wt=json&amp;amp;indent=true&amp;amp;facet=true&amp;amp;facet.field=type_s&amp;amp;facet.field=location_s&amp;amp;facet.sort=index&amp;amp;f.location_s.facet.sort=count
+&lt;/code&gt;
+This would change the default sort order to use index for sort and &lt;code&gt;location_s&lt;/code&gt; would use count for sorting.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 29 Jul 2013 16:05:00 -0500</pubDate>
+        <link>http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis</link>
+        <guid isPermaLink="true">http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis</guid>
+      </item>
+    
+      <item>
+        <title>Chrome Webfont Mimetypes</title>
+        <description>&lt;p&gt;As a web developer whose browser of choice is Google Chome, I use the Chrome console a lot. Chrome is already the best browser out there and always getting better. More than the browsing experience though, I maintain that it has the best dev environment available. It is the little things that really make Chrome so much better than its compeditors (docking to the right for instance). As if you needed any more reasons to like Chrome, the Chrome team just pushed an update to ‘clean up the console.’ This was a fix that did nothing for end user usablity, but fixes that annoying little message telling you about your font mimetypes. This was not a fix that I needed for development, just a nicity that the Chome team provided.&lt;/p&gt;
+
+&lt;p&gt;https://twitter.com/paul_irish/status/351783000154992641&lt;/p&gt;
+
+&lt;p&gt;The fix: https://chromiumcodereview.appspot.com/18308003/patch/1/2&lt;/p&gt;
+</description>
+        <pubDate>Mon, 01 Jul 2013 14:27:00 -0500</pubDate>
+        <link>http://harmssite.com/2013/07/chrome-webfont-mimetypes</link>
+        <guid isPermaLink="true">http://harmssite.com/2013/07/chrome-webfont-mimetypes</guid>
+      </item>
+    
+      <item>
+        <title>IE10 Conditional Comments</title>
+        <description>&lt;p&gt;Let me start by saying that I was very excited by IE10. Internet Explorer 10 was supposed to be &lt;strong&gt;the&lt;/strong&gt; premier IE web browser. Microsoft was so confident that they created a browser that could meet modern standards that they dropped conditional comments in IE10. If you don’t know anything about developing for IE, just know that it sucks; it &lt;em&gt;was&lt;/em&gt;, however, aleviated some by conditional comments that allowed for custom styles/js/whatever for IE versions. My first time working with IE10 I was made harshly aware that conditional comments no longer work. What’s worse, my site that functioned and looked great in IE9 no longer functioned in IE10. How does this happen?&lt;/p&gt;
+
+&lt;p&gt;The more I work with IE10 the more issues I find with it, Microsoft needs to bring conditional comments back. Until then, however, there is a simple script you can stick in your javascripts that will identify when IE10 is being used so that you can target it in your css or javascript.&lt;/p&gt;
+
+&lt;p&gt;The javascript:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Add IE10 class to IE10&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// $.browser requires jquery &amp;lt; 1.9&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// $.browser can be used in jquery &amp;gt; 1.9 with plugin&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msie&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;html&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;ie10&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Or if you use coffeescript:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;coffee-script&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Add IE10 class to IE10&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# $.browser requires jquery &amp;lt; 1.9&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# $.browser can be used in jquery &amp;gt; 1.9 with plugin&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msie&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;html&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ie10&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It is sad that we must do this for a supposed modern browser; nevertheless, I hope this helps for when you have to work with IE10.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 29 Jun 2013 20:43:00 -0500</pubDate>
+        <link>http://harmssite.com/2013/06/ie10-conditional-comments</link>
+        <guid isPermaLink="true">http://harmssite.com/2013/06/ie10-conditional-comments</guid>
+      </item>
+    
+      <item>
+        <title>Symfony2 Coding Standards</title>
+        <description>&lt;p&gt;With eZ Publish moving to Symfony2, I found that I was in need of learning some new coding standards. I never really looked into PHP CodeSniffer while doing eZ Publish development (most of my code was in the templates), so I never really thought about PHP CodeSniffer as an option until starting work with Symphony2. To the point, I just wanted to share the &lt;a href=&quot;https://github.com/opensky/Symfony2-coding-standard&quot;&gt;Symfony2 PHP CodeSniffer Coding Standard on Github&lt;/a&gt;. It is really easy to install and because phpcs works with PHPStorm and Sublime Text 2, sniffing out php files couldn’t be easier.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 30 Apr 2013 13:30:00 -0500</pubDate>
+        <link>http://harmssite.com/2013/04/symfony2-coding-standards</link>
+        <guid isPermaLink="true">http://harmssite.com/2013/04/symfony2-coding-standards</guid>
+      </item>
+    
+      <item>
+        <title>New Site Theme</title>
+        <description>&lt;p&gt;I have been working on getting a new site theme up and running for a while now. My hold up was that I could never commit to a platform. I knew that I wanted off Wordpress and onto something more developer friendly. Originally I was going to put this site on eZ Publish, but that just seemed like overkill. Next I thought about creating a Symfony2 blog, but I wanted to cheapen my hosting options so I opted against Symfony2. I finally decided upon Rails, hosted on the free tier of Heroku. &lt;/p&gt;
+
+&lt;p&gt;I was in the middle of development when I discovered Octopress. How I had never heard of this platform before, I don’t know. In under 4 hours total I had my Wordpress site migrated off of Wordpress and onto a Github Pages site generated by Octopress; it was a very smooth transition. Because development was so fast, I opted to stick with Octopress and &lt;a href=&quot;http://octopress.org/docs/deploying/github/&quot; title=&quot;Deploying to GH-Pages&quot;&gt;GH-Pages&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;My site is now running statically using Octopress as a site generator and Github as a free host. Octopress is built on Jekyll, so I can make plugins easily (in Ruby) as well as pull in any existing plugin with ease. Octopress seems like it is built to be &lt;strong&gt;the&lt;/strong&gt; developer blogging platform. The code blocks, the post generation, and the fact that it is built on Ruby all helped me settle on Octopress as my new blogging platform. I hope you enjoy the new site!&lt;/p&gt;
+</description>
+        <pubDate>Mon, 15 Apr 2013 08:39:00 -0500</pubDate>
+        <link>http://harmssite.com/2013/04/new-site-theme</link>
+        <guid isPermaLink="true">http://harmssite.com/2013/04/new-site-theme</guid>
+      </item>
+    
+  </channel>
+</rss>

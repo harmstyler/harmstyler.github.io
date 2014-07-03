@@ -1,651 +1,176 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>HarmsSite</title>
-  <meta name="author" content="Tyler Harms">
+<html>
 
-  
-  <meta name="description" content="Alright, so lets begin installing eZ Find by going out and downloading it from the Github => https://github.com/ezsystems/ezfind.
-eZ Find is an eZ &hellip;">
-  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HarmsSite</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="A Web Development Blog">
+    <link rel="canonical" href="http://harmssite.com/blog/page/4/">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://harmssite.com/blog/page/4">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="http://feeds.feedburner.com/Harmssite" rel="alternate" title="HarmsSite" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/libs/screenfull.min.js" type="text/javascript"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <script src="/javascripts/harmssite.js" type="text/javascript"></script>
-  <meta name="google-site-verification" content="axE-3STg_ASmj-woMwvErtrLiENiSbf_Dl3v6U0ksiY" />
-  <meta name="msvalidate.01" content="8CA1465593F45EFCC6E63C8300310A9A" />
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-23865520-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
 
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">HarmsSite</a></h1>
-  
-    <h2>Web Development Blog</h2>
-  
-</hgroup>
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/">HarmsSite</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+          <a class="page-link" href="/about">about</a>
+          <a class="page-link" href="/contact">contact</a>
+      </div>
+    </nav>
+
+  </div>
 
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="http://feeds.feedburner.com/Harmssite" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:harmssite.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/blog">Blog Archives</a></li>
-  <li><a href="/blog/categories">Categories</a></li>
-  <li><a href="/contact">Contact</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="home">
+
+  <h1>Posts</h1>
+
+  <ul class="posts">
     
-      <h1 class="entry-title"><a href="/2012/03/installing-ez-find/">Installing eZ Find</a></h1>
+      <li>
+        <span class="post-date">Mar 19, 2012</span>
+        <a class="post-link" href="/2012/03/ez-find-basics">eZ Find Basics</a>
+      </li>
     
+      <li>
+        <span class="post-date">Feb 25, 2012</span>
+        <a class="post-link" href="/2012/02/solr-buckets">Solr Buckets</a>
+      </li>
     
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-22T00:00:00-05:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2012</time>
-        
-      </p>
+      <li>
+        <span class="post-date">Feb 11, 2012</span>
+        <a class="post-link" href="/2012/02/photoshoping-goodness">Photoshopping Goodness</a>
+      </li>
     
-  </header>
-
-
-  <div class="entry-content"><div class="pull-right"><a href="https://s3.amazonaws.com/hs_blog_content/images/ezfind-extension.png"><img class=" wp-image-90 alignright" title="ezfind-extension" src="https://s3.amazonaws.com/hs_blog_content/images/small/ezfind-extension-small.png" alt="eZ Find extension in finder" width="271" height="153" /></a></div>
-
-
-<p>Alright, so lets begin installing eZ Find by going out and downloading it from the Github => <a href="http://bit.ly/GEVOte" title="eZ Find on GitHub">https://github.com/ezsystems/ezfind</a>.
-eZ Find is an eZ Publish extension so: unzip the download, rename the fold &#8221;ezfind,&ldquo; and then move the <em>ezfind</em> folder to the <em>extensions</em> directory of your eZ Publish install.</p>
-
-<p>So, as with any extension, we have to activate it. Go into your override <code>site.ini.append.php</code> (settings/override/site.ini.append.php) and add ezfind to your active extension list (<code>ActiveExtensions[]=ezfind</code>). I added mine just after my main site extension. Easy enough so far right?<div class="pull-left"><a href="https://s3.amazonaws.com/hs_blog_content/images/solr-structure.png"><img title="solr-structure" src="https://s3.amazonaws.com/hs_blog_content/images/small/solr-structure-small.png" alt="Solr installed locally" width="179" height="301" /></a></div></p>
-
-<p>As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a <em>java</em> directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish install and rename the folder &ldquo;Solr&rdquo; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on one Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/03/installing-ez-find/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
+      <li>
+        <span class="post-date">Jan 24, 2012</span>
+        <a class="post-link" href="/2012/01/scraping-a-page-with-php">Scraping a page with php</a>
+      </li>
     
-      <h1 class="entry-title"><a href="/2012/03/ez-find-basics/">eZ Find Basics</a></h1>
+      <li>
+        <span class="post-date">Oct 20, 2011</span>
+        <a class="post-link" href="/2011/10/gradient-app">Gradient App</a>
+      </li>
     
+      <li>
+        <span class="post-date">Aug 26, 2011</span>
+        <a class="post-link" href="/2011/08/path-to-android">Path to Android!</a>
+      </li>
     
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-19T00:00:00-05:00" pubdate data-updated="true">Mar 19<span>th</span>, 2012</time>
-        
-      </p>
+      <li>
+        <span class="post-date">Aug 24, 2011</span>
+        <a class="post-link" href="/2011/08/new-site">New Site</a>
+      </li>
     
-  </header>
+  </ul>
 
-
-  <div class="entry-content"><p>I have been thinking a long time about different topics I could use this blog for. I have settled for the moment on an eZ Publish extension that I have used extensively for a while, eZ Find. eZ Find is an ultra-powerful Solr powered search engine made for eZ Publish, authored by <a title="@paulborgermans" href="https://twitter.com/#!/paulborgermans" target="_blank">Paul Borgermans</a>.</p>
-
-<p>For starters, an introduction to eZ Find &amp; Solr.</p>
-
-<p>Solr is an ultra-powerful search engine built in Java on top of the Apache Lucene project. It is highly scalable, just like eZ Publish, and can be adapted to work in almost any environment. eZ Find for instance uses a php interface with Solr to perform extremely fast and reliable searches.</p>
-
-<p>eZ Find is a standalone extension that can be installed eZ Publish with great ease (my next post). eZ Find can be found in a couple of different places. First, on the <a title="eZ Publish 4.4 with Extensions" href="http://share.ez.no/downloads/downloads/ez-publish-community-project-4.4-fuji" target="_blank">eZ Publish Share</a> site. Unfortunatly the &ldquo;free&rdquo; stable version (2.3) is a little behind, it still uses Solr 1.4. I recommend downloading the extension from <a title="eZ Find on Github" href="https://github.com/ezsystems/ezfind" target="_blank">github</a>. Being open source the codebase gets updated often, even better it uses a more up to date version of Solr (3.1).</p>
-
-<p>In conclusion, eZ Find is highly powerful and scalable. If you use eZ Publish I strongly suggest you look into eZ Find as an alternative search engine. Look forward to my next post about how to install eZ Find into your website.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/02/solr-buckets/">Solr Buckets</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-25T00:00:00-06:00" pubdate data-updated="true">Feb 25<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. <strong>The Problem</strong>: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&rsquo;s speed; let Solr do the work). Now, the book I was using, <a title="Apache Solr Enterprise Search Server" href="http://www.packtpub.com/apache-solr-3-enterprise-search-server/book" target="_blank">Apache Solr Enterprise Search Server</a>, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the <code>SynonymFilterFactory</code>. So for starters lets look at the fieldType:</p>
-
-<figure class='code'><figcaption><span>schema.xml </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;fieldType</span> <span class="na">name=</span><span class="s">&quot;bucketFirstLetterGroup&quot;</span> <span class="na">class=</span><span class="s">&quot;solr.TextField&quot;</span> <span class="na">sortMissingLast=</span><span class="s">&quot;true&quot;</span> <span class="na">omitNorms=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;analyzer</span> <span class="na">type=</span><span class="s">&quot;index&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;tokenizer</span> <span class="na">class=</span><span class="s">&quot;solr.PatternTokenizerFactory&quot;</span> <span class="na">pattern=</span><span class="s">&quot;^([a-zA-Z]).*&quot;</span> <span class="na">group=</span><span class="s">&quot;1&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.SynonymFilterFactory&quot;</span> <span class="na">synonyms=</span><span class="s">&quot;mb_letterBuckets.txt&quot;</span> <span class="na">ignoreCase=</span><span class="s">&quot;true&quot;</span> <span class="na">expand=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/analyzer&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;analyzer</span> <span class="na">type=</span><span class="s">&quot;query&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;tokenizer</span> <span class="na">class=</span><span class="s">&quot;solr.KeywordTokenizerFactory&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/analyzer&gt;</span>
-</span><span class='line'><span class="nt">&lt;/fieldType&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It is actually pretty straight forward. It uses a <code>PatternTokenizerFactory</code> to ignore case but grab only letters and then the SynonymFilterFactory looks at a text file to see how to group all the letters. That is where the book got fuzzy. It told me to look at the default <code>synonyms.txt</code> file for reference and it sent me on my merry way. I scoured the internet for the answer to my dilemma and finally found my answer though trial and error. The default <code>synonyms.txt</code> file looks like this:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#some test synonym mappings unlikely to appear in real input text</span>
-</span><span class='line'><span class="nv">aaafoo</span> <span class="o">=</span>&gt; aaabar
-</span><span class='line'><span class="nv">bbbfoo</span> <span class="o">=</span>&gt; bbbfoo bbbbar
-</span><span class='line'><span class="nv">cccfoo</span> <span class="o">=</span>&gt; cccbar cccbaz
-</span><span class='line'>fooaaa,baraaa,bazaaa
-</span><span class='line'>
-</span><span class='line'><span class="c"># Some synonym groups specific to this example</span>
-</span><span class='line'>GB,gib,gigabyte,gigabytes
-</span><span class='line'>MB,mib,megabyte,megabytes
-</span><span class='line'>Television, Televisions, TV, TVs
-</span><span class='line'><span class="c">#notice we use &quot;gib&quot; instead of &quot;GiB&quot; so any WordDelimiterFilter coming</span>
-</span><span class='line'><span class="c">#after us won&#39;t split it into two words.</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># Synonym mappings can be used for spelling correction too</span>
-</span><span class='line'><span class="nv">pixima</span> <span class="o">=</span>&gt; pixma
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>From this file I concluded that my buckets should be grouped as <code>a-c=&gt;a b c</code> and so on. But that is not the case (it will actually appear to bucket the letters but also leave all the letters as their own bucket at the same time (A-C 150 results A 50 results and so on). It actually works opposite of the example. What is on the left is the solr fieldType and the right is the bucket/synonym. To work it must be <code>a,b,c=&gt;a-c</code>.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>a,b,c<span class="o">=</span>&gt;A-C
-</span><span class='line'>d,e,f<span class="o">=</span>&gt;D-F
-</span><span class='line'>g,h,i<span class="o">=</span>&gt;G-I
-</span><span class='line'>j,k,l<span class="o">=</span>&gt;J-L
-</span><span class='line'>m,n,o<span class="o">=</span>&gt;M-O
-</span><span class='line'>p,q,r<span class="o">=</span>&gt;P-R
-</span><span class='line'>s,t,u<span class="o">=</span>&gt;S-U
-</span><span class='line'>v,w,x,y,z<span class="o">=</span>&gt;V-Z
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So yeah, I have been meaning to post this for a while as I could find no meaningful help on the matter elsewhere on the internet. Also, remember to reindex!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/02/photoshoping-goodness/">Photoshopping Goodness</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-11T00:00:00-06:00" pubdate data-updated="true">Feb 11<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">I truly do wish that I were better with photoshop. That said I am very blessed to know some people that are photoshop gurus. Yesterday when we came across a fantastic <a href="http://imgur.com/gallery/RP2pC" title="Full Hipster" target="_blank">picture</a> and I could not help but think, what would that picture look like with <a href="https://twitter.com/#!/jacksonmurtha" title="Jackson Murtha" target="_blank">@jacksonmurtha</a>&#8217;s head on it. Knowing that I could never do it right I asked <a href="https://twitter.com/#!/rmvelgersdyk" title="Ryan" target="_blank">@rmvelgersdyk</a> if he could do it. What he sent me back really made me wish that I knew photoshop better. It really is such a fantastic picture of Jackson. Major props goes to Ryan for <a href="https://s3.amazonaws.com/hs_blog_content/images/Jackson-1.jpg" title="Jackson">this</a>!
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/01/scraping-a-page-with-php/">Scraping a Page With Php</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-24T00:00:00-06:00" pubdate data-updated="true">Jan 24<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I ran across a problem recently, I needed to get the contents of a page so that I could mimic a widget’s functionality without having access to the database that said page’s widget used (confused yet). Basically, one site had a widget that displayed an upcoming event (information with came from a database), I needed to copy that widget to another website. Moreover, I did not want to use JavaScript to accomplish my goal because I need the new site to be cached pretty heavily on the server. My first thought was to use cURL, but when I ran curl_exec my function would output the entire page contents onto my new site, something that I did not want, I only wanted a small portion of the website. My next option was to use <code>file_get_contents(“my_url”)</code>, as was pointed out to me, this will return the full page as a string. With this I could have accomplished my goal, but not with as much ease as I would hope. I ran into the <code>DOMDOcument()</code> php object a while back and was curious about what I could do with it so I decided to do some research on that. This would eventually lead me to my answer. It turns out that the script is very simple and I can see myself using it quite often so I decided to share it.
-Here it is:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
-</span><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">scrapePage</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span><span class="nv">$id</span><span class="p">){</span>
-</span><span class='line'>    <span class="nv">$d</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DOMDOcument</span><span class="p">();</span>
-</span><span class='line'>    <span class="nb">libxml_use_internal_errors</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
-</span><span class='line'>    <span class="nv">$d</span><span class="o">-&gt;</span><span class="na">loadHTMLFile</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
-</span><span class='line'>    <span class="nv">$widget</span> <span class="o">=</span> <span class="nv">$d</span><span class="o">-&gt;</span><span class="na">getElementById</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nv">$widget</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="nb">simplexml_import_dom</span><span class="p">(</span><span class="nv">$widget</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">asXML</span><span class="p">();</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/10/gradient-app/">Gradient App</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-20T00:00:00-05:00" pubdate data-updated="true">Oct 20<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class="pull-right"><a href="https://s3.amazonaws.com/hs_blog_content/images/gradient-app.png"><img src="https://s3.amazonaws.com/hs_blog_content/images/small/gradient-app-117x300.png" alt="Gradient App" title="gradient-app" width="117" height="300" /></a></div>
-
-
-<p>I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out gradients is easy enough, get your start color and your end color and then plug them into all the various browser specific gradient css elements (webkit, moz, etc&hellip;) and you get a gradient. Like I said, simple enough but time consuming because each browser gets its own line.</p>
-
-<p><a href="http://www.gradientapp.com/" title="Gradient App" target="_blank">Gradient App</a> makes life much simpler. As a Gradient App user all I have to do use the color picker, or manually enter my colors, then just choose my gradient direction and any other options I would be interested in! Gradient App then gives me the CSS code to use, again, making my life much easier.</p>
-
-<figure class='code'><figcaption><span>Sample Gradient Code </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">background-color</span><span class="o">:</span> <span class="nf">#69aece</span><span class="o">;</span>
-</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-webkit-gradient</span><span class="o">(</span><span class="nt">linear</span><span class="o">,</span> <span class="nt">left</span> <span class="nt">top</span><span class="o">,</span> <span class="nt">left</span> <span class="nt">bottom</span><span class="o">,</span> <span class="nt">from</span><span class="o">(</span><span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">)),</span> <span class="nt">to</span><span class="o">(</span><span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">)));</span>
-</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-webkit-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
-</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-moz-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
-</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-o-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
-</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">-ms-linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
-</span><span class='line'><span class="nt">background-image</span><span class="o">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="nt">top</span><span class="o">,</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">105</span><span class="o">,</span> <span class="nt">174</span><span class="o">,</span> <span class="nt">206</span><span class="o">),</span> <span class="nt">rgb</span><span class="o">(</span><span class="nt">201</span><span class="o">,</span> <span class="nt">97</span><span class="o">,</span> <span class="nt">103</span><span class="o">));</span>
-</span><span class='line'><span class="nt">filter</span><span class="o">:</span> <span class="nt">progid</span><span class="nd">:DXImageTransform</span><span class="nc">.Microsoft.gradient</span><span class="o">(</span><span class="nt">startColorStr</span><span class="o">=</span><span class="s1">&#39;#69aece&#39;</span><span class="o">,</span> <span class="nt">EndColorStr</span><span class="o">=</span><span class="s1">&#39;#c96167&#39;</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Obviously, looking at the above code, simple gradients are fairly straight forward. Remember to cover all your browsers (the filter is for Internet Explorer versions older than IE10 as they do not recognize gradients). Also obvious, making your own gradients can be a bit tedious, which is why I used Gradient App to make the code you see above.</p>
-
-<p>Get Gradient App here: <a href="http://www.gradientapp.com/" title="Gradient App"><a href="http://www.gradientapp.com/">http://www.gradientapp.com/</a></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/08/path-to-android/">Path to Android!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-26T00:00:00-05:00" pubdate data-updated="true">Aug 26<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class="pull-right"><a href="http://path.com"><img class="alignleft size-full wp-image-56" title="path-logo" src="https://s3.amazonaws.com/hs_blog_content/images/path-logo-2x.png" alt="Path" width="146" height="65" /></a></div>
-
-
-<p>Finally, Path has come to Android. Path is one of those little known apps that I think a person would love, if they knew about it. Path is made to be  built off of Facebook, but far more personal than that. Their slogan then makes sense, The Personal Network (vs the Social Network). At Path each person is only able to view a limited number of friends, making the social web experience more personal. They recognize the fact that each person in real life does not carry on relationships with 300 people, more likely 30 at the most. Because of this fact, they limit the web friends to the same number; this makes the social experience mean far more to the user. So, back to my original point, Path has been available for iPhone only since its inception. Path is not an internet app; unlike Facebook, I cannot upload photos online, I can only use my phone. Also, there are no status updates, Path is just you sharing photos with your closest friends. Path is a fantastic idea that I have been waiting to use for some time now, as I use Android. Path comes with it a simple and sleek UI, which I would expect being so limited on options and all. Just about the only bad part I can find is that not enough of my friends use it, yet. So my recommendation? Go out and get the app, it should be fun.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/08/new-site/">New Site</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-24T00:00:00-05:00" pubdate data-updated="true">Aug 24<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Obviously this is a new site yet again. I just got sick of working with PyroCMS and decided to go to good &#8216;ol Wordpress, for reliability sake. Luckily I happen to have a licence for an awesome theme, hence the awesome site design. Currently it is not customized but the theme is designed to be customized. Also the site has full access to all the awesome add-ons that wordpress developers have created. With 15% of all created sites out there being Wordpress sites, chances are somebody has thought of it first. What that means to me and possible clients, I can create sites fast and there is a large support structure to back up any work done.
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
-    <a href="/blog/archives">Blog Archives</a>
+      
+      <a href="/blog/page/3" class="previous">Previous</a>
+      
     
-    <a class="next" href="/blog/page/3/">Newer &rarr;</a>
+    <span class="page_number ">Page: 4 of 4</span>
+    
+      <span class="next ">Next</span>
     
   </div>
+
+  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+
 </div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/2014/02/abstract-time-stamped-entity-in-symfony2/">Abstract Time Stamped Entity in Symfony2</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/12/free-giveaway-of-administrating-solr/">Free Giveaway of Administrating Solr</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/11/administrating-solr-a-review/">Administrating Solr: A Review</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/11/south-dakota-code-camp-2013/">South Dakota Code Camp 2013</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/08/jquery-animate-body-for-all-browsers/">jQuery Animate Body Scroll for All Browsers</a>
-      </li>
-    
-  </ul>
-</section>
-<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/harmstyler" data-widget-id="329341729515900931">Tweets by @harmstyler</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/harmstyler">@harmstyler</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'harmstyler',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-  
-</aside>
-
+      </div>
     </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading">HarmsSite</h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li>Curated by <a href="http://about.me/tylerharms">Tyler Harms</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        <li>
+          <a href="https://github.com/harmstyler">
+            <span class="icon github">
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C2C2" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <span class="username">harmstyler</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/harmstyler">
+            <span class="icon twitter">
+              <svg version="1.1" class="twitter-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill="#C2C2C2" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27
+                c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767
+                c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206
+                C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271
+                c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469
+                c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+              </svg>
+            </span>
+            <span class="username">harmstyler</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">A Web Development Blog</p>
+    </div>
+
   </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Tyler Harms -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - <span class="credit">Hosted on <a href="https://github.com/harmstyler/harmstyler.github.io">Github</a></span>
-</p>
 
 </footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'harmssite';
-      
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
 
 
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
+    </body>
 </html>
