@@ -7,6 +7,107 @@
     <atom:link href="http://harmssite.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Mixing AngularJS and Symfony</title>
+        <description>&lt;p&gt;I enjoy being a PHP Developer. PHP is a very flexible language and Symfony2 is
+a modern framework that forces many SOLID habits on developers. I also enjoy
+working with AngularJS. AngularJS makes Javascript fun and much easier to work
+with. Moreover, much like Symfony2, it forces good habits on developers. Getting
+the two to work together, however, can be a little bit of a chore if not careful.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-problem&quot;&gt;The Problem&lt;/h3&gt;
+
+&lt;p&gt;For starters, when the AngularJS &lt;code&gt;$http&lt;/code&gt; service POSTs data the header
+&lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt; is never set (unlike jQuery’s &lt;code&gt;$.ajax()&lt;/code&gt;).
+Also, the &lt;code&gt;$http&lt;/code&gt; data is not serialized when sent. Both of these
+facts mean that the &lt;code&gt;$_POST&lt;/code&gt; variable is never set properly by php. Without
+the &lt;code&gt;$_POST&lt;/code&gt; variable
+&lt;a href=&quot;http://symfony.com/doc/current/book/forms.html#handling-form-submissions&quot;&gt;Symfony’s built in form
+handling&lt;/a&gt;
+cannot be used.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It should be noted that Symfony’s
+&lt;a href=&quot;http://api.symfony.com/2.5/Symfony/Component/HttpFoundation/Request.html&quot;&gt;&lt;code&gt;Request&lt;/code&gt;&lt;/a&gt;
+object allows for access to raw post content via the
+&lt;a href=&quot;http://api.symfony.com/2.5/Symfony/Component/HttpFoundation/Request.html#method_getContent&quot;&gt;&lt;code&gt;getContent()&lt;/code&gt;&lt;/a&gt;
+method; meaning POST data can be processes manually if needed.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;When creating a FormType in Symfony, a name is required. By default that name
+will be called something like &lt;code&gt;bundle_path_entityname&lt;/code&gt;, and all post content
+will need to be in a multidimensional array with the FormType name as the key.
+This means that the posted data we send with Angular will need to follow this
+standard.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Consider shortening the FormType name into something more meaningful.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;the-fix&quot;&gt;The Fix&lt;/h3&gt;
+
+&lt;p&gt;The fix is actually pretty simple:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;angular needs to forced into setting a header&lt;/li&gt;
+  &lt;li&gt;the data needs to be serialized&lt;/li&gt;
+  &lt;li&gt;and the data needs to be normalized into a multidimensional array.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On all &lt;code&gt;$http&lt;/code&gt; requests we can set a &lt;code&gt;headers&lt;/code&gt; object. That means that the
+Content-Type header can be set on the &lt;code&gt;$http&lt;/code&gt; request.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;Content-Type&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;application/x-www-form-urlencoded&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;To serialize the data being sent, jQuery works well. Just use
+&lt;a href=&quot;http://api.jquery.com/jquery.param/&quot;&gt;&lt;code&gt;$.param()&lt;/code&gt;&lt;/a&gt; on the data and be done with
+it.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;postData&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Normalizing the data into a proper serialized string is as simple as creating
+a javascript object. Remember that the FormType name needs to be the key or
+parent attribute on the object.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;formtype_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;some_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;some_name&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Putting it all together, the javascript should look something like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;formtype_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;some_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;some_name&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;$http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;Content-Type&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;application/x-www-form-urlencoded&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;postData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Doing all this work on the frontend will allow for use of the &lt;a href=&quot;http://symfony.com/doc/current/book/forms.html#handling-form-submissions&quot;&gt;normal form processing built into
+Symfony&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 06 Sep 2014 13:57:00 -0500</pubDate>
+        <link>http://harmssite.com/2014/09/mixing-angular-and-symfony</link>
+        <guid isPermaLink="true">http://harmssite.com/2014/09/mixing-angular-and-symfony</guid>
+      </item>
+    
+      <item>
         <title>Abstract Time Stamped Entity in Symfony2</title>
         <description>&lt;p&gt;One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2.&lt;/p&gt;
 
@@ -346,19 +447,6 @@ This would change the default sort order to use index for sort and &lt;code&gt;l
         <pubDate>Tue, 30 Apr 2013 13:30:00 -0500</pubDate>
         <link>http://harmssite.com/2013/04/symfony2-coding-standards</link>
         <guid isPermaLink="true">http://harmssite.com/2013/04/symfony2-coding-standards</guid>
-      </item>
-    
-      <item>
-        <title>New Site Theme</title>
-        <description>&lt;p&gt;I have been working on getting a new site theme up and running for a while now. My hold up was that I could never commit to a platform. I knew that I wanted off Wordpress and onto something more developer friendly. Originally I was going to put this site on eZ Publish, but that just seemed like overkill. Next I thought about creating a Symfony2 blog, but I wanted to cheapen my hosting options so I opted against Symfony2. I finally decided upon Rails, hosted on the free tier of Heroku. &lt;/p&gt;
-
-&lt;p&gt;I was in the middle of development when I discovered Octopress. How I had never heard of this platform before, I don’t know. In under 4 hours total I had my Wordpress site migrated off of Wordpress and onto a Github Pages site generated by Octopress; it was a very smooth transition. Because development was so fast, I opted to stick with Octopress and &lt;a href=&quot;http://octopress.org/docs/deploying/github/&quot; title=&quot;Deploying to GH-Pages&quot;&gt;GH-Pages&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;My site is now running statically using Octopress as a site generator and Github as a free host. Octopress is built on Jekyll, so I can make plugins easily (in Ruby) as well as pull in any existing plugin with ease. Octopress seems like it is built to be &lt;strong&gt;the&lt;/strong&gt; developer blogging platform. The code blocks, the post generation, and the fact that it is built on Ruby all helped me settle on Octopress as my new blogging platform. I hope you enjoy the new site!&lt;/p&gt;
-</description>
-        <pubDate>Mon, 15 Apr 2013 08:39:00 -0500</pubDate>
-        <link>http://harmssite.com/2013/04/new-site-theme</link>
-        <guid isPermaLink="true">http://harmssite.com/2013/04/new-site-theme</guid>
       </item>
     
   </channel>

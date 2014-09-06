@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Solr Query for Mimicking SQL IN Operator Functionality</title>
+    <title>Mixing AngularJS and Symfony</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="A Web Development Blog">
-    <link rel="canonical" href="http://harmssite.com/2012/09/solr-query-for-mimicking-sql-in-operator-functionality">
+    <link rel="canonical" href="http://harmssite.com/2014/09/mixing-angular-and-symfony">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -50,51 +50,109 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>Solr Query for Mimicking SQL IN Operator Functionality</h1>
-    <p class="meta">Sep 13, 2012</p>
+    <h1>Mixing AngularJS and Symfony</h1>
+    <p class="meta">Sep 6, 2014</p>
   </header>
 
   <article class="post-content">
-  <div class="pull-right"><img title="Learning SQL" src="https://s3.amazonaws.com/hs_blog_content/images/select-query.jpg" alt="Learning SQL" width="240" height="180" /></div>
+  <p>I enjoy being a PHP Developer. PHP is a very flexible language and Symfony2 is
+a modern framework that forces many SOLID habits on developers. I also enjoy
+working with AngularJS. AngularJS makes Javascript fun and much easier to work
+with. Moreover, much like Symfony2, it forces good habits on developers. Getting
+the two to work together, however, can be a little bit of a chore if not careful.</p>
 
-<p>I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the <code>IN</code> operator. In Solr you have the option of specifying a field using the <code>qf</code> operator, but what if you have more search terms searching other fields? The problem becomes far more complex. Given the following SQL statement how would we query Solr?</p>
+<h3 id="the-problem">The Problem</h3>
 
-<div class="highlight"><pre><code class="mysql"><span class="k">SELECT</span> <span class="o">*</span>
-<span class="k">FROM</span> <span class="n">table_name</span>
-<span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,...)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span></code></pre></div>
+<p>For starters, when the AngularJS <code>$http</code> service POSTs data the header
+<code>application/x-www-form-urlencoded</code> is never set (unlike jQuery’s <code>$.ajax()</code>).
+Also, the <code>$http</code> data is not serialized when sent. Both of these
+facts mean that the <code>$_POST</code> variable is never set properly by php. Without
+the <code>$_POST</code> variable
+<a href="http://symfony.com/doc/current/book/forms.html#handling-form-submissions">Symfony’s built in form
+handling</a>
+cannot be used.</p>
 
-<p>There are couple of ways to do this, but I think there is one very good and much easier way. The first obvious way to query solr is to match the fields to columns manually.</p>
+<blockquote>
+  <p>It should be noted that Symfony’s
+<a href="http://api.symfony.com/2.5/Symfony/Component/HttpFoundation/Request.html"><code>Request</code></a>
+object allows for access to raw post content via the
+<a href="http://api.symfony.com/2.5/Symfony/Component/HttpFoundation/Request.html#method_getContent"><code>getContent()</code></a>
+method; meaning POST data can be processes manually if needed.</p>
+</blockquote>
 
-<div class="highlight"><pre><code class="http"><span class="err">/select?q=*:*&amp;fq=column_name:value1 AND column_name:value2 AND other_colum:&#39;foo&#39;</span></code></pre></div>
+<p>When creating a FormType in Symfony, a name is required. By default that name
+will be called something like <code>bundle_path_entityname</code>, and all post content
+will need to be in a multidimensional array with the FormType name as the key.
+This means that the posted data we send with Angular will need to follow this
+standard.</p>
 
-<p>This is all fine and dandy but what if I want to be able to add a list of content to the query? Adding the column name every time can become a chore and make the query unnecessarily large. To do an <code>IN</code> query try this:</p>
+<blockquote>
+  <p>Consider shortening the FormType name into something more meaningful.</p>
+</blockquote>
 
-<div class="highlight"><pre><code class="http"><span class="err">/select?q=*:*&amp;fq=column_name:+(value1 value2) AND other_colum:&#39;foo&#39;</span></code></pre></div>
+<h3 id="the-fix">The Fix</h3>
 
-<p>Having used this one before, I can tell you it works for me using Solr 3.6 and that the placement of the + symbol is key.</p>
+<p>The fix is actually pretty simple:</p>
 
-<p>And what about a <code>NOT IN</code> query?</p>
+<ul>
+  <li>angular needs to forced into setting a header</li>
+  <li>the data needs to be serialized</li>
+  <li>and the data needs to be normalized into a multidimensional array.</li>
+</ul>
 
-<div class="highlight"><pre><code class="mysql"><span class="k">SELECT</span> <span class="o">*</span>
-<span class="k">FROM</span> <span class="n">table_name</span>
-<span class="k">WHERE</span> <span class="n">column_name</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,...)</span> <span class="k">AND</span> <span class="n">other_column</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span></code></pre></div>
+<p>On all <code>$http</code> requests we can set a <code>headers</code> object. That means that the
+Content-Type header can be set on the <code>$http</code> request.</p>
 
-<p>The ‘bad’ way:</p>
+<div class="highlight"><pre><code class="javascript"><span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span>
+<span class="p">}</span></code></pre></div>
 
-<div class="highlight"><pre><code class="http"><span class="err">/select?q=*:*&amp;fq=-column_namevalue1 AND -column_name:value2 AND other_colum:&#39;foo&#39;</span></code></pre></div>
+<p>To serialize the data being sent, jQuery works well. Just use
+<a href="http://api.jquery.com/jquery.param/"><code>$.param()</code></a> on the data and be done with
+it.</p>
 
-<p>This one I found from working with eZ Publish and eZ Find, and I happen to like it a lot. It is a clever little Solr query that selects all from the column then filters out what we don’t want.</p>
+<div class="highlight"><pre><code class="javascript"><span class="nx">data</span><span class="o">:</span> <span class="nx">$</span><span class="p">.</span><span class="nx">param</span><span class="p">({</span>
+    <span class="nx">postData</span>
+<span class="p">})</span></code></pre></div>
 
-<div class="highlight"><pre><code class="http"><span class="err">/select?q=*:*&amp;fq=other_colum:&#39;foo&#39; AND column_name:[* TO *] -column_name:(value1 value2)</span></code></pre></div>
+<p>Normalizing the data into a proper serialized string is as simple as creating
+a javascript object. Remember that the FormType name needs to be the key or
+parent attribute on the object.</p>
 
-<p><code>column_name:[* TO *]</code> is like saying select all from the column, but then we add <code>-column_name:(value1 value2)</code> to filter out what we don’t want.</p>
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">postData</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">formtype_name</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="nx">some_id</span><span class="p">,</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="nx">some_name</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 
-<p>Cheers and good luck!</p>
+<p>Putting it all together, the javascript should look something like this:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">postData</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">formtype_name</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="nx">some_id</span><span class="p">,</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="nx">some_name</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">$http</span><span class="p">({</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span>
+    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span>
+    <span class="p">},</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="nx">$</span><span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="nx">postData</span><span class="p">)</span>
+<span class="p">});</span></code></pre></div>
+
+<hr />
+
+<p>Doing all this work on the frontend will allow for use of the <a href="http://symfony.com/doc/current/book/forms.html#handling-form-submissions">normal form processing built into
+Symfony</a>.</p>
 
   </article>
 
   <footer>
-    <p>Tags: <a href="/tag/Code.html" rel="tag">Code</a>, <a href="/tag/Development.html" rel="tag">Development</a>, <a href="/tag/eZ%20Find.html" rel="tag">eZ Find</a>, <a href="/tag/Solr.html" rel="tag">Solr</a>, <a href="/tag/SQL.html" rel="tag">SQL</a>
+    <p>Tags: <a href="/tag/PHP.html" rel="tag">PHP</a>, <a href="/tag/Javascript.html" rel="tag">Javascript</a>, <a href="/tag/Symfony2.html" rel="tag">Symfony2</a>, <a href="/tag/Angular.html" rel="tag">Angular</a>
     
     <div id="disqus_thread"></div>
       <script type="text/javascript">
