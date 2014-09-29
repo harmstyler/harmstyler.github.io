@@ -30,7 +30,7 @@ cannot be used.&lt;/p&gt;
 &lt;a href=&quot;http://api.symfony.com/2.5/Symfony/Component/HttpFoundation/Request.html&quot;&gt;&lt;code&gt;Request&lt;/code&gt;&lt;/a&gt;
 object allows for access to raw post content via the
 &lt;a href=&quot;http://api.symfony.com/2.5/Symfony/Component/HttpFoundation/Request.html#method_getContent&quot;&gt;&lt;code&gt;getContent()&lt;/code&gt;&lt;/a&gt;
-method; meaning POST data can be processes manually if needed.&lt;/p&gt;
+method; meaning POST data can be processed manually if needed.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;When creating a FormType in Symfony, a name is required. By default that name
