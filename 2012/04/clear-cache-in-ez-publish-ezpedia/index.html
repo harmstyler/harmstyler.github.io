@@ -65,7 +65,7 @@ eZpedia has a great article all about clearing the cache.</p>
 clear-cache script sometimes misses some files; so the only way you are going
 to see your changes is by dumping those files manually.</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nb">cd</span> /path/to/ezpublish<span class="p">;</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /path/to/ezpublish<span class="p">;</span>
 rm -vrf var/cache<span class="p">;</span>
 rm -vrf var/ezwebin_site/cache</code></pre></div>
 
@@ -80,19 +80,16 @@ running distributed eZ Publish installation.</p>
   <footer>
     <p>Tags: <a href="/tag/eZ%20Publish.html" rel="tag">eZ Publish</a>
     
-    <div id="disqus_thread"></div>
-      <script type="text/javascript">
-          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-          var disqus_shortname = 'harmssite'; // required: replace example with your forum shortname
-
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-      </script>
-      
+    <script src="https://carnivalapp.io/sites/294/init.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+          Carnival.init({
+              enabled: true,
+              article_author: "Tyler Harms"
+          })
+      });
+    </script>
+    
   </footer>
 
 </div>
@@ -156,9 +153,10 @@ running distributed eZ Publish installation.</p>
     <div class="footer-col-3 column">
       <p class="text">A Web Development Blog</p>
     </div>
-
+    <div class="powered-by">
+        <p class="clearfix">Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> - Comments provided by <a href="https://carnivalapp.io" title="Carnivalapp Comments" target="_blank">Carnivalapp.io</a></p>
+    </div>
   </div>
-
 </footer>
 
 

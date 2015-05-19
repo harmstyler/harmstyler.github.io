@@ -56,7 +56,7 @@ standard.&lt;/p&gt;
 &lt;p&gt;On all &lt;code&gt;$http&lt;/code&gt; requests we can set a &lt;code&gt;headers&lt;/code&gt; object. That means that the
 Content-Type header can be set on the &lt;code&gt;$http&lt;/code&gt; request.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;s1&quot;&gt;&amp;#39;Content-Type&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;application/x-www-form-urlencoded&amp;#39;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -64,7 +64,7 @@ Content-Type header can be set on the &lt;code&gt;$http&lt;/code&gt; request.&lt
 &lt;a href=&quot;http://api.jquery.com/jquery.param/&quot;&gt;&lt;code&gt;$.param()&lt;/code&gt;&lt;/a&gt; on the data and be done with
 it.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;postData&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -72,7 +72,7 @@ it.&lt;/p&gt;
 a javascript object. Remember that the FormType name needs to be the key or
 parent attribute on the object.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;formtype_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;some_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
         &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;some_name&lt;/span&gt;
@@ -81,7 +81,7 @@ parent attribute on the object.&lt;/p&gt;
 
 &lt;p&gt;Putting it all together, the javascript should look something like this:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;formtype_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;some_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
         &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;some_name&lt;/span&gt;
@@ -113,7 +113,7 @@ Symfony&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Luckily, adding and updated and created fields to an entity in Symfony2 with Doctrine is quite easy:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
 &lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
 &lt;span class=&quot;sd&quot;&gt; * @var \DateTime&lt;/span&gt;
 &lt;span class=&quot;sd&quot;&gt; *&lt;/span&gt;
@@ -154,7 +154,7 @@ Symfony&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;The solution is to use an &lt;a href=&quot;http://www.php.net/manual/en/language.oop5.abstract.php&quot;&gt;Abstract Class&lt;/a&gt; that our entity can extend. The abstract class, &lt;code&gt;TimeStampedEntity&lt;/code&gt;, will have two entity variables &lt;code&gt;$updated&lt;/code&gt; and &lt;code&gt;$created&lt;/code&gt; and will look nearly identical to the code above when it is complete. The key that will make this work with Doctrine and Symfony2 is Doctrine’s &lt;a href=&quot;http://docs.doctrine-project.org/en/latest/reference/inheritance-mapping.html#mapped-superclasses&quot;&gt;&lt;code&gt;MappedSuperclass&lt;/code&gt;&lt;/a&gt; declaration that tells Symfony and Doctrine that the abstract class is a Superclass with declared entity attributes. What we are left with is a Superclass that can extend any model to add &lt;code&gt;updated&lt;/code&gt; and &lt;code&gt;created&lt;/code&gt; attributes to your data.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
 &lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
 &lt;span class=&quot;sd&quot;&gt; * TimeStampedEntity.php&lt;/span&gt;
 &lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
@@ -255,7 +255,7 @@ Symfony&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;An example in use:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
 &lt;span class=&quot;sd&quot;&gt;/**&lt;/span&gt;
 &lt;span class=&quot;sd&quot;&gt; * Post.php&lt;/span&gt;
 &lt;span class=&quot;sd&quot;&gt; */&lt;/span&gt;
@@ -349,7 +349,7 @@ Readers would be pleased to know that I have teamed up with Packt Publishing to 
         <title>jQuery Animate Body Scroll For All Browsers</title>
         <description>&lt;p&gt;It turns out that when trying to use jQuery’s &lt;code&gt;animate&lt;/code&gt; to &lt;code&gt;scrollTop&lt;/code&gt; on the main body of an html document different browsers require different targets to scroll to. Webkit requires targeting the &lt;code&gt;body&lt;/code&gt; of the document while all other browsers that I know of use &lt;code&gt;html&lt;/code&gt;. The typical solution is to target both in the same call:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;html, body&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;html, body&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0px&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;fast&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
         &lt;span class=&quot;c1&quot;&gt;// Code to be fired when complete goes here (fired twice)&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
@@ -358,7 +358,7 @@ Readers would be pleased to know that I have teamed up with Packt Publishing to 
 &lt;p&gt;This solution is problematic, however, because even though the scrollTop will only work once, the callback is fired twice. That means that if we were relying on the callback to tell us that the function is complete, our complete function would fire twice.
 Luckily, there is a relatively simple solution to this problem. Using jQuery’s browser plugin we can have webkit browsers target the &lt;code&gt;body&lt;/code&gt; and all others target the &lt;code&gt;html&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// If using a newer version (&amp;gt;= 1.9) of jQuery a separate browser&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// If using a newer version (&amp;gt;= 1.9) of jQuery a separate browser&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;// plugin is required&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;webkit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;html&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;0px&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;fast&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
@@ -375,22 +375,28 @@ Luckily, there is a relatively simple solution to this problem. Using jQuery’s
     
       <item>
         <title>Sort Solr Facets on Per Field Basis</title>
-        <description>&lt;p&gt;I recently faced a strange problem. I was faceting off of multiple &lt;code&gt;facet.fields&lt;/code&gt; and I found the need to sort them independently of each other. As far as I knew up to this point &lt;code&gt;facet.sort&lt;/code&gt; could only be set once. When I read the doc, however, it was claimed that the &lt;code&gt;facet.sort&lt;/code&gt; could be set on a per field basis; sadly no examples were provided nor was it explained any further. Luckily, after some digging, I found out that setting the sort (index or count) on a per field is very easy. &lt;/p&gt;
+        <description>&lt;p&gt;I recently faced a strange problem. I was faceting off of multiple &lt;code&gt;facet.fields&lt;/code&gt; and I found the need to sort them independently of each other. As far as I knew up to this point &lt;code&gt;facet.sort&lt;/code&gt; could only be set once. When I read the doc, however, it was claimed that the &lt;code&gt;facet.sort&lt;/code&gt; could be set on a per field basis; sadly no examples were provided nor was it explained any further. Luckily, after some digging, I found out that setting the sort (index or count) on a per field is very easy.&lt;/p&gt;
 
-&lt;p&gt;A typical solr fetch with facets might look like this (assuming &lt;code&gt;type_s&lt;/code&gt; is indexed):
-&lt;code&gt;
+&lt;p&gt;A typical solr fetch with facets might look like this (assuming &lt;code&gt;type_s&lt;/code&gt; is indexed):&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
 /solr/directory/select?q=*:*&amp;amp;wt=json&amp;amp;indent=true&amp;amp;facet=true&amp;amp;facet.field=type_s
-&lt;/code&gt;
-Solr sets &lt;code&gt;facet.sort&lt;/code&gt; to count by default, so that can be left undeclared or can be explicitly declared, it does not matter. A problem arises, however, when you have multiple &lt;code&gt;facet.field&lt;/code&gt;s and you want them sorted differently. To solve this you need to follow this format for the declared sort: &lt;code&gt;f.&amp;lt;facetted_field&amp;gt;.facet.sort=&amp;lt;index|count&amp;gt;&lt;/code&gt;. Using the same example as before, but with an extra field it would look like this:
-&lt;code&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Solr sets &lt;code&gt;facet.sort&lt;/code&gt; to count by default, so that can be left undeclared or can be explicitly declared, it does not matter. A problem arises, however, when you have multiple &lt;code&gt;facet.field&lt;/code&gt;s and you want them sorted differently. To solve this you need to follow this format for the declared sort: &lt;code&gt;f.&amp;lt;facetted_field&amp;gt;.facet.sort=&amp;lt;index|count&amp;gt;&lt;/code&gt;. Using the same example as before, but with an extra field it would look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
 /solr/directory/select?q=*:*&amp;amp;wt=json&amp;amp;indent=true&amp;amp;facet=true&amp;amp;facet.field=type_s&amp;amp;facet.field=location_s&amp;amp;f.location_s.facet.sort=index
-&lt;/code&gt;
-This would sort &lt;code&gt;type_s&lt;/code&gt; by count (default) and sort &lt;code&gt;location_s&lt;/code&gt; by index.
-The opposite would also work.
-&lt;code&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This would sort &lt;code&gt;type_s&lt;/code&gt; by count (default) and sort &lt;code&gt;location_s&lt;/code&gt; by index.
+The opposite would also work.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
 /solr/directory/select?q=*:*&amp;amp;wt=json&amp;amp;indent=true&amp;amp;facet=true&amp;amp;facet.field=type_s&amp;amp;facet.field=location_s&amp;amp;facet.sort=index&amp;amp;f.location_s.facet.sort=count
-&lt;/code&gt;
-This would change the default sort order to use index for sort and &lt;code&gt;location_s&lt;/code&gt; would use count for sorting.&lt;/p&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This would change the default sort order to use index for sort and &lt;code&gt;location_s&lt;/code&gt; would use count for sorting.&lt;/p&gt;
 </description>
         <pubDate>Mon, 29 Jul 2013 16:05:00 -0500</pubDate>
         <link>http://harmssite.com/2013/07/sort-solr-facets-on-per-field-basis</link>
@@ -418,7 +424,7 @@ This would change the default sort order to use index for sort and &lt;code&gt;l
 
 &lt;p&gt;The javascript:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Add IE10 class to IE10&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Add IE10 class to IE10&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;// $.browser requires jquery &amp;lt; 1.9&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;// $.browser can be used in jquery &amp;gt; 1.9 with plugin&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msie&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -427,7 +433,7 @@ This would change the default sort order to use index for sort and &lt;code&gt;l
 
 &lt;p&gt;Or if you use coffeescript:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;coffee-script&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Add IE10 class to IE10&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-coffee-script&quot; data-lang=&quot;coffee-script&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Add IE10 class to IE10&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# $.browser requires jquery &amp;lt; 1.9&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# $.browser can be used in jquery &amp;gt; 1.9 with plugin&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msie&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;

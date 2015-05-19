@@ -59,7 +59,7 @@
 
 <p>Luckily, adding and updated and created fields to an entity in Symfony2 with Doctrine is quite easy:</p>
 
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * @var \DateTime</span>
 <span class="sd"> *</span>
@@ -100,7 +100,7 @@
 
 <p>The solution is to use an <a href="http://www.php.net/manual/en/language.oop5.abstract.php">Abstract Class</a> that our entity can extend. The abstract class, <code>TimeStampedEntity</code>, will have two entity variables <code>$updated</code> and <code>$created</code> and will look nearly identical to the code above when it is complete. The key that will make this work with Doctrine and Symfony2 is Doctrine’s <a href="http://docs.doctrine-project.org/en/latest/reference/inheritance-mapping.html#mapped-superclasses"><code>MappedSuperclass</code></a> declaration that tells Symfony and Doctrine that the abstract class is a Superclass with declared entity attributes. What we are left with is a Superclass that can extend any model to add <code>updated</code> and <code>created</code> attributes to your data.</p>
 
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * TimeStampedEntity.php</span>
 <span class="sd"> */</span>
@@ -201,7 +201,7 @@
 
 <p>An example in use:</p>
 
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * Post.php</span>
 <span class="sd"> */</span>
@@ -227,19 +227,16 @@
   <footer>
     <p>Tags: <a href="/tag/PHP.html" rel="tag">PHP</a>, <a href="/tag/Symfony2.html" rel="tag">Symfony2</a>, <a href="/tag/Doctrine.html" rel="tag">Doctrine</a>
     
-    <div id="disqus_thread"></div>
-      <script type="text/javascript">
-          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-          var disqus_shortname = 'harmssite'; // required: replace example with your forum shortname
-
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-      </script>
-      
+    <script src="https://carnivalapp.io/sites/294/init.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+          Carnival.init({
+              enabled: true,
+              article_author: "Tyler Harms"
+          })
+      });
+    </script>
+    
   </footer>
 
 </div>
@@ -303,9 +300,10 @@
     <div class="footer-col-3 column">
       <p class="text">A Web Development Blog</p>
     </div>
-
+    <div class="powered-by">
+        <p class="clearfix">Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> - Comments provided by <a href="https://carnivalapp.io" title="Carnivalapp Comments" target="_blank">Carnivalapp.io</a></p>
+    </div>
   </div>
-
 </footer>
 
 

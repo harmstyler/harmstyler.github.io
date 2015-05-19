@@ -57,7 +57,7 @@
   <article class="post-content">
   <p>I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default search field called <code>ezf_df_text</code>. The downside of searching one field is that field needs to be controlled, and the only way it can be controlled is by manually editing the Solr schema file. As you might expect, eZ Find does not control this file very well out of the box.</p>
 
-<div class="highlight"><pre><code class="xml"><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_lk&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_lk&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_k&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_t&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;*_s&quot;</span> <span class="na">dest=</span><span class="s">&quot;ezf_df_text&quot;</span><span class="nt">/&gt;</span></code></pre></div>
@@ -140,9 +140,10 @@
     <div class="footer-col-3 column">
       <p class="text">A Web Development Blog</p>
     </div>
-
+    <div class="powered-by">
+        <p class="clearfix">Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> - Comments provided by <a href="https://carnivalapp.io" title="Carnivalapp Comments" target="_blank">Carnivalapp.io</a></p>
+    </div>
   </div>
-
 </footer>
 
 

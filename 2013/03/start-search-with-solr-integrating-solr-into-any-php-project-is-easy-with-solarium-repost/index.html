@@ -59,13 +59,13 @@
 
 <h4 id="solr-has-quickly-become-one-of-the-most-popular-search-engines-available-due-to-solrs-many-features-and-its-low-barrier-to-entry-it-can-be-an-ideal-candidate-when-seeking-a-search-engine-solarium-a-php-solr-client-takes-solr-one-step-further-by-giving-developers-easier-access-to-the-solr-api">Solr has quickly become one of the most popular search engines available. Due to Solr’s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.</h4>
 
-<div class="highlight"><pre><code class="json"><span class="p">{</span>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
     <span class="nt">&quot;require&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;solarium/solarium&quot;</span><span class="p">:</span> <span class="s2">&quot;3.0.0&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></div>
 
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;endpoint&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
         <span class="s1">&#39;localhost&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
@@ -77,7 +77,7 @@
 <span class="c1">// new Solarium Client object</span>
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Solarium\Client</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span></code></pre></div>
 
-<div class="highlight"><pre><code class="xml"><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="na">multiValued=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;text&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span></code></pre></div>
 
@@ -99,12 +99,12 @@
 
 <p>To make an update to Solr using Solarium, start with the <code>$client</code> object. Using the <code>$client</code> object, create an <code>$update</code> instance then make a doc:</p>
 
-<div class="highlight"><pre><code class="php"><span class="x">$update = $client-&gt;createUpdate();</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$update = $client-&gt;createUpdate();</span>
 <span class="x">$doc1 = $update-&gt;createDocument();</span></code></pre></div>
 
 <p>With the newly created <code>$doc</code>, begin adding content to Solr fields as instances of the $doc:</p>
 
-<div class="highlight"><pre><code class="php"><span class="x">$doc1-&gt;id = 123;</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$doc1-&gt;id = 123;</span>
 <span class="x">$doc1-&gt;name = &#39;First Document&#39;;</span>
 <span class="x">$doc1-&gt;text = &#39;This is the first document\&#39;s content&#39;;</span>
 
@@ -116,29 +116,29 @@
 
 <p>In this example, the Solr schema would have to be set up to accept the id, name and text fields. Solr ships with an example search app with a good demo of a Solr schema; each field will need to be added to the schema in order for Solr to add the docs to the search index (Listing 3). Next, add each <code>$doc</code> created to an array so that <code>addDocuments()</code> can be called on the array. This will run the Solr add command for every document in the array:</p>
 
-<div class="highlight"><pre><code class="php"><span class="x">$update-&gt;addDocuments(array($doc1, $doc2));</span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$update-&gt;addDocuments(array($doc1, $doc2));</span></code></pre></div>
 
 <p>The newly-added docs will not actually become a permanent part of the Solr index until Solr is told to commit all added docs to its index. To do this with Solarium, call <code>addCommit()</code> to generate a commit message for Solr, then a call to <code>update()</code> with the <code>$update</code> will send the commit:</p>
 
-<div class="highlight"><pre><code class="php"><span class="x">$update-&gt;addCommit(); $client-&gt;update($update);</span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$update-&gt;addCommit(); $client-&gt;update($update);</span></code></pre></div>
 
 <p>The new docs should now exist and be searchable using Solr.</p>
 
 <h3 id="searching-solr-through-solarium">Searching Solr through Solarium</h3>
 <p>Solarium offers a robust PHP API for searching Solr. To run a basic query, start with the $client object. Next, call the <code>createSelect()</code> instance of the <code>$client</code> object to generate the query for execution:</p>
 
-<div class="highlight"><pre><code class="php"><span class="x">$query = $client-&gt;createSelect();</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$query = $client-&gt;createSelect();</span>
 
 <span class="x">// *:* is equivalent to telling solr to return all docs</span>
 <span class="x">$query-&gt;setQuery(&#39;*:*&#39;);</span></code></pre></div>
 
 <p>Because the <code>createSelect()</code> function is being used to generate the query, the <code>select()</code> function should be used when executing the query:</p>
 
-<div class="highlight"><pre><code class="php"><span class="x">$resultSet = $client-&gt;select($query);</span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$resultSet = $client-&gt;select($query);</span></code></pre></div>
 
 <p>Use the $resultSet array to iterate over the array and display the results:</p>
 
-<div class="highlight"><pre><code class="php"><span class="x">echo &#39;&lt;div class=&quot;search-results&quot;&gt;&#39;;</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">echo &#39;&lt;div class=&quot;search-results&quot;&gt;&#39;;</span>
 <span class="x">foreach ($resultSet as $result) {</span>
 <span class="x">    echo &#39;&lt;div class=&quot;search-result&quot;&gt;&#39;;</span>
 <span class="x">    echo &#39;&lt;p&gt;&#39; . $result-&gt;id . &#39;&lt;/p&gt;&#39;;</span>
@@ -150,34 +150,34 @@
 
 <p>The <code>$resultSet</code> can also be refined. Setting up pagination, for instance, is very easy:</p>
 
-<div class="highlight"><pre><code class="php"><span class="x">$query-&gt;setStart(0)-&gt;setRows(10);</span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$query-&gt;setStart(0)-&gt;setRows(10);</span></code></pre></div>
 
 <p>Sorting is also very easy (note that Solr will sort by score if no sort is set):</p>
 
-<div class="highlight"><pre><code class="php"><span class="x">$query-&gt;addSort(&#39;name&#39;, Solarium_Query_Select::SORT_ASC);</span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$query-&gt;addSort(&#39;name&#39;, Solarium_Query_Select::SORT_ASC);</span></code></pre></div>
 
 <p>Filtering, setting query fields, boosting, and faceting are also possible ways of searching Solr. Filtering is another way of narrowing search results without using a query. Query fields allow for control over what fields are searched. Boosting gives certain field’s higher precedence in the Search. Facets give users a way to better navigate search results. Solarium gives easy access to all the various ways of searching Solr content.</p>
 
 <h3 id="removing-content-from-solr">Removing content from Solr</h3>
 <p>Solr does not have a command called update; however, updates can be performed by re-adding content. Solr uses a unique identifier for each doc and only allows for one instance of the identifier in the search index. To update content, call the add command on an already existent Solr doc id. Sometimes updating Solr with new content isn’t enough. Sometimes the need to delete content from Solr arises. Doing this is similar to when adding docs, create an $update instance:</p>
 
-<div class="highlight"><pre><code class="php"><span class="x">$update = $client-&gt;createUpdate();</span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$update = $client-&gt;createUpdate();</span></code></pre></div>
 
 <p>Using the $update instance, documents can be deleted by id or by query. This offers a great deal of flexibility for deleting content. Deleting by id is used more often because it offers very precise deletes:</p>
 
-<div class="highlight"><pre><code class="php"><span class="x">$update-&gt;addDeleteById(234);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$update-&gt;addDeleteById(234);</span>
 <span class="x">$update-&gt;addCommit();</span>
 <span class="x">$client-&gt;update($update);</span></code></pre></div>
 
 <p>Deleting by query, however, can be incredibly powerful and useful. When starting development of a new search project with test content, for instance, deleting by query offers the ability to remove all test content. If all the test content starts with the word test, deleting the content is simple:</p>
 
-<div class="highlight"><pre><code class="php"><span class="x">$update-&gt;addDeleteQuery(&#39;name:test*&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$update-&gt;addDeleteQuery(&#39;name:test*&#39;);</span>
 <span class="x">$update-&gt;addCommit();</span>
 <span class="x">$client-&gt;update($update);</span></code></pre></div>
 
 <p>Another common practice is to wipe the index and start fresh. Using delete by query, this task is again made very simple:</p>
 
-<div class="highlight"><pre><code class="php"><span class="x">$update-&gt;addDeleteQuery(&#39;*:*&#39;);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$update-&gt;addDeleteQuery(&#39;*:*&#39;);</span>
 <span class="x">$update-&gt;addCommit();</span>
 <span class="x">$client-&gt;update($update);</span></code></pre></div>
 
@@ -197,19 +197,16 @@
   <footer>
     <p>Tags: <a href="/tag/Development.html" rel="tag">Development</a>, <a href="/tag/PHP.html" rel="tag">PHP</a>, <a href="/tag/Search.html" rel="tag">Search</a>, <a href="/tag/Solarium.html" rel="tag">Solarium</a>, <a href="/tag/Solr.html" rel="tag">Solr</a>
     
-    <div id="disqus_thread"></div>
-      <script type="text/javascript">
-          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-          var disqus_shortname = 'harmssite'; // required: replace example with your forum shortname
-
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-      </script>
-      
+    <script src="https://carnivalapp.io/sites/294/init.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+          Carnival.init({
+              enabled: true,
+              article_author: "Tyler Harms"
+          })
+      });
+    </script>
+    
   </footer>
 
 </div>
@@ -273,9 +270,10 @@
     <div class="footer-col-3 column">
       <p class="text">A Web Development Blog</p>
     </div>
-
+    <div class="powered-by">
+        <p class="clearfix">Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> - Comments provided by <a href="https://carnivalapp.io" title="Carnivalapp Comments" target="_blank">Carnivalapp.io</a></p>
+    </div>
   </div>
-
 </footer>
 
 

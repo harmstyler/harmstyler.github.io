@@ -57,7 +57,7 @@
   <article class="post-content">
   <p>It turns out that when trying to use jQuery’s <code>animate</code> to <code>scrollTop</code> on the main body of an html document different browsers require different targets to scroll to. Webkit requires targeting the <code>body</code> of the document while all other browsers that I know of use <code>html</code>. The typical solution is to target both in the same call:</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;html, body&#39;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;html, body&#39;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span>
     <span class="nx">scrollTop</span><span class="o">:</span> <span class="s1">&#39;0px&#39;</span><span class="p">,</span><span class="s1">&#39;fast&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
         <span class="c1">// Code to be fired when complete goes here (fired twice)</span>
     <span class="p">}</span>
@@ -66,7 +66,7 @@
 <p>This solution is problematic, however, because even though the scrollTop will only work once, the callback is fired twice. That means that if we were relying on the callback to tell us that the function is complete, our complete function would fire twice.
 Luckily, there is a relatively simple solution to this problem. Using jQuery’s browser plugin we can have webkit browsers target the <code>body</code> and all others target the <code>html</code>.</p>
 
-<div class="highlight"><pre><code class="javascript"><span class="c1">// If using a newer version (&gt;= 1.9) of jQuery a separate browser</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// If using a newer version (&gt;= 1.9) of jQuery a separate browser</span>
 <span class="c1">// plugin is required</span>
 <span class="nx">$</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">webkit</span> <span class="o">?</span> <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="s2">&quot;html&quot;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span>
     <span class="nx">scrollTop</span><span class="o">:</span> <span class="s1">&#39;0px&#39;</span><span class="p">,</span><span class="s1">&#39;fast&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
@@ -81,19 +81,16 @@ Luckily, there is a relatively simple solution to this problem. Using jQuery’s
   <footer>
     <p>Tags: 
     
-    <div id="disqus_thread"></div>
-      <script type="text/javascript">
-          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-          var disqus_shortname = 'harmssite'; // required: replace example with your forum shortname
-
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-      </script>
-      
+    <script src="https://carnivalapp.io/sites/294/init.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+          Carnival.init({
+              enabled: true,
+              article_author: "Tyler Harms"
+          })
+      });
+    </script>
+    
   </footer>
 
 </div>
@@ -157,9 +154,10 @@ Luckily, there is a relatively simple solution to this problem. Using jQuery’s
     <div class="footer-col-3 column">
       <p class="text">A Web Development Blog</p>
     </div>
-
+    <div class="powered-by">
+        <p class="clearfix">Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> - Comments provided by <a href="https://carnivalapp.io" title="Carnivalapp Comments" target="_blank">Carnivalapp.io</a></p>
+    </div>
   </div>
-
 </footer>
 
 

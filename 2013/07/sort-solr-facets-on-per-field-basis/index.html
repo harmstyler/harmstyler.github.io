@@ -55,41 +55,44 @@
   </header>
 
   <article class="post-content">
-  <p>I recently faced a strange problem. I was faceting off of multiple <code>facet.fields</code> and I found the need to sort them independently of each other. As far as I knew up to this point <code>facet.sort</code> could only be set once. When I read the doc, however, it was claimed that the <code>facet.sort</code> could be set on a per field basis; sadly no examples were provided nor was it explained any further. Luckily, after some digging, I found out that setting the sort (index or count) on a per field is very easy. </p>
+  <p>I recently faced a strange problem. I was faceting off of multiple <code>facet.fields</code> and I found the need to sort them independently of each other. As far as I knew up to this point <code>facet.sort</code> could only be set once. When I read the doc, however, it was claimed that the <code>facet.sort</code> could be set on a per field basis; sadly no examples were provided nor was it explained any further. Luckily, after some digging, I found out that setting the sort (index or count) on a per field is very easy.</p>
 
-<p>A typical solr fetch with facets might look like this (assuming <code>type_s</code> is indexed):
-<code>
+<p>A typical solr fetch with facets might look like this (assuming <code>type_s</code> is indexed):</p>
+
+<p><code>
 /solr/directory/select?q=*:*&amp;wt=json&amp;indent=true&amp;facet=true&amp;facet.field=type_s
-</code>
-Solr sets <code>facet.sort</code> to count by default, so that can be left undeclared or can be explicitly declared, it does not matter. A problem arises, however, when you have multiple <code>facet.field</code>s and you want them sorted differently. To solve this you need to follow this format for the declared sort: <code>f.&lt;facetted_field&gt;.facet.sort=&lt;index|count&gt;</code>. Using the same example as before, but with an extra field it would look like this:
-<code>
+</code></p>
+
+<p>Solr sets <code>facet.sort</code> to count by default, so that can be left undeclared or can be explicitly declared, it does not matter. A problem arises, however, when you have multiple <code>facet.field</code>s and you want them sorted differently. To solve this you need to follow this format for the declared sort: <code>f.&lt;facetted_field&gt;.facet.sort=&lt;index|count&gt;</code>. Using the same example as before, but with an extra field it would look like this:</p>
+
+<p><code>
 /solr/directory/select?q=*:*&amp;wt=json&amp;indent=true&amp;facet=true&amp;facet.field=type_s&amp;facet.field=location_s&amp;f.location_s.facet.sort=index
-</code>
-This would sort <code>type_s</code> by count (default) and sort <code>location_s</code> by index.
-The opposite would also work.
-<code>
+</code></p>
+
+<p>This would sort <code>type_s</code> by count (default) and sort <code>location_s</code> by index.
+The opposite would also work.</p>
+
+<p><code>
 /solr/directory/select?q=*:*&amp;wt=json&amp;indent=true&amp;facet=true&amp;facet.field=type_s&amp;facet.field=location_s&amp;facet.sort=index&amp;f.location_s.facet.sort=count
-</code>
-This would change the default sort order to use index for sort and <code>location_s</code> would use count for sorting.</p>
+</code></p>
+
+<p>This would change the default sort order to use index for sort and <code>location_s</code> would use count for sorting.</p>
 
   </article>
 
   <footer>
     <p>Tags: <a href="/tag/Development.html" rel="tag">Development</a>, <a href="/tag/Search.html" rel="tag">Search</a>, <a href="/tag/Solr.html" rel="tag">Solr</a>
     
-    <div id="disqus_thread"></div>
-      <script type="text/javascript">
-          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-          var disqus_shortname = 'harmssite'; // required: replace example with your forum shortname
-
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-      </script>
-      
+    <script src="https://carnivalapp.io/sites/294/init.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+          Carnival.init({
+              enabled: true,
+              article_author: "Tyler Harms"
+          })
+      });
+    </script>
+    
   </footer>
 
 </div>
@@ -153,9 +156,10 @@ This would change the default sort order to use index for sort and <code>locatio
     <div class="footer-col-3 column">
       <p class="text">A Web Development Blog</p>
     </div>
-
+    <div class="powered-by">
+        <p class="clearfix">Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> - Comments provided by <a href="https://carnivalapp.io" title="Carnivalapp Comments" target="_blank">Carnivalapp.io</a></p>
+    </div>
   </div>
-
 </footer>
 
 

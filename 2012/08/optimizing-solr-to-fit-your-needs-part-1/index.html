@@ -61,7 +61,7 @@
 
 <p>One of the best things we could have ever done for a large Solr install was to customize a default search field. You might say, “But eZ Find already creates a default search field for you.” And you’d be right.</p>
 
-<div class="highlight"><pre><code class="xml"><span class="c">&lt;!-- field for the QueryParser to use when an explicit fieldname is absent --&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- field for the QueryParser to use when an explicit fieldname is absent --&gt;</span>
 <span class="nt">&lt;defaultSearchField&gt;</span>ezf_df_text<span class="nt">&lt;/defaultSearchField&gt;</span></code></pre></div>
 
 <p>The thing that the default search field in eZ Find does not do, however, is get used. There is no way in eZ Find to tell it to search just one field (at least as far as I know). I did some testing in our environment, these numbers will change from system to system, but in our’s each search took almost 10 times as long to search all fields individually vs searching just 1 field. We gave eZ Find the option to search one given field, if defined, and it vastly improved our search experience.</p>
@@ -75,19 +75,16 @@
   <footer>
     <p>Tags: <a href="/tag/Development.html" rel="tag">Development</a>, <a href="/tag/eZ%20Find.html" rel="tag">eZ Find</a>, <a href="/tag/eZ%20Publish.html" rel="tag">eZ Publish</a>, <a href="/tag/Search.html" rel="tag">Search</a>, <a href="/tag/Search%20Optimization.html" rel="tag">Search Optimization</a>, <a href="/tag/Solr.html" rel="tag">Solr</a>
     
-    <div id="disqus_thread"></div>
-      <script type="text/javascript">
-          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-          var disqus_shortname = 'harmssite'; // required: replace example with your forum shortname
-
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-      </script>
-      
+    <script src="https://carnivalapp.io/sites/294/init.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+          Carnival.init({
+              enabled: true,
+              article_author: "Tyler Harms"
+          })
+      });
+    </script>
+    
   </footer>
 
 </div>
@@ -151,9 +148,10 @@
     <div class="footer-col-3 column">
       <p class="text">A Web Development Blog</p>
     </div>
-
+    <div class="powered-by">
+        <p class="clearfix">Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> - Comments provided by <a href="https://carnivalapp.io" title="Carnivalapp Comments" target="_blank">Carnivalapp.io</a></p>
+    </div>
   </div>
-
 </footer>
 
 

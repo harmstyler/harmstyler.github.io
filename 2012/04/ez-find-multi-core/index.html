@@ -65,18 +65,18 @@
 
 <p>Now that we are using Solr in a multi-core environment, starting Solr is a bit different.</p>
 
-<div class="highlight"><pre><code class="bash">java -Dsolr.solr.home<span class="o">=</span>solr.multicore -jar start.jar</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">java -Dsolr.solr.home<span class="o">=</span>solr.multicore -jar start.jar</code></pre></div>
 
 <p>Notice, we just sent the start.jar a new place for solr to call its’ home directory <code>solr.multicore</code>.</p>
 
 <p>Now that we have Solr re-configured for multi-core work we have to set up our solr.ini files. Inside the siteaccess specific override folders we need to drop in and edit a solr.ini.append.php file. Inside the ini file we need to point eZ Find at the right Solr cores.</p>
 
-<div class="highlight"><pre><code class="ini"><span class="k">[SolrBase]</span>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="k">[SolrBase]</span>
 <span class="na">SearchServerURI</span><span class="o">=</span><span class="s">http://localhost:8983/solr/&lt;core-name&gt;</span></code></pre></div>
 
 <p>With that one ini setting set we can fully update our index with the same command as before (the update script inside the eZ Fnd extension). So, after we have that set there is 1 last setting that we need to set, it is inside the ezfind.ini.</p>
 
-<div class="highlight"><pre><code class="ini"><span class="k">[SiteSettings]</span>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="k">[SiteSettings]</span>
 <span class="c1">#IndexPubliclyAvailable=disabled</span>
 <span class="c1">#SearchOtherInstallations=disabled</span></code></pre></div>
 
@@ -91,19 +91,16 @@
   <footer>
     <p>Tags: <a href="/tag/eZ%20Find.html" rel="tag">eZ Find</a>, <a href="/tag/eZ%20Publish.html" rel="tag">eZ Publish</a>, <a href="/tag/Solr.html" rel="tag">Solr</a>
     
-    <div id="disqus_thread"></div>
-      <script type="text/javascript">
-          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-          var disqus_shortname = 'harmssite'; // required: replace example with your forum shortname
-
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-      </script>
-      
+    <script src="https://carnivalapp.io/sites/294/init.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+          Carnival.init({
+              enabled: true,
+              article_author: "Tyler Harms"
+          })
+      });
+    </script>
+    
   </footer>
 
 </div>
@@ -167,9 +164,10 @@
     <div class="footer-col-3 column">
       <p class="text">A Web Development Blog</p>
     </div>
-
+    <div class="powered-by">
+        <p class="clearfix">Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> - Comments provided by <a href="https://carnivalapp.io" title="Carnivalapp Comments" target="_blank">Carnivalapp.io</a></p>
+    </div>
   </div>
-
 </footer>
 
 

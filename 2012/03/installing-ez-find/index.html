@@ -65,7 +65,7 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold ”e
 
 <p>Now that we have Solr installed we need to start it. Just open up terminal, navigate to your Solr install and from that directory run the following command.</p>
 
-<div class="highlight"><pre><code class="bash">java -Dezfind -jar start.jar</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">java -Dezfind -jar start.jar</code></pre></div>
 
 <p>Eventually you want to have a job run Solr in the background, but for now running it in your console is more than satisfactory, plus it helps during development to see errors pop-up from time to time.</p>
 
@@ -78,7 +78,7 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold ”e
 
 <p>The ezfind ini can be left blank for now. Just know that you can modify a lot of eZ Find settings from within that ini. The solr ini however must edited now in order for search to work properly. Add the following lines to your Solr ini:</p>
 
-<div class="highlight"><pre><code class="ini"><span class="k">[SolrBase]</span>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="k">[SolrBase]</span>
 <span class="c1"># Base URI of the Solr server</span>
 <span class="na">SearchServerURI</span><span class="o">=</span><span class="s">http://localhost:8983/solr</span></code></pre></div>
 
@@ -86,7 +86,7 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold ”e
 
 <p>So, we have eZ Find installed and activated, Solr installed and started, now all we need is an index to search. eZ Find comes with a nice script for updating the search index already so we just need to run it (run the command from the root install level just like you would the clear-cache script). Run the following script:</p>
 
-<div class="highlight"><pre><code class="bash">php extension/ezfind/bin/php/updatesearchindexsolr.php -s &lt;admin siteaccess&gt; --php-exec<span class="o">=</span>php --conc<span class="o">=</span>2</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">php extension/ezfind/bin/php/updatesearchindexsolr.php -s &lt;admin siteaccess&gt; --php-exec<span class="o">=</span>php --conc<span class="o">=</span>2</code></pre></div>
 
 <p>The script is pretty advanced. You need to specify the admin version of your siteaccess, mine would be harmssite_admin. You need to specify the number of cores to use, my local computer is a quad-core so I set typically conc=4. Setting the php-exec is optional. There is another optional parameter to send, clean or clean-all. Clean will clean the index of any prior content before updating it (i recommend using clean when developing). Clean-all is only used when you have multiple Solr cores going and you want to clean them all at once, I don’t use clean-all often.</p>
 
@@ -165,9 +165,10 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold ”e
     <div class="footer-col-3 column">
       <p class="text">A Web Development Blog</p>
     </div>
-
+    <div class="powered-by">
+        <p class="clearfix">Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> - Comments provided by <a href="https://carnivalapp.io" title="Carnivalapp Comments" target="_blank">Carnivalapp.io</a></p>
+    </div>
   </div>
-
 </footer>
 
 

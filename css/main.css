@@ -131,6 +131,11 @@ a:visited { color: #205caa; }
   top: 3px;
 }
 
+.powered-by {
+  clear: both;
+  text-align: center;
+}
+
 
 /* Page Content styles */
 /* ----------------------------------------------------------*/
