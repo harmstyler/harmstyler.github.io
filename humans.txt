@@ -8,6 +8,7 @@
 # THANKS
 
     Jekyll (static site generator), Github (host)
+    CarnivalApp (comments)
 
 # TECHNOLOGY COLOPHON
 
