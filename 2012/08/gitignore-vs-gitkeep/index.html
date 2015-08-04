@@ -55,9 +55,9 @@
   </header>
 
   <article class="post-content">
-  <div class="pull-right"><img src="https://s3.amazonaws.com/hs_blog_content/images/Git_icon.png" alt="Git" title="Git" width="256" height="256" /></div>
+  <div class="pull-right"><img src="/img/Git_icon.png" alt="Git" title="Git" width="256" height="256" /></div>
 
-<p>I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my friends who used svn have told me.</p>
+<p>I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my friends who’ve used svn have told me.</p>
 
 <p>The cool thing about git is that it tracks changes, not files or directories. When I create a new empty directory that directory is not tracked by git because it has no file changes inside, hence, the directory will never make it into git until I add a file to that directory. For this example I am going to use the logs directory of a virtual site. In my logs directory I have two files, an <code>error_log</code> and an <code>access_log</code>. Apache error logs and access logs should never be tracked by version control because they are logs that are specific to the given system the site is installed on. However, we should try to track the logs directory in version control. As hinted at before, we can do this in one of two ways.</p>
 
@@ -70,14 +70,14 @@ logs/error_log</code></pre></div>
 
 <p>How to track the empty directory with <code>.gitignore</code></p>
 
-<div class="pull-right"><img class="alignnone size-full wp-image-202" title="gitignore" src="https://s3.amazonaws.com/hs_blog_content/images/gitignore.png" alt="gitignore" width="264" height="130" /></div>
+<div class="pull-right"><img class="alignnone size-full wp-image-202" title="gitignore" src="/img/gitignore.png" alt="gitignore" width="264" height="130" /></div>
 
 <p>So, as you can see this is pretty simple, but I think that multiple <code>.gitignore</code> files can become confusing.</p>
 
 <p>Second, the <code>.gitkeep</code> file. This is a git hack that was first adopted by the Rails community. <code>.gitkeep</code> files are not an official file recognized by git. That said, because they start with a <code>'.'</code> they will be a hidden file in any system as well as have it’s changes tracked by git. Technically our file name could be <code>.foobar</code> and it would still work. The reason I like the <code>.gitkeep</code> files is because it’s purpose is directly implied by the name of the file (keep the directory in git even if it’s directory is empty). Another reason I like the use of <code>.gitkeep</code> files over <code>.gitignore</code> is I like to keep all ignored files in one spot, it can be hard to track what is ignored if there are multiple <code>.gitignore</code> files at work in a system.
 The <code>.gitkeep</code> file at work:</p>
 
-<div class="pull-right"><img src="https://s3.amazonaws.com/hs_blog_content/images/gitkeep.png" alt="" title="gitkeep" width="283" height="132" class="alignnone size-full wp-image-206" /></div>
+<div class="pull-right"><img src="/img/gitkeep.png" alt="" title="gitkeep" width="283" height="132" class="alignnone size-full wp-image-206" /></div>
 
 <p>Pretty simple right? So, I have my preference, what is yours?</p>
 
@@ -85,6 +85,28 @@ The <code>.gitkeep</code> file at work:</p>
 
   <footer>
     <p>Tags: <a href="/tag/Development.html" rel="tag">Development</a>, <a href="/tag/git.html" rel="tag">git</a>, <a href="/tag/gitignore.html" rel="tag">gitignore</a>, <a href="/tag/gitkeep.html" rel="tag">gitkeep</a>
+    
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_developer = 0;
+        var disqus_shortname = 'harmssite';
+        var disqus_title = 'Multiple .gitignore files versus .gitkeep files';
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <script src="https://carnivalapp.io/sites/294/init.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+          Carnival.init({
+              enabled: true,
+              article_author: "Tyler Harms"
+          })
+      });
+    </script>
     
   </footer>
 

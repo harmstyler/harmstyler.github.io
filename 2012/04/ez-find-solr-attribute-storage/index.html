@@ -55,7 +55,15 @@
   </header>
 
   <article class="post-content">
-  <p><img src="https://s3.amazonaws.com/hs_blog_content/images/enable-solr-attribute-storage.png" alt="Enable Solr Attribute Storage" /></p>
+  <!--
+    ![Enable Solr Attribute Storage](/img/enable-solr-attribute-storage.png)
+-->
+
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="c1"># Enable Solr to store all the basic information of a content object</span>
+<span class="c1"># Allows Solr to be used as a cross-site DB</span>
+<span class="k">[IndexOptions]</span>
+<span class="na">EnableSolrAttributeStorage</span><span class="o">=</span><span class="s">true</span>
+<span class="na">OptimizeOnCommit</span><span class="o">=</span><span class="s">disabled</span></code></pre></div>
 
 <p>When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes <code>'as_objects', true()</code> eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.</p>
 

@@ -51,15 +51,17 @@
 
   <header class="post-header">
     <h1>Installing eZ Find</h1>
-    <p class="meta">Mar 22, 2012 • {"aktt_notify_twitter"=>"yes", "_edit_last"=>"1", "_aktt_hash_meta"=>"#ezpublish #ezfind", "_aioseop_title"=>"Installing the eZ Publish extension eZ Find, powered by Solr", "_aioseop_description"=>"How to install the eZ Publish extension eZ FInd into a new eZ Publish install or into a pre-existing eZ Publish install.", "_aioseop_keywords"=>"eZ Find, eZ Publish, Solr, ezfind, ezpublish", "aktt_tweeted"=>"1"}</p>
+    <p class="meta">Mar 22, 2012</p>
   </header>
 
   <article class="post-content">
-  <div class="pull-right"><a href="https://s3.amazonaws.com/hs_blog_content/images/ezfind-extension.png"><img class=" wp-image-90 alignright" title="ezfind-extension" src="https://s3.amazonaws.com/hs_blog_content/images/small/ezfind-extension-small.png" alt="eZ Find extension in finder" width="271" height="153" /></a></div>
+  <div class="pull-right"><a href="/img/ezfind-extension.png"><img class=" wp-image-90 alignright" title="ezfind-extension" src="/img/small/ezfind-extension-small.png" alt="eZ Find extension in finder" width="271" height="153" /></a></div>
 <p>Alright, so lets begin installing eZ Find by going out and downloading it from the Github =&gt; <a href="http://bit.ly/GEVOte" title="eZ Find on GitHub">https://github.com/ezsystems/ezfind</a>.
 eZ Find is an eZ Publish extension so: unzip the download, rename the fold ”ezfind,” and then move the <em>ezfind</em> folder to the <em>extensions</em> directory of your eZ Publish install.</p>
 
-<p>So, as with any extension, we have to activate it. Go into your override <code>site.ini.append.php</code> (settings/override/site.ini.append.php) and add ezfind to your active extension list (<code>ActiveExtensions[]=ezfind</code>). I added mine just after my main site extension. Easy enough so far right?&lt;div class="pull-left"&gt;<a href="https://s3.amazonaws.com/hs_blog_content/images/solr-structure.png"><img title="solr-structure" src="https://s3.amazonaws.com/hs_blog_content/images/small/solr-structure-small.png" alt="Solr installed locally" width="179" height="301" /></a>&lt;/div&gt;</p>
+<p>So, as with any extension, we have to activate it. Go into your override <code>site.ini.append.php</code> (settings/override/site.ini.append.php) and add ezfind to your active extension list (<code>ActiveExtensions[]=ezfind</code>). I added mine just after my main site extension. Easy enough so far right?</p>
+
+<div class="pull-left"><a href="/img/solr-structure.png"><img title="solr-structure" src="/img/small/solr-structure-small.png" alt="Solr installed locally" width="179" height="301" /></a></div>
 
 <p>As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a <em>java</em> directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish install and rename the folder “Solr” (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on one Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.<!--more--></p>
 
@@ -90,7 +92,7 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold ”e
 
 <p>The script is pretty advanced. You need to specify the admin version of your siteaccess, mine would be harmssite_admin. You need to specify the number of cores to use, my local computer is a quad-core so I set typically conc=4. Setting the php-exec is optional. There is another optional parameter to send, clean or clean-all. Clean will clean the index of any prior content before updating it (i recommend using clean when developing). Clean-all is only used when you have multiple Solr cores going and you want to clean them all at once, I don’t use clean-all often.</p>
 
-<div class="pull-right"><a href="https://s3.amazonaws.com/hs_blog_content/images/index-update.png"><img class="size-medium wp-image-97 alignleft" title="index-update" src="https://s3.amazonaws.com/hs_blog_content/images/small/index-update-small.png" alt="Updating the Solr index with eZ Find" width="301" height="147" /></a></div>
+<div class="pull-right"><a href="/img/index-update.png"><img class="size-medium wp-image-97 alignleft" title="index-update" src="/img/small/index-update-small.png" alt="Updating the Solr index with eZ Find" width="301" height="147" /></a></div>
 <p>Assuming everything went well you should have seen something similar to my screencap when updating the index.</p>
 
 <p>Don’t worry if it didn’t work at first, just keep with it. Also, leave me a comment and I will respond.</p>
@@ -101,6 +103,28 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold ”e
 
   <footer>
     <p>Tags: <a href="/tag/eZ%20Find.html" rel="tag">eZ Find</a>, <a href="/tag/eZ%20Publish.html" rel="tag">eZ Publish</a>, <a href="/tag/Solr.html" rel="tag">Solr</a>
+    
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_developer = 0;
+        var disqus_shortname = 'harmssite';
+        var disqus_title = 'Installing eZ Find';
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <script src="https://carnivalapp.io/sites/294/init.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+          Carnival.init({
+              enabled: true,
+              article_author: "Tyler Harms"
+          })
+      });
+    </script>
     
   </footer>
 
