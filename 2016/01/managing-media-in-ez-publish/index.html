@@ -11,7 +11,21 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
-
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Tyler Harms",
+      "url": "http://harmssite.com",
+      "sameAs": [
+        "http://www.facebook.com/tyler.harms",
+        "http://instagram.com/harmstyler",
+        "http://www.linkedin.com/in/harmstyler",
+        "http://twitter.com/harmstyler",
+        "https://github.com/harmstyler"
+      ]
+    }
+    </script>
 </head>
 
 
@@ -132,11 +146,11 @@ it also gets rid of the chrome around the image since we are serving the image d
 <span class="sd">     *</span>
 <span class="sd">     * @return Response</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">mediaAction</span><span class="p">(</span> <span class="nv">$locationId</span><span class="p">,</span> <span class="nv">$viewType</span><span class="p">,</span> <span class="nv">$layout</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">()</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">mediaAction</span><span class="p">(</span><span class="nv">$locationId</span><span class="p">,</span> <span class="nv">$viewType</span><span class="p">,</span> <span class="nv">$layout</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">())</span>
     <span class="p">{</span>
         <span class="nv">$disposition</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDisposition</span><span class="p">();</span>
-        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(</span> <span class="nv">$locationId</span> <span class="p">);</span>
-        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getBinaryFileResponse</span><span class="p">(</span> <span class="nv">$file</span><span class="p">,</span> <span class="nv">$disposition</span> <span class="p">);</span>
+        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(</span><span class="nv">$locationId</span><span class="p">);</span>
+        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getBinaryFileResponse</span><span class="p">(</span><span class="nv">$file</span><span class="p">,</span> <span class="nv">$disposition</span><span class="p">);</span>
 
         <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
     <span class="p">}</span>
@@ -157,11 +171,11 @@ it also gets rid of the chrome around the image since we are serving the image d
 <span class="sd">     *</span>
 <span class="sd">     * @return mixed</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">getFile</span><span class="p">(</span> <span class="nv">$locationId</span><span class="p">,</span> <span class="nv">$fileName</span> <span class="o">=</span> <span class="s1">&#39;file&#39;</span> <span class="p">)</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">getFile</span><span class="p">(</span><span class="nv">$locationId</span><span class="p">,</span> <span class="nv">$fileName</span> <span class="o">=</span> <span class="s1">&#39;file&#39;</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="nv">$location</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getLocationService</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">loadLocation</span><span class="p">(</span> <span class="nv">$locationId</span> <span class="p">);</span>
-        <span class="nv">$content</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContentService</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">loadContent</span><span class="p">(</span> <span class="nv">$location</span><span class="o">-&gt;</span><span class="na">contentId</span> <span class="p">);</span>
-        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$content</span><span class="o">-&gt;</span><span class="na">getFieldValue</span><span class="p">(</span> <span class="nv">$fileName</span> <span class="p">);</span>
+        <span class="nv">$location</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getLocationService</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">loadLocation</span><span class="p">(</span><span class="nv">$locationId</span><span class="p">);</span>
+        <span class="nv">$content</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContentService</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">loadContent</span><span class="p">(</span><span class="nv">$location</span><span class="o">-&gt;</span><span class="na">contentId</span><span class="p">);</span>
+        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$content</span><span class="o">-&gt;</span><span class="na">getFieldValue</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">);</span>
 
         <span class="k">return</span> <span class="nv">$file</span><span class="p">;</span>
     <span class="p">}</span>
@@ -172,11 +186,11 @@ it also gets rid of the chrome around the image since we are serving the image d
 <span class="sd">     *</span>
 <span class="sd">     * @return BinaryFileResponse</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">getBinaryFileResponse</span><span class="p">(</span> <span class="nx">Value</span> <span class="nv">$file</span><span class="p">,</span> <span class="nv">$dispositionType</span> <span class="o">=</span> <span class="nx">ResponseHeaderBag</span><span class="o">::</span><span class="na">DISPOSITION_ATTACHMENT</span> <span class="p">)</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">getBinaryFileResponse</span><span class="p">(</span><span class="nx">Value</span> <span class="nv">$file</span><span class="p">,</span> <span class="nv">$dispositionType</span> <span class="o">=</span> <span class="nx">ResponseHeaderBag</span><span class="o">::</span><span class="na">DISPOSITION_ATTACHMENT</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="nv">$fileUri</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="o">-&gt;</span><span class="na">getParameter</span><span class="p">(</span> <span class="s1">&#39;kernel.root_dir&#39;</span> <span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;/../web&#39;</span> <span class="o">.</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">uri</span><span class="p">;</span>
-        <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BinaryFileResponse</span><span class="p">(</span> <span class="nv">$fileUri</span> <span class="p">);</span>
-        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentDisposition</span><span class="p">(</span> <span class="nv">$dispositionType</span><span class="p">,</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">fileName</span> <span class="p">);</span>
+        <span class="nv">$fileUri</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="o">-&gt;</span><span class="na">getParameter</span><span class="p">(</span><span class="s1">&#39;kernel.root_dir&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;/../web&#39;</span> <span class="o">.</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">uri</span><span class="p">;</span>
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BinaryFileResponse</span><span class="p">(</span><span class="nv">$fileUri</span><span class="p">);</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentDisposition</span><span class="p">(</span><span class="nv">$dispositionType</span><span class="p">,</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">fileName</span><span class="p">);</span>
 
         <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
     <span class="p">}</span>
