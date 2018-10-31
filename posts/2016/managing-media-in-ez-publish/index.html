@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.50" />
+
+    
+    
+    
+
+<title>Managing Media in eZ Publish 5 • Tyler Harms</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Managing Media in eZ Publish 5"/>
+<meta name="twitter:description" content="Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
+that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to
+in this post are any content types placed in the media category, traditionally images, files, audio files, and video
+files."/>
+
+<meta property="og:title" content="Managing Media in eZ Publish 5" />
+<meta property="og:description" content="Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
+that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to
+in this post are any content types placed in the media category, traditionally images, files, audio files, and video
+files." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harmstyler.me/posts/2016/managing-media-in-ez-publish/" /><meta property="article:published_time" content="2016-01-31T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2016-01-31T00:00:00&#43;00:00"/>
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
++<link rel="stylesheet" href="/css/syntax.min.css">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://harmstyler.me/scss/hyde-hyde.6f40d28e777b288cb757a1db116a257b6f8dffc63a05e8473d12dc09a52d8d79.css" integrity="sha256-b0DSjnd7KIy3V6HbEWole2&#43;N/8Y6BehHPRLcCaUtjXk=">
+
+
+<link rel="stylesheet" href="https://harmstyler.me/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+
+</head>
+
+
+    <body class="theme-base-0d ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://harmstyler.me/">Tyler Harms</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <img src="https://harmstyler.me//img/tyler_portrait.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+      </div>
+      
+      <p class="site__description">
+         A Software Development Blog 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Tyler Harms</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+		</li>
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/harmstyler" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/harmstyler" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://instagram.com/harmstyler" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://linkedin.com/in/harmstyler" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://keybase.io/harmstyler" rel="me"><i class="fab fa-keybase fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    <div class="copyright">
+  &copy; 2018 .
+  All Rights Reserved.
+  Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+  
+</div>
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    <article>
+  <header>
+    <h1>Managing Media in eZ Publish 5</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jan 31, 2016
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/symfony">SYMFONY</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/ez-publish">EZ PUBLISH</a>
+              
+          
+      
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 4 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p>Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
+that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to
+in this post are any content types placed in the media category, traditionally images, files, audio files, and video
+files.</p>
+
+<h3 id="problem-number-1-the-content-download">Problem Number 1, the content download</h3>
+
+<p>Anyone familiar with eZ Publish 4 knows that in order force a download of a media content object you
+needed to build a route to the <code>content/download</code> module/view. The <code>content/download</code> was very handy
+in its day because it did its job well, it forced a download on whatever file it was given.
+<code>content/download</code> even handled permissions for the file. It also, though, had a number of problems.
+The first problem with the <code>content/download</code> has to do with <em>how</em> developers were forced to build
+downloads.</p>
+
+<h4 id="an-example-download-url-built-for-ez-publish-4">An example download url built for eZ Publish 4:</h4>
+
+<pre><code class="language-smarty">{def $download_url = concat( &quot;content/download/&quot;, $attribute.contentobject_id, &quot;/&quot;, $attribute.content.contentobject_attribute_id, &quot;/&quot;, $attribute.content.original_filename )|ezurl}
+</code></pre>
+
+<p>Hopefully the problems are obvious, not only is the url a pain to build, but the url is subject to change.
+That means that whenever an editor changes the uploaded file attached to the content, a new download url
+will be generated. This means that these urls can never be used outside the generated site pages (no emails, etc),
+unless you are OK with possible dead links from time to time.</p>
+
+<p>The second problem I have with the <code>content/download</code> method is that the developer gets no control
+over the title of the downloaded file. The downloaded file will always have the name of the uploaded file.
+Most of the time this is fine, but when fine tuning is needed, the <code>content/download</code> is not flexible.</p>
+
+<h3 id="problem-number-2-the-media-full-view">Problem Number 2, the media full view</h3>
+
+<p>I have yet to have a client want the full view of a media content object include the site chrome.
+In eZ Publish 4, this was a pain point we just had to live with. The generated URL Alias for media content
+went to a full view of the content, by default with the site chrome but this can be changed. What could
+not be changed in eZ Publish 4 were the headers when viewing full view media. So, though I could adjust the
+chrome of a media full view, I could never do anything but display the content to the user using the
+default site headers.</p>
+
+<h3 id="the-solution-a-symfony-media-controller">The Solution, A Symfony media controller</h3>
+
+<p>I am left with two problems to solve, luckily the same solution fixes both. In eZ Publish 5 (and eZ Platform)
+developers can set custom controllers when matching content to templates. Providing a custom Symfony controller
+and action gives developers the control needed to set the necessary headers to force a download while
+providing a consistent path to file downloads.</p>
+
+<h4 id="first-set-the-full-view-to-use-a-new-mediacontroller">First, set the full view to use a new <code>MediaController</code></h4>
+
+<pre><code class="language-yaml">system:
+    global:
+        location_view:
+            full:
+                media:
+                    controller: &quot;AppBundle:Media:media&quot;
+                    match:
+                        Identifier\ContentType: [ file, image, video ]
+
+</code></pre>
+
+<h4 id="second-create-the-mediacontroller">Second, create the <code>MediaController</code></h4>
+
+<p>What this does is lets a user pass a <code>dl</code> query parameter to the eZ generated url alias. The query parameter tells
+then tells Symfony which header generate for the response, either download or view the media. This means
+that the generated eZ url alias will be the url to the media file and not the one subject to change,
+it also gets rid of the chrome around the image since we are serving the image directly.</p>
+
+<pre><code class="language-php">&lt;?php
+
+namespace AppBundle\Controller;
+
+use eZ\Bundle\EzPublishCoreBundle\Controller;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use eZ\Publish\SPI\FieldType\Value;
+
+class MediaController extends Controller
+{
+    /**
+     * @param $locationId
+     * @param $viewType
+     * @param bool $layout
+     * @param array $params
+     *
+     * @return Response
+     */
+    public function mediaAction($locationId, $viewType, $layout = false, array $params = array())
+    {
+        $disposition = $this-&gt;getDisposition();
+        $file = $this-&gt;getFile($locationId);
+        $response = $this-&gt;getBinaryFileResponse($file, $disposition);
+
+        return $response;
+    }
+
+    /**
+     * @return ResponseHeaderBag::DISPOSITION_ATTACHMENT|ResponseHeaderBag::DISPOSITION_INLINE
+     */
+    public function getDisposition()
+    {
+        $request = $this-&gt;get('request_stack')-&gt;getCurrentRequest();
+        $dl = $request-&gt;get('dl');
+        return $dl == 1 ? ResponseHeaderBag::DISPOSITION_ATTACHMENT : ResponseHeaderBag::DISPOSITION_INLINE;
+    }
+
+    /**
+     * @param $locationId
+     * @param string $fileName
+     *
+     * @return mixed
+     */
+    private function getFile($locationId, $fileName = 'file')
+    {
+        $location = $this-&gt;getRepository()-&gt;getLocationService()-&gt;loadLocation($locationId);
+        $content = $this-&gt;getRepository()-&gt;getContentService()-&gt;loadContent($location-&gt;contentId);
+        $file = $content-&gt;getFieldValue($fileName);
+
+        return $file;
+    }
+
+    /**
+     * @param $file
+     * @param string $dispositionType
+     *
+     * @return BinaryFileResponse
+     */
+    private function getBinaryFileResponse(Value $file, $dispositionType = ResponseHeaderBag::DISPOSITION_ATTACHMENT)
+    {
+        $fileUri = $this-&gt;container-&gt;getParameter('kernel.root_dir') . '/../web' . $file-&gt;uri;
+        $response = new BinaryFileResponse($fileUri);
+        $response-&gt;setContentDisposition($dispositionType, $file-&gt;fileName);
+
+        return $response;
+    }
+}
+</code></pre>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>I am sure there are other options for handling media that I haven&rsquo;t though of, please share your ideas
+as I, for one, would love to hear them. With Symfony there is no one size fits all solution, so this MediaController
+may not work as designed. That said, I do hope this helps with managing media inside eZ Publish/Platform
+in the future. Please note that I do not show any permissions customizations in the <code>MediaController</code>, some permissions will
+still be automatically managed by eZ, but you will probably have to include some permissions checks in your actions.</p>
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/2015/raw-html-in-knp-menu-labels/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Allowing Raw HTML in KNP Menu Labels</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+
+
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-23865520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"
+  integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy"
+  crossorigin="anonymous">
+</script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/css.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/xml.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ini.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/sql.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+            
+        
+    
+    <script type="text/javascript">
+        
+        hljs.configure({languages: ["css, php, xml, javascript, ini, sql, yaml"]});
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>

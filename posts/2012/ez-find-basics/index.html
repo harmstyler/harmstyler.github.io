@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.50" />
+
+    
+    
+    
+
+<title>eZ Find Basics • Tyler Harms</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="eZ Find Basics"/>
+<meta name="twitter:description" content="I have been thinking a long time about different topics I could use this blog for. I have settled for the moment on an eZ Publish extension that I have used extensively for a while, eZ Find. eZ Find is an ultra-powerful Solr powered search engine made for eZ Publish, authored by Paul Borgermans.
+For starters, an introduction to eZ Find &amp; Solr.
+Solr is an ultra-powerful search engine built in Java on top of the Apache Lucene project."/>
+
+<meta property="og:title" content="eZ Find Basics" />
+<meta property="og:description" content="I have been thinking a long time about different topics I could use this blog for. I have settled for the moment on an eZ Publish extension that I have used extensively for a while, eZ Find. eZ Find is an ultra-powerful Solr powered search engine made for eZ Publish, authored by Paul Borgermans.
+For starters, an introduction to eZ Find &amp; Solr.
+Solr is an ultra-powerful search engine built in Java on top of the Apache Lucene project." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harmstyler.me/posts/2012/ez-find-basics/" /><meta property="article:published_time" content="2012-03-19T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2012-03-19T00:00:00&#43;00:00"/>
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
++<link rel="stylesheet" href="/css/syntax.min.css">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://harmstyler.me/scss/hyde-hyde.6f40d28e777b288cb757a1db116a257b6f8dffc63a05e8473d12dc09a52d8d79.css" integrity="sha256-b0DSjnd7KIy3V6HbEWole2&#43;N/8Y6BehHPRLcCaUtjXk=">
+
+
+<link rel="stylesheet" href="https://harmstyler.me/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+
+</head>
+
+
+    <body class="theme-base-0d ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://harmstyler.me/">Tyler Harms</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <img src="https://harmstyler.me//img/tyler_portrait.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+      </div>
+      
+      <p class="site__description">
+         A Software Development Blog 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Tyler Harms</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+		</li>
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/harmstyler" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/harmstyler" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://instagram.com/harmstyler" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://linkedin.com/in/harmstyler" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://keybase.io/harmstyler" rel="me"><i class="fab fa-keybase fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    <div class="copyright">
+  &copy; 2018 .
+  All Rights Reserved.
+  Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+  
+</div>
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    <article>
+  <header>
+    <h1>eZ Find Basics</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Mar 19, 2012
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/solr">SOLR</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/ez-publish">EZ PUBLISH</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/ez-find">ez find</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p>I have been thinking a long time about different topics I could use this blog for. I have settled for the moment on an eZ Publish extension that I have used extensively for a while, eZ Find. eZ Find is an ultra-powerful Solr powered search engine made for eZ Publish, authored by <a title="@paulborgermans" href="https://twitter.com/#!/paulborgermans" target="_blank" rel="noopener">Paul Borgermans</a>.</p>
+
+<p>For starters, an introduction to eZ Find &amp; Solr.</p>
+
+<p>Solr is an ultra-powerful search engine built in Java on top of the Apache Lucene project. It is highly scalable, just like eZ Publish, and can be adapted to work in almost any environment. eZ Find for instance uses a php interface with Solr to perform extremely fast and reliable searches.</p>
+
+<p>eZ Find is a standalone extension that can be installed eZ Publish with great ease (my next post). eZ Find can be found in a couple of different places. First, on the <a title="eZ Publish 4.4 with Extensions" href="http://share.ez.no/downloads/downloads/ez-publish-community-project-4.4-fuji" target="_blank">eZ Publish Share</a> site. Unfortunatly the &ldquo;free&rdquo; stable version (2.3) is a little behind, it still uses Solr 1.4. I recommend downloading the extension from <a title="eZ Find on Github" href="https://github.com/ezsystems/ezfind" target="_blank">github</a>. Being open source the codebase gets updated often, even better it uses a more up to date version of Solr (3.1).</p>
+
+<p>In conclusion, eZ Find is highly powerful and scalable. If you use eZ Publish I strongly suggest you look into eZ Find as an alternative search engine. Look forward to my next post about how to install eZ Find into your website.</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/2012/solr-buckets/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Solr Buckets</span>
+    </a>
+    
+    
+    <a href="/posts/2012/installing-ez-find/" class="navigation-next">
+      <span class="navigation-tittle">Installing eZ Find</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+
+<div class="post__related">
+    
+    <h2>Related Articles</h2>
+    <ul class="related-posts">
+        
+<li>
+  <span class="list__title--small">
+    <a href="/posts/2012/solr-buckets/">Solr Buckets</a>
+      
+      <time class="pull-right hidden-tablet">Feb 25 &#39;12</time>
+      
+  </span>
+</li>
+
+    </ul>
+</div>
+
+
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-23865520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"
+  integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy"
+  crossorigin="anonymous">
+</script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/css.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/xml.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ini.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/sql.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+            
+        
+    
+    <script type="text/javascript">
+        
+        hljs.configure({languages: ["css, php, xml, javascript, ini, sql, yaml"]});
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>

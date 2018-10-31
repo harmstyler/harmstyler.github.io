@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Knp Menu on Tyler Harms</title>
+    <link>https://harmstyler.me/tags/knp-menu/</link>
+    <description>Recent content in Knp Menu on Tyler Harms</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
+    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
+    <lastBuildDate>Mon, 20 Jul 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://harmstyler.me/tags/knp-menu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Allowing Raw HTML in KNP Menu Labels</title>
+      <link>https://harmstyler.me/posts/2015/raw-html-in-knp-menu-labels/</link>
+      <pubDate>Mon, 20 Jul 2015 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2015/raw-html-in-knp-menu-labels/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/knplabs/KnpMenu&#34;&gt;KNP Menu&lt;/a&gt; is a library by the guys at &lt;a href=&#34;http://knplabs.com&#34;&gt;KNP Labs&lt;/a&gt; for building menus with php. The KNP menu library offers great features like automatically adding branch classes, marking the first and last item in a menu, and provides features for to automatically figure out the current menu item. Adding raw html into a label (eg &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;) can be a bit of a pain, however.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

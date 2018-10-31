@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authorization on Tyler Harms</title>
+    <link>https://harmstyler.me/tags/authorization/</link>
+    <description>Recent content in Authorization on Tyler Harms</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
+    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
+    <lastBuildDate>Sat, 02 Mar 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://harmstyler.me/tags/authorization/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Symfony2 Access Control</title>
+      <link>https://harmstyler.me/posts/2013/symfony2-access-conrol/</link>
+      <pubDate>Sat, 02 Mar 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2013/symfony2-access-conrol/</guid>
+      <description>I am very new to Symfony development. While developing a side project app I found I needed to control access to a certain area to logged in users only. Based on my previous development history I was expecting to have to determine if a user was logged in via the controller. I figured I would need to find an is_logged_in boolean and use it to determine user access control. What I found while doing my development is that Symfony2 takes care of access control in a much more eloquent way.</description>
+    </item>
+    
+  </channel>
+</rss>

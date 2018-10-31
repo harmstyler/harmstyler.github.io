@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Angular on Tyler Harms</title>
+    <link>https://harmstyler.me/categories/angular/</link>
+    <description>Recent content in Angular on Tyler Harms</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
+    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
+    <lastBuildDate>Sat, 06 Sep 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://harmstyler.me/categories/angular/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mixing AngularJS and Symfony</title>
+      <link>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</link>
+      <pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</guid>
+      <description>&lt;p&gt;I enjoy being a PHP Developer. PHP is a very flexible language and Symfony2 is
+a modern framework that forces many SOLID habits on developers. I also enjoy
+working with AngularJS. AngularJS makes Javascript fun and much easier to work
+with. Moreover, much like Symfony2, it forces good habits on developers. Getting
+the two to work together, however, can be a little bit of a chore if not careful.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

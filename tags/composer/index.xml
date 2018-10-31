@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Composer on Tyler Harms</title>
+    <link>https://harmstyler.me/tags/composer/</link>
+    <description>Recent content in Composer on Tyler Harms</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
+    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
+    <lastBuildDate>Wed, 21 Nov 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://harmstyler.me/tags/composer/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Learning Symfony</title>
+      <link>https://harmstyler.me/posts/2012/learning-symfony/</link>
+      <pubDate>Wed, 21 Nov 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/learning-symfony/</guid>
+      <description>I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that eZ Systems announced that they were adopting the Symfony framework I knew that I would be be spending some time with it. I have found that Symfony doesn&amp;rsquo;t have the lowest barrier to entry so it has been a process, to say the least.</description>
+    </item>
+    
+  </channel>
+</rss>

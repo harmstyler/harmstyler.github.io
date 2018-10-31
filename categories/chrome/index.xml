@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chrome on Tyler Harms</title>
+    <link>https://harmstyler.me/categories/chrome/</link>
+    <description>Recent content in Chrome on Tyler Harms</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
+    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
+    <lastBuildDate>Mon, 01 Jul 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://harmstyler.me/categories/chrome/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Chrome Webfont Mimetypes</title>
+      <link>https://harmstyler.me/posts/2013/chrome-webfont-mimetypes/</link>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2013/chrome-webfont-mimetypes/</guid>
+      <description>As a web developer whose browser of choice is Google Chome, I use the Chrome console a lot. Chrome is already the best browser out there and always getting better. More than the browsing experience though, I maintain that it has the best dev environment available. It is the little things that really make Chrome so much better than its compeditors (docking to the right for instance). As if you needed any more reasons to like Chrome, the Chrome team just pushed an update to &amp;lsquo;clean up the console.</description>
+    </item>
+    
+  </channel>
+</rss>

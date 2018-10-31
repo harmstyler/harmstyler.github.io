@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.50" />
+
+    
+    
+    
+
+<title>Abstract Time Stamped Entity in Symfony2 • Tyler Harms</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Abstract Time Stamped Entity in Symfony2"/>
+<meta name="twitter:description" content="One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2."/>
+
+<meta property="og:title" content="Abstract Time Stamped Entity in Symfony2" />
+<meta property="og:description" content="One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harmstyler.me/posts/2014/abstract-time-stamped-entity-in-symfony2/" /><meta property="article:published_time" content="2014-02-07T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2014-02-07T00:00:00&#43;00:00"/>
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
++<link rel="stylesheet" href="/css/syntax.min.css">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://harmstyler.me/scss/hyde-hyde.6f40d28e777b288cb757a1db116a257b6f8dffc63a05e8473d12dc09a52d8d79.css" integrity="sha256-b0DSjnd7KIy3V6HbEWole2&#43;N/8Y6BehHPRLcCaUtjXk=">
+
+
+<link rel="stylesheet" href="https://harmstyler.me/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+
+</head>
+
+
+    <body class="theme-base-0d ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://harmstyler.me/">Tyler Harms</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <img src="https://harmstyler.me//img/tyler_portrait.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+      </div>
+      
+      <p class="site__description">
+         A Software Development Blog 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Tyler Harms</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+		</li>
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/harmstyler" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/harmstyler" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://instagram.com/harmstyler" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://linkedin.com/in/harmstyler" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://keybase.io/harmstyler" rel="me"><i class="fab fa-keybase fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    <div class="copyright">
+  &copy; 2018 .
+  All Rights Reserved.
+  Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+  
+</div>
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    <article>
+  <header>
+    <h1>Abstract Time Stamped Entity in Symfony2</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Feb 7, 2014
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/php">PHP</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/symfony2">SYMFONY2</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/doctrine">doctrine</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 3 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p>One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2.</p>
+
+<p>Luckily, adding and updated and created fields to an entity in Symfony2 with Doctrine is quite easy:</p>
+
+<pre><code class="language-php">&lt;?php
+/**
+ * @var \DateTime
+ *
+ * @ORM\Column(name=&quot;created&quot;, type=&quot;datetime&quot;)
+ */
+private $created;
+
+/**
+ * @var \DateTime
+ *
+ * @ORM\Column(name=&quot;updated&quot;, type=&quot;datetime&quot;)
+ */
+private $updated;
+
+public function __construct()
+{
+    $this-&gt;setCreated(new \DateTime());
+    $this-&gt;setUpdated(new \DateTime());
+}
+
+// getters &amp; setters
+
+/**
+ * Auto set the updated date
+ *
+ * @ORM\PreUpdate
+ */
+public function setUpdatedValue()
+{
+   $this-&gt;setUpdated(new \DateTime());
+}
+
+</code></pre>
+
+<p>The code should be pretty self explanitory, we have two DateTime field types that get initially set on entity creation in the contstructor. I then add a <code>setUpdatedValue()</code> function that runs when on PreUpdate of the entity.</p>
+
+<p>The above code works very well, but it is not an ideal solution for working with multiple models. Of course, we could add the updated/created values to every entity, but that wouldn&rsquo;t be very <a href="http://en.wikipedia.org/wiki/Don" title="t_repeat_yourself &quot;Don't Repeat Yourself">DRY</a> of us.</p>
+
+<p>The solution is to use an <a href="http://www.php.net/manual/en/language.oop5.abstract.php">Abstract Class</a> that our entity can extend. The abstract class, <code>TimeStampedEntity</code>, will have two entity variables <code>$updated</code> and <code>$created</code> and will look nearly identical to the code above when it is complete. The key that will make this work with Doctrine and Symfony2 is Doctrine&rsquo;s <a href="http://docs.doctrine-project.org/en/latest/reference/inheritance-mapping.html#mapped-superclasses"><code>MappedSuperclass</code></a> declaration that tells Symfony and Doctrine that the abstract class is a Superclass with declared entity attributes. What we are left with is a Superclass that can extend any model to add <code>updated</code> and <code>created</code> attributes to your data.</p>
+
+<pre><code class="language-php">&lt;?php
+/**
+ * TimeStampedEntity.php
+ */
+
+namespace HarmsTyler\Common\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Post
+ *
+ * @ORM\MappedSuperclass
+ * @ORM\HasLifecycleCallbacks
+ */
+abstract class TimeStampedEntity {
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name=&quot;created&quot;, type=&quot;datetime&quot;)
+     */
+    private $created;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name=&quot;updated&quot;, type=&quot;datetime&quot;)
+     */
+    private $updated;
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Post
+     */
+    public function setCreated($created)
+    {
+        $this-&gt;created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this-&gt;created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Post
+     */
+    public function setUpdated($updated)
+    {
+        $this-&gt;updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this-&gt;updated;
+    }
+
+    /**
+     * Auto set the updated date
+     *
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedValue()
+    {
+       $this-&gt;setUpdated(new \DateTime());
+    }
+
+    /**
+     * Set initial value for created/updated values
+     *
+     * @ORM\PrePersist
+     */
+    public function setCreatedValues()
+    {
+        $this-&gt;setCreated(new \DateTime());
+        $this-&gt;setUpdated(new \DateTime());
+    }
+}
+</code></pre>
+
+<p>An example in use:</p>
+
+<pre><code class="language-php">&lt;?php
+/**
+ * Post.php
+ */
+
+namespace Blend\Iterate\BlogBundle\Entity;
+
+use HarmsTyler\Common\Entity\TimeStampedEntity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Post
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Post extends TimeStampedEntity
+{
+</code></pre>
+
+<p><em>edited to add setCreatedValues()</em></p>
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/2013/administrating-solr-a-review/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Administrating Solr: A Review</span>
+    </a>
+    
+    
+    <a href="/posts/2014/mixing-angular-and-symfony/" class="navigation-next">
+      <span class="navigation-tittle">Mixing AngularJS and Symfony</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+
+
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-23865520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"
+  integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy"
+  crossorigin="anonymous">
+</script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/css.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/xml.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ini.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/sql.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+            
+        
+    
+    <script type="text/javascript">
+        
+        hljs.configure({languages: ["css, php, xml, javascript, ini, sql, yaml"]});
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>

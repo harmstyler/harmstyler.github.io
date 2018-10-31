@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.50" />
+
+    
+    
+    
+
+<title>Mixing AngularJS and Symfony • Tyler Harms</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mixing AngularJS and Symfony"/>
+<meta name="twitter:description" content="I enjoy being a PHP Developer. PHP is a very flexible language and Symfony2 is
+a modern framework that forces many SOLID habits on developers. I also enjoy
+working with AngularJS. AngularJS makes Javascript fun and much easier to work
+with. Moreover, much like Symfony2, it forces good habits on developers. Getting
+the two to work together, however, can be a little bit of a chore if not careful."/>
+
+<meta property="og:title" content="Mixing AngularJS and Symfony" />
+<meta property="og:description" content="I enjoy being a PHP Developer. PHP is a very flexible language and Symfony2 is
+a modern framework that forces many SOLID habits on developers. I also enjoy
+working with AngularJS. AngularJS makes Javascript fun and much easier to work
+with. Moreover, much like Symfony2, it forces good habits on developers. Getting
+the two to work together, however, can be a little bit of a chore if not careful." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harmstyler.me/posts/2014/mixing-angular-and-symfony/" /><meta property="article:published_time" content="2014-09-06T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2014-09-06T00:00:00&#43;00:00"/>
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
++<link rel="stylesheet" href="/css/syntax.min.css">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://harmstyler.me/scss/hyde-hyde.6f40d28e777b288cb757a1db116a257b6f8dffc63a05e8473d12dc09a52d8d79.css" integrity="sha256-b0DSjnd7KIy3V6HbEWole2&#43;N/8Y6BehHPRLcCaUtjXk=">
+
+
+<link rel="stylesheet" href="https://harmstyler.me/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+
+</head>
+
+
+    <body class="theme-base-0d ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://harmstyler.me/">Tyler Harms</a>
+      </span>
+      
+      
+      
+      <div class="author-image">
+        <img src="https://harmstyler.me//img/tyler_portrait.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+      </div>
+      
+      <p class="site__description">
+         A Software Development Blog 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Tyler Harms</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+		</li>
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/harmstyler" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/harmstyler" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://instagram.com/harmstyler" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://linkedin.com/in/harmstyler" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://keybase.io/harmstyler" rel="me"><i class="fab fa-keybase fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    <div class="copyright">
+  &copy; 2018 .
+  All Rights Reserved.
+  Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+  
+</div>
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    <article>
+  <header>
+    <h1>Mixing AngularJS and Symfony</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Sep 6, 2014
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/angular">ANGULAR</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/javascript">JAVASCRIPT</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/php">PHP</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/symfony">SYMFONY</a>
+              
+          
+      
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p>I enjoy being a PHP Developer. PHP is a very flexible language and Symfony2 is
+a modern framework that forces many SOLID habits on developers. I also enjoy
+working with AngularJS. AngularJS makes Javascript fun and much easier to work
+with. Moreover, much like Symfony2, it forces good habits on developers. Getting
+the two to work together, however, can be a little bit of a chore if not careful.</p>
+
+<h3 id="the-problem">The Problem</h3>
+
+<p>For starters, when the AngularJS <code>$http</code> service POSTs data the header
+<code>application/x-www-form-urlencoded</code> is never set (unlike jQuery&rsquo;s <code>$.ajax()</code>).
+Also, the <code>$http</code> data is not serialized when sent. Both of these
+facts mean that the <code>$_POST</code> variable is never set properly by php. Without
+the <code>$_POST</code> variable
+<a href="http://symfony.com/doc/current/book/forms.html#handling-form-submissions">Symfony&rsquo;s built in form
+handling</a>
+cannot be used.</p>
+
+<blockquote>
+<p>It should be noted that Symfony&rsquo;s
+<a href="http://api.symfony.com/2.5/Symfony/Component/HttpFoundation/Request.html"><code>Request</code></a>
+object allows for access to raw post content via the
+<a href="http://api.symfony.com/2.5/Symfony/Component/HttpFoundation/Request.html#method_getContent"><code>getContent()</code></a>
+method; meaning POST data can be processed manually if needed.</p>
+</blockquote>
+
+<p>When creating a FormType in Symfony, a name is required. By default that name
+will be called something like <code>bundle_path_entityname</code>, and all post content
+will need to be in a multidimensional array with the FormType name as the key.
+This means that the posted data we send with Angular will need to follow this
+standard.</p>
+
+<blockquote>
+<p>Consider shortening the FormType name into something more meaningful.</p>
+</blockquote>
+
+<h3 id="the-fix">The Fix</h3>
+
+<p>The fix is actually pretty simple:</p>
+
+<ul>
+<li>angular needs to forced into setting a header</li>
+<li>the data needs to be serialized</li>
+<li>and the data needs to be normalized into a multidimensional array.</li>
+</ul>
+
+<p>On all <code>$http</code> requests we can set a <code>headers</code> object. That means that the
+Content-Type header can be set on the <code>$http</code> request.</p>
+
+<pre><code class="language-javascript">headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+}
+</code></pre>
+
+<p>To serialize the data being sent, jQuery works well. Just use
+<a href="http://api.jquery.com/jquery.param/"><code>$.param()</code></a> on the data and be done with
+it.</p>
+
+<pre><code class="language-javascript">data: $.param({
+    postData
+})
+</code></pre>
+
+<p>Normalizing the data into a proper serialized string is as simple as creating
+a javascript object. Remember that the FormType name needs to be the key or
+parent attribute on the object.</p>
+
+<pre><code class="language-javascript">var postData = {
+    formtype_name: {
+        id: some_id,
+        name: some_name
+    }
+}
+</code></pre>
+
+<p>Putting it all together, the javascript should look something like this:</p>
+
+<pre><code class="language-javascript">var postData = {
+    formtype_name: {
+        id: some_id,
+        name: some_name
+    }
+};
+
+$http({
+    method: &quot;POST&quot;,
+    url: url,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    data: $.param(postData)
+});
+</code></pre>
+
+<hr />
+
+<p>Doing all this work on the frontend will allow for use of the <a href="http://symfony.com/doc/current/book/forms.html#handling-form-submissions">normal form processing built into
+Symfony</a>.</p>
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/2014/abstract-time-stamped-entity-in-symfony2/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Abstract Time Stamped Entity in Symfony2</span>
+    </a>
+    
+    
+    <a href="/posts/2015/raw-html-in-knp-menu-labels/" class="navigation-next">
+      <span class="navigation-tittle">Allowing Raw HTML in KNP Menu Labels</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+
+
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-23865520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"
+  integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy"
+  crossorigin="anonymous">
+</script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/css.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/xml.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ini.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/sql.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+            
+        
+    
+    <script type="text/javascript">
+        
+        hljs.configure({languages: ["css, php, xml, javascript, ini, sql, yaml"]});
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>

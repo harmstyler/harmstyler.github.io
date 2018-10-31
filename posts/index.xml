@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Tyler Harms</title>
+    <link>https://harmstyler.me/posts/</link>
+    <description>Recent content in Posts on Tyler Harms</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
+    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
+    <lastBuildDate>Sun, 31 Jan 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://harmstyler.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Managing Media in eZ Publish 5</title>
+      <link>https://harmstyler.me/posts/2016/managing-media-in-ez-publish/</link>
+      <pubDate>Sun, 31 Jan 2016 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2016/managing-media-in-ez-publish/</guid>
+      <description>&lt;p&gt;Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
+that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to
+in this post are any content types placed in the media category, traditionally images, files, audio files, and video
+files.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Allowing Raw HTML in KNP Menu Labels</title>
+      <link>https://harmstyler.me/posts/2015/raw-html-in-knp-menu-labels/</link>
+      <pubDate>Mon, 20 Jul 2015 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2015/raw-html-in-knp-menu-labels/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/knplabs/KnpMenu&#34;&gt;KNP Menu&lt;/a&gt; is a library by the guys at &lt;a href=&#34;http://knplabs.com&#34;&gt;KNP Labs&lt;/a&gt; for building menus with php. The KNP menu library offers great features like automatically adding branch classes, marking the first and last item in a menu, and provides features for to automatically figure out the current menu item. Adding raw html into a label (eg &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;) can be a bit of a pain, however.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mixing AngularJS and Symfony</title>
+      <link>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</link>
+      <pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</guid>
+      <description>&lt;p&gt;I enjoy being a PHP Developer. PHP is a very flexible language and Symfony2 is
+a modern framework that forces many SOLID habits on developers. I also enjoy
+working with AngularJS. AngularJS makes Javascript fun and much easier to work
+with. Moreover, much like Symfony2, it forces good habits on developers. Getting
+the two to work together, however, can be a little bit of a chore if not careful.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Abstract Time Stamped Entity in Symfony2</title>
+      <link>https://harmstyler.me/posts/2014/abstract-time-stamped-entity-in-symfony2/</link>
+      <pubDate>Fri, 07 Feb 2014 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2014/abstract-time-stamped-entity-in-symfony2/</guid>
+      <description>&lt;p&gt;One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Administrating Solr: A Review</title>
+      <link>https://harmstyler.me/posts/2013/administrating-solr-a-review/</link>
+      <pubDate>Fri, 29 Nov 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2013/administrating-solr-a-review/</guid>
+      <description>Administrating Solr is for developers and Solr administrators who have basic knowledge of Solr and are looking for ways to keep their Solr server healthy and well maintained. Basic working knowledge on Apache Lucene is recommended, but is not mandatory.
+ Pact Publishing released a new book in October 2013 called Administrating Solr. In the book readers can find out all sorts of information about, you guessed it, administrating your Solr installation.</description>
+    </item>
+    
+    <item>
+      <title>South Dakota Code Camp 2013</title>
+      <link>https://harmstyler.me/posts/2013/south-dakota-code-camp-2013/</link>
+      <pubDate>Mon, 11 Nov 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2013/south-dakota-code-camp-2013/</guid>
+      <description>I would say that South Dakota Code Camp 2013 was another huge success. The organizers were once again able to find some great speakers that cover a wide array of topics. Moreover, this year I had the opportunity to speak. I chose to speak about Django, one of my favorite web frameworks. Anyway, here is a link to my slides.
+An Introduction to Django / Tyler Harms !function(a){var b=&amp;ldquo;embedly-platform&amp;rdquo;,c=&amp;ldquo;script&amp;rdquo;;if(!a.getElementById(b)){var d=a.createElement&amp;copy;;d.id=b,d.src=(&amp;ldquo;https:&amp;ldquo;===document.location.protocol?&amp;ldquo;https&amp;rdquo;:&amp;ldquo;http&amp;rdquo;)+&amp;rdquo;://cdn.embedly.com/widgets/platform.js&amp;rdquo;;var e=document.</description>
+    </item>
+    
+    <item>
+      <title>jQuery Animate Body Scroll For All Browsers</title>
+      <link>https://harmstyler.me/posts/2013/jquery-animate-body-for-all-browsers/</link>
+      <pubDate>Fri, 09 Aug 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2013/jquery-animate-body-for-all-browsers/</guid>
+      <description>It turns out that when trying to use jQuery&amp;rsquo;s animate to scrollTop on the main body of an html document different browsers require different targets to scroll to. Webkit requires targeting the body of the document while all other browsers that I know of use html. The typical solution is to target both in the same call:
+$(&#39;html, body&#39;).animate({ scrollTop: &#39;0px&#39;,&#39;fast&#39;, function(){ // Code to be fired when complete goes here (fired twice) } });  This solution is problematic, however, because even though the scrollTop will only work once, the callback is fired twice.</description>
+    </item>
+    
+    <item>
+      <title>Sort Solr Facets on Per Field Basis</title>
+      <link>https://harmstyler.me/posts/2013/sort-solr-facets-on-per-field-basis/</link>
+      <pubDate>Mon, 29 Jul 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2013/sort-solr-facets-on-per-field-basis/</guid>
+      <description>I recently faced a strange problem. I was faceting off of multiple facet.fields and I found the need to sort them independently of each other. As far as I knew up to this point facet.sort could only be set once. When I read the doc, however, it was claimed that the facet.sort could be set on a per field basis; sadly no examples were provided nor was it explained any further.</description>
+    </item>
+    
+    <item>
+      <title>Chrome Webfont Mimetypes</title>
+      <link>https://harmstyler.me/posts/2013/chrome-webfont-mimetypes/</link>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2013/chrome-webfont-mimetypes/</guid>
+      <description>As a web developer whose browser of choice is Google Chome, I use the Chrome console a lot. Chrome is already the best browser out there and always getting better. More than the browsing experience though, I maintain that it has the best dev environment available. It is the little things that really make Chrome so much better than its compeditors (docking to the right for instance). As if you needed any more reasons to like Chrome, the Chrome team just pushed an update to &amp;lsquo;clean up the console.</description>
+    </item>
+    
+    <item>
+      <title>IE10 Conditional Comments</title>
+      <link>https://harmstyler.me/posts/2013/ie10-conditional-comments/</link>
+      <pubDate>Sat, 29 Jun 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2013/ie10-conditional-comments/</guid>
+      <description>Let me start by saying that I was very excited by IE10. Internet Explorer 10 was supposed to be the premier IE web browser. Microsoft was so confident that they created a browser that could meet modern standards that they dropped conditional comments in IE10. If you don&amp;rsquo;t know anything about developing for IE, just know that it sucks; it was, however, aleviated some by conditional comments that allowed for custom styles/js/whatever for IE versions.</description>
+    </item>
+    
+    <item>
+      <title>Symfony2 Coding Standards</title>
+      <link>https://harmstyler.me/posts/2013/symfony2-coding-standards/</link>
+      <pubDate>Tue, 30 Apr 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2013/symfony2-coding-standards/</guid>
+      <description>With eZ Publish moving to Symfony2, I found that I was in need of learning some new coding standards. I never really looked into PHP CodeSniffer while doing eZ Publish development (most of my code was in the templates), so I never really thought about PHP CodeSniffer as an option until starting work with Symphony2. To the point, I just wanted to share the Symfony2 PHP CodeSniffer Coding Standard on Github.</description>
+    </item>
+    
+    <item>
+      <title>New Site Theme</title>
+      <link>https://harmstyler.me/posts/2013/new-site-theme/</link>
+      <pubDate>Mon, 15 Apr 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2013/new-site-theme/</guid>
+      <description>I have been working on getting a new site theme up and running for a while now. My hold up was that I could never commit to a platform. I knew that I wanted off Wordpress and onto something more developer friendly. Originally I was going to put this site on eZ Publish, but that just seemed like overkill. Next I thought about creating a Symfony2 blog, but I wanted to cheapen my hosting options so I opted against Symfony2.</description>
+    </item>
+    
+    <item>
+      <title>Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium</title>
+      <link>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/</link>
+      <pubDate>Fri, 15 Mar 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/</guid>
+      <description>Solr has quickly become one of the most popular search engines available. Due to Solr&#39;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.
+{ &amp;quot;require&amp;quot;: { &amp;quot;solarium/solarium&amp;quot;: &amp;quot;3.0.0&amp;quot; } }  &amp;lt;?php $config = array( &#39;endpoint&#39; =&amp;gt; array( &#39;localhost&#39; =&amp;gt; array( &#39;host&#39; =&amp;gt; &#39;127.</description>
+    </item>
+    
+    <item>
+      <title>Symfony2 Access Control</title>
+      <link>https://harmstyler.me/posts/2013/symfony2-access-conrol/</link>
+      <pubDate>Sat, 02 Mar 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2013/symfony2-access-conrol/</guid>
+      <description>I am very new to Symfony development. While developing a side project app I found I needed to control access to a certain area to logged in users only. Based on my previous development history I was expecting to have to determine if a user was logged in via the controller. I figured I would need to find an is_logged_in boolean and use it to determine user access control. What I found while doing my development is that Symfony2 takes care of access control in a much more eloquent way.</description>
+    </item>
+    
+    <item>
+      <title>eZ Publish 5 - First Thoughts</title>
+      <link>https://harmstyler.me/posts/2013/ez-publish-5-first-thoughts/</link>
+      <pubDate>Sat, 19 Jan 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2013/ez-publish-5-first-thoughts/</guid>
+      <description>I finally decided on my first eZ Publish 5 project&amp;hellip; my site of course. I am currently in the middle of upgrading my wordpress install to eZ Publish. Honestly, I don&amp;rsquo;t really need anything more than a simple Wordpress install, but it will be nice to get an eZ5 site under my belt.
+Seeing as I am in the middle of development, there have been a few bumps in the development road that I have found and would like to share.</description>
+    </item>
+    
+    <item>
+      <title>Optimizing Solr To Fit Your Needs Part 2</title>
+      <link>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-2/</link>
+      <pubDate>Fri, 07 Dec 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-2/</guid>
+      <description>&lt;p&gt;I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default search field called &lt;code&gt;ezf_df_text&lt;/code&gt;. The downside of searching one field is that field needs to be controlled, and the only way it can be controlled is by manually editing the Solr schema file. As you might expect, eZ Find does not control this file very well out of the box.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Learning Symfony</title>
+      <link>https://harmstyler.me/posts/2012/learning-symfony/</link>
+      <pubDate>Wed, 21 Nov 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/learning-symfony/</guid>
+      <description>I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that eZ Systems announced that they were adopting the Symfony framework I knew that I would be be spending some time with it. I have found that Symfony doesn&amp;rsquo;t have the lowest barrier to entry so it has been a process, to say the least.</description>
+    </item>
+    
+    <item>
+      <title>Skype version 6</title>
+      <link>https://harmstyler.me/posts/2012/skype-version-6/</link>
+      <pubDate>Thu, 01 Nov 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/skype-version-6/</guid>
+      <description>I recently updated to Skype 6 and found something interesting out. My style package that worked in Skype 5 would not work in Skype 6. With some digging, we found out that in order to make your Skype 5 style work in Skype 6 you need to update the MessageViewVersion to version 7 (I have no idea why). So, with that, have fun updating your Skype to the latest version while still getting use out of your favorite Skype theme.</description>
+    </item>
+    
+    <item>
+      <title>AWS authorize security groups across acounts « ShellRunner</title>
+      <link>https://harmstyler.me/posts/2012/aws-authorize-security-groups-across-acounts-shellrunner/</link>
+      <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/aws-authorize-security-groups-across-acounts-shellrunner/</guid>
+      <description>Just had to share this post since I helped a little bit with it. Very handy little tip about authorizing security groups across AWS accounts.
+AWS authorize security groups across acounts « ShellRunner.
+It is a post by @jacksonmurtha so we can trust that it is good.</description>
+    </item>
+    
+    <item>
+      <title>Solr Query for Mimicking SQL IN Operator Functionality</title>
+      <link>https://harmstyler.me/posts/2012/solr-query-for-mimicking-sql-in-operator-functionality/</link>
+      <pubDate>Thu, 13 Sep 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/solr-query-for-mimicking-sql-in-operator-functionality/</guid>
+      <description>I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the IN operator. In Solr you have the option of specifying a field using the qf operator, but what if you have more search terms searching other fields?</description>
+    </item>
+    
+    <item>
+      <title>Optimizing Solr to fit your needs Part 1</title>
+      <link>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-1/</link>
+      <pubDate>Sat, 25 Aug 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-1/</guid>
+      <description>Let me start by saying that eZ Find is a fantastic implementation of Solr functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an eZ Publish keyword and know that it should thereby be a Solr keyword, again, all out of the box.</description>
+    </item>
+    
+    <item>
+      <title>Multiple .gitignore files versus .gitkeep files</title>
+      <link>https://harmstyler.me/posts/2012/gitignore-vs-gitkeep/</link>
+      <pubDate>Sat, 18 Aug 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/gitignore-vs-gitkeep/</guid>
+      <description>I have been a devout git user for as long as I have been programming. I was lucky enough to bypass subversion entirely, at least that is what my friends who&amp;rsquo;ve used svn have told me.
+The cool thing about git is that it tracks changes, not files or directories. When I create a new empty directory that directory is not tracked by git because it has no file changes inside, hence, the directory will never make it into git until I add a file to that directory.</description>
+    </item>
+    
+    <item>
+      <title>eZ Publish with Sublime</title>
+      <link>https://harmstyler.me/posts/2012/ez-publish-with-sublime/</link>
+      <pubDate>Sat, 30 Jun 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/ez-publish-with-sublime/</guid>
+      <description>A while back I fell in love with Sublime Text 2 and its&amp;rsquo; many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ.</description>
+    </item>
+    
+    <item>
+      <title>Fixing Shards in eZ Find</title>
+      <link>https://harmstyler.me/posts/2012/fixing-shards-in-ez-find/</link>
+      <pubDate>Fri, 29 Jun 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/fixing-shards-in-ez-find/</guid>
+      <description>&lt;p&gt;I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the &lt;code&gt;$shardQuery&lt;/code&gt; is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the &lt;code&gt;$queryHandler&lt;/code&gt; switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Solr 3.6 Update</title>
+      <link>https://harmstyler.me/posts/2012/solr-3-6-update/</link>
+      <pubDate>Mon, 14 May 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/solr-3-6-update/</guid>
+      <description>Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.</description>
+    </item>
+    
+    <item>
+      <title>Searching Multiple Solr Cores using Shards and eZ Find</title>
+      <link>https://harmstyler.me/posts/2012/ezfind-shards/</link>
+      <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/ezfind-shards/</guid>
+      <description>&lt;!--
+    ![Distributed Search](/img/distributed_search.png)
+--&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;&amp;lt;?php
+if ( isset( $distributedSearch[&#39;shards&#39;] ) )
+{
+    foreach  ( $distributedSearch[&#39;shards&#39;] as $shard )
+    {
+        $shardUrls[] = $iniShards[$shard];
+    }
+    $shardQuery = implode( &#39;,&#39;, $shardUrls );
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Prerequisites:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;eZ Publish with eZ Find installed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The following post is based on the option in the eZ Find &lt;code&gt;solr.ini&lt;/code&gt; referring to Shards.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;[SolrBase]
+#Shards mapping, can be to multicores in one servlet or even a crosss servers
+#typical use is multilingual setups, but also for external index support
+#the keys are used as shorthands in template functions
+#Shards[]
+#Shards[eng-GB]=http://localhost:8983/solr/eng-GB
+#Shards[fre-FR]=http://localhost:8983/solr/fre-FR
+#Shards[myforeignindex]=http://myotherhost:8983/solr
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>eZ Find: Enable Attribute Storage</title>
+      <link>https://harmstyler.me/posts/2012/ez-find-solr-attribute-storage/</link>
+      <pubDate>Thu, 26 Apr 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/ez-find-solr-attribute-storage/</guid>
+      <description># Enable Solr to store all the basic information of a content object # Allows Solr to be used as a cross-site DB [IndexOptions] EnableSolrAttributeStorage=true OptimizeOnCommit=disabled  When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes &#39;as_objects&#39;, true() eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.</description>
+    </item>
+    
+    <item>
+      <title>Dogs Underwater</title>
+      <link>https://harmstyler.me/posts/2012/dogs-underwater/</link>
+      <pubDate>Mon, 23 Apr 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/dogs-underwater/</guid>
+      <description>I am usually not one for email forwards. I got one today that I absolutely love, however. So, instead of re-forwarding it, I will share it here.
+I found the original author of the pictures here (the email had no information about the author).</description>
+    </item>
+    
+    <item>
+      <title>eZ Find Multi-Core</title>
+      <link>https://harmstyler.me/posts/2012/ez-find-multi-core/</link>
+      <pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/ez-find-multi-core/</guid>
+      <description>&lt;p&gt;One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;pull-right&#34;&gt;&lt;img title=&#34;solr-dir&#34; src=&#34;https://harmstyler.me/img/solr-dir.png&#34; alt=&#34;Solr Directory&#34; width=&#34;300&#34; height=&#34;186&#34; /&gt;&lt;/div&gt;So, to start. Let&amp;rsquo;s assume that if you are reading this, you already read through my previous eZ Find tutorial (&lt;a href=&#34;https://harmstyler.me/2012/03/installing-ez-find/&#34; title=&#34;Installing eZ Find&#34;&gt;Installing eZ Find&lt;/a&gt;). Since we already have our sever up and running there won&amp;rsquo;t be a lot of work to do there. But, we need to move our config files to the Solr multicore directory. Last time we used the Solr directory, this time we need to use the directory &lt;code&gt;solr.multicore&lt;/code&gt;. Inside the multicore directory there are a couple of demo cores for languages. What I did is duplicated the english directory a couple times and renamed them for each site.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Clear Cache in eZ Publish - eZpedia</title>
+      <link>https://harmstyler.me/posts/2012/clear-cache-in-ez-publish-ezpedia/</link>
+      <pubDate>Thu, 12 Apr 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/clear-cache-in-ez-publish-ezpedia/</guid>
+      <description>As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.
+Clear Cache in eZ Publish / Solution / Root - eZpedia
+My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.</description>
+    </item>
+    
+    <item>
+      <title>Despite Bings Rise, Google Still Dominates Search [INFOGRAPHIC]</title>
+      <link>https://harmstyler.me/posts/2012/despite-bings-rise-google-still-dominates-search-infographic/</link>
+      <pubDate>Mon, 26 Mar 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/despite-bings-rise-google-still-dominates-search-infographic/</guid>
+      <description>Very interesting, Bing is on the rise but it appears to be at the expense of Yahoo! not Google.
+Despite Bings Rise, Google Still Dominates Search [INFOGRAPHIC].</description>
+    </item>
+    
+    <item>
+      <title>Installing eZ Find</title>
+      <link>https://harmstyler.me/posts/2012/installing-ez-find/</link>
+      <pubDate>Thu, 22 Mar 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/installing-ez-find/</guid>
+      <description>&lt;p&gt;Alright, so lets begin installing eZ Find by going out and downloading it from the Github =&amp;gt; &lt;a href=&#34;http://bit.ly/GEVOte&#34; title=&#34;eZ Find on GitHub&#34;&gt;https://github.com/ezsystems/ezfind&lt;/a&gt;.
+eZ Find is an eZ Publish extension so: unzip the download, rename the fold &amp;rdquo;ezfind,&amp;rdquo; and then move the &lt;em&gt;ezfind&lt;/em&gt; folder to the &lt;em&gt;extensions&lt;/em&gt; directory of your eZ Publish install.&lt;/p&gt;
+
+&lt;p&gt;So, as with any extension, we have to activate it. Go into your override &lt;code&gt;site.ini.append.php&lt;/code&gt; (settings/override/site.ini.append.php) and add ezfind to your active extension list (&lt;code&gt;ActiveExtensions[]=ezfind&lt;/code&gt;). I added mine just after my main site extension. Easy enough so far right?&lt;/p&gt;
+
+&lt;div class=&#34;pull-left&#34;&gt;&lt;a href=&#34;https://harmstyler.me/img/solr-structure.png&#34;&gt;&lt;img title=&#34;solr-structure&#34; src=&#34;https://harmstyler.me/img/small/solr-structure-small.png&#34; alt=&#34;Solr installed locally&#34; width=&#34;179&#34; height=&#34;301&#34; /&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a &lt;em&gt;java&lt;/em&gt; directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish install and rename the folder &amp;ldquo;Solr&amp;rdquo; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on one Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>eZ Find Basics</title>
+      <link>https://harmstyler.me/posts/2012/ez-find-basics/</link>
+      <pubDate>Mon, 19 Mar 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/ez-find-basics/</guid>
+      <description>I have been thinking a long time about different topics I could use this blog for. I have settled for the moment on an eZ Publish extension that I have used extensively for a while, eZ Find. eZ Find is an ultra-powerful Solr powered search engine made for eZ Publish, authored by Paul Borgermans.
+For starters, an introduction to eZ Find &amp;amp; Solr.
+Solr is an ultra-powerful search engine built in Java on top of the Apache Lucene project.</description>
+    </item>
+    
+    <item>
+      <title>Solr Buckets</title>
+      <link>https://harmstyler.me/posts/2012/solr-buckets/</link>
+      <pubDate>Sat, 25 Feb 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/solr-buckets/</guid>
+      <description>I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. The Problem: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&amp;rsquo;s speed; let Solr do the work).</description>
+    </item>
+    
+    <item>
+      <title>Photoshopping Goodness</title>
+      <link>https://harmstyler.me/posts/2012/photoshoping-goodness/</link>
+      <pubDate>Sat, 11 Feb 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/photoshoping-goodness/</guid>
+      <description>I truly do wish that I were better with photoshop. That said I am very blessed to know some people that are photoshop gurus. Yesterday when we came across a fantastic picture and I could not help but think, what would that picture look like with @jacksonmurtha&amp;rsquo;s head on it. Knowing that I could never do it right I asked @rmvelgersdyk if he could do it. What he sent me back really made me wish that I knew photoshop better.</description>
+    </item>
+    
+    <item>
+      <title>Scraping a page with php</title>
+      <link>https://harmstyler.me/posts/2012/scraping-a-page-with-php/</link>
+      <pubDate>Tue, 24 Jan 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2012/scraping-a-page-with-php/</guid>
+      <description>I ran across a problem recently, I needed to get the contents of a page so that I could mimic a widget’s functionality without having access to the database that said page’s widget used (confused yet). Basically, one site had a widget that displayed an upcoming event (information with came from a database), I needed to copy that widget to another website. Moreover, I did not want to use JavaScript to accomplish my goal because I need the new site to be cached pretty heavily on the server.</description>
+    </item>
+    
+    <item>
+      <title>Gradient App</title>
+      <link>https://harmstyler.me/posts/2011/gradient-app/</link>
+      <pubDate>Thu, 20 Oct 2011 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2011/gradient-app/</guid>
+      <description>I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out gradients is easy enough, get your start color and your end color and then plug them into all the various browser specific gradient css elements (webkit, moz, etc&amp;hellip;) and you get a gradient. Like I said, simple enough but time consuming because each browser gets its own line.</description>
+    </item>
+    
+    <item>
+      <title>Path to Android!</title>
+      <link>https://harmstyler.me/posts/2011/path-to-android/</link>
+      <pubDate>Fri, 26 Aug 2011 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2011/path-to-android/</guid>
+      <description>Finally, Path has come to Android. Path is one of those little known apps that I think a person would love, if they knew about it. Path is made to be built off of Facebook, but far more personal than that. Their slogan then makes sense, The Personal Network (vs the Social Network). At Path each person is only able to view a limited number of friends, making the social web experience more personal.</description>
+    </item>
+    
+    <item>
+      <title>New Site</title>
+      <link>https://harmstyler.me/posts/2011/new-site/</link>
+      <pubDate>Wed, 24 Aug 2011 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2011/new-site/</guid>
+      <description>Obviously this is a new site yet again. I just got sick of working with PyroCMS and decided to go to good &amp;lsquo;ol Wordpress, for reliability sake. Luckily I happen to have a licence for an awesome theme, hence the awesome site design. Currently it is not customized but the theme is designed to be customized. Also the site has full access to all the awesome add-ons that wordpress developers have created.</description>
+    </item>
+    
+  </channel>
+</rss>
