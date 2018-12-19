@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://harmstyler.me/posts/2018/avoiding-route-collision-in-ez-platform/</loc>
+    <lastmod>2018-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://harmstyler.me/about/</loc>
     <lastmod>2018-10-30T21:42:28-05:00</lastmod>
   </url>
@@ -299,6 +304,12 @@
   </url>
   
   <url>
+    <loc>https://harmstyler.me/categories/ez-platform/</loc>
+    <lastmod>2018-12-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://harmstyler.me/tags/ez-publish/</loc>
     <lastmod>2012-04-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -378,7 +389,7 @@
   
   <url>
     <loc>https://harmstyler.me/posts/</loc>
-    <lastmod>2016-01-31T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -444,7 +455,7 @@
   
   <url>
     <loc>https://harmstyler.me/categories/symfony/</loc>
-    <lastmod>2016-01-31T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -486,7 +497,7 @@
   
   <url>
     <loc>https://harmstyler.me/</loc>
-    <lastmod>2018-10-30T21:42:28-05:00</lastmod>
+    <lastmod>2018-12-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

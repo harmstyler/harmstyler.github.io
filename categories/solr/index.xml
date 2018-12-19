@@ -115,7 +115,9 @@ if ( isset( $distributedSearch[&#39;shards&#39;] ) )
 #Shards[eng-GB]=http://localhost:8983/solr/eng-GB
 #Shards[fre-FR]=http://localhost:8983/solr/fre-FR
 #Shards[myforeignindex]=http://myotherhost:8983/solr
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).&lt;/p&gt;</description>
     </item>
     
     <item>

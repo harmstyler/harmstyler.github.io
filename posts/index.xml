@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
     <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
-    <lastBuildDate>Sun, 31 Jan 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Avoiding Route Collision in eZ Platform</title>
+      <link>https://harmstyler.me/posts/2018/avoiding-route-collision-in-ez-platform/</link>
+      <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2018/avoiding-route-collision-in-ez-platform/</guid>
+      <description>eZ Platform boils down to a set of Symfony bundles that give you a nice way of managing content for your users. With these bundles, eZ reserves some routing paths for internal or admin use, paths that you might want for your own app. If you ever run across a path you want to use for your app, and not break an internal eZ feature, there is a simple solution: change the path config.</description>
+    </item>
     
     <item>
       <title>Managing Media in eZ Publish 5</title>
@@ -241,9 +250,7 @@ The cool thing about git is that it tracks changes, not files or directories. Wh
       <pubDate>Fri, 29 Jun 2012 00:00:00 +0000</pubDate>
       <author>tyler.harms@gmail.com (Tyler Harms)</author>
       <guid>https://harmstyler.me/posts/2012/fixing-shards-in-ez-find/</guid>
-      <description>&lt;p&gt;I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the &lt;code&gt;$shardQuery&lt;/code&gt; is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the &lt;code&gt;$queryHandler&lt;/code&gt; switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the &lt;code&gt;$shardQuery&lt;/code&gt; is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the &lt;code&gt;$queryHandler&lt;/code&gt; switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -292,7 +299,9 @@ if ( isset( $distributedSearch[&#39;shards&#39;] ) )
 #Shards[eng-GB]=http://localhost:8983/solr/eng-GB
 #Shards[fre-FR]=http://localhost:8983/solr/fre-FR
 #Shards[myforeignindex]=http://myotherhost:8983/solr
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).&lt;/p&gt;</description>
     </item>
     
     <item>

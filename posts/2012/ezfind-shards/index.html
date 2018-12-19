@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.50" />
+<meta name="generator" content="Hugo 0.52" />
 
     
     
@@ -51,7 +51,9 @@ The following post is based on the option in the eZ Find solr.ini referring to S
 #Shards[eng-GB]=http://localhost:8983/solr/eng-GB
 #Shards[fre-FR]=http://localhost:8983/solr/fre-FR
 #Shards[myforeignindex]=http://myotherhost:8983/solr
-"/>
+
+
+What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work)."/>
 
 <meta property="og:title" content="Searching Multiple Solr Cores using Shards and eZ Find" />
 <meta property="og:description" content="
@@ -83,7 +85,9 @@ The following post is based on the option in the eZ Find solr.ini referring to S
 #Shards[eng-GB]=http://localhost:8983/solr/eng-GB
 #Shards[fre-FR]=http://localhost:8983/solr/fre-FR
 #Shards[myforeignindex]=http://myotherhost:8983/solr
-" />
+
+
+What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://harmstyler.me/posts/2012/ezfind-shards/" /><meta property="article:published_time" content="2012-05-08T00:00:00&#43;00:00"/>
 <meta property="article:modified_time" content="2012-05-08T00:00:00&#43;00:00"/>
@@ -291,9 +295,9 @@ if ( isset( $distributedSearch['shards'] ) )
 #Shards[myforeignindex]=http://myotherhost:8983/solr
 </code></pre>
 
-<p>What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).
+<p>What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).</p>
 
-First things first, we need to tell each siteaccess what its Search Server URI is. Within the <code>settings/siteaccess/&lt;siteaccess-name&gt;/</code> directory we need to create a new solr.ini.append.php file (duplicate the file in the admin version). Within each siteaccess we need to input our Solr core name; for harmssite it would be <code>SearchServerURI=http://localhost:8983/solr/harmssite</code> and for the counterhelix siteaccess it would be <code>SearchServerURI=http://localhost:8983/solr/counterhelix</code>.</p>
+<p>First things first, we need to tell each siteaccess what its Search Server URI is. Within the <code>settings/siteaccess/&lt;siteaccess-name&gt;/</code> directory we need to create a new solr.ini.append.php file (duplicate the file in the admin version). Within each siteaccess we need to input our Solr core name; for harmssite it would be <code>SearchServerURI=http://localhost:8983/solr/harmssite</code> and for the counterhelix siteaccess it would be <code>SearchServerURI=http://localhost:8983/solr/counterhelix</code>.</p>
 
 <p>Next, make sure that you have your cores installed into solr. In order to do this just copy the default eng-GB from the <code>solr.multicore/</code> directory and then rename it for each core you wish to have, in my case I have a harmssite and a counterhelix core. There is also a <code>solr.xml</code> that we need to edit. Here we declare each core that we created.</p>
 

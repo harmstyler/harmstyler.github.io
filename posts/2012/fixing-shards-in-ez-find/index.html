@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.50" />
+<meta name="generator" content="Hugo 0.52" />
 
     
     
@@ -22,14 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Fixing Shards in eZ Find"/>
-<meta name="twitter:description" content="I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the $shardQuery is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the $queryHandler switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)
-
-"/>
+<meta name="twitter:description" content="I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the $shardQuery is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the $queryHandler switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)"/>
 
 <meta property="og:title" content="Fixing Shards in eZ Find" />
-<meta property="og:description" content="I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the $shardQuery is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the $queryHandler switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)
-
-" />
+<meta property="og:description" content="I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the $shardQuery is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the $queryHandler switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://harmstyler.me/posts/2012/fixing-shards-in-ez-find/" /><meta property="article:published_time" content="2012-06-29T00:00:00&#43;00:00"/>
 <meta property="article:modified_time" content="2012-06-29T00:00:00&#43;00:00"/>
@@ -208,8 +204,6 @@
   
   <div class="post">
     <p>I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the <code>$shardQuery</code> is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the <code>$queryHandler</code> switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)</p>
-
-<p></p>
 
 <pre><code class="language-php">&lt;?php
 
