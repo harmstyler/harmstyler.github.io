@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
     <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
-    <lastBuildDate>Wed, 19 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 17 Feb 2019 10:13:29 -0700</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Contrast Ratio Calculator</title>
+      <link>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</link>
+      <pubDate>Sun, 17 Feb 2019 10:13:29 -0700</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</guid>
+      <description>Making sure webistes are accessible is a big deal these days. Websites should be mindful of their audience to make sure people with disabilities are not excluded from the site content. Color contrasts between foregrounds and backgrounds is an easy miss when checking that a site is accessible, but one that is vital to hard of sight users. For more information about website contrast ratios, visit WebAIM&amp;rsquo;s Contrast and Color Accessibility page.</description>
+    </item>
     
     <item>
       <title>Avoiding Route Collision in eZ Platform</title>
