@@ -780,4 +780,7 @@ a.badge-tag {
 .theme-base-0f .related-posts li a:hover {
   color: #8f5536; }
 
+p.lead {
+  font-size: 1.3em;
+}
 /*# sourceMappingURL=hyde-hyde.css.map */

@@ -8,15 +8,19 @@
     <language>en-us</language>
     <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
     <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
-    <lastBuildDate>Wed, 19 Dec 2018 00:00:00 +0000</lastBuildDate>
-    <image>
-        <link>https://harmstyler.me/</link>
-        <title>@harmstyler - A Web Development Blog</title>
-        <url>https://harmstyler.me/img/tyler_portrait.jpg</url>
-    </image>
+
     
         <atom:link href="https://harmstyler.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Contrast Ratio Calculator</title>
+      <link>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</link>
+      <pubDate>Sun, 17 Feb 2019 10:13:29 -0700</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</guid>
+      <description>&lt;p&gt;Making sure webistes are accessible is a big deal these days. Websites should be mindful of their audience to make sure people with disabilities are not excluded from the site content. Color contrasts between foregrounds and backgrounds is an easy miss when checking that a site is accessible, but one that is vital to hard of sight users.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Avoiding Route Collision in eZ Platform</title>
@@ -64,8 +68,7 @@
       <pubDate>Tue, 30 Oct 2018 21:42:28 -0500</pubDate>
       <author>tyler.harms@gmail.com (Tyler Harms)</author>
       <guid>https://harmstyler.me/about/</guid>
-      <description>&lt;p&gt;Hi, I&amp;rsquo;m Tyler Harms. I am a professional software developer, father, and husband from the great state of South Dakota. I make things for the web, primarily with PHP, but also Ruby and Python. Most of my work deals with implementing Content Management solutions for businesses, primarily using eZ Publish.&lt;/p&gt;
-</description>
+
     </item>
     
     <item>
@@ -717,165 +720,7 @@ if ($.browser.msie &amp;amp;&amp;amp; $.browser.version === 10) {
       <pubDate>Fri, 15 Mar 2013 00:00:00 +0000</pubDate>
       <author>tyler.harms@gmail.com (Tyler Harms)</author>
       <guid>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/</guid>
-      <description>
 
-&lt;p class=&#34;lead&#34;&gt; Solr has quickly become one of the most popular search engines available. Due to Solr&#39;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
-    &amp;quot;require&amp;quot;: {
-        &amp;quot;solarium/solarium&amp;quot;: &amp;quot;3.0.0&amp;quot;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;&amp;lt;?php
-$config = array(
-    &#39;endpoint&#39; =&amp;gt; array(
-        &#39;localhost&#39; =&amp;gt; array(
-            &#39;host&#39; =&amp;gt; &#39;127.0.0.1&#39;, &#39;port&#39; =&amp;gt; &#39;8983&#39;, &#39;path&#39; =&amp;gt; &#39;/solr/&#39;
-        )
-    )
-);
-
-// new Solarium Client object
-$client = new Solarium\Client($config);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;field name=&amp;quot;id&amp;quot; type=&amp;quot;int&amp;quot; indexed=&amp;quot;true&amp;quot; stored=&amp;quot;true&amp;quot; /&amp;gt;
-&amp;lt;field name=&amp;quot;name&amp;quot; type=&amp;quot;string&amp;quot; indexed=&amp;quot;true&amp;quot; stored=&amp;quot;true&amp;quot; multiValued=&amp;quot;true&amp;quot; /&amp;gt;
-&amp;lt;field name=&amp;quot;text&amp;quot; type=&amp;quot;text&amp;quot; indexed=&amp;quot;true&amp;quot; stored=&amp;quot;true&amp;quot; /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Introduction to Solr: Search is an important part of most web projects and should be given much care. Throughout the years, making content searchable has changed a great deal. Obviously, exposing SQL queries to users through search is dangerous. Modern search implementations require a secure approach, such as a stand-alone search server, separate from site data. There are many search options to choose from. Your search list might include: Sphinx, Flax, ElasticSearch, Google, and Solr. Solr’s scalability, speed, built in features and community make it an ideal platform for any project. Luckily, integrating Solr into your PHP project has been made easy by the Solarium Project.&lt;/p&gt;
-
-&lt;p&gt;In Apache’s own words, “_Solr is an open source enterprise search server based on the Lucene Java search library, with XML/HTTP and JSON, Ruby, and Python APIs, hit highlighting, faceted search, caching, replication, and a web administration interface_” [1]. Apache Solr is an open source, extensible, stand-alone search engine, built on Lucene, managed by The Apache Software Foundation. There are currently two stable versions of Solr available for use; Solr 3.6.2 and Solr 4.0. Either version may be used with Solarium; Solr 4 ships with added features, however, so use Solr 4 if possible.&lt;/p&gt;
-
-&lt;p&gt;Solr is designed to run as a stand-alone Java web application (app). The documentation for downloading, installing, and running Solr can be found at &lt;a href=&#34;http://lucene.apache.org/solr/tutorial.html&#34; title=&#34;Solr Tutorial&#34;&gt;http://lucene.apache.org/solr/tutorial.html&lt;/a&gt;. Because Solr is meant to be separate from the primary project, it can be installed anywhere. All interactions with Solr happen over HTTP through a REST-like API. Solarium utilizes both PHP and JSON for its interactions with Solr.&lt;/p&gt;
-
-&lt;p&gt;One of the greatest features of Solr is its scalability. Replication can be set up to run multiple Solr instances in a master/slave setup, just like MySQL replication.The documentation for setting up a master/slave setup is very thorough, so it will not be discussed further here. Another option for scaling Solr is to search multiple search cores. Solr can run multiple search cores at a time. Solr can search multiple cores at a time through its distributed search and sharding capabilities. Large search indexes can be split into multiple smaller indexes; then through a distributed search multiple cores are searched. The best part of a multicore search setup is that not all cores need to exist on the same server. This allows for very flexible search architecture.&lt;/p&gt;
-
-&lt;h3 id=&#34;solarium-acts-as-a-bridge&#34;&gt;Solarium acts as a bridge&lt;/h3&gt;
-
-&lt;p&gt;Solr has a REST-like API, so interactions with it are very simple and happen over HTTP. The Solarium Project is “_an open source Solr client library for PHP applications_” [2], which makes interacting with Solr even simpler. Solarium exists to expose the Solr API through an easy to use PHP library.&lt;/p&gt;
-
-&lt;p&gt;Installation of Solarium has been made very easy through the use of Composer (Listing 1). Installing through Composer will automatically add the library to the PHP autoload path. To install Solarium into a project not utilizing Composer, the files will need to be downloaded from GitHub (&lt;a href=&#34;https://github.com/basdenooijer/solarium/tags&#34; title=&#34;Solarium Library&#34;&gt;https://github.com/basdenooijer/solarium/tags&lt;/a&gt;). Next, add the solarium library to the PHP autoload path manually. After Solarium is installed, Solr can be accessed through sending a Solarium Client ($client) object to a configuration array. The configuration array should be made up of the Solr host, port and path (Listing 2).&lt;/p&gt;
-
-&lt;h3 id=&#34;adding-content-to-solr&#34;&gt;Adding content to Solr&lt;/h3&gt;
-
-&lt;p&gt;Before anything can be searched in Solr, documents (docs) must be added to the Solr index. Solr maintains a collection of docs in its index. A doc is a collection of fields and values. Solr fields must be defined in the Solr schema. A field can occur multiple times in a doc.&lt;/p&gt;
-
-&lt;p&gt;To make an update to Solr using Solarium, start with the &lt;code&gt;$client&lt;/code&gt; object. Using the &lt;code&gt;$client&lt;/code&gt; object, create an &lt;code&gt;$update&lt;/code&gt; instance then make a doc:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$update = $client-&amp;gt;createUpdate();
-$doc1 = $update-&amp;gt;createDocument();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;With the newly created &lt;code&gt;$doc&lt;/code&gt;, begin adding content to Solr fields as instances of the $doc:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$doc1-&amp;gt;id = 123;
-$doc1-&amp;gt;name = &#39;First Document&#39;;
-$doc1-&amp;gt;text = &#39;This is the first document\&#39;s content&#39;;
-
-// Create another doc
-$doc2 = $update-&amp;gt;createDocument();
-$doc2-&amp;gt;id = 234;
-$doc2-&amp;gt;name = &#39;Next Document&#39;;
-$doc2-&amp;gt;text = &#39;This is the next document\&#39;s content&#39;;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In this example, the Solr schema would have to be set up to accept the id, name and text fields. Solr ships with an example search app with a good demo of a Solr schema; each field will need to be added to the schema in order for Solr to add the docs to the search index (Listing 3). Next, add each &lt;code&gt;$doc&lt;/code&gt; created to an array so that &lt;code&gt;addDocuments()&lt;/code&gt; can be called on the array. This will run the Solr add command for every document in the array:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$update-&amp;gt;addDocuments(array($doc1, $doc2));
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The newly-added docs will not actually become a permanent part of the Solr index until Solr is told to commit all added docs to its index. To do this with Solarium, call &lt;code&gt;addCommit()&lt;/code&gt; to generate a commit message for Solr, then a call to &lt;code&gt;update()&lt;/code&gt; with the &lt;code&gt;$update&lt;/code&gt; will send the commit:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$update-&amp;gt;addCommit(); $client-&amp;gt;update($update);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The new docs should now exist and be searchable using Solr.&lt;/p&gt;
-
-&lt;h3 id=&#34;searching-solr-through-solarium&#34;&gt;Searching Solr through Solarium&lt;/h3&gt;
-
-&lt;p&gt;Solarium offers a robust PHP API for searching Solr. To run a basic query, start with the $client object. Next, call the &lt;code&gt;createSelect()&lt;/code&gt; instance of the &lt;code&gt;$client&lt;/code&gt; object to generate the query for execution:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$query = $client-&amp;gt;createSelect();
-
-// *:* is equivalent to telling solr to return all docs
-$query-&amp;gt;setQuery(&#39;*:*&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Because the &lt;code&gt;createSelect()&lt;/code&gt; function is being used to generate the query, the &lt;code&gt;select()&lt;/code&gt; function should be used when executing the query:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$resultSet = $client-&amp;gt;select($query);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Use the $resultSet array to iterate over the array and display the results:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;echo &#39;&amp;lt;div class=&amp;quot;search-results&amp;quot;&amp;gt;&#39;;
-foreach ($resultSet as $result) {
-    echo &#39;&amp;lt;div class=&amp;quot;search-result&amp;quot;&amp;gt;&#39;;
-    echo &#39;&amp;lt;p&amp;gt;&#39; . $result-&amp;gt;id . &#39;&amp;lt;/p&amp;gt;&#39;;
-    echo &#39;&amp;lt;p&amp;gt;&#39; . $result-&amp;gt;name . &#39;&amp;lt;/p&amp;gt;&#39;;
-    echo &#39;&amp;lt;p&amp;gt;&#39; . $result-&amp;gt;text . &#39;&amp;lt;/p&amp;gt;&#39;;
-    echo &#39;&amp;lt;/div&amp;gt;&#39;;
-}
-echo &#39;&amp;lt;/div&amp;gt;&#39;;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The &lt;code&gt;$resultSet&lt;/code&gt; can also be refined. Setting up pagination, for instance, is very easy:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$query-&amp;gt;setStart(0)-&amp;gt;setRows(10);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Sorting is also very easy (note that Solr will sort by score if no sort is set):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$query-&amp;gt;addSort(&#39;name&#39;, Solarium_Query_Select::SORT_ASC);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Filtering, setting query fields, boosting, and faceting are also possible ways of searching Solr. Filtering is another way of narrowing search results without using a query. Query fields allow for control over what fields are searched. Boosting gives certain field’s higher precedence in the Search. Facets give users a way to better navigate search results. Solarium gives easy access to all the various ways of searching Solr content.&lt;/p&gt;
-
-&lt;h3 id=&#34;removing-content-from-solr&#34;&gt;Removing content from Solr&lt;/h3&gt;
-
-&lt;p&gt;Solr does not have a command called update; however, updates can be performed by re-adding content. Solr uses a unique identifier for each doc and only allows for one instance of the identifier in the search index. To update content, call the add command on an already existent Solr doc id. Sometimes updating Solr with new content isn’t enough. Sometimes the need to delete content from Solr arises. Doing this is similar to when adding docs, create an $update instance:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$update = $client-&amp;gt;createUpdate();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Using the $update instance, documents can be deleted by id or by query. This offers a great deal of flexibility for deleting content. Deleting by id is used more often because it offers very precise deletes:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$update-&amp;gt;addDeleteById(234);
-$update-&amp;gt;addCommit();
-$client-&amp;gt;update($update);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Deleting by query, however, can be incredibly powerful and useful. When starting development of a new search project with test content, for instance, deleting by query offers the ability to remove all test content. If all the test content starts with the word test, deleting the content is simple:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$update-&amp;gt;addDeleteQuery(&#39;name:test*&#39;);
-$update-&amp;gt;addCommit();
-$client-&amp;gt;update($update);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Another common practice is to wipe the index and start fresh. Using delete by query, this task is again made very simple:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$update-&amp;gt;addDeleteQuery(&#39;*:*&#39;);
-$update-&amp;gt;addCommit();
-$client-&amp;gt;update($update);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Solarium’s delete doc API is very useful in maintaining an up-to-date search index.&lt;/p&gt;
-
-&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
-
-&lt;p&gt;Solr is an incredibly scalable, powerful and easy-to-use search engine that should be considered for any search project. Solr is designed to be language agnostic through its REST-like API, and thanks to Solarium it fits very easily into any PHP project. This article covers only three use cases for Solarium; the examples shipped with Solarium offer a great deal more. Search highlighting, debugging, optimizing, and ‘more like this’ functionality are all possible with Solr and Solarium.&lt;/p&gt;
-
-&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Apache Solr: &lt;a href=&#34;http://projects.apache.org/projects/solr.html&#34;&gt;http://projects.apache.org/projects/solr.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;The Solarium Project: &lt;a href=&#34;http://www.solarium-project.org/&#34;&gt;http://www.solarium-project.org/&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
     </item>
     
     <item>

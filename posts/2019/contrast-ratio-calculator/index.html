@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.54.0" />
+
+    
+    
+    
+
+<title>Contrast Ratio Calculator • Tyler Harms</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Contrast Ratio Calculator"/>
+<meta name="twitter:description" content="Making sure webistes are accessible is a big deal these days. Websites should be mindful of their audience to make sure people with disabilities are not excluded from the site content. Color contrasts between foregrounds and backgrounds is an easy miss when checking that a site is accessible, but one that is vital to hard of sight users."/>
+
+<meta property="og:title" content="Contrast Ratio Calculator" />
+<meta property="og:description" content="Making sure webistes are accessible is a big deal these days. Websites should be mindful of their audience to make sure people with disabilities are not excluded from the site content. Color contrasts between foregrounds and backgrounds is an easy miss when checking that a site is accessible, but one that is vital to hard of sight users." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harmstyler.me/posts/2019/contrast-ratio-calculator/" />
+<meta property="article:published_time" content="2019-02-17T10:13:29-07:00"/>
+<meta property="article:modified_time" content="2019-02-17T10:13:29-07:00"/>
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+<link rel="stylesheet" href="/css/syntax.min.css">
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.ad846af73ab639d13d7c1fdeee57730332d75b8d24a58236cf1a2f352a327783.css" integrity="sha256-rYRq9zq2OdE9fB/e7ldzAzLXW40kpYI2zxovNSoyd4M=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    
+
+</head>
+
+
+    <body class="theme-base-0d ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://harmstyler.me/">Tyler Harms</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="https://harmstyler.me//img/tyler_portrait.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         A Software Development Blog 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Tyler Harms</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+		</li>
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/harmstyler" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/harmstyler" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://instagram.com/harmstyler" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://linkedin.com/in/harmstyler" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	<a href="https://keybase.io/harmstyler" rel="me"><i class="fab fa-keybase fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2019 Tyler Harms
+  
+</div>
+
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    <article>
+  <header>
+    <h1>Contrast Ratio Calculator</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Feb 17, 2019
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/a11y">A11Y</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/php">PHP</a>
+              
+          
+      
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 3 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p>Making sure webistes are accessible is a big deal these days. Websites should be mindful of their audience to make sure people with disabilities are not excluded from the site content. Color contrasts between foregrounds and backgrounds is an easy miss when checking that a site is accessible, but one that is vital to hard of sight users.</p>
+
+<p>For more information about website contrast ratios, visit <a href="https://webaim.org/articles/contrast/">WebAIM&rsquo;s Contrast and Color Accessibility page</a>.</p>
+
+<h2 id="making-it-easier">Making it easier</h2>
+
+<p>Using the <a href="https://github.com/harmstyler/contrast-ratio-calculator/">Contrast Ratio Calculator</a> library, calculating contrast ratios can be automatic in any site.</p>
+
+<h3 id="color-objects">Color Objects</h3>
+
+<p>Colors can be made into their object representation by using the <a href="https://github.com/harmstyler/contrast-ratio-calculator/blob/v1.0.1/lib/ContrastRatioCalculator/Color.php">Color class</a>. The color objects can be created by either the hexidecimal representation of the color or the <a href="https://en.wikipedia.org/wiki/RGB_color_model">RGB</a> representation of the color.</p>
+
+<pre><code class="language-php">&lt;?php
+namespace HarmsTyler\ContrastRatioCalculator;
+
+class Color
+{
+    //...
+    public static function fromRgb(array $rgb): self {}
+    public static function fromHex(string $hex): self {}
+    //...
+}
+</code></pre>
+
+<pre><code class="language-php">&lt;?php
+$color1 = Color::fromHex('ffffff');
+$color2 = Color::fromRgb([255,255,255]);
+// $color1-&gt;getHex() === $color2-&gt;getHex()
+</code></pre>
+
+<h3 id="calculating-the-contrast">Calculating the Contrast</h3>
+
+<p>Once color objects have been created, the <a href="https://github.com/harmstyler/contrast-ratio-calculator/blob/v1.0.1/lib/ContrastRatioCalculator/ContrastRatio.php">Contrast Ratio class</a> can be used. The Contrast Ratio class requires two color objects on insantiation, a primary and a secondary color (typically foreground and background colors). The contrast ratio calculation is made immediately upon object instantiation, so it can be retrieved from the class immediately.</p>
+
+<pre><code class="language-php">&lt;?php
+namespace HarmsTyler\ContrastRatioCalculator;
+
+class ContrastRatio
+{
+    public function __construct(Color $primaryColor, Color $secondaryColor) {}
+    public function getRatio() {};
+}
+</code></pre>
+
+<pre><code class="language-php">&lt;?php
+
+$contrastRatio = new ContrastRatio($color1, $color2);
+$ratio = $contrastRatio-&gt;getRatio();
+</code></pre>
+
+<h3 id="making-the-grade">Making the grade</h3>
+
+<p>A ratio alone is just a number. Without knowing how to grade a raio, it&rsquo;s actually useless. That&rsquo;s where the <a href="https://github.com/harmstyler/contrast-ratio-calculator/blob/v1.0.1/lib/ContrastRatioCalculator/WCAGContrastRating.php">WCAGContrastRating class</a> comes in to play. The WCAGContrastRating can return a grade by either passing a set of Color objects, or by passing an already created ContrastRatio object. The Web Content Accessibility Guidelines (WCAG) state what contrast ratios are a pass/fail. Specifically WCAG guidelines give grades of AAA, AA, AA Large, and FAIL (there are variations of these grades, but if text has a grade of AAA at normal text size, it can be assumed that it will receive an AAA at large text sizes as well, so those variations are ommitted from the grading scale).</p>
+
+<pre><code class="language-php">
+&lt;?php
+namespace HarmsTyler\ContrastRatioCalculator;
+
+class WCAGContrastRating
+{
+    public function rateColors(Color $primaryColor, Color $secondaryColor) {}
+    public function rateContrastRatio(ContrastRatio $contrastRatio): string {}
+}
+</code></pre>
+
+<pre><code class="language-php">&lt;?php
+$rating = new WCAGContrastRating();
+$grade1 = $rating-&gt;rateContrastRatio($contrastRatio);
+$grade2 = $rating-&gt;rateColors($color1, $color2);
+</code></pre>
+
+<p>Grades will be returned as one of four constants: <code>AA_LARGE</code>, <code>AA</code>, <code>AAA</code>, and <code>FAIL</code>;</p>
+
+<h2 id="a-real-world-example">A real world example</h2>
+
+<p>I help manage a large website installation where a small set of editors can manage &gt;160 websites from a single admin. These editors can choose a site&rsquo;s primary and secondary colors for the site, providing a more individualized look and feel for the various sites. Using the Contrast Ratio Calculator library, I am able to grade the primary/secondary color contrast ratios, as well as the font colors appearing in with the theme colors. By grading them automatically on the server, editors do not need to check each site individually. Editors do not need to worry about this feature of their websites. By automating these contrast ratios, editors are able to focus on other site content needs.</p>
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/2018/avoiding-route-collision-in-ez-platform/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Avoiding Route Collision in eZ Platform</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+
+
+
+  
+    
+        <div id="graphcomment"></div>
+<script type="text/javascript">
+  window.graphcomment_id = 'harmstyler-me';
+   
+  (function() {
+    var gc = document.createElement('script'); gc.type = 'text/javascript'; gc.async = true;
+    gc.src = 'https://graphcomment.com/js/integration.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
+  })();
+</script>
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133041000-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
+            
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
+            
+        
+    
+    <script type="text/javascript">
+        
+        hljs.configure({languages: ["css, php, xml, javascript, ini, sql, yaml"]});
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>
