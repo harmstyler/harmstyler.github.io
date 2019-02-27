@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
     <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
-    <lastBuildDate>Mon, 20 Jul 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 17 Feb 2019 10:13:29 -0700</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/categories/php/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Contrast Ratio Calculator</title>
+      <link>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</link>
+      <pubDate>Sun, 17 Feb 2019 10:13:29 -0700</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</guid>
+      <description>&lt;p&gt;Making sure webistes are accessible is a big deal these days. Websites should be mindful of their audience to make sure people with disabilities are not excluded from the site content. Color contrasts between foregrounds and backgrounds is an easy miss when checking that a site is accessible, but one that is vital to hard of sight users.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Allowing Raw HTML in KNP Menu Labels</title>
@@ -50,8 +59,7 @@ the two to work together, however, can be a little bit of a chore if not careful
       <pubDate>Fri, 15 Mar 2013 00:00:00 +0000</pubDate>
       <author>tyler.harms@gmail.com (Tyler Harms)</author>
       <guid>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/</guid>
-      <description>Solr has quickly become one of the most popular search engines available. Due to Solr&#39;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.
-{ &amp;quot;require&amp;quot;: { &amp;quot;solarium/solarium&amp;quot;: &amp;quot;3.0.0&amp;quot; } }  &amp;lt;?php $config = array( &#39;endpoint&#39; =&amp;gt; array( &#39;localhost&#39; =&amp;gt; array( &#39;host&#39; =&amp;gt; &#39;127.</description>
+      <description>Solr has quickly become one of the most popular search engines available. Due to Solr&amp;rsquo;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API. { &amp;quot;require&amp;quot;: { &amp;quot;solarium/solarium&amp;quot;: &amp;quot;3.0.0&amp;quot; } }  &amp;lt;?php $config = array( &#39;endpoint&#39; =&amp;gt; array( &#39;localhost&#39; =&amp;gt; array( &#39;host&#39; =&amp;gt; &#39;127.</description>
     </item>
     
     <item>

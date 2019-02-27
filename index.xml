@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
     <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
-    <lastBuildDate>Wed, 19 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 17 Feb 2019 10:13:29 -0700</lastBuildDate>
     <image>
         <link>https://harmstyler.me/</link>
         <title>@harmstyler - A Web Development Blog</title>
@@ -17,6 +17,90 @@
     
         <atom:link href="https://harmstyler.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Contrast Ratio Calculator</title>
+      <link>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</link>
+      <pubDate>Sun, 17 Feb 2019 10:13:29 -0700</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</guid>
+      <description>&lt;p&gt;Making sure webistes are accessible is a big deal these days. Websites should be mindful of their audience to make sure people with disabilities are not excluded from the site content. Color contrasts between foregrounds and backgrounds is an easy miss when checking that a site is accessible, but one that is vital to hard of sight users.&lt;/p&gt;
+
+&lt;p&gt;For more information about website contrast ratios, visit &lt;a href=&#34;https://webaim.org/articles/contrast/&#34;&gt;WebAIM&amp;rsquo;s Contrast and Color Accessibility page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;making-it-easier&#34;&gt;Making it easier&lt;/h2&gt;
+
+&lt;p&gt;Using the &lt;a href=&#34;https://github.com/harmstyler/contrast-ratio-calculator/&#34;&gt;Contrast Ratio Calculator&lt;/a&gt; library, calculating contrast ratios can be automatic in any site.&lt;/p&gt;
+
+&lt;h3 id=&#34;color-objects&#34;&gt;Color Objects&lt;/h3&gt;
+
+&lt;p&gt;Colors can be made into their object representation by using the &lt;a href=&#34;https://github.com/harmstyler/contrast-ratio-calculator/blob/v1.0.1/lib/ContrastRatioCalculator/Color.php&#34;&gt;Color class&lt;/a&gt;. The color objects can be created by either the hexidecimal representation of the color or the &lt;a href=&#34;https://en.wikipedia.org/wiki/RGB_color_model&#34;&gt;RGB&lt;/a&gt; representation of the color.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;&amp;lt;?php
+namespace HarmsTyler\ContrastRatioCalculator;
+
+class Color
+{
+    //...
+    public static function fromRgb(array $rgb): self {}
+    public static function fromHex(string $hex): self {}
+    //...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;&amp;lt;?php
+$color1 = Color::fromHex(&#39;ffffff&#39;);
+$color2 = Color::fromRgb([255,255,255]);
+// $color1-&amp;gt;getHex() === $color2-&amp;gt;getHex()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;calculating-the-contrast&#34;&gt;Calculating the Contrast&lt;/h3&gt;
+
+&lt;p&gt;Once color objects have been created, the &lt;a href=&#34;https://github.com/harmstyler/contrast-ratio-calculator/blob/v1.0.1/lib/ContrastRatioCalculator/ContrastRatio.php&#34;&gt;Contrast Ratio class&lt;/a&gt; can be used. The Contrast Ratio class requires two color objects on insantiation, a primary and a secondary color (typically foreground and background colors). The contrast ratio calculation is made immediately upon object instantiation, so it can be retrieved from the class immediately.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;&amp;lt;?php
+namespace HarmsTyler\ContrastRatioCalculator;
+
+class ContrastRatio
+{
+    public function __construct(Color $primaryColor, Color $secondaryColor) {}
+    public function getRatio() {};
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;&amp;lt;?php
+
+$contrastRatio = new ContrastRatio($color1, $color2);
+$ratio = $contrastRatio-&amp;gt;getRatio();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;making-the-grade&#34;&gt;Making the grade&lt;/h3&gt;
+
+&lt;p&gt;A ratio alone is just a number. Without knowing how to grade a raio, it&amp;rsquo;s actually useless. That&amp;rsquo;s where the &lt;a href=&#34;https://github.com/harmstyler/contrast-ratio-calculator/blob/v1.0.1/lib/ContrastRatioCalculator/WCAGContrastRating.php&#34;&gt;WCAGContrastRating class&lt;/a&gt; comes in to play. The WCAGContrastRating can return a grade by either passing a set of Color objects, or by passing an already created ContrastRatio object. The Web Content Accessibility Guidelines (WCAG) state what contrast ratios are a pass/fail. Specifically WCAG guidelines give grades of AAA, AA, AA Large, and FAIL (there are variations of these grades, but if text has a grade of AAA at normal text size, it can be assumed that it will receive an AAA at large text sizes as well, so those variations are ommitted from the grading scale).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;
+&amp;lt;?php
+namespace HarmsTyler\ContrastRatioCalculator;
+
+class WCAGContrastRating
+{
+    public function rateColors(Color $primaryColor, Color $secondaryColor) {}
+    public function rateContrastRatio(ContrastRatio $contrastRatio): string {}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;&amp;lt;?php
+$rating = new WCAGContrastRating();
+$grade1 = $rating-&amp;gt;rateContrastRatio($contrastRatio);
+$grade2 = $rating-&amp;gt;rateColors($color1, $color2);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Grades will be returned as one of four constants: &lt;code&gt;AA_LARGE&lt;/code&gt;, &lt;code&gt;AA&lt;/code&gt;, &lt;code&gt;AAA&lt;/code&gt;, and &lt;code&gt;FAIL&lt;/code&gt;;&lt;/p&gt;
+
+&lt;h2 id=&#34;a-real-world-example&#34;&gt;A real world example&lt;/h2&gt;
+
+&lt;p&gt;I help manage a large website installation where a small set of editors can manage &amp;gt;160 websites from a single admin. These editors can choose a site&amp;rsquo;s primary and secondary colors for the site, providing a more individualized look and feel for the various sites. Using the Contrast Ratio Calculator library, I am able to grade the primary/secondary color contrast ratios, as well as the font colors appearing in with the theme colors. By grading them automatically on the server, editors do not need to check each site individually. Editors do not need to worry about this feature of their websites. By automating these contrast ratios, editors are able to focus on other site content needs.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Avoiding Route Collision in eZ Platform</title>
@@ -64,7 +148,7 @@
       <pubDate>Tue, 30 Oct 2018 21:42:28 -0500</pubDate>
       <author>tyler.harms@gmail.com (Tyler Harms)</author>
       <guid>https://harmstyler.me/about/</guid>
-      <description>&lt;p&gt;Hi, I&amp;rsquo;m Tyler Harms. I am a professional software developer, father, and husband from the great state of South Dakota. I make things for the web, primarily with PHP, but also Ruby and Python. Most of my work deals with implementing Content Management solutions for businesses, primarily using eZ Publish.&lt;/p&gt;
+      <description>&lt;p&gt;Hi, I&amp;rsquo;m Tyler Harms. I am a professional software developer, father, and husband from the great state of South Dakota. I make things for the web, primarily with PHP, but also Ruby and Python. Most of my work deals with implementing Content Management solutions for businesses. I am an eZ Publish / eZ Platform expert, but have experience working with Wordpress, Concrete5, Drupal, and ProcessWire, among others.&lt;/p&gt;
 </description>
     </item>
     
@@ -719,7 +803,10 @@ if ($.browser.msie &amp;amp;&amp;amp; $.browser.version === 10) {
       <guid>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/</guid>
       <description>
 
-&lt;p class=&#34;lead&#34;&gt; Solr has quickly become one of the most popular search engines available. Due to Solr&#39;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.&lt;/p&gt;
+&lt;p class=&#34;lead&#34;&gt;
+    Solr has quickly become one of the most popular search engines available. Due to Solr&amp;rsquo;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.
+&lt;/p&gt;
+
 
 &lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
     &amp;quot;require&amp;quot;: {
@@ -746,7 +833,9 @@ $client = new Solarium\Client($config);
 &amp;lt;field name=&amp;quot;text&amp;quot; type=&amp;quot;text&amp;quot; indexed=&amp;quot;true&amp;quot; stored=&amp;quot;true&amp;quot; /&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Introduction to Solr: Search is an important part of most web projects and should be given much care. Throughout the years, making content searchable has changed a great deal. Obviously, exposing SQL queries to users through search is dangerous. Modern search implementations require a secure approach, such as a stand-alone search server, separate from site data. There are many search options to choose from. Your search list might include: Sphinx, Flax, ElasticSearch, Google, and Solr. Solr’s scalability, speed, built in features and community make it an ideal platform for any project. Luckily, integrating Solr into your PHP project has been made easy by the Solarium Project.&lt;/p&gt;
+&lt;h2 id=&#34;introduction-to-solr&#34;&gt;Introduction to Solr:&lt;/h2&gt;
+
+&lt;p&gt;Search is an important part of most web projects and should be given much care. Throughout the years, making content searchable has changed a great deal. Obviously, exposing SQL queries to users through search is dangerous. Modern search implementations require a secure approach, such as a stand-alone search server, separate from site data. There are many search options to choose from. Your search list might include: Sphinx, Flax, ElasticSearch, Google, and Solr. Solr’s scalability, speed, built in features and community make it an ideal platform for any project. Luckily, integrating Solr into your PHP project has been made easy by the Solarium Project.&lt;/p&gt;
 
 &lt;p&gt;In Apache’s own words, “_Solr is an open source enterprise search server based on the Lucene Java search library, with XML/HTTP and JSON, Ruby, and Python APIs, hit highlighting, faceted search, caching, replication, and a web administration interface_” [1]. Apache Solr is an open source, extensible, stand-alone search engine, built on Lucene, managed by The Apache Software Foundation. There are currently two stable versions of Solr available for use; Solr 3.6.2 and Solr 4.0. Either version may be used with Solarium; Solr 4 ships with added features, however, so use Solr 4 if possible.&lt;/p&gt;
 
@@ -754,13 +843,13 @@ $client = new Solarium\Client($config);
 
 &lt;p&gt;One of the greatest features of Solr is its scalability. Replication can be set up to run multiple Solr instances in a master/slave setup, just like MySQL replication.The documentation for setting up a master/slave setup is very thorough, so it will not be discussed further here. Another option for scaling Solr is to search multiple search cores. Solr can run multiple search cores at a time. Solr can search multiple cores at a time through its distributed search and sharding capabilities. Large search indexes can be split into multiple smaller indexes; then through a distributed search multiple cores are searched. The best part of a multicore search setup is that not all cores need to exist on the same server. This allows for very flexible search architecture.&lt;/p&gt;
 
-&lt;h3 id=&#34;solarium-acts-as-a-bridge&#34;&gt;Solarium acts as a bridge&lt;/h3&gt;
+&lt;h2 id=&#34;solarium-acts-as-a-bridge&#34;&gt;Solarium acts as a bridge&lt;/h2&gt;
 
 &lt;p&gt;Solr has a REST-like API, so interactions with it are very simple and happen over HTTP. The Solarium Project is “_an open source Solr client library for PHP applications_” [2], which makes interacting with Solr even simpler. Solarium exists to expose the Solr API through an easy to use PHP library.&lt;/p&gt;
 
 &lt;p&gt;Installation of Solarium has been made very easy through the use of Composer (Listing 1). Installing through Composer will automatically add the library to the PHP autoload path. To install Solarium into a project not utilizing Composer, the files will need to be downloaded from GitHub (&lt;a href=&#34;https://github.com/basdenooijer/solarium/tags&#34; title=&#34;Solarium Library&#34;&gt;https://github.com/basdenooijer/solarium/tags&lt;/a&gt;). Next, add the solarium library to the PHP autoload path manually. After Solarium is installed, Solr can be accessed through sending a Solarium Client ($client) object to a configuration array. The configuration array should be made up of the Solr host, port and path (Listing 2).&lt;/p&gt;
 
-&lt;h3 id=&#34;adding-content-to-solr&#34;&gt;Adding content to Solr&lt;/h3&gt;
+&lt;h2 id=&#34;adding-content-to-solr&#34;&gt;Adding content to Solr&lt;/h2&gt;
 
 &lt;p&gt;Before anything can be searched in Solr, documents (docs) must be added to the Solr index. Solr maintains a collection of docs in its index. A doc is a collection of fields and values. Solr fields must be defined in the Solr schema. A field can occur multiple times in a doc.&lt;/p&gt;
 
@@ -795,7 +884,7 @@ $doc2-&amp;gt;text = &#39;This is the next document\&#39;s content&#39;;
 
 &lt;p&gt;The new docs should now exist and be searchable using Solr.&lt;/p&gt;
 
-&lt;h3 id=&#34;searching-solr-through-solarium&#34;&gt;Searching Solr through Solarium&lt;/h3&gt;
+&lt;h2 id=&#34;searching-solr-through-solarium&#34;&gt;Searching Solr through Solarium&lt;/h2&gt;
 
 &lt;p&gt;Solarium offers a robust PHP API for searching Solr. To run a basic query, start with the $client object. Next, call the &lt;code&gt;createSelect()&lt;/code&gt; instance of the &lt;code&gt;$client&lt;/code&gt; object to generate the query for execution:&lt;/p&gt;
 
@@ -835,7 +924,7 @@ echo &#39;&amp;lt;/div&amp;gt;&#39;;
 
 &lt;p&gt;Filtering, setting query fields, boosting, and faceting are also possible ways of searching Solr. Filtering is another way of narrowing search results without using a query. Query fields allow for control over what fields are searched. Boosting gives certain field’s higher precedence in the Search. Facets give users a way to better navigate search results. Solarium gives easy access to all the various ways of searching Solr content.&lt;/p&gt;
 
-&lt;h3 id=&#34;removing-content-from-solr&#34;&gt;Removing content from Solr&lt;/h3&gt;
+&lt;h2 id=&#34;removing-content-from-solr&#34;&gt;Removing content from Solr&lt;/h2&gt;
 
 &lt;p&gt;Solr does not have a command called update; however, updates can be performed by re-adding content. Solr uses a unique identifier for each doc and only allows for one instance of the identifier in the search index. To update content, call the add command on an already existent Solr doc id. Sometimes updating Solr with new content isn’t enough. Sometimes the need to delete content from Solr arises. Doing this is similar to when adding docs, create an $update instance:&lt;/p&gt;
 
@@ -865,11 +954,11 @@ $client-&amp;gt;update($update);
 
 &lt;p&gt;Solarium’s delete doc API is very useful in maintaining an up-to-date search index.&lt;/p&gt;
 
-&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;Solr is an incredibly scalable, powerful and easy-to-use search engine that should be considered for any search project. Solr is designed to be language agnostic through its REST-like API, and thanks to Solarium it fits very easily into any PHP project. This article covers only three use cases for Solarium; the examples shipped with Solarium offer a great deal more. Search highlighting, debugging, optimizing, and ‘more like this’ functionality are all possible with Solr and Solarium.&lt;/p&gt;
 
-&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Apache Solr: &lt;a href=&#34;http://projects.apache.org/projects/solr.html&#34;&gt;http://projects.apache.org/projects/solr.html&lt;/a&gt;&lt;/li&gt;

@@ -8,10 +8,19 @@
     <language>en-us</language>
     <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
     <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
-    <lastBuildDate>Sat, 06 Sep 2014 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 17 Feb 2019 10:13:29 -0700</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A11y</title>
+      <link>https://harmstyler.me/categories/a11y/</link>
+      <pubDate>Sun, 17 Feb 2019 10:13:29 -0700</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/categories/a11y/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Angular</title>
@@ -106,7 +115,7 @@
     <item>
       <title>Php</title>
       <link>https://harmstyler.me/categories/php/</link>
-      <pubDate>Mon, 20 Jul 2015 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 17 Feb 2019 10:13:29 -0700</pubDate>
       <author>tyler.harms@gmail.com (Tyler Harms)</author>
       <guid>https://harmstyler.me/categories/php/</guid>
       <description></description>
