@@ -348,7 +348,7 @@ echo $renderer-&amp;gt;render($menu);
 
 $menu
     -&amp;gt;addChild(&#39;Foo&amp;lt;br&amp;gt;Bar&#39;, array(&#39;uri&#39; =&amp;gt; &#39;/&#39;))
-    -&amp;gt;setExtra(&#39;safe_label&#39;, true );
+    -&amp;gt;setExtra(&#39;safe_label&#39;, true);
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Options set via the &lt;code&gt;setExtra()&lt;/code&gt; method end up as options on the menu item, accessible by a &lt;code&gt;getExtra()&lt;/code&gt; method. The default twig template for KNPMenuBundle takes advantage of this parameter out of the box.&lt;/p&gt;

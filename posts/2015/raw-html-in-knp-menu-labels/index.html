@@ -245,7 +245,7 @@ echo $renderer-&gt;render($menu);
 
 $menu
     -&gt;addChild('Foo&lt;br&gt;Bar', array('uri' =&gt; '/'))
-    -&gt;setExtra('safe_label', true );
+    -&gt;setExtra('safe_label', true);
 </code></pre>
 
 <p>Options set via the <code>setExtra()</code> method end up as options on the menu item, accessible by a <code>getExtra()</code> method. The default twig template for KNPMenuBundle takes advantage of this parameter out of the box.</p>
@@ -330,13 +330,15 @@ if (!doNotTrack) {
             
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
             
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
+            
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
             
         
     
     <script type="text/javascript">
         
-        hljs.configure({languages: ["css, php, xml, javascript, ini, sql, yaml"]});
+        hljs.configure({languages: ["css, php, xml, javascript, ini, sql, twig, yaml"]});
         
         hljs.initHighlightingOnLoad();
     </script>
