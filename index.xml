@@ -8,12 +8,23 @@
     <language>en-us</language>
     <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
     <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
+<<<<<<< HEAD
     <lastBuildDate>Sat, 06 Apr 2019 10:51:51 -0500</lastBuildDate>
     <image>
         <link>https://harmstyler.me/</link>
         <title>@harmstyler - A Web Development Blog</title>
         <url>https://harmstyler.me/img/tyler_portrait.jpg</url>
     </image>
+||||||| merged common ancestors
+    <lastBuildDate>Sun, 17 Feb 2019 10:13:29 -0700</lastBuildDate>
+=======
+    <lastBuildDate>Sun, 17 Feb 2019 10:13:29 -0700</lastBuildDate>
+    <image>
+        <link>https://harmstyler.me/</link>
+        <title>@harmstyler - A Web Development Blog</title>
+        <url>https://harmstyler.me/img/tyler_portrait.jpg</url>
+    </image>
+>>>>>>> 5d06510708a6dffe4520140e3a3a67f2540810ed
     
         <atom:link href="https://harmstyler.me/index.xml" rel="self" type="application/rss+xml" />
     

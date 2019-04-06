@@ -1,11 +1,11 @@
 {
 	"version": 3,
 	"file": "print.css",
-	"sourceRoot": "/Projects/harmstyler-hugo",
+	"sourceRoot": "/home/tyler/Projects/harmstyler-hugo",
 	"sources": [
 		"themes/hyde-hyde/assets/scss/print.scss",
-		"../../../../Projects/harmstyler-hugo/themes/hyde-hyde/assets/scss/hyde-hyde/_variables.scss",
-		"../../../../Projects/harmstyler-hugo/themes/hyde-hyde/assets/scss/hyde-hyde/_print.scss"
+		"themes/hyde-hyde/assets/scss/hyde-hyde/_variables.scss",
+		"themes/hyde-hyde/assets/scss/hyde-hyde/_print.scss"
 	],
 	"sourcesContent": [
 		"@import \"hyde-hyde/variables\";\n@import 'hyde-hyde/print';\n",
