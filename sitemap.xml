@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://harmstyler.me/portfolio/</loc>
+    <lastmod>2019-04-06T10:37:53-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</loc>
     <lastmod>2019-02-17T10:13:29-07:00</lastmod>
   </url>
@@ -508,7 +513,7 @@
   
   <url>
     <loc>https://harmstyler.me/</loc>
-    <lastmod>2019-02-17T10:13:29-07:00</lastmod>
+    <lastmod>2019-04-06T10:51:51-05:00</lastmod>
     <priority>0</priority>
   </url>
   

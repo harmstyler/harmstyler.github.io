@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Portfolio on Tyler Harms</title>
+    <link>https://harmstyler.me/portfolio/</link>
+    <description>Recent content in Portfolio on Tyler Harms</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
+    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
+    <lastBuildDate>Sat, 06 Apr 2019 10:37:53 -0500</lastBuildDate>
+    
+	<atom:link href="https://harmstyler.me/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2018 South Dakota Code Camp</title>
+      <link>https://harmstyler.me/portfolio/sdcc2018/</link>
+      <pubDate>Sat, 06 Apr 2019 10:51:51 -0500</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/portfolio/sdcc2018/</guid>
+      <description>South Dakota Code Camp is The Mount Rushmore State’s largest developer conference. The site lists all necessary information for conference attendees. Design by Marshall Crosby - Blend Interactive, implemented in Hugo.</description>
+    </item>
+    
+    <item>
+      <title>SFDevs</title>
+      <link>https://harmstyler.me/portfolio/sfdevs/</link>
+      <pubDate>Sat, 06 Apr 2019 10:38:33 -0500</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/portfolio/sfdevs/</guid>
+      <description>sfdevs.com is designed to be a resource for the SFDevs community. Whether it&amp;rsquo;s finding information about upcoming meetups or joining in the Slack conversations, sfdevs.com is the resource. Design by TEMPLATED, implemented in Hugo.</description>
+    </item>
+    
+  </channel>
+</rss>
