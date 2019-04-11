@@ -533,17 +533,12 @@ public function setUpdatedValue()
 &lt;p&gt;The solution is to use an &lt;a href=&#34;http://www.php.net/manual/en/language.oop5.abstract.php&#34;&gt;Abstract Class&lt;/a&gt; that our entity can extend. The abstract class, &lt;code&gt;TimeStampedEntity&lt;/code&gt;, will have two entity variables &lt;code&gt;$updated&lt;/code&gt; and &lt;code&gt;$created&lt;/code&gt; and will look nearly identical to the code above when it is complete. The key that will make this work with Doctrine and Symfony2 is Doctrine&amp;rsquo;s &lt;a href=&#34;http://docs.doctrine-project.org/en/latest/reference/inheritance-mapping.html#mapped-superclasses&#34;&gt;&lt;code&gt;MappedSuperclass&lt;/code&gt;&lt;/a&gt; declaration that tells Symfony and Doctrine that the abstract class is a Superclass with declared entity attributes. What we are left with is a Superclass that can extend any model to add &lt;code&gt;updated&lt;/code&gt; and &lt;code&gt;created&lt;/code&gt; attributes to your data.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;&amp;lt;?php
-/**
- * TimeStampedEntity.php
- */
 
 namespace HarmsTyler\Common\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Post
- *
  * @ORM\MappedSuperclass
  * @ORM\HasLifecycleCallbacks
  */
@@ -567,7 +562,7 @@ abstract class TimeStampedEntity {
      * Set created
      *
      * @param \DateTime $created
-     * @return Post
+     * @return self
      */
     public function setCreated($created)
     {
@@ -590,7 +585,7 @@ abstract class TimeStampedEntity {
      * Set updated
      *
      * @param \DateTime $updated
-     * @return Post
+     * @return self
      */
     public function setUpdated($updated)
     {
@@ -635,9 +630,6 @@ abstract class TimeStampedEntity {
 &lt;p&gt;An example in use:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;&amp;lt;?php
-/**
- * Post.php
- */
 
 namespace Blend\Iterate\BlogBundle\Entity;
 

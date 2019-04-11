@@ -259,17 +259,12 @@ public function setUpdatedValue()
 <p>The solution is to use an <a href="http://www.php.net/manual/en/language.oop5.abstract.php">Abstract Class</a> that our entity can extend. The abstract class, <code>TimeStampedEntity</code>, will have two entity variables <code>$updated</code> and <code>$created</code> and will look nearly identical to the code above when it is complete. The key that will make this work with Doctrine and Symfony2 is Doctrine&rsquo;s <a href="http://docs.doctrine-project.org/en/latest/reference/inheritance-mapping.html#mapped-superclasses"><code>MappedSuperclass</code></a> declaration that tells Symfony and Doctrine that the abstract class is a Superclass with declared entity attributes. What we are left with is a Superclass that can extend any model to add <code>updated</code> and <code>created</code> attributes to your data.</p>
 
 <pre><code class="language-php">&lt;?php
-/**
- * TimeStampedEntity.php
- */
 
 namespace HarmsTyler\Common\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Post
- *
  * @ORM\MappedSuperclass
  * @ORM\HasLifecycleCallbacks
  */
@@ -293,7 +288,7 @@ abstract class TimeStampedEntity {
      * Set created
      *
      * @param \DateTime $created
-     * @return Post
+     * @return self
      */
     public function setCreated($created)
     {
@@ -316,7 +311,7 @@ abstract class TimeStampedEntity {
      * Set updated
      *
      * @param \DateTime $updated
-     * @return Post
+     * @return self
      */
     public function setUpdated($updated)
     {
@@ -361,9 +356,6 @@ abstract class TimeStampedEntity {
 <p>An example in use:</p>
 
 <pre><code class="language-php">&lt;?php
-/**
- * Post.php
- */
 
 namespace Blend\Iterate\BlogBundle\Entity;
 
