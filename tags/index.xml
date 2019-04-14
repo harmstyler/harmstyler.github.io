@@ -8,71 +8,17 @@
     <language>en-us</language>
     <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
     <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
-    <lastBuildDate>Fri, 28 Sep 2012 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2015 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Amazon</title>
-      <link>https://harmstyler.me/tags/amazon/</link>
-      <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
+      <title>KNP Menu</title>
+      <link>https://harmstyler.me/tags/knp-menu/</link>
+      <pubDate>Mon, 20 Jul 2015 00:00:00 +0000</pubDate>
       <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/amazon/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Authorization</title>
-      <link>https://harmstyler.me/tags/authorization/</link>
-      <pubDate>Sat, 02 Mar 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/authorization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Aws</title>
-      <link>https://harmstyler.me/tags/aws/</link>
-      <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Book Review</title>
-      <link>https://harmstyler.me/tags/book-review/</link>
-      <pubDate>Fri, 29 Nov 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/book-review/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cloud</title>
-      <link>https://harmstyler.me/tags/cloud/</link>
-      <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/cloud/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Composer</title>
-      <link>https://harmstyler.me/tags/composer/</link>
-      <pubDate>Wed, 21 Nov 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/composer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Development</title>
-      <link>https://harmstyler.me/tags/development/</link>
-      <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/development/</guid>
+      <guid>https://harmstyler.me/tags/knp-menu/</guid>
       <description></description>
     </item>
     
@@ -86,128 +32,11 @@
     </item>
     
     <item>
-      <title>Dogs</title>
-      <link>https://harmstyler.me/tags/dogs/</link>
-      <pubDate>Mon, 23 Apr 2012 00:00:00 +0000</pubDate>
+      <title>Book Review</title>
+      <link>https://harmstyler.me/tags/book-review/</link>
+      <pubDate>Fri, 29 Nov 2013 00:00:00 +0000</pubDate>
       <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/dogs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ez Find</title>
-      <link>https://harmstyler.me/tags/ez-find/</link>
-      <pubDate>Fri, 07 Dec 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/ez-find/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ez Publish</title>
-      <link>https://harmstyler.me/tags/ez-publish/</link>
-      <pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/ez-publish/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gitignore</title>
-      <link>https://harmstyler.me/tags/gitignore/</link>
-      <pubDate>Sat, 18 Aug 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/gitignore/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gradients</title>
-      <link>https://harmstyler.me/tags/gradients/</link>
-      <pubDate>Thu, 20 Oct 2011 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/gradients/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Internet Explorer</title>
-      <link>https://harmstyler.me/tags/internet-explorer/</link>
-      <pubDate>Sat, 29 Jun 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/internet-explorer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Jquery</title>
-      <link>https://harmstyler.me/tags/jquery/</link>
-      <pubDate>Fri, 09 Aug 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/jquery/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Knp Menu</title>
-      <link>https://harmstyler.me/tags/knp-menu/</link>
-      <pubDate>Mon, 20 Jul 2015 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/knp-menu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Php</title>
-      <link>https://harmstyler.me/tags/php/</link>
-      <pubDate>Wed, 24 Aug 2011 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/php/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pyrocms</title>
-      <link>https://harmstyler.me/tags/pyrocms/</link>
-      <pubDate>Wed, 24 Aug 2011 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/pyrocms/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Search</title>
-      <link>https://harmstyler.me/tags/search/</link>
-      <pubDate>Mon, 29 Jul 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/search/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Shards</title>
-      <link>https://harmstyler.me/tags/shards/</link>
-      <pubDate>Fri, 29 Jun 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/shards/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Skype</title>
-      <link>https://harmstyler.me/tags/skype/</link>
-      <pubDate>Thu, 01 Nov 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/skype/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Solarium</title>
-      <link>https://harmstyler.me/tags/solarium/</link>
-      <pubDate>Fri, 15 Mar 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/solarium/</guid>
+      <guid>https://harmstyler.me/tags/book-review/</guid>
       <description></description>
     </item>
     
@@ -221,11 +50,47 @@
     </item>
     
     <item>
-      <title>Sql</title>
-      <link>https://harmstyler.me/tags/sql/</link>
-      <pubDate>Thu, 13 Sep 2012 00:00:00 +0000</pubDate>
+      <title>jQuery</title>
+      <link>https://harmstyler.me/tags/jquery/</link>
+      <pubDate>Fri, 09 Aug 2013 00:00:00 +0000</pubDate>
       <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/sql/</guid>
+      <guid>https://harmstyler.me/tags/jquery/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Search</title>
+      <link>https://harmstyler.me/tags/search/</link>
+      <pubDate>Mon, 29 Jul 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/search/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Internet Explorer</title>
+      <link>https://harmstyler.me/tags/internet-explorer/</link>
+      <pubDate>Sat, 29 Jun 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/internet-explorer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Solarium</title>
+      <link>https://harmstyler.me/tags/solarium/</link>
+      <pubDate>Fri, 15 Mar 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/solarium/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Authorization</title>
+      <link>https://harmstyler.me/tags/authorization/</link>
+      <pubDate>Sat, 02 Mar 2013 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/authorization/</guid>
       <description></description>
     </item>
     
@@ -239,11 +104,29 @@
     </item>
     
     <item>
-      <title>Syntax Highlighting</title>
-      <link>https://harmstyler.me/tags/syntax-highlighting/</link>
-      <pubDate>Sat, 30 Jun 2012 00:00:00 +0000</pubDate>
+      <title>eZ Find</title>
+      <link>https://harmstyler.me/tags/ez-find/</link>
+      <pubDate>Fri, 07 Dec 2012 00:00:00 +0000</pubDate>
       <author>tyler.harms@gmail.com (Tyler Harms)</author>
-      <guid>https://harmstyler.me/tags/syntax-highlighting/</guid>
+      <guid>https://harmstyler.me/tags/ez-find/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Composer</title>
+      <link>https://harmstyler.me/tags/composer/</link>
+      <pubDate>Wed, 21 Nov 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/composer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Skype</title>
+      <link>https://harmstyler.me/tags/skype/</link>
+      <pubDate>Thu, 01 Nov 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/skype/</guid>
       <description></description>
     </item>
     
@@ -253,6 +136,123 @@
       <pubDate>Thu, 01 Nov 2012 00:00:00 +0000</pubDate>
       <author>tyler.harms@gmail.com (Tyler Harms)</author>
       <guid>https://harmstyler.me/tags/technology/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AWS</title>
+      <link>https://harmstyler.me/tags/aws/</link>
+      <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Amazon</title>
+      <link>https://harmstyler.me/tags/amazon/</link>
+      <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/amazon/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cloud</title>
+      <link>https://harmstyler.me/tags/cloud/</link>
+      <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Development</title>
+      <link>https://harmstyler.me/tags/development/</link>
+      <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQL</title>
+      <link>https://harmstyler.me/tags/sql/</link>
+      <pubDate>Thu, 13 Sep 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/sql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gitignore</title>
+      <link>https://harmstyler.me/tags/gitignore/</link>
+      <pubDate>Sat, 18 Aug 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/gitignore/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Syntax Highlighting</title>
+      <link>https://harmstyler.me/tags/syntax-highlighting/</link>
+      <pubDate>Sat, 30 Jun 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/syntax-highlighting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shards</title>
+      <link>https://harmstyler.me/tags/shards/</link>
+      <pubDate>Fri, 29 Jun 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/shards/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dogs</title>
+      <link>https://harmstyler.me/tags/dogs/</link>
+      <pubDate>Mon, 23 Apr 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/dogs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>eZ Publish</title>
+      <link>https://harmstyler.me/tags/ez-publish/</link>
+      <pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/ez-publish/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gradients</title>
+      <link>https://harmstyler.me/tags/gradients/</link>
+      <pubDate>Thu, 20 Oct 2011 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/gradients/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PHP</title>
+      <link>https://harmstyler.me/tags/php/</link>
+      <pubDate>Wed, 24 Aug 2011 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PyroCMS</title>
+      <link>https://harmstyler.me/tags/pyrocms/</link>
+      <pubDate>Wed, 24 Aug 2011 00:00:00 +0000</pubDate>
+      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      <guid>https://harmstyler.me/tags/pyrocms/</guid>
       <description></description>
     </item>
     

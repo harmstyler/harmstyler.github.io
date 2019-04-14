@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Php Codesniffer on Tyler Harms</title>
+    <title>PHP CodeSniffer on Tyler Harms</title>
     <link>https://harmstyler.me/categories/php-codesniffer/</link>
-    <description>Recent content in Php Codesniffer on Tyler Harms</description>
+    <description>Recent content in PHP CodeSniffer on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>

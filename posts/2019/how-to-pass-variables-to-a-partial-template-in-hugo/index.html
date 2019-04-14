@@ -6,15 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Cache-Control" content="public" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.55.0" /><title>eZ Publish with Sublime • Tyler Harms</title><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="eZ Publish with Sublime"/>
-<meta name="twitter:description" content="A while back I fell in love with Sublime Text 2 and its&rsquo; many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ."/>
-<meta property="og:title" content="eZ Publish with Sublime" />
-<meta property="og:description" content="A while back I fell in love with Sublime Text 2 and its&rsquo; many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ." />
+<meta name="generator" content="Hugo 0.55.0" /><title>How to Pass Variables to a Partial Template in Hugo • Tyler Harms</title><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to Pass Variables to a Partial Template in Hugo"/>
+<meta name="twitter:description" content="As a developer, I want to keep my code as DRY as is feasible for the given project. In a Hugo project, that&rsquo;s where the Partial templates come in.
+ Partials are smaller, context-aware components in your list and page templates that can be used economically to keep your templating DRY.
+ Partials, however, have one serious limitation, they&rsquo;re cached during the build of a given page (or scope). Once a partial has been created, no outside logic can adjust what the partial returns (for the page)."/>
+<meta property="og:title" content="How to Pass Variables to a Partial Template in Hugo" />
+<meta property="og:description" content="As a developer, I want to keep my code as DRY as is feasible for the given project. In a Hugo project, that&rsquo;s where the Partial templates come in.
+ Partials are smaller, context-aware components in your list and page templates that can be used economically to keep your templating DRY.
+ Partials, however, have one serious limitation, they&rsquo;re cached during the build of a given page (or scope). Once a partial has been created, no outside logic can adjust what the partial returns (for the page)." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://harmstyler.me/posts/2012/ez-publish-with-sublime/" />
-<meta property="article:published_time" content="2012-06-30T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2012-06-30T00:00:00&#43;00:00"/>
+<meta property="og:url" content="https://harmstyler.me/posts/2019/how-to-pass-variables-to-a-partial-template-in-hugo/" />
+<meta property="article:published_time" content="2019-04-13T21:05:43-05:00"/>
+<meta property="article:modified_time" content="2019-04-13T21:05:43-05:00"/>
 
 
 
@@ -141,13 +145,13 @@
 <div class="content container">
     <article>
   <header>
-    <h1>eZ Publish with Sublime</h1>
+    <h1>How to Pass Variables to a Partial Template in Hugo</h1>
     
     
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> Jun 30, 2012
+      <i class="fas fa-calendar-alt"></i> Apr 13, 2019
     
     
     
@@ -156,28 +160,15 @@
           in
           
           
-              <a class="badge badge-category" href="/categories/sublime-text">SUBLIME TEXT</a>
-              •
-          
-              <a class="badge badge-category" href="/categories/ez-publish">EZ PUBLISH</a>
+              <a class="badge badge-category" href="/categories/hugo">HUGO</a>
               
           
       
     
     
     
-      
-      
-          <br/>
-           <i class="fas fa-tags"></i>
-          
-          <a class="badge badge-tag" href="/tags/syntax-highlighting">syntax highlighting</a>
-          
-      
-    
-    
     <br/>
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 2 min read
 </div>
 
 
@@ -185,25 +176,64 @@
   
   
   <div class="post">
-    <div class="pull-right"><img title="Sublime Text icon" src="/img/sublime_text_icon_2181-150x150.png" alt="Sublime Text icon" width="150" height="150" /></div>
+    <p>As a developer, I want to keep my code as DRY as is feasible for the given project. In a Hugo project, that&rsquo;s where the <a href="https://gohugo.io/templates/partials/">Partial</a> templates come in.</p>
 
-<p>A while back I fell in love with <a title="Sublime Text 2" href="http://bit.ly/MHuK34" target="_blank">Sublime Text 2</a> and its&rsquo; many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ. So what I decided to do was use the Smarty package as a template for adding more language support for eZ Publish. What I have is far from complete; I usually only add to it when I use a method that is not already supported. You can find it out on <a title="ez sublime on GitHub" href="http://bit.ly/N4eTcp" target="_blank">GitHub</a>. It is my hope that there are some eZ Publish devs out there that really enjoy Sublime as I do and want to help me grow the package. Remember, it is far from complete, but nonetheless, I really hope that you enjoy the language highlighting, and if you do feel free to contribute.</p>
+<blockquote>
+<p>Partials are smaller, context-aware components in your list and page templates that can be used economically to keep your templating DRY.</p>
+</blockquote>
+
+<p>Partials, however, have one serious limitation, they&rsquo;re cached during the build of a given page (or scope). Once a partial has been created, no outside logic can adjust what the partial returns (for the page). This makes the build very fast. But, prevents modifications to the partial if so desired. Imagine a scenario where a partial defines a DOM ID and you want to include the partial twice on the page. In that scenario you&rsquo;ll end up with a duplicated id on the page.</p>
+
+<blockquote>
+<p>Partials are cached for each page during the build.</p>
+</blockquote>
+
+<p>Now, knowing <em>why</em> we can&rsquo;t just define a variable and expect it to exist inside the partial, the solution makes a lot of sense. The <a href="https://gohugo.io/functions/partialcached/"><code>partialCached</code></a> is usually used to use a partial template that is cached outside of the current page scope. This function is usually used to optimize builds to be more performant.</p>
+
+<blockquote>
+<p>partialCached allows for caching of partials that do not need to be re-rendered on every invocation.</p>
+</blockquote>
+
+<p>The <code>partialCached</code> function can take extra parameters (unlimited) in order to vary the cache for the partial. That means that we can call the partial on a template, and call the <code>partialCached</code> (with a cache variant) and the partials will be rendered independently of each other.</p>
+
+<p>Finally, we&rsquo;ll use the Hugo <a href="https://gohugo.io/functions/scratch/"><code>.Scratch</code></a> function to tie it all together.</p>
+
+<blockquote>
+<p>.Scratch acts as a “scratchpad” to allow for writable page- or shortcode-scoped variables.</p>
+</blockquote>
+
+<p>Using the scratchpad we can set a variable outide the template and get it inside the rendered partial.</p>
+
+<p><code>example.html</code>:</p>
+
+<pre><code class="language-html">{{ define &quot;content&quot; }}
+    {{ partial &quot;page-single/contact_form.html&quot; . }}
+    &lt;!-- ... --&gt;
+    {{ .Scratch.Set &quot;form_id&quot; &quot;-2&quot; }}
+    {{ partialCached &quot;page-single/contact_form.html&quot; . &quot;footer&quot; }}
+{{ end }}
+</code></pre>
+
+<p><code>page-single/contact_form.html</code>:</p>
+
+<pre><code class="language-html">&lt;form id=&quot;submit-form{{ .Scratch.Get &quot;form_id&quot; }}&quot;&gt;
+    &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+    &lt;input type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;name&quot; id=&quot;name{{ .Scratch.Get &quot;form_id&quot; }}&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>Using this strategy you can pass variables into partials and get around the built in partial caching that Hugo employs.</p>
 
   </div>
   
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/2012/fixing-shards-in-ez-find/" class="navigation-prev">
+    <a href="/posts/2019/contrast-ratio-calculator/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">Fixing Shards in eZ Find</span>
+      <span class="navigation-tittle">Contrast Ratio Calculator</span>
     </a>
     
-    
-    <a href="/posts/2012/gitignore-vs-gitkeep/" class="navigation-next">
-      <span class="navigation-tittle">Multiple .gitignore files versus .gitkeep files</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
     
 </div>
 
