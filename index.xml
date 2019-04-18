@@ -862,10 +862,10 @@ if ($.browser.msie &amp;amp;&amp;amp; $.browser.version === 10) {
     
     <item>
       <title>Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium</title>
-      <link>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/</link>
+      <link>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium/</link>
       <pubDate>Fri, 15 Mar 2013 00:00:00 +0000</pubDate>
       
-      <guid>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/</guid>
+      <guid>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium/</guid>
       <description>
 
 &lt;p class=&#34;lead&#34;&gt;
@@ -901,7 +901,7 @@ $client = new Solarium\Client($config);
 
 &lt;p&gt;Search is an important part of most web projects and should be given much care. Throughout the years, making content searchable has changed a great deal. Obviously, exposing SQL queries to users through search is dangerous. Modern search implementations require a secure approach, such as a stand-alone search server, separate from site data. There are many search options to choose from. Your search list might include: Sphinx, Flax, ElasticSearch, Google, and Solr. Solr’s scalability, speed, built in features and community make it an ideal platform for any project. Luckily, integrating Solr into your PHP project has been made easy by the Solarium Project.&lt;/p&gt;
 
-&lt;p&gt;In Apache’s own words, “_Solr is an open source enterprise search server based on the Lucene Java search library, with XML/HTTP and JSON, Ruby, and Python APIs, hit highlighting, faceted search, caching, replication, and a web administration interface_” [1]. Apache Solr is an open source, extensible, stand-alone search engine, built on Lucene, managed by The Apache Software Foundation. There are currently two stable versions of Solr available for use; Solr 3.6.2 and Solr 4.0. Either version may be used with Solarium; Solr 4 ships with added features, however, so use Solr 4 if possible.&lt;/p&gt;
+&lt;p&gt;In Apache’s own words, &amp;ldquo;&lt;em&gt;Solr is an open source enterprise search server based on the Lucene Java search library, with XML/HTTP and JSON, Ruby, and Python APIs, hit highlighting, faceted search, caching, replication, and a web administration interface&lt;/em&gt;&amp;ldquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. Apache Solr is an open source, extensible, stand-alone search engine, built on Lucene, managed by The Apache Software Foundation. There are currently two stable versions of Solr available for use; Solr 3.6.2 and Solr 4.0. Either version may be used with Solarium; Solr 4 ships with added features, however, so use Solr 4 if possible.&lt;/p&gt;
 
 &lt;p&gt;Solr is designed to run as a stand-alone Java web application (app). The documentation for downloading, installing, and running Solr can be found at &lt;a href=&#34;http://lucene.apache.org/solr/tutorial.html&#34; title=&#34;Solr Tutorial&#34;&gt;http://lucene.apache.org/solr/tutorial.html&lt;/a&gt;. Because Solr is meant to be separate from the primary project, it can be installed anywhere. All interactions with Solr happen over HTTP through a REST-like API. Solarium utilizes both PHP and JSON for its interactions with Solr.&lt;/p&gt;
 
@@ -909,7 +909,7 @@ $client = new Solarium\Client($config);
 
 &lt;h2 id=&#34;solarium-acts-as-a-bridge&#34;&gt;Solarium acts as a bridge&lt;/h2&gt;
 
-&lt;p&gt;Solr has a REST-like API, so interactions with it are very simple and happen over HTTP. The Solarium Project is “_an open source Solr client library for PHP applications_” [2], which makes interacting with Solr even simpler. Solarium exists to expose the Solr API through an easy to use PHP library.&lt;/p&gt;
+&lt;p&gt;Solr has a REST-like API, so interactions with it are very simple and happen over HTTP. The Solarium Project is &amp;ldquo;&lt;em&gt;an open source Solr client library for PHP applications&lt;/em&gt;&amp;rdquo; &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;, which makes interacting with Solr even simpler. Solarium exists to expose the Solr API through an easy to use PHP library.&lt;/p&gt;
 
 &lt;p&gt;Installation of Solarium has been made very easy through the use of Composer (Listing 1). Installing through Composer will automatically add the library to the PHP autoload path. To install Solarium into a project not utilizing Composer, the files will need to be downloaded from GitHub (&lt;a href=&#34;https://github.com/basdenooijer/solarium/tags&#34; title=&#34;Solarium Library&#34;&gt;https://github.com/basdenooijer/solarium/tags&lt;/a&gt;). Next, add the solarium library to the PHP autoload path manually. After Solarium is installed, Solr can be accessed through sending a Solarium Client ($client) object to a configuration array. The configuration array should be made up of the Solr host, port and path (Listing 2).&lt;/p&gt;
 
@@ -963,7 +963,7 @@ $query-&amp;gt;setQuery(&#39;*:*&#39;);
 &lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$resultSet = $client-&amp;gt;select($query);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Use the $resultSet array to iterate over the array and display the results:&lt;/p&gt;
+&lt;p&gt;Use the &lt;code&gt;$resultSet&lt;/code&gt; array to iterate over the array and display the results:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;echo &#39;&amp;lt;div class=&amp;quot;search-results&amp;quot;&amp;gt;&#39;;
 foreach ($resultSet as $result) {
@@ -1023,11 +1023,17 @@ $client-&amp;gt;update($update);
 &lt;p&gt;Solr is an incredibly scalable, powerful and easy-to-use search engine that should be considered for any search project. Solr is designed to be language agnostic through its REST-like API, and thanks to Solarium it fits very easily into any PHP project. This article covers only three use cases for Solarium; the examples shipped with Solarium offer a great deal more. Search highlighting, debugging, optimizing, and ‘more like this’ functionality are all possible with Solr and Solarium.&lt;/p&gt;
 
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Apache Solr: &lt;a href=&#34;http://projects.apache.org/projects/solr.html&#34;&gt;http://projects.apache.org/projects/solr.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;The Solarium Project: &lt;a href=&#34;http://www.solarium-project.org/&#34;&gt;http://www.solarium-project.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:1&#34;&gt;Apache Solr: &lt;a href=&#34;http://projects.apache.org/projects/solr.html&#34;&gt;http://projects.apache.org/projects/solr.html&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;The Solarium Project: &lt;a href=&#34;http://www.solarium-project.org/&#34;&gt;http://www.solarium-project.org/&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;/div&gt;
 </description>
     </item>
     
