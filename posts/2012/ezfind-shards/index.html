@@ -18,13 +18,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -192,18 +186,16 @@
     <!--
     ![Distributed Search](/img/distributed_search.png)
 -->
-
-<pre><code class="language-php">&lt;?php
-if ( isset( $distributedSearch['shards'] ) )
-{
-    foreach  ( $distributedSearch['shards'] as $shard )
-    {
-        $shardUrls[] = $iniShards[$shard];
-    }
-    $shardQuery = implode( ',', $shardUrls );
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">if</span> <span class="p">(</span> <span class="nx">isset</span><span class="p">(</span> <span class="nv">$distributedSearch</span><span class="p">[</span><span class="s1">&#39;shards&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">foreach</span>  <span class="p">(</span> <span class="nv">$distributedSearch</span><span class="p">[</span><span class="s1">&#39;shards&#39;</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$shard</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$shardUrls</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$iniShards</span><span class="p">[</span><span class="nv">$shard</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="nv">$shardQuery</span> <span class="o">=</span> <span class="nx">implode</span><span class="p">(</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="nv">$shardUrls</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Prerequisites:</p>
 
 <ul>
@@ -211,17 +203,14 @@ if ( isset( $distributedSearch['shards'] ) )
 </ul>
 
 <p>The following post is based on the option in the eZ Find <code>solr.ini</code> referring to Shards.</p>
-
-<pre><code class="language-ini">[SolrBase]
-#Shards mapping, can be to multicores in one servlet or even a crosss servers
-#typical use is multilingual setups, but also for external index support
-#the keys are used as shorthands in template functions
-#Shards[]
-#Shards[eng-GB]=http://localhost:8983/solr/eng-GB
-#Shards[fre-FR]=http://localhost:8983/solr/fre-FR
-#Shards[myforeignindex]=http://myotherhost:8983/solr
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[SolrBase]</span>
+<span class="c1">#Shards mapping, can be to multicores in one servlet or even a crosss servers</span>
+<span class="c1">#typical use is multilingual setups, but also for external index support</span>
+<span class="c1">#the keys are used as shorthands in template functions</span>
+<span class="c1">#Shards[]</span>
+<span class="c1">#Shards[eng-GB]=http://localhost:8983/solr/eng-GB</span>
+<span class="c1">#Shards[fre-FR]=http://localhost:8983/solr/fre-FR</span>
+<span class="c1">#Shards[myforeignindex]=http://myotherhost:8983/solr</span></code></pre></div>
 <p>What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).</p>
 
 <p>First things first, we need to tell each siteaccess what its Search Server URI is. Within the <code>settings/siteaccess/&lt;siteaccess-name&gt;/</code> directory we need to create a new solr.ini.append.php file (duplicate the file in the admin version). Within each siteaccess we need to input our Solr core name; for harmssite it would be <code>SearchServerURI=http://localhost:8983/solr/harmssite</code> and for the counterhelix siteaccess it would be <code>SearchServerURI=http://localhost:8983/solr/counterhelix</code>.</p>
@@ -229,50 +218,38 @@ if ( isset( $distributedSearch['shards'] ) )
 <p>Next, make sure that you have your cores installed into solr. In order to do this just copy the default eng-GB from the <code>solr.multicore/</code> directory and then rename it for each core you wish to have, in my case I have a harmssite and a counterhelix core. There is also a <code>solr.xml</code> that we need to edit. Here we declare each core that we created.</p>
 
 <p>Mine:</p>
-
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
-&lt;solr persistent=&quot;true&quot; sharedLib=&quot;lib&quot;&gt;
-  &lt;cores adminPath=&quot;/admin/cores&quot;&gt;
-    &lt;core name=&quot;harmssite&quot; instanceDir=&quot;harmssite&quot; /&gt;
-    &lt;core name=&quot;counterhelix&quot; instanceDir=&quot;counterhelix&quot; /&gt;
-  &lt;/cores&gt;
-&lt;/solr&gt;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+<span class="nt">&lt;solr</span> <span class="na">persistent=</span><span class="s">&#34;true&#34;</span> <span class="na">sharedLib=</span><span class="s">&#34;lib&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;cores</span> <span class="na">adminPath=</span><span class="s">&#34;/admin/cores&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;core</span> <span class="na">name=</span><span class="s">&#34;harmssite&#34;</span> <span class="na">instanceDir=</span><span class="s">&#34;harmssite&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;core</span> <span class="na">name=</span><span class="s">&#34;counterhelix&#34;</span> <span class="na">instanceDir=</span><span class="s">&#34;counterhelix&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/cores&gt;</span>
+<span class="nt">&lt;/solr&gt;</span></code></pre></div>
 <p>Finally, we need to start Solr, while giving it a new home parameter.</p>
-
-<pre><code class="language-bash">java -Dsolr.solr.home=solr.multicore -jar start.jar
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">java -Dsolr.solr.home<span class="o">=</span>solr.multicore -jar start.jar</code></pre></div>
 <p>There is decent documentation on this up to this point located <a href="http://bit.ly/IYt5QI" title="eZ Find docs">here</a>.</p>
 
 <p>Next, we need to add a list of our shards into our override <code>solr.ini.append.php</code> file. Use the demo from above, just put in the url each core. Something to note here. I believe the documentation is wrong here. We should not include the <code>http://</code> in this list, Solr will add this automatically for us when it runs the search. Thus, mine looks like this:</p>
-
-<pre><code class="language-ini">[SolrBase]
-Shards[]
-Shards[harmssite]=localhost:8983/solr/harmssite
-Shards[counterhelix]=localhost:8983/solr/counterhelix
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[SolrBase]</span>
+<span class="na">Shards[]</span>
+<span class="na">Shards[harmssite]</span><span class="o">=</span><span class="s">localhost:8983/solr/harmssite</span>
+<span class="na">Shards[counterhelix]</span><span class="o">=</span><span class="s">localhost:8983/solr/counterhelix</span></code></pre></div>
 <p>I am assuming here that you know how to index your content, so update your search index to follow these settings. The next step is to set up a distributed search in our eZ Find fetch.</p>
 
 <p>example:</p>
-
-<pre><code class="language-smarty">{set $search=fetch( 'ezfind', 'search',
-                    hash( 'query', $query,
-                          'sort_by', $sort_by,
-                          'facet', $defaultSearchFacets,
-                          'filter', $filterParameters,
-                          'publish_date', $search_date,
-                          'offset', $view_parameters.offset,
-                          'limit', $page_limit,
-                          'as_objects', false(),
-                          'distributed_search', hash(
-                              'shards',array('harmssite', 'counterhelix')
-                          )
-                         ))}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-smarty" data-lang="smarty"><span class="cp">{</span><span class="nf">set</span> <span class="nv">$search</span><span class="o">=</span><span class="na">fetch</span><span class="o">(</span> <span class="s1">&#39;ezfind&#39;</span><span class="o">,</span> <span class="s1">&#39;search&#39;</span><span class="o">,</span>
+                    <span class="na">hash</span><span class="o">(</span> <span class="s1">&#39;query&#39;</span><span class="o">,</span> <span class="nv">$query</span><span class="o">,</span>
+                          <span class="s1">&#39;sort_by&#39;</span><span class="o">,</span> <span class="nv">$sort_by</span><span class="o">,</span>
+                          <span class="s1">&#39;facet&#39;</span><span class="o">,</span> <span class="nv">$defaultSearchFacets</span><span class="o">,</span>
+                          <span class="s1">&#39;filter&#39;</span><span class="o">,</span> <span class="nv">$filterParameters</span><span class="o">,</span>
+                          <span class="s1">&#39;publish_date&#39;</span><span class="o">,</span> <span class="nv">$search_date</span><span class="o">,</span>
+                          <span class="s1">&#39;offset&#39;</span><span class="o">,</span> <span class="nv">$view_parameters.offset</span><span class="o">,</span>
+                          <span class="s1">&#39;limit&#39;</span><span class="o">,</span> <span class="nv">$page_limit</span><span class="o">,</span>
+                          <span class="s1">&#39;as_objects&#39;</span><span class="o">,</span> <span class="kc">false</span><span class="o">(),</span>
+                          <span class="s1">&#39;distributed_search&#39;</span><span class="o">,</span> <span class="na">hash</span><span class="o">(</span>
+                              <span class="s1">&#39;shards&#39;</span><span class="o">,</span><span class="na">array</span><span class="o">(</span><span class="s1">&#39;harmssite&#39;</span><span class="o">,</span> <span class="s1">&#39;counterhelix&#39;</span><span class="o">)</span>
+                          <span class="o">)</span>
+                         <span class="o">))</span><span class="cp">}</span></code></pre></div>
 <p>Note that we have to send the <code>distributed_search</code> parameter as a hashed array. In this case we are telling eZ Find to search both shards. We can have eZ Find search whatever core we want it to at this point, just harmssite, just counterhelix, both, or even new cores that we might add later. The advantages are obvious, separated indexes allowing for much larger sets of data is a huge upgrade. The downside is that searching multiple cores at once is a little slower, so really you should not use this option unless you are in need of scaling Solr out more; this would be a touch overkill for my site.</p>
 
 <p>If you have followed me up to this point and have tried running this, you may have noticed that it does not work out of the box. The <code>ezfezpsolrquerybuilder.php</code> is still a work in process and has not been set up to handle shards just yet. Out of the box, should you send the distributed search shards array to eZ Find, eZ Find will take it, generate the shard urls and then do nothing with them. The task I leave you is to try and fix this problem for eZ Find. I have a fix for this, but would love to see what other people come up with (I will post my code here next week). The <a href="https://github.com/ezsystems/ezfind/blob/stable-2.7/classes/ezfezpsolrquerybuilder.php">file in question</a>. Remember, all we need to do is send the shards parameter to the search plugin should one be sent to eZ Find; the search plugin is already setup to handle shards.</p>
@@ -391,27 +368,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

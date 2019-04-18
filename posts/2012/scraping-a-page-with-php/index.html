@@ -18,13 +18,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -178,22 +172,20 @@
   <div class="post">
     <p>I ran across a problem recently, I needed to get the contents of a page so that I could mimic a widget’s functionality without having access to the database that said page’s widget used (confused yet). Basically, one site had a widget that displayed an upcoming event (information with came from a database), I needed to copy that widget to another website. Moreover, I did not want to use JavaScript to accomplish my goal because I need the new site to be cached pretty heavily on the server. My first thought was to use cURL, but when I ran curl_exec my function would output the entire page contents onto my new site, something that I did not want, I only wanted a small portion of the website. My next option was to use <code>file_get_contents(“my_url”)</code>, as was pointed out to me, this will return the full page as a string. With this I could have accomplished my goal, but not with as much ease as I would hope. I ran into the <code>DOMDOcument()</code> php object a while back and was curious about what I could do with it so I decided to do some research on that. This would eventually lead me to my answer. It turns out that the script is very simple and I can see myself using it quite often so I decided to share it.
 Here it is:</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">scrapePage</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span><span class="nv">$id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$d</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DOMDOcument</span><span class="p">();</span>
+    <span class="nx">libxml_use_internal_errors</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+    <span class="nv">$d</span><span class="o">-&gt;</span><span class="na">loadHTMLFile</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+    <span class="nv">$widget</span> <span class="o">=</span> <span class="nv">$d</span><span class="o">-&gt;</span><span class="na">getElementById</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
 
-<pre><code class="language-php">&lt;?php
-public function scrapePage($url,$id)
-{
-    $d = new DOMDOcument();
-    libxml_use_internal_errors(true);
-    $d-&gt;loadHTMLFile($url);
-    $widget = $d-&gt;getElementById($id);
-
-    if ($widget !== null)
-    {
-        return simplexml_import_dom($widget)-&gt;asXML();
-    }
-}
-</code></pre>
-
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$widget</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">simplexml_import_dom</span><span class="p">(</span><span class="nv">$widget</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">asXML</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
   </div>
   
 
@@ -255,27 +247,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

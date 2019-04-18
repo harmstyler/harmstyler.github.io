@@ -18,13 +18,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -190,25 +184,19 @@
 <h3 id="vendor-ezsystems-ezplatform-admin-ui-src-bundle-resources-config-routing-yml"><em>vendor/ezsystems/ezplatform-admin-ui/src/bundle/Resources/config/routing.yml</em></h3>
 
 <p>The definition for the search route found in the admin bundle:</p>
-
-<pre><code class="language-yaml">ezplatform.search:
-    path: /search
-    methods: ['GET']
-    defaults:
-        _controller: 'EzPlatformAdminUiBundle:Search:search'
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">ezplatform.search<span class="p">:</span><span class="w">
+</span><span class="w">    </span>path<span class="p">:</span><span class="w"> </span>/search<span class="w">
+</span><span class="w">    </span>methods<span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">]</span><span class="w">
+</span><span class="w">    </span>defaults<span class="p">:</span><span class="w">
+</span><span class="w">        </span>_controller<span class="p">:</span><span class="w"> </span><span class="s1">&#39;EzPlatformAdminUiBundle:Search:search&#39;</span></code></pre></div>
 <h3 id="app-config-routing-yml"><em>app/config/routing.yml</em></h3>
 
 <p>In your routing file use the same name with a different path:</p>
-
-<pre><code class="language-yaml">ezplatform.search:
-    path: /adminsearch
-    methods: ['GET']
-    defaults:
-        _controller: 'EzPlatformAdminUiBundle:Search:search'
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">ezplatform.search<span class="p">:</span><span class="w">
+</span><span class="w">    </span>path<span class="p">:</span><span class="w"> </span>/adminsearch<span class="w">
+</span><span class="w">    </span>methods<span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">]</span><span class="w">
+</span><span class="w">    </span>defaults<span class="p">:</span><span class="w">
+</span><span class="w">        </span>_controller<span class="p">:</span><span class="w"> </span><span class="s1">&#39;EzPlatformAdminUiBundle:Search:search&#39;</span></code></pre></div>
 <p>And you&rsquo;re done! eZ is very good at ensuring they use internal Symony routing when generating urls for a page, so you&rsquo;re safe to simply redefine the route to avoid route collosion in eZ Platform.</p>
 
   </div>
@@ -272,27 +260,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

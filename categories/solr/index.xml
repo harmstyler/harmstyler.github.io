@@ -36,7 +36,7 @@
       <pubDate>Fri, 15 Mar 2013 00:00:00 +0000</pubDate>
       
       <guid>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium/</guid>
-      <description>Solr has quickly become one of the most popular search engines available. Due to Solr&amp;rsquo;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API. { &amp;quot;require&amp;quot;: { &amp;quot;solarium/solarium&amp;quot;: &amp;quot;3.0.0&amp;quot; } }  &amp;lt;?php $config = array( &#39;endpoint&#39; =&amp;gt; array( &#39;localhost&#39; =&amp;gt; array( &#39;host&#39; =&amp;gt; &#39;127.</description>
+      <description>Solr has quickly become one of the most popular search engines available. Due to Solr&amp;rsquo;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API. { &amp;#34;require&amp;#34;: { &amp;#34;solarium/solarium&amp;#34;: &amp;#34;3.0.0&amp;#34; } } &amp;lt;?php $config = array( &amp;#39;endpoint&amp;#39; =&amp;gt; array( &amp;#39;localhost&amp;#39; =&amp;gt; array( &amp;#39;host&amp;#39; =&amp;gt; &amp;#39;127.</description>
     </item>
     
     <item>
@@ -84,18 +84,16 @@
       <description>&lt;!--
     ![Distributed Search](/img/distributed_search.png)
 --&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;&amp;lt;?php
-if ( isset( $distributedSearch[&#39;shards&#39;] ) )
-{
-    foreach  ( $distributedSearch[&#39;shards&#39;] as $shard )
-    {
-        $shardUrls[] = $iniShards[$shard];
-    }
-    $shardQuery = implode( &#39;,&#39;, $shardUrls );
-}
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;isset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$distributedSearch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;shards&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;foreach&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$distributedSearch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;shards&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$shard&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nv&#34;&gt;$shardUrls&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$iniShards&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$shard&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;$shardQuery&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;implode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$shardUrls&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Prerequisites:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -103,17 +101,14 @@ if ( isset( $distributedSearch[&#39;shards&#39;] ) )
 &lt;/ul&gt;
 
 &lt;p&gt;The following post is based on the option in the eZ Find &lt;code&gt;solr.ini&lt;/code&gt; referring to Shards.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ini&#34;&gt;[SolrBase]
-#Shards mapping, can be to multicores in one servlet or even a crosss servers
-#typical use is multilingual setups, but also for external index support
-#the keys are used as shorthands in template functions
-#Shards[]
-#Shards[eng-GB]=http://localhost:8983/solr/eng-GB
-#Shards[fre-FR]=http://localhost:8983/solr/fre-FR
-#Shards[myforeignindex]=http://myotherhost:8983/solr
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span class=&#34;k&#34;&gt;[SolrBase]&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#Shards mapping, can be to multicores in one servlet or even a crosss servers&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#typical use is multilingual setups, but also for external index support&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#the keys are used as shorthands in template functions&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#Shards[]&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#Shards[eng-GB]=http://localhost:8983/solr/eng-GB&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#Shards[fre-FR]=http://localhost:8983/solr/fre-FR&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#Shards[myforeignindex]=http://myotherhost:8983/solr&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).&lt;/p&gt;</description>
     </item>
     
@@ -123,7 +118,7 @@ if ( isset( $distributedSearch[&#39;shards&#39;] ) )
       <pubDate>Thu, 26 Apr 2012 00:00:00 +0000</pubDate>
       
       <guid>https://harmstyler.me/posts/2012/ez-find-solr-attribute-storage/</guid>
-      <description># Enable Solr to store all the basic information of a content object # Allows Solr to be used as a cross-site DB [IndexOptions] EnableSolrAttributeStorage=true OptimizeOnCommit=disabled  When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes &#39;as_objects&#39;, true() eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.</description>
+      <description># Enable Solr to store all the basic information of a content object # Allows Solr to be used as a cross-site DB [IndexOptions] EnableSolrAttributeStorage=true OptimizeOnCommit=disabled When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes &#39;as_objects&#39;, true() eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.</description>
     </item>
     
     <item>

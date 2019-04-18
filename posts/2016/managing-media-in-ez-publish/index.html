@@ -24,13 +24,7 @@ files." />
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -201,8 +195,7 @@ downloads.</p>
 
 <h4 id="an-example-download-url-built-for-ez-publish-4">An example download url built for eZ Publish 4:</h4>
 
-<pre><code class="language-smarty">{def $download_url = concat( &quot;content/download/&quot;, $attribute.contentobject_id, &quot;/&quot;, $attribute.content.contentobject_attribute_id, &quot;/&quot;, $attribute.content.original_filename )|ezurl}
-</code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-smarty" data-lang="smarty"><span class="cp">{</span><span class="nf">def</span> <span class="nv">$download_url</span> <span class="o">=</span> <span class="na">concat</span><span class="o">(</span> <span class="s2">&#34;content/download/&#34;</span><span class="o">,</span> <span class="nv">$attribute.contentobject_id</span><span class="o">,</span> <span class="s2">&#34;/&#34;</span><span class="o">,</span> <span class="nv">$attribute.content.contentobject_attribute_id</span><span class="o">,</span> <span class="s2">&#34;/&#34;</span><span class="o">,</span> <span class="nv">$attribute.content.original_filename</span> <span class="o">)|</span><span class="na">ezurl</span><span class="cp">}</span></code></pre></div>
 
 <p>Hopefully the problems are obvious, not only is the url a pain to build, but the url is subject to change.
 That means that whenever an editor changes the uploaded file attached to the content, a new download url
@@ -231,16 +224,14 @@ providing a consistent path to file downloads.</p>
 
 <h4 id="first-set-the-full-view-to-use-a-new-mediacontroller">First, set the full view to use a new <code>MediaController</code></h4>
 
-<pre><code class="language-yaml">system:
-    global:
-        location_view:
-            full:
-                media:
-                    controller: &quot;AppBundle:Media:media&quot;
-                    match:
-                        Identifier\ContentType: [ file, image, video ]
-
-</code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">system<span class="p">:</span><span class="w">
+</span><span class="w">    </span>global<span class="p">:</span><span class="w">
+</span><span class="w">        </span>location_view<span class="p">:</span><span class="w">
+</span><span class="w">            </span>full<span class="p">:</span><span class="w">
+</span><span class="w">                </span>media<span class="p">:</span><span class="w">
+</span><span class="w">                    </span>controller<span class="p">:</span><span class="w"> </span><span class="s2">&#34;AppBundle:Media:media&#34;</span><span class="w">
+</span><span class="w">                    </span>match<span class="p">:</span><span class="w">
+</span><span class="w">                        </span>Identifier\ContentType<span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span>file<span class="p">,</span><span class="w"> </span>image<span class="p">,</span><span class="w"> </span>video<span class="w"> </span><span class="p">]</span></code></pre></div>
 
 <h4 id="second-create-the-mediacontroller">Second, create the <code>MediaController</code></h4>
 
@@ -249,76 +240,76 @@ then tells Symfony which header generate for the response, either download or vi
 that the generated eZ url alias will be the url to the media file and not the one subject to change,
 it also gets rid of the chrome around the image since we are serving the image directly.</p>
 
-<pre><code class="language-php">&lt;?php
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-namespace AppBundle\Controller;
+<span class="k">namespace</span> <span class="nx">AppBundle\Controller</span><span class="p">;</span>
 
-use eZ\Bundle\EzPublishCoreBundle\Controller;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use eZ\Publish\SPI\FieldType\Value;
+<span class="k">use</span> <span class="nx">eZ\Bundle\EzPublishCoreBundle\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\BinaryFileResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Response</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\ResponseHeaderBag</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">eZ\Publish\SPI\FieldType\Value</span><span class="p">;</span>
 
-class MediaController extends Controller
-{
-    /**
-     * @param $locationId
-     * @param $viewType
-     * @param bool $layout
-     * @param array $params
-     *
-     * @return Response
-     */
-    public function mediaAction($locationId, $viewType, $layout = false, array $params = array())
-    {
-        $disposition = $this-&gt;getDisposition();
-        $file = $this-&gt;getFile($locationId);
-        $response = $this-&gt;getBinaryFileResponse($file, $disposition);
+<span class="k">class</span> <span class="nc">MediaController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**
+</span><span class="sd">     * @param $locationId
+</span><span class="sd">     * @param $viewType
+</span><span class="sd">     * @param bool $layout
+</span><span class="sd">     * @param array $params
+</span><span class="sd">     *
+</span><span class="sd">     * @return Response
+</span><span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">mediaAction</span><span class="p">(</span><span class="nv">$locationId</span><span class="p">,</span> <span class="nv">$viewType</span><span class="p">,</span> <span class="nv">$layout</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="nv">$disposition</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDisposition</span><span class="p">();</span>
+        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(</span><span class="nv">$locationId</span><span class="p">);</span>
+        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getBinaryFileResponse</span><span class="p">(</span><span class="nv">$file</span><span class="p">,</span> <span class="nv">$disposition</span><span class="p">);</span>
 
-        return $response;
-    }
+        <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    /**
-     * @return ResponseHeaderBag::DISPOSITION_ATTACHMENT|ResponseHeaderBag::DISPOSITION_INLINE
-     */
-    public function getDisposition()
-    {
-        $request = $this-&gt;get('request_stack')-&gt;getCurrentRequest();
-        $dl = $request-&gt;get('dl');
-        return $dl == 1 ? ResponseHeaderBag::DISPOSITION_ATTACHMENT : ResponseHeaderBag::DISPOSITION_INLINE;
-    }
+    <span class="sd">/**
+</span><span class="sd">     * @return ResponseHeaderBag::DISPOSITION_ATTACHMENT|ResponseHeaderBag::DISPOSITION_INLINE
+</span><span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDisposition</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;request_stack&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getCurrentRequest</span><span class="p">();</span>
+        <span class="nv">$dl</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;dl&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$dl</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="nx">ResponseHeaderBag</span><span class="o">::</span><span class="na">DISPOSITION_ATTACHMENT</span> <span class="o">:</span> <span class="nx">ResponseHeaderBag</span><span class="o">::</span><span class="na">DISPOSITION_INLINE</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    /**
-     * @param $locationId
-     * @param string $fileName
-     *
-     * @return mixed
-     */
-    private function getFile($locationId, $fileName = 'file')
-    {
-        $location = $this-&gt;getRepository()-&gt;getLocationService()-&gt;loadLocation($locationId);
-        $content = $this-&gt;getRepository()-&gt;getContentService()-&gt;loadContent($location-&gt;contentId);
-        $file = $content-&gt;getFieldValue($fileName);
+    <span class="sd">/**
+</span><span class="sd">     * @param $locationId
+</span><span class="sd">     * @param string $fileName
+</span><span class="sd">     *
+</span><span class="sd">     * @return mixed
+</span><span class="sd">     */</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">getFile</span><span class="p">(</span><span class="nv">$locationId</span><span class="p">,</span> <span class="nv">$fileName</span> <span class="o">=</span> <span class="s1">&#39;file&#39;</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$location</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getLocationService</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">loadLocation</span><span class="p">(</span><span class="nv">$locationId</span><span class="p">);</span>
+        <span class="nv">$content</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContentService</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">loadContent</span><span class="p">(</span><span class="nv">$location</span><span class="o">-&gt;</span><span class="na">contentId</span><span class="p">);</span>
+        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$content</span><span class="o">-&gt;</span><span class="na">getFieldValue</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">);</span>
 
-        return $file;
-    }
+        <span class="k">return</span> <span class="nv">$file</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    /**
-     * @param $file
-     * @param string $dispositionType
-     *
-     * @return BinaryFileResponse
-     */
-    private function getBinaryFileResponse(Value $file, $dispositionType = ResponseHeaderBag::DISPOSITION_ATTACHMENT)
-    {
-        $fileUri = $this-&gt;container-&gt;getParameter('kernel.root_dir') . '/../web' . $file-&gt;uri;
-        $response = new BinaryFileResponse($fileUri);
-        $response-&gt;setContentDisposition($dispositionType, $file-&gt;fileName);
+    <span class="sd">/**
+</span><span class="sd">     * @param $file
+</span><span class="sd">     * @param string $dispositionType
+</span><span class="sd">     *
+</span><span class="sd">     * @return BinaryFileResponse
+</span><span class="sd">     */</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">getBinaryFileResponse</span><span class="p">(</span><span class="nx">Value</span> <span class="nv">$file</span><span class="p">,</span> <span class="nv">$dispositionType</span> <span class="o">=</span> <span class="nx">ResponseHeaderBag</span><span class="o">::</span><span class="na">DISPOSITION_ATTACHMENT</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$fileUri</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="o">-&gt;</span><span class="na">getParameter</span><span class="p">(</span><span class="s1">&#39;kernel.root_dir&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;/../web&#39;</span> <span class="o">.</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">uri</span><span class="p">;</span>
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BinaryFileResponse</span><span class="p">(</span><span class="nv">$fileUri</span><span class="p">);</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentDisposition</span><span class="p">(</span><span class="nv">$dispositionType</span><span class="p">,</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">fileName</span><span class="p">);</span>
 
-        return $response;
-    }
-}
-</code></pre>
+        <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <h3 id="conclusion">Conclusion</h3>
 
@@ -388,27 +379,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

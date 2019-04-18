@@ -22,13 +22,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -210,21 +204,19 @@
 
 <p><code>example.html</code>:</p>
 
-<pre><code class="language-html">{{ define &quot;content&quot; }}
-    {{ partial &quot;page-single/contact_form.html&quot; . }}
-    &lt;!-- ... --&gt;
-    {{ .Scratch.Set &quot;form_id&quot; &quot;-2&quot; }}
-    {{ partialCached &quot;page-single/contact_form.html&quot; . &quot;footer&quot; }}
-{{ end }}
-</code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-go-html-template" data-lang="go-html-template"><span class="cp">{{</span><span class="w"> </span><span class="nx">define</span><span class="w"> </span><span class="s">&#34;content&#34;</span><span class="w"> </span><span class="cp">}}</span>
+    <span class="cp">{{</span><span class="w"> </span><span class="nx">partial</span><span class="w"> </span><span class="s">&#34;page-single/contact_form.html&#34;</span><span class="w"> </span><span class="na">.</span><span class="w"> </span><span class="cp">}}</span>
+    <span class="c">&lt;!-- ... --&gt;</span>
+    <span class="cp">{{</span><span class="w"> </span><span class="na">.Scratch.Set</span><span class="w"> </span><span class="s">&#34;form_id&#34;</span><span class="w"> </span><span class="s">&#34;-2&#34;</span><span class="w"> </span><span class="cp">}}</span>
+    <span class="cp">{{</span><span class="w"> </span><span class="nx">partialCached</span><span class="w"> </span><span class="s">&#34;page-single/contact_form.html&#34;</span><span class="w"> </span><span class="na">.</span><span class="w"> </span><span class="s">&#34;footer&#34;</span><span class="w"> </span><span class="cp">}}</span>
+<span class="cp">{{</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cp">}}</span></code></pre></div>
 
 <p><code>page-single/contact_form.html</code>:</p>
 
-<pre><code class="language-html">&lt;form id=&quot;submit-form{{ .Scratch.Get &quot;form_id&quot; }}&quot;&gt;
-    &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
-    &lt;input type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;name&quot; id=&quot;name{{ .Scratch.Get &quot;form_id&quot; }}&quot;&gt;
-&lt;/form&gt;
-</code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-go-html-template" data-lang="go-html-template"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;submit-form</span><span class="cp">{{</span><span class="w"> </span><span class="na">.Scratch.Get</span><span class="w"> </span><span class="s">&#34;form_id&#34;</span><span class="w"> </span><span class="cp">}}</span><span class="s">&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;name&#34;</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;name&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;name</span><span class="cp">{{</span><span class="w"> </span><span class="na">.Scratch.Get</span><span class="w"> </span><span class="s">&#34;form_id&#34;</span><span class="w"> </span><span class="cp">}}</span><span class="s">&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span></code></pre></div>
 
 <p>Using this strategy you can pass variables into partials and get around the built in partial caching that Hugo employs.</p>
 
@@ -284,27 +276,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

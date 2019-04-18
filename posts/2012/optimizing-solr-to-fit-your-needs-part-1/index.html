@@ -18,13 +18,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -197,11 +191,8 @@
 <p>Let me start by saying that eZ Find is a fantastic implementation of <a class="zem_slink" title="Apache Solr" href="http://lucene.apache.org/solr/" rel="homepage" target="_blank">Solr</a> functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an <a class="zem_slink" title="EZ Publish" href="http://ez.no/" rel="homepage" target="_blank">eZ Publish</a> keyword and know that it should thereby be a Solr keyword, again, all out of the box. There are however some serious limitations when it comes time to customize it to meet your system&rsquo;s needs. Do not underestimate the power found in customizing Solr to meet your website&rsquo;s needs. The default setup is great, it&rsquo;s made to fit into any system with very little effort; but, just because it&rsquo;s made to fit in any system does not mean that it should be used for every system.</p>
 
 <p>One of the best things we could have ever done for a large Solr install was to customize a default search field. You might say, &ldquo;But eZ Find already creates a default search field for you.&rdquo; And you&rsquo;d be right.</p>
-
-<pre><code class="language-xml">&lt;!-- field for the QueryParser to use when an explicit fieldname is absent --&gt;
-&lt;defaultSearchField&gt;ezf_df_text&lt;/defaultSearchField&gt;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- field for the QueryParser to use when an explicit fieldname is absent --&gt;</span>
+<span class="nt">&lt;defaultSearchField&gt;</span>ezf_df_text<span class="nt">&lt;/defaultSearchField&gt;</span></code></pre></div>
 <p>The thing that the default search field in eZ Find does not do, however, is get used. There is no way in eZ Find to tell it to search just one field (at least as far as I know). I did some testing in our environment, these numbers will change from system to system, but in our&rsquo;s each search took almost 10 times as long to search all fields individually vs searching just 1 field. We gave eZ Find the option to search one given field, if defined, and it vastly improved our search experience.</p>
 
 <p>eZ Find by default looks at all &lsquo;searchable&rsquo; fields and adds them to either the <a title="qf" href="http://wiki.apache.org/solr/DisMaxQParserPlugin#qf_.28Query_Fields.29"><code>qf</code></a> (if you are using the dismax search like you should be) or it searches every searchable field individually (<code>attr_title_t:(*:*)</code>, <code>attr_title_s:(*:*)</code>, etc, etc, for all searchable fields). All the &lsquo;searchable&rsquo; fields are by default added to the <code>ezf_df_text</code> field, so you should really do yourself a favor and search just one field, it is a noticable speed improvement, especially in large systems.</p>
@@ -323,27 +314,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

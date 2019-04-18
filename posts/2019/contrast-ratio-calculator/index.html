@@ -18,13 +18,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -191,64 +185,63 @@
 
 <p>Colors can be made into their object representation by using the <a href="https://github.com/harmstyler/contrast-ratio-calculator/blob/v1.0.1/lib/ContrastRatioCalculator/Color.php">Color class</a>. The color objects can be created by either the hexidecimal representation of the color or the <a href="https://en.wikipedia.org/wiki/RGB_color_model">RGB</a> representation of the color.</p>
 
-<pre><code class="language-php">&lt;?php
-namespace HarmsTyler\ContrastRatioCalculator;
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">HarmsTyler\ContrastRatioCalculator</span><span class="p">;</span>
 
-class Color
-{
-    //...
-    public static function fromRgb(array $rgb): self {}
-    public static function fromHex(string $hex): self {}
-    //...
-}
-</code></pre>
+<span class="k">class</span> <span class="nc">Color</span>
+<span class="p">{</span>
+    <span class="c1">//...
+</span><span class="c1"></span>    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">fromRgb</span><span class="p">(</span><span class="k">array</span> <span class="nv">$rgb</span><span class="p">)</span><span class="o">:</span> <span class="nx">self</span> <span class="p">{}</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">fromHex</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$hex</span><span class="p">)</span><span class="o">:</span> <span class="nx">self</span> <span class="p">{}</span>
+    <span class="c1">//...
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div>
 
-<pre><code class="language-php">&lt;?php
-$color1 = Color::fromHex('ffffff');
-$color2 = Color::fromRgb([255,255,255]);
-// $color1-&gt;getHex() === $color2-&gt;getHex()
-</code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$color1</span> <span class="o">=</span> <span class="nx">Color</span><span class="o">::</span><span class="na">fromHex</span><span class="p">(</span><span class="s1">&#39;ffffff&#39;</span><span class="p">);</span>
+<span class="nv">$color2</span> <span class="o">=</span> <span class="nx">Color</span><span class="o">::</span><span class="na">fromRgb</span><span class="p">([</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">]);</span>
+<span class="c1">// $color1-&gt;getHex() === $color2-&gt;getHex()
+</span></code></pre></div>
 
 <h3 id="calculating-the-contrast">Calculating the Contrast</h3>
 
 <p>Once color objects have been created, the <a href="https://github.com/harmstyler/contrast-ratio-calculator/blob/v1.0.1/lib/ContrastRatioCalculator/ContrastRatio.php">Contrast Ratio class</a> can be used. The Contrast Ratio class requires two color objects on insantiation, a primary and a secondary color (typically foreground and background colors). The contrast ratio calculation is made immediately upon object instantiation, so it can be retrieved from the class immediately.</p>
 
-<pre><code class="language-php">&lt;?php
-namespace HarmsTyler\ContrastRatioCalculator;
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">HarmsTyler\ContrastRatioCalculator</span><span class="p">;</span>
 
-class ContrastRatio
-{
-    public function __construct(Color $primaryColor, Color $secondaryColor) {}
-    public function getRatio() {};
-}
-</code></pre>
+<span class="k">class</span> <span class="nc">ContrastRatio</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">Color</span> <span class="nv">$primaryColor</span><span class="p">,</span> <span class="nx">Color</span> <span class="nv">$secondaryColor</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getRatio</span><span class="p">()</span> <span class="p">{};</span>
+<span class="p">}</span>
+</code></pre></div>
 
-<pre><code class="language-php">&lt;?php
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-$contrastRatio = new ContrastRatio($color1, $color2);
-$ratio = $contrastRatio-&gt;getRatio();
-</code></pre>
+<span class="nv">$contrastRatio</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ContrastRatio</span><span class="p">(</span><span class="nv">$color1</span><span class="p">,</span> <span class="nv">$color2</span><span class="p">);</span>
+<span class="nv">$ratio</span> <span class="o">=</span> <span class="nv">$contrastRatio</span><span class="o">-&gt;</span><span class="na">getRatio</span><span class="p">();</span>
+</code></pre></div>
 
 <h3 id="making-the-grade">Making the grade</h3>
 
 <p>A ratio alone is just a number. Without knowing how to grade a raio, it&rsquo;s actually useless. That&rsquo;s where the <a href="https://github.com/harmstyler/contrast-ratio-calculator/blob/v1.0.1/lib/ContrastRatioCalculator/WCAGContrastRating.php">WCAGContrastRating class</a> comes in to play. The WCAGContrastRating can return a grade by either passing a set of Color objects, or by passing an already created ContrastRatio object. The Web Content Accessibility Guidelines (WCAG) state what contrast ratios are a pass/fail. Specifically WCAG guidelines give grades of AAA, AA, AA Large, and FAIL (there are variations of these grades, but if text has a grade of AAA at normal text size, it can be assumed that it will receive an AAA at large text sizes as well, so those variations are ommitted from the grading scale).</p>
 
-<pre><code class="language-php">
-&lt;?php
-namespace HarmsTyler\ContrastRatioCalculator;
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">HarmsTyler\ContrastRatioCalculator</span><span class="p">;</span>
 
-class WCAGContrastRating
-{
-    public function rateColors(Color $primaryColor, Color $secondaryColor) {}
-    public function rateContrastRatio(ContrastRatio $contrastRatio): string {}
-}
-</code></pre>
+<span class="k">class</span> <span class="nc">WCAGContrastRating</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">rateColors</span><span class="p">(</span><span class="nx">Color</span> <span class="nv">$primaryColor</span><span class="p">,</span> <span class="nx">Color</span> <span class="nv">$secondaryColor</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">rateContrastRatio</span><span class="p">(</span><span class="nx">ContrastRatio</span> <span class="nv">$contrastRatio</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
 
-<pre><code class="language-php">&lt;?php
-$rating = new WCAGContrastRating();
-$grade1 = $rating-&gt;rateContrastRatio($contrastRatio);
-$grade2 = $rating-&gt;rateColors($color1, $color2);
-</code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$rating</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WCAGContrastRating</span><span class="p">();</span>
+<span class="nv">$grade1</span> <span class="o">=</span> <span class="nv">$rating</span><span class="o">-&gt;</span><span class="na">rateContrastRatio</span><span class="p">(</span><span class="nv">$contrastRatio</span><span class="p">);</span>
+<span class="nv">$grade2</span> <span class="o">=</span> <span class="nv">$rating</span><span class="o">-&gt;</span><span class="na">rateColors</span><span class="p">(</span><span class="nv">$color1</span><span class="p">,</span> <span class="nv">$color2</span><span class="p">);</span>
+</code></pre></div>
 
 <p>Grades will be returned as one of four constants: <code>AA_LARGE</code>, <code>AA</code>, <code>AAA</code>, and <code>FAIL</code>;</p>
 
@@ -316,27 +309,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

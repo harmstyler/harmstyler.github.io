@@ -18,13 +18,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -195,43 +189,25 @@
     <div class="pull-right"><img title="Learning SQL" src="/img/select-query.jpg" alt="Learning SQL" width="240" height="180" /></div>
 
 <p>I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the <code>IN</code> operator. In Solr you have the option of specifying a field using the <code>qf</code> operator, but what if you have more search terms searching other fields? The problem becomes far more complex. Given the following SQL statement how would we query Solr?</p>
-
-<pre><code class="language-sql">SELECT *
-FROM table_name
-WHERE column_name IN (value1,value2,...)
-AND other_column='foo'
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="k">table_name</span>
+<span class="k">WHERE</span> <span class="k">column_name</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,...)</span>
+<span class="k">AND</span> <span class="n">other_column</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span></code></pre></div>
 <p>There are couple of ways to do this, but I think there is one very good and much easier way. The first obvious way to query solr is to match the fields to columns manually.</p>
-
-<pre><code class="language-http">/select?q=*:*&amp;fq=column_name:value1 AND column_name:value2 AND other_colum:'foo'
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-http" data-lang="http"><span class="err">/select?q=*:*&amp;fq=column_name:value1 AND column_name:value2 AND other_colum:&#39;foo&#39;</span></code></pre></div>
 <p>This is all fine and dandy but what if I want to be able to add a list of content to the query? Adding the column name every time can become a chore and make the query unnecessarily large. To do an <code>IN</code> query try this:</p>
-
-<pre><code class="language-http">/select?q=*:*&amp;fq=column_name:+(value1 value2) AND other_colum:'foo'
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-http" data-lang="http"><span class="err">/select?q=*:*&amp;fq=column_name:+(value1 value2) AND other_colum:&#39;foo&#39;</span></code></pre></div>
 <p>Having used this one before, I can tell you it works for me using Solr 3.6 and that the placement of the + symbol is key.</p>
 
 <p>And what about a <code>NOT IN</code> query?</p>
-
-<pre><code class="language-sql">SELECT *
-FROM table_name
-WHERE column_name NOT IN (value1,value2,...)
-AND other_column='foo'
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="k">table_name</span>
+<span class="k">WHERE</span> <span class="k">column_name</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,...)</span>
+<span class="k">AND</span> <span class="n">other_column</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span></code></pre></div>
 <p>The &lsquo;bad&rsquo; way:</p>
-
-<pre><code class="language-http">/select?q=*:*&amp;fq=-column_namevalue1 AND -column_name:value2 AND other_colum:'foo'
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-http" data-lang="http"><span class="err">/select?q=*:*&amp;fq=-column_namevalue1 AND -column_name:value2 AND other_colum:&#39;foo&#39;</span></code></pre></div>
 <p>This one I found from working with eZ Publish and eZ Find, and I happen to like it a lot. It is a clever little Solr query that selects all from the column then filters out what we don&rsquo;t want.</p>
-
-<pre><code class="language-http">/select?q=*:*&amp;fq=other_colum:'foo' AND column_name:[* TO *] -column_name:(value1 value2)
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-http" data-lang="http"><span class="err">/select?q=*:*&amp;fq=other_colum:&#39;foo&#39; AND column_name:[* TO *] -column_name:(value1 value2)</span></code></pre></div>
 <p><code>column_name:[* TO *]</code> is like saying select all from the column, but then we add <code>-column_name:(value1 value2)</code> to filter out what we don&rsquo;t want.</p>
 
 <p>Cheers and good luck!</p>
@@ -351,27 +327,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

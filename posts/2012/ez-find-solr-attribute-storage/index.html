@@ -8,9 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Hugo 0.55.1" /><title>eZ Find: Enable Attribute Storage • Tyler Harms</title><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="eZ Find: Enable Attribute Storage"/>
-<meta name="twitter:description" content="# Enable Solr to store all the basic information of a content object # Allows Solr to be used as a cross-site DB [IndexOptions] EnableSolrAttributeStorage=true OptimizeOnCommit=disabled  When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes &#39;as_objects&#39;, true() eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned."/>
+<meta name="twitter:description" content="# Enable Solr to store all the basic information of a content object # Allows Solr to be used as a cross-site DB [IndexOptions] EnableSolrAttributeStorage=true OptimizeOnCommit=disabled When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes &#39;as_objects&#39;, true() eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned."/>
 <meta property="og:title" content="eZ Find: Enable Attribute Storage" />
-<meta property="og:description" content="# Enable Solr to store all the basic information of a content object # Allows Solr to be used as a cross-site DB [IndexOptions] EnableSolrAttributeStorage=true OptimizeOnCommit=disabled  When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes &#39;as_objects&#39;, true() eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned." />
+<meta property="og:description" content="# Enable Solr to store all the basic information of a content object # Allows Solr to be used as a cross-site DB [IndexOptions] EnableSolrAttributeStorage=true OptimizeOnCommit=disabled When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes &#39;as_objects&#39;, true() eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://harmstyler.me/posts/2012/ez-find-solr-attribute-storage/" />
 <meta property="article:published_time" content="2012-04-26T00:00:00&#43;00:00"/>
@@ -18,13 +18,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -192,14 +186,11 @@
     <!--
     ![Enable Solr Attribute Storage](/img/enable-solr-attribute-storage.png)
 -->
-
-<pre><code class="language-ini"># Enable Solr to store all the basic information of a content object
-# Allows Solr to be used as a cross-site DB
-[IndexOptions]
-EnableSolrAttributeStorage=true
-OptimizeOnCommit=disabled
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="c1"># Enable Solr to store all the basic information of a content object</span>
+<span class="c1"># Allows Solr to be used as a cross-site DB</span>
+<span class="k">[IndexOptions]</span>
+<span class="na">EnableSolrAttributeStorage</span><span class="o">=</span><span class="s">true</span>
+<span class="na">OptimizeOnCommit</span><span class="o">=</span><span class="s">disabled</span></code></pre></div>
 <p>When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes <code>'as_objects', true()</code> eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.</p>
 
 <p>Another option, however, is to return all the information from Solr, no more object building from the DB. To do this all you have to do is enable <code>EnableSolrAttributeStorage</code> in the ezfind.ini. That way, if you are searching on a site that does not have access to the local database (cross-site search for instance) you can return all the content you need from Solr, because it is <em>all</em> stored.</p>
@@ -208,11 +199,8 @@ OptimizeOnCommit=disabled
 <code>'as_objects', false()</code> in the fetch.</p>
 
 <p>and in the ezfind.ini</p>
-
-<pre><code class="language-ini">[IndexOptions]
-EnableSolrAttributeStorage=true
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[IndexOptions]</span>
+<span class="na">EnableSolrAttributeStorage</span><span class="o">=</span><span class="s">true</span></code></pre></div>
 <p>Then just remember to re-index your content to get all the new attributes in there.</p>
 
   </div>
@@ -321,27 +309,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

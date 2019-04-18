@@ -22,13 +22,7 @@ So, to start. Let&rsquo;s assume that if you are reading this, you already read 
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -206,25 +200,16 @@ So, to start. Let&rsquo;s assume that if you are reading this, you already read 
 <p>I think this is the time for a nice FYI. We can go about this next part in a couple of different ways. The way we choose depends on the desired consequence. So, ask yourself this question, &lsquo;Do I want the siteaccesses to share content?&rsquo; If you answered yes, you only need 1 core for you sites to share off of, if you answered no, then create a core for each site that you wish to keep separate from the others. Another note, this effect can also be achieved by adjusting an ini setting, but if you know you want your stuff separate, then create multiple cores, it is safer that way. The way I set mine up is I have 2 cores. 1 core has 3 siteaccess sharing content, the other has just 1 site on it (that way its index content will not get mixed by accident).</p>
 
 <p>Now that we are using Solr in a multi-core environment, starting Solr is a bit different.</p>
-
-<pre><code class="language-bash">java -Dsolr.solr.home=solr.multicore -jar start.jar
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">java -Dsolr.solr.home<span class="o">=</span>solr.multicore -jar start.jar</code></pre></div>
 <p>Notice, we just sent the start.jar a new place for solr to call its&rsquo; home directory <code>solr.multicore</code>.</p>
 
 <p>Now that we have Solr re-configured for multi-core work we have to set up our solr.ini files. Inside the siteaccess specific override folders we need to drop in and edit a solr.ini.append.php file. Inside the ini file we need to point eZ Find at the right Solr cores.</p>
-
-<pre><code class="language-ini">[SolrBase]
-SearchServerURI=http://localhost:8983/solr/&lt;core-name&gt;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[SolrBase]</span>
+<span class="na">SearchServerURI</span><span class="o">=</span><span class="s">http://localhost:8983/solr/&lt;core-name&gt;</span></code></pre></div>
 <p>With that one ini setting set we can fully update our index with the same command as before (the update script inside the eZ Fnd extension). So, after we have that set there is 1 last setting that we need to set, it is inside the ezfind.ini.</p>
-
-<pre><code class="language-ini">[SiteSettings]
-#IndexPubliclyAvailable=disabled
-#SearchOtherInstallations=disabled
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[SiteSettings]</span>
+<span class="c1">#IndexPubliclyAvailable=disabled</span>
+<span class="c1">#SearchOtherInstallations=disabled</span></code></pre></div>
 <p>Notice that I have the settings commented it out here. I set it in the siteaccess specific override files, and if it is not commented out it overrides my content. Remember, this setting only applies to content that shares a core, if the content is not sharing a core it will not be able to search the other installations.</p>
 
 <p>With this simple set of settings, we gain a lot of power over search. Combinations work here as well, if you don&rsquo;t want to share the index, but want to search other available indexes, go for it.</p>
@@ -336,27 +321,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

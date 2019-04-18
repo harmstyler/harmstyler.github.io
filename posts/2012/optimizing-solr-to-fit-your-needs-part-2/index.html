@@ -18,13 +18,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -191,12 +185,10 @@
   <div class="post">
     <p>I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default search field called <code>ezf_df_text</code>. The downside of searching one field is that field needs to be controlled, and the only way it can be controlled is by manually editing the Solr schema file. As you might expect, eZ Find does not control this file very well out of the box.</p>
 
-<pre><code class="language-xml">&lt;copyField source=&quot;*_lk&quot; dest=&quot;ezf_df_text&quot;/&gt;
-&lt;copyField source=&quot;*_k&quot; dest=&quot;ezf_df_text&quot;/&gt;
-&lt;copyField source=&quot;*_t&quot; dest=&quot;ezf_df_text&quot;/&gt;
-&lt;copyField source=&quot;*_s&quot; dest=&quot;ezf_df_text&quot;/&gt;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&#34;*_lk&#34;</span> <span class="na">dest=</span><span class="s">&#34;ezf_df_text&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&#34;*_k&#34;</span> <span class="na">dest=</span><span class="s">&#34;ezf_df_text&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&#34;*_t&#34;</span> <span class="na">dest=</span><span class="s">&#34;ezf_df_text&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&#34;*_s&#34;</span> <span class="na">dest=</span><span class="s">&#34;ezf_df_text&#34;</span><span class="nt">/&gt;</span></code></pre></div>
 <p>A copyField will take any field you tell it to and <em>copy it</em> into another field. The code above is what ships with eZ Find, every single <code>*_lk</code> (lckeyword), <code>*_k</code> (keyword), <code>*_t</code> (text), and <code>*_s</code> (string) is added to the <code>ezf_df_text</code> field. For obvious reasons the average installation probably doesn&rsquo;t need every piece of content searchable. The first step is to <strong>delete the default copyFields</strong> (e.g. your site users probably shouldn&rsquo;t be searched by default).</p>
 
 <p>Luckily, there is only one other step! Unfortunately, this one step can be very time consuming. Visit the <code>luke</code> output for your Solr install and make a list of all the fields you need to search. Make a copyField for every field you want to search, adding each field to the <code>ezf_df_text</code> field.</p>
@@ -320,27 +312,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

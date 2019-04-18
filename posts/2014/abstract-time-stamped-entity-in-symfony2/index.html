@@ -18,13 +18,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -192,162 +186,155 @@
     <p>One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2.</p>
 
 <p>Luckily, adding and updated and created fields to an entity in Symfony2 with Doctrine is quite easy:</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="sd">/**
+</span><span class="sd"> * @var \DateTime
+</span><span class="sd"> *
+</span><span class="sd"> * @ORM\Column(name=&#34;created&#34;, type=&#34;datetime&#34;)
+</span><span class="sd"> */</span>
+<span class="k">private</span> <span class="nv">$created</span><span class="p">;</span>
 
-<pre><code class="language-php">&lt;?php
-/**
- * @var \DateTime
- *
- * @ORM\Column(name=&quot;created&quot;, type=&quot;datetime&quot;)
- */
-private $created;
+<span class="sd">/**
+</span><span class="sd"> * @var \DateTime
+</span><span class="sd"> *
+</span><span class="sd"> * @ORM\Column(name=&#34;updated&#34;, type=&#34;datetime&#34;)
+</span><span class="sd"> */</span>
+<span class="k">private</span> <span class="nv">$updated</span><span class="p">;</span>
 
-/**
- * @var \DateTime
- *
- * @ORM\Column(name=&quot;updated&quot;, type=&quot;datetime&quot;)
- */
-private $updated;
+<span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setCreated</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setUpdated</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+<span class="p">}</span>
 
-public function __construct()
-{
-    $this-&gt;setCreated(new \DateTime());
-    $this-&gt;setUpdated(new \DateTime());
-}
-
-// getters &amp; setters
-
-/**
- * Auto set the updated date
- *
- * @ORM\PreUpdate
- */
-public function setUpdatedValue()
-{
-   $this-&gt;setUpdated(new \DateTime());
-}
-
-</code></pre>
-
+<span class="c1">// getters &amp; setters
+</span><span class="c1"></span>
+<span class="sd">/**
+</span><span class="sd"> * Auto set the updated date
+</span><span class="sd"> *
+</span><span class="sd"> * @ORM\PreUpdate
+</span><span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">setUpdatedValue</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setUpdated</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>The code should be pretty self explanitory, we have two DateTime field types that get initially set on entity creation in the contstructor. I then add a <code>setUpdatedValue()</code> function that runs when on PreUpdate of the entity.</p>
 
 <p>The above code works very well, but it is not an ideal solution for working with multiple models. Of course, we could add the updated/created values to every entity, but that wouldn&rsquo;t be very <a href="http://en.wikipedia.org/wiki/Don" title="t_repeat_yourself &quot;Don't Repeat Yourself">DRY</a> of us.</p>
 
 <p>The solution is to use an <a href="http://www.php.net/manual/en/language.oop5.abstract.php">Abstract Class</a> that our entity can extend. The abstract class, <code>TimeStampedEntity</code>, will have two entity variables <code>$updated</code> and <code>$created</code> and will look nearly identical to the code above when it is complete. The key that will make this work with Doctrine and Symfony2 is Doctrine&rsquo;s <a href="http://docs.doctrine-project.org/en/latest/reference/inheritance-mapping.html#mapped-superclasses"><code>MappedSuperclass</code></a> declaration that tells Symfony and Doctrine that the abstract class is a Superclass with declared entity attributes. What we are left with is a Superclass that can extend any model to add <code>updated</code> and <code>created</code> attributes to your data.</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<pre><code class="language-php">&lt;?php
+<span class="k">namespace</span> <span class="nx">HarmsTyler\Common\Entity</span><span class="p">;</span>
 
-namespace HarmsTyler\Common\Entity;
+<span class="k">use</span> <span class="nx">Doctrine\ORM\Mapping</span> <span class="k">as</span> <span class="nx">ORM</span><span class="p">;</span>
 
-use Doctrine\ORM\Mapping as ORM;
+<span class="sd">/**
+</span><span class="sd"> * @ORM\MappedSuperclass
+</span><span class="sd"> * @ORM\HasLifecycleCallbacks
+</span><span class="sd"> */</span>
+<span class="k">abstract</span> <span class="k">class</span> <span class="nc">TimeStampedEntity</span> <span class="p">{</span>
 
-/**
- * @ORM\MappedSuperclass
- * @ORM\HasLifecycleCallbacks
- */
-abstract class TimeStampedEntity {
+    <span class="sd">/**
+</span><span class="sd">     * @var \DateTime
+</span><span class="sd">     *
+</span><span class="sd">     * @ORM\Column(name=&#34;created&#34;, type=&#34;datetime&#34;)
+</span><span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$created</span><span class="p">;</span>
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name=&quot;created&quot;, type=&quot;datetime&quot;)
-     */
-    private $created;
+    <span class="sd">/**
+</span><span class="sd">     * @var \DateTime
+</span><span class="sd">     *
+</span><span class="sd">     * @ORM\Column(name=&#34;updated&#34;, type=&#34;datetime&#34;)
+</span><span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$updated</span><span class="p">;</span>
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name=&quot;updated&quot;, type=&quot;datetime&quot;)
-     */
-    private $updated;
+    <span class="sd">/**
+</span><span class="sd">     * Set created
+</span><span class="sd">     *
+</span><span class="sd">     * @param \DateTime $created
+</span><span class="sd">     * @return self
+</span><span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setCreated</span><span class="p">(</span><span class="nv">$created</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">created</span> <span class="o">=</span> <span class="nv">$created</span><span class="p">;</span>
 
-    /**
-     * Set created
-     *
-     * @param \DateTime $created
-     * @return self
-     */
-    public function setCreated($created)
-    {
-        $this-&gt;created = $created;
+        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>
+    <span class="p">}</span>
 
-        return $this;
-    }
+    <span class="sd">/**
+</span><span class="sd">     * Get created
+</span><span class="sd">     *
+</span><span class="sd">     * @return \DateTime
+</span><span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getCreated</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">created</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    /**
-     * Get created
-     *
-     * @return \DateTime
-     */
-    public function getCreated()
-    {
-        return $this-&gt;created;
-    }
+    <span class="sd">/**
+</span><span class="sd">     * Set updated
+</span><span class="sd">     *
+</span><span class="sd">     * @param \DateTime $updated
+</span><span class="sd">     * @return self
+</span><span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUpdated</span><span class="p">(</span><span class="nv">$updated</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">updated</span> <span class="o">=</span> <span class="nv">$updated</span><span class="p">;</span>
 
-    /**
-     * Set updated
-     *
-     * @param \DateTime $updated
-     * @return self
-     */
-    public function setUpdated($updated)
-    {
-        $this-&gt;updated = $updated;
+        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>
+    <span class="p">}</span>
 
-        return $this;
-    }
+    <span class="sd">/**
+</span><span class="sd">     * Get updated
+</span><span class="sd">     *
+</span><span class="sd">     * @return \DateTime
+</span><span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getUpdated</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">updated</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    /**
-     * Get updated
-     *
-     * @return \DateTime
-     */
-    public function getUpdated()
-    {
-        return $this-&gt;updated;
-    }
+    <span class="sd">/**
+</span><span class="sd">     * Auto set the updated date
+</span><span class="sd">     *
+</span><span class="sd">     * @ORM\PreUpdate
+</span><span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUpdatedValue</span><span class="p">()</span>
+    <span class="p">{</span>
+       <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setUpdated</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+    <span class="p">}</span>
 
-    /**
-     * Auto set the updated date
-     *
-     * @ORM\PreUpdate
-     */
-    public function setUpdatedValue()
-    {
-       $this-&gt;setUpdated(new \DateTime());
-    }
-
-    /**
-     * Set initial value for created/updated values
-     *
-     * @ORM\PrePersist
-     */
-    public function setCreatedValues()
-    {
-        $this-&gt;setCreated(new \DateTime());
-        $this-&gt;setUpdated(new \DateTime());
-    }
-}
-</code></pre>
-
+    <span class="sd">/**
+</span><span class="sd">     * Set initial value for created/updated values
+</span><span class="sd">     *
+</span><span class="sd">     * @ORM\PrePersist
+</span><span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setCreatedValues</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setCreated</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setUpdated</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>An example in use:</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<pre><code class="language-php">&lt;?php
+<span class="k">namespace</span> <span class="nx">Blend\Iterate\BlogBundle\Entity</span><span class="p">;</span>
 
-namespace Blend\Iterate\BlogBundle\Entity;
+<span class="k">use</span> <span class="nx">HarmsTyler\Common\Entity\TimeStampedEntity</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Doctrine\ORM\Mapping</span> <span class="k">as</span> <span class="nx">ORM</span><span class="p">;</span>
 
-use HarmsTyler\Common\Entity\TimeStampedEntity;
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Post
- *
- * @ORM\Table()
- * @ORM\Entity
- */
-class Post extends TimeStampedEntity
-{
-</code></pre>
-
+<span class="sd">/**
+</span><span class="sd"> * Post
+</span><span class="sd"> *
+</span><span class="sd"> * @ORM\Table()
+</span><span class="sd"> * @ORM\Entity
+</span><span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">Post</span> <span class="k">extends</span> <span class="nx">TimeStampedEntity</span>
+<span class="p">{</span>
+</code></pre></div>
 <p><em>edited to add setCreatedValues()</em></p>
   </div>
   
@@ -410,27 +397,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

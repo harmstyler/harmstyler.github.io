@@ -18,13 +18,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -190,15 +184,12 @@
   
   <div class="post">
     <p>I am very new to Symfony development. While developing a side project app I found I needed to control access to a certain area to logged in users only. Based on my previous development history I was expecting to have to determine if a user was logged in via the controller. I figured I would need to find an <code>is_logged_in</code> boolean and use it to determine user access control. What I found while doing my development is that Symfony2 takes care of access control in a much more eloquent way. Rather than having to determine if a user is logged in inside each controller, Symfony2 controls access using a system similar to its routing system. Inside a Symfony2 app there is, by default, a <code>security.yml</code> file that is used to control access. Inside the <code>security.yml</code> file locate the <code>access_control</code> declaration. By simply declaring a route inside the <code>access_control</code> yml array we can control which users have access to which routes, like so:</p>
-
-<pre><code class="language-yaml">access_control:
-    - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/admin/, role: ROLE_ADMIN }
-    - { path: ^/new, role: ROLE_USER }
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">access_control<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>{<span class="w"> </span>path<span class="p">:</span><span class="w"> </span>^/login$<span class="p">,</span><span class="w"> </span>role<span class="p">:</span><span class="w"> </span>IS_AUTHENTICATED_ANONYMOUSLY<span class="w"> </span>}<span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>{<span class="w"> </span>path<span class="p">:</span><span class="w"> </span>^/register<span class="p">,</span><span class="w"> </span>role<span class="p">:</span><span class="w"> </span>IS_AUTHENTICATED_ANONYMOUSLY<span class="w"> </span>}<span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>{<span class="w"> </span>path<span class="p">:</span><span class="w"> </span>^/resetting<span class="p">,</span><span class="w"> </span>role<span class="p">:</span><span class="w"> </span>IS_AUTHENTICATED_ANONYMOUSLY<span class="w"> </span>}<span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>{<span class="w"> </span>path<span class="p">:</span><span class="w"> </span>^/admin/<span class="p">,</span><span class="w"> </span>role<span class="p">:</span><span class="w"> </span>ROLE_ADMIN<span class="w"> </span>}<span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>{<span class="w"> </span>path<span class="p">:</span><span class="w"> </span>^/new<span class="p">,</span><span class="w"> </span>role<span class="p">:</span><span class="w"> </span>ROLE_USER<span class="w"> </span>}</code></pre></div>
 <p>As you can see with my code, for anything beyond the <code>/admin/</code> route the <code>ROLE_ADMIN</code> is required. And for anyone accessing the <code>/new</code> route the <code>ROLE_USER</code> is required.</p>
 
 <p>This is obviously pretty trivial stuff, but for somebody new to Symfony2 development like myself, I found it an incredibly simple and powerful way of controlling access to my app.</p>
@@ -264,27 +255,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

@@ -26,13 +26,7 @@ the two to work together, however, can be a little bit of a chore if not careful
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -240,52 +234,44 @@ standard.</p>
 
 <p>On all <code>$http</code> requests we can set a <code>headers</code> object. That means that the
 Content-Type header can be set on the <code>$http</code> request.</p>
-
-<pre><code class="language-javascript">headers: {
-    'Content-Type': 'application/x-www-form-urlencoded'
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>To serialize the data being sent, jQuery works well. Just use
 <a href="http://api.jquery.com/jquery.param/"><code>$.param()</code></a> on the data and be done with
 it.</p>
-
-<pre><code class="language-javascript">data: $.param({
-    postData
-})
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">data</span><span class="o">:</span> <span class="nx">$</span><span class="p">.</span><span class="nx">param</span><span class="p">({</span>
+    <span class="nx">postData</span>
+<span class="p">})</span>
+</code></pre></div>
 <p>Normalizing the data into a proper serialized string is as simple as creating
 a javascript object. Remember that the FormType name needs to be the key or
 parent attribute on the object.</p>
-
-<pre><code class="language-javascript">var postData = {
-    formtype_name: {
-        id: some_id,
-        name: some_name
-    }
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">postData</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">formtype_name</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="nx">some_id</span><span class="p">,</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="nx">some_name</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Putting it all together, the javascript should look something like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">postData</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">formtype_name</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="nx">some_id</span><span class="p">,</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="nx">some_name</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 
-<pre><code class="language-javascript">var postData = {
-    formtype_name: {
-        id: some_id,
-        name: some_name
-    }
-};
-
-$http({
-    method: &quot;POST&quot;,
-    url: url,
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    data: $.param(postData)
-});
-</code></pre>
-
+<span class="nx">$http</span><span class="p">({</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s2">&#34;POST&#34;</span><span class="p">,</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span>
+    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span>
+    <span class="p">},</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="nx">$</span><span class="p">.</span><span class="nx">param</span><span class="p">(</span><span class="nx">postData</span><span class="p">)</span>
+<span class="p">});</span>
+</code></pre></div>
 <hr />
 
 <p>Doing all this work on the frontend will allow for use of the <a href="http://symfony.com/doc/current/book/forms.html#handling-form-submissions">normal form processing built into
@@ -351,27 +337,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

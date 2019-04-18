@@ -32,13 +32,7 @@ As you had probably already guessed, eZ Find will not without first setting up S
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -216,10 +210,7 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &rdq
 <p>As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a <em>java</em> directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish install and rename the folder &ldquo;Solr&rdquo; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on one Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.</p>
 
 <p>Now that we have Solr installed we need to start it. Just open up terminal, navigate to your Solr install and from that directory run the following command.</p>
-
-<pre><code class="language-bash">java -Dezfind -jar start.jar
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">java -Dezfind -jar start.jar</code></pre></div>
 <p>Eventually you want to have a job run Solr in the background, but for now running it in your console is more than satisfactory, plus it helps during development to see errors pop-up from time to time.</p>
 
 <p>Next step, we need to create two files within our main site settings folder:</p>
@@ -230,19 +221,13 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &rdq
 </ul>
 
 <p>The ezfind ini can be left blank for now. Just know that you can modify a lot of eZ Find settings from within that ini. The solr ini however must edited now in order for search to work properly. Add the following lines to your Solr ini:</p>
-
-<pre><code class="language-ini">[SolrBase]
-# Base URI of the Solr server
-SearchServerURI=http://localhost:8983/solr
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[SolrBase]</span>
+<span class="c1"># Base URI of the Solr server</span>
+<span class="na">SearchServerURI</span><span class="o">=</span><span class="s">http://localhost:8983/solr</span></code></pre></div>
 <p>The localhost search server is actually already in the default solr ini file but I like to make sure I am controlling this by putting the line in my own ini file. Also, should your solr server be anything other than local, just change it&rsquo;s location here.</p>
 
 <p>So, we have eZ Find installed and activated, Solr installed and started, now all we need is an index to search. eZ Find comes with a nice script for updating the search index already so we just need to run it (run the command from the root install level just like you would the clear-cache script). Run the following script:</p>
-
-<pre><code class="language-bash">php extension/ezfind/bin/php/updatesearchindexsolr.php -s &lt;admin siteaccess&gt; --php-exec=php --conc=2
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">php extension/ezfind/bin/php/updatesearchindexsolr.php -s &lt;admin siteaccess&gt; --php-exec<span class="o">=</span>php --conc<span class="o">=</span><span class="m">2</span></code></pre></div>
 <p>The script is pretty advanced. You need to specify the admin version of your siteaccess, mine would be harmssite_admin. You need to specify the number of cores to use, my local computer is a quad-core so I set typically conc=4. Setting the php-exec is optional. There is another optional parameter to send, clean or clean-all. Clean will clean the index of any prior content before updating it (i recommend using clean when developing). Clean-all is only used when you have multiple Solr cores going and you want to clean them all at once, I don&rsquo;t use clean-all often.</p>
 
 <div class="pull-right"><a href="/img/index-update.png"><img class="size-medium wp-image-97 alignleft" title="index-update" src="/img/small/index-update-small.png" alt="Updating the Solr index with eZ Find" width="301" height="147" /></a></div>
@@ -340,27 +325,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         

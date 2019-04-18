@@ -18,13 +18,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-
-
-
-
-<link rel="stylesheet" href="/css/syntax.min.css">
-
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
 
 
 
@@ -187,26 +181,22 @@
   
   <div class="post">
     <p>It turns out that when trying to use jQuery&rsquo;s <code>animate</code> to <code>scrollTop</code> on the main body of an html document different browsers require different targets to scroll to. Webkit requires targeting the <code>body</code> of the document while all other browsers that I know of use <code>html</code>. The typical solution is to target both in the same call:</p>
-
-<pre><code class="language-javascript">$('html, body').animate({
-    scrollTop: '0px','fast', function(){
-        // Code to be fired when complete goes here (fired twice)
-    }
-});
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;html, body&#39;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span>
+    <span class="nx">scrollTop</span><span class="o">:</span> <span class="s1">&#39;0px&#39;</span><span class="p">,</span><span class="s1">&#39;fast&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="c1">// Code to be fired when complete goes here (fired twice)
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>This solution is problematic, however, because even though the scrollTop will only work once, the callback is fired twice. That means that if we were relying on the callback to tell us that the function is complete, our complete function would fire twice.
 Luckily, there is a relatively simple solution to this problem. Using jQuery&rsquo;s browser plugin we can have webkit browsers target the <code>body</code> and all others target the <code>html</code>.</p>
-
-<pre><code class="language-javascript">// If using a newer version (&gt;= 1.9) of jQuery a separate browser
-// plugin is required
-$(jQuery.browser.webkit ? &quot;body&quot;: &quot;html&quot;).animate({
-    scrollTop: '0px','fast', function(){
-        // Code to be fired when complete goes here
-    }
-});
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// If using a newer version (&gt;= 1.9) of jQuery a separate browser
+</span><span class="c1">// plugin is required
+</span><span class="c1"></span><span class="nx">$</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">webkit</span> <span class="o">?</span> <span class="s2">&#34;body&#34;</span><span class="o">:</span> <span class="s2">&#34;html&#34;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span>
+    <span class="nx">scrollTop</span><span class="o">:</span> <span class="s1">&#39;0px&#39;</span><span class="p">,</span><span class="s1">&#39;fast&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="c1">// Code to be fired when complete goes here
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>This solution worked well for me. I am open to different ideas or solutions if you know of any.</p>
 
   </div>
@@ -270,27 +260,6 @@ if (!doNotTrack) {
 
 
     
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/css.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/php.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/xml.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/javascript.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/ini.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/sql.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/twig.min.js"></script>
-            
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/yaml.min.js"></script>
-            
-        
     
     <script type="text/javascript">
         
