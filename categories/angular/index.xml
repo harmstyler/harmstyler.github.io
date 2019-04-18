@@ -6,8 +6,6 @@
     <description>Recent content in Angular on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Sat, 06 Sep 2014 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/categories/angular/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>Mixing AngularJS and Symfony</title>
       <link>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</link>
       <pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</guid>
       <description>&lt;p&gt;I enjoy being a PHP Developer. PHP is a very flexible language and Symfony2 is
 a modern framework that forces many SOLID habits on developers. I also enjoy

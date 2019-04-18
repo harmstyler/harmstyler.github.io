@@ -5,8 +5,6 @@
     <description>Recent content on @harmstyler - A Web Development Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Sat, 13 Apr 2019 21:05:43 -0500</lastBuildDate>
     <image>
         <link>https://harmstyler.me/</link>
@@ -21,7 +19,7 @@
       <title>How to Pass Variables to a Partial Template in Hugo</title>
       <link>https://harmstyler.me/posts/2019/how-to-pass-variables-to-a-partial-template-in-hugo/</link>
       <pubDate>Sat, 13 Apr 2019 21:05:43 -0500</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2019/how-to-pass-variables-to-a-partial-template-in-hugo/</guid>
       <description>&lt;p&gt;As a developer, I want to keep my code as DRY as is feasible for the given project. In a Hugo project, that&amp;rsquo;s where the &lt;a href=&#34;https://gohugo.io/templates/partials/&#34;&gt;Partial&lt;/a&gt; templates come in.&lt;/p&gt;
 
@@ -77,7 +75,7 @@
       <title>2018 South Dakota Code Camp</title>
       <link>https://harmstyler.me/portfolio/sdcc2018/</link>
       <pubDate>Sat, 06 Apr 2019 10:51:51 -0500</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/portfolio/sdcc2018/</guid>
       <description>&lt;p&gt;South Dakota Code Camp is The Mount Rushmore State’s largest developer conference. The site lists all necessary information for conference attendees. Design by Marshall Crosby - Blend Interactive, implemented in Hugo.&lt;/p&gt;
 </description>
@@ -87,7 +85,7 @@
       <title>SFDevs</title>
       <link>https://harmstyler.me/portfolio/sfdevs/</link>
       <pubDate>Sat, 06 Apr 2019 10:38:33 -0500</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/portfolio/sfdevs/</guid>
       <description>&lt;p&gt;sfdevs.com is designed to be a resource for the SFDevs community. Whether it&amp;rsquo;s finding information about upcoming meetups or joining in the Slack conversations, sfdevs.com is the resource. Design by TEMPLATED, implemented in Hugo.&lt;/p&gt;
 </description>
@@ -97,7 +95,7 @@
       <title>Contrast Ratio Calculator</title>
       <link>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</link>
       <pubDate>Sun, 17 Feb 2019 10:13:29 -0700</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</guid>
       <description>&lt;p&gt;Making sure webistes are accessible is a big deal these days. Websites should be mindful of their audience to make sure people with disabilities are not excluded from the site content. Color contrasts between foregrounds and backgrounds is an easy miss when checking that a site is accessible, but one that is vital to hard of sight users.&lt;/p&gt;
 
@@ -181,7 +179,7 @@ $grade2 = $rating-&amp;gt;rateColors($color1, $color2);
       <title>Avoiding Route Collision in eZ Platform</title>
       <link>https://harmstyler.me/posts/2018/avoiding-route-collision-in-ez-platform/</link>
       <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2018/avoiding-route-collision-in-ez-platform/</guid>
       <description>
 
@@ -221,7 +219,7 @@ $grade2 = $rating-&amp;gt;rateColors($color1, $color2);
       <title>About</title>
       <link>https://harmstyler.me/about/</link>
       <pubDate>Tue, 30 Oct 2018 21:42:28 -0500</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/about/</guid>
       <description>&lt;p&gt;Hi, I&amp;rsquo;m Tyler Harms. I am a professional software developer, father, and husband from the great state of South Dakota. I make things for the web, primarily with PHP, but also Ruby and Python. Most of my work deals with implementing Content Management solutions for businesses. I am an eZ Publish / eZ Platform expert, but have experience working with Wordpress, Concrete5, Drupal, and ProcessWire, among others.&lt;/p&gt;
 </description>
@@ -231,7 +229,7 @@ $grade2 = $rating-&amp;gt;rateColors($color1, $color2);
       <title>Managing Media in eZ Publish 5</title>
       <link>https://harmstyler.me/posts/2016/managing-media-in-ez-publish/</link>
       <pubDate>Sun, 31 Jan 2016 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2016/managing-media-in-ez-publish/</guid>
       <description>&lt;p&gt;Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
 that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to
@@ -381,7 +379,7 @@ still be automatically managed by eZ, but you will probably have to include some
       <title>Allowing Raw HTML in KNP Menu Labels</title>
       <link>https://harmstyler.me/posts/2015/raw-html-in-knp-menu-labels/</link>
       <pubDate>Mon, 20 Jul 2015 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2015/raw-html-in-knp-menu-labels/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/knplabs/KnpMenu&#34;&gt;KNP Menu&lt;/a&gt; is a library by the guys at &lt;a href=&#34;http://knplabs.com&#34;&gt;KNP Labs&lt;/a&gt; for building menus with php. The KNP menu library offers great features like automatically adding branch classes, marking the first and last item in a menu, and provides features for to automatically figure out the current menu item. Adding raw html into a label (eg &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;) can be a bit of a pain, however.&lt;/p&gt;
 
@@ -435,7 +433,7 @@ $menu
       <title>Mixing AngularJS and Symfony</title>
       <link>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</link>
       <pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</guid>
       <description>&lt;p&gt;I enjoy being a PHP Developer. PHP is a very flexible language and Symfony2 is
 a modern framework that forces many SOLID habits on developers. I also enjoy
@@ -540,7 +538,7 @@ Symfony&lt;/a&gt;.&lt;/p&gt;</description>
       <title>Abstract Time Stamped Entity in Symfony2</title>
       <link>https://harmstyler.me/posts/2014/abstract-time-stamped-entity-in-symfony2/</link>
       <pubDate>Fri, 07 Feb 2014 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2014/abstract-time-stamped-entity-in-symfony2/</guid>
       <description>&lt;p&gt;One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2.&lt;/p&gt;
 
@@ -708,7 +706,7 @@ class Post extends TimeStampedEntity
       <title>Administrating Solr: A Review</title>
       <link>https://harmstyler.me/posts/2013/administrating-solr-a-review/</link>
       <pubDate>Fri, 29 Nov 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/administrating-solr-a-review/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Administrating Solr is for developers and Solr administrators who have basic knowledge of Solr and are looking for ways to keep their Solr server healthy and well maintained. Basic working knowledge on Apache Lucene is recommended, but is not mandatory.&lt;/p&gt;
@@ -732,7 +730,7 @@ class Post extends TimeStampedEntity
       <title>South Dakota Code Camp 2013</title>
       <link>https://harmstyler.me/posts/2013/south-dakota-code-camp-2013/</link>
       <pubDate>Mon, 11 Nov 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/south-dakota-code-camp-2013/</guid>
       <description>&lt;p&gt;I would say that South Dakota Code Camp 2013 was another huge success. The organizers were once again able to find some great speakers that cover a wide array of topics. Moreover, this year I had the opportunity to speak. I chose to speak about Django, one of my favorite web frameworks. Anyway, here is a link to my slides.&lt;/p&gt;
 
@@ -745,7 +743,7 @@ class Post extends TimeStampedEntity
       <title>jQuery Animate Body Scroll For All Browsers</title>
       <link>https://harmstyler.me/posts/2013/jquery-animate-body-for-all-browsers/</link>
       <pubDate>Fri, 09 Aug 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/jquery-animate-body-for-all-browsers/</guid>
       <description>&lt;p&gt;It turns out that when trying to use jQuery&amp;rsquo;s &lt;code&gt;animate&lt;/code&gt; to &lt;code&gt;scrollTop&lt;/code&gt; on the main body of an html document different browsers require different targets to scroll to. Webkit requires targeting the &lt;code&gt;body&lt;/code&gt; of the document while all other browsers that I know of use &lt;code&gt;html&lt;/code&gt;. The typical solution is to target both in the same call:&lt;/p&gt;
 
@@ -776,7 +774,7 @@ $(jQuery.browser.webkit ? &amp;quot;body&amp;quot;: &amp;quot;html&amp;quot;).an
       <title>Sort Solr Facets on Per Field Basis</title>
       <link>https://harmstyler.me/posts/2013/sort-solr-facets-on-per-field-basis/</link>
       <pubDate>Mon, 29 Jul 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/sort-solr-facets-on-per-field-basis/</guid>
       <description>&lt;p&gt;I recently faced a strange problem. I was faceting off of multiple &lt;code&gt;facet.fields&lt;/code&gt; and I found the need to sort them independently of each other. As far as I knew up to this point &lt;code&gt;facet.sort&lt;/code&gt; could only be set once. When I read the doc, however, it was claimed that the &lt;code&gt;facet.sort&lt;/code&gt; could be set on a per field basis; sadly no examples were provided nor was it explained any further. Luckily, after some digging, I found out that setting the sort (index or count) on a per field is very easy.&lt;/p&gt;
 
@@ -804,7 +802,7 @@ The opposite would also work.&lt;/p&gt;
       <title>Chrome Webfont Mimetypes</title>
       <link>https://harmstyler.me/posts/2013/chrome-webfont-mimetypes/</link>
       <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/chrome-webfont-mimetypes/</guid>
       <description>&lt;p&gt;As a web developer whose browser of choice is Google Chome, I use the Chrome console a lot. Chrome is already the best browser out there and always getting better. More than the browsing experience though, I maintain that it has the best dev environment available. It is the little things that really make Chrome so much better than its compeditors (docking to the right for instance). As if you needed any more reasons to like Chrome, the Chrome team just pushed an update to &amp;lsquo;clean up the console.&amp;rsquo; This was a fix that did nothing for end user usablity, but fixes that annoying little message telling you about your font mimetypes. This was not a fix that I needed for development, just a nicity that the Chome team provided.&lt;/p&gt;
 
@@ -818,7 +816,7 @@ The opposite would also work.&lt;/p&gt;
       <title>IE10 Conditional Comments</title>
       <link>https://harmstyler.me/posts/2013/ie10-conditional-comments/</link>
       <pubDate>Sat, 29 Jun 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/ie10-conditional-comments/</guid>
       <description>&lt;p&gt;Let me start by saying that I was very excited by IE10. Internet Explorer 10 was supposed to be &lt;strong&gt;the&lt;/strong&gt; premier IE web browser. Microsoft was so confident that they created a browser that could meet modern standards that they dropped conditional comments in IE10. If you don&amp;rsquo;t know anything about developing for IE, just know that it sucks; it &lt;em&gt;was&lt;/em&gt;, however, aleviated some by conditional comments that allowed for custom styles/js/whatever for IE versions. My first time working with IE10 I was made harshly aware that conditional comments no longer work. What&amp;rsquo;s worse, my site that functioned and looked great in IE9 no longer functioned in IE10. How does this happen?&lt;/p&gt;
 
@@ -842,7 +840,7 @@ if ($.browser.msie &amp;amp;&amp;amp; $.browser.version === 10) {
       <title>Symfony2 Coding Standards</title>
       <link>https://harmstyler.me/posts/2013/symfony2-coding-standards/</link>
       <pubDate>Tue, 30 Apr 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/symfony2-coding-standards/</guid>
       <description>&lt;p&gt;With eZ Publish moving to Symfony2, I found that I was in need of learning some new coding standards. I never really looked into PHP CodeSniffer while doing eZ Publish development (most of my code was in the templates), so I never really thought about PHP CodeSniffer as an option until starting work with Symphony2. To the point, I just wanted to share the &lt;a href=&#34;https://github.com/opensky/Symfony2-coding-standard&#34;&gt;Symfony2 PHP CodeSniffer Coding Standard on Github&lt;/a&gt;. It is really easy to install and because phpcs works with PHPStorm and Sublime Text 2, sniffing out php files couldn&amp;rsquo;t be easier.&lt;/p&gt;
 </description>
@@ -852,7 +850,7 @@ if ($.browser.msie &amp;amp;&amp;amp; $.browser.version === 10) {
       <title>New Site Theme</title>
       <link>https://harmstyler.me/posts/2013/new-site-theme/</link>
       <pubDate>Mon, 15 Apr 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/new-site-theme/</guid>
       <description>&lt;p&gt;I have been working on getting a new site theme up and running for a while now. My hold up was that I could never commit to a platform. I knew that I wanted off Wordpress and onto something more developer friendly. Originally I was going to put this site on eZ Publish, but that just seemed like overkill. Next I thought about creating a Symfony2 blog, but I wanted to cheapen my hosting options so I opted against Symfony2. I finally decided upon Rails, hosted on the free tier of Heroku.&lt;/p&gt;
 
@@ -866,7 +864,7 @@ if ($.browser.msie &amp;amp;&amp;amp; $.browser.version === 10) {
       <title>Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium</title>
       <link>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/</link>
       <pubDate>Fri, 15 Mar 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/</guid>
       <description>
 
@@ -1037,7 +1035,7 @@ $client-&amp;gt;update($update);
       <title>Symfony2 Access Control</title>
       <link>https://harmstyler.me/posts/2013/symfony2-access-conrol/</link>
       <pubDate>Sat, 02 Mar 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/symfony2-access-conrol/</guid>
       <description>&lt;p&gt;I am very new to Symfony development. While developing a side project app I found I needed to control access to a certain area to logged in users only. Based on my previous development history I was expecting to have to determine if a user was logged in via the controller. I figured I would need to find an &lt;code&gt;is_logged_in&lt;/code&gt; boolean and use it to determine user access control. What I found while doing my development is that Symfony2 takes care of access control in a much more eloquent way. Rather than having to determine if a user is logged in inside each controller, Symfony2 controls access using a system similar to its routing system. Inside a Symfony2 app there is, by default, a &lt;code&gt;security.yml&lt;/code&gt; file that is used to control access. Inside the &lt;code&gt;security.yml&lt;/code&gt; file locate the &lt;code&gt;access_control&lt;/code&gt; declaration. By simply declaring a route inside the &lt;code&gt;access_control&lt;/code&gt; yml array we can control which users have access to which routes, like so:&lt;/p&gt;
 
@@ -1059,7 +1057,7 @@ $client-&amp;gt;update($update);
       <title>eZ Publish 5 - First Thoughts</title>
       <link>https://harmstyler.me/posts/2013/ez-publish-5-first-thoughts/</link>
       <pubDate>Sat, 19 Jan 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/ez-publish-5-first-thoughts/</guid>
       <description>&lt;div class=&#34;pull-right&#34;&gt;&lt;img class=&#34;&#34; alt=&#34;Syfomy Logo&#34; title=&#34;Symfony Logo&#34; src=&#34;https://harmstyler.me/img/symfony-logo.png&#34; width=&#34;206&#34; height=&#34;205&#34; /&gt;&lt;/div&gt;
 
@@ -1085,7 +1083,7 @@ $client-&amp;gt;update($update);
       <title>Optimizing Solr To Fit Your Needs Part 2</title>
       <link>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-2/</link>
       <pubDate>Fri, 07 Dec 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-2/</guid>
       <description>&lt;p&gt;I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default search field called &lt;code&gt;ezf_df_text&lt;/code&gt;. The downside of searching one field is that field needs to be controlled, and the only way it can be controlled is by manually editing the Solr schema file. As you might expect, eZ Find does not control this file very well out of the box.&lt;/p&gt;
 
@@ -1109,7 +1107,7 @@ $client-&amp;gt;update($update);
       <title>Learning Symfony</title>
       <link>https://harmstyler.me/posts/2012/learning-symfony/</link>
       <pubDate>Wed, 21 Nov 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/learning-symfony/</guid>
       <description>&lt;p&gt;&lt;div class=&#34;pull-right&#34;&gt;&lt;img title=&#34;Nashville Symfony&#34; src=&#34;https://harmstyler.me/img/symfony2.jpg&#34; alt=&#34;Nashville Symfony&#34; width=&#34;240&#34; height=&#34;180&#34; /&gt;&lt;/div&gt; I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that eZ Systems announced that they were adopting the Symfony framework I knew that I would be be spending some time with it. I have found that Symfony doesn&amp;rsquo;t have the lowest barrier to entry so it has been a process, to say the least. I have a blog that has helped matters a great deal and so I wanted to give it some props here. If you are like me, wanting to learn Symfony but lacking time and resources, you should really check this site out: &lt;a href=&#34;http://tutorial.symblog.co.uk/&#34; title=&#34;Symblog: Creating a Blog in Symfony2&#34;&gt;Symblog: Creating a Blog in Symfony2&lt;/a&gt;&lt;/p&gt;
 
@@ -1121,7 +1119,7 @@ $client-&amp;gt;update($update);
       <title>Skype version 6</title>
       <link>https://harmstyler.me/posts/2012/skype-version-6/</link>
       <pubDate>Thu, 01 Nov 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/skype-version-6/</guid>
       <description>&lt;div class=&#34;pull-right&#34;&gt;&lt;img title=&#34;MessageViewVersion&#34; src=&#34;https://harmstyler.me/img/skype-screenshot.png&#34; alt=&#34;Message View Version&#34; width=&#34;352&#34; height=&#34;229&#34; /&gt;&lt;/div&gt;
 
@@ -1138,7 +1136,7 @@ use out of your favorite Skype theme.&lt;/p&gt;
       <title>AWS authorize security groups across acounts « ShellRunner</title>
       <link>https://harmstyler.me/posts/2012/aws-authorize-security-groups-across-acounts-shellrunner/</link>
       <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/aws-authorize-security-groups-across-acounts-shellrunner/</guid>
       <description>&lt;p&gt;Just had to share this post since I helped a little bit with it. Very handy little tip about authorizing security groups across AWS accounts.&lt;/p&gt;
 
@@ -1152,7 +1150,7 @@ use out of your favorite Skype theme.&lt;/p&gt;
       <title>Solr Query for Mimicking SQL IN Operator Functionality</title>
       <link>https://harmstyler.me/posts/2012/solr-query-for-mimicking-sql-in-operator-functionality/</link>
       <pubDate>Thu, 13 Sep 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/solr-query-for-mimicking-sql-in-operator-functionality/</guid>
       <description>&lt;div class=&#34;pull-right&#34;&gt;&lt;img title=&#34;Learning SQL&#34; src=&#34;https://harmstyler.me/img/select-query.jpg&#34; alt=&#34;Learning SQL&#34; width=&#34;240&#34; height=&#34;180&#34; /&gt;&lt;/div&gt;
 
@@ -1204,7 +1202,7 @@ AND other_column=&#39;foo&#39;
       <title>Optimizing Solr to fit your needs Part 1</title>
       <link>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-1/</link>
       <pubDate>Sat, 25 Aug 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-1/</guid>
       <description>&lt;div class=&#34;pull-right&#34;&gt;&lt;img title=&#34;Solr logo&#34; src=&#34;https://harmstyler.me/img/Solr-logo.png&#34; alt=&#34;Solr logo&#34; width=&#34;283&#34; height=&#34;156&#34; /&gt;&lt;/div&gt;
 
@@ -1228,7 +1226,7 @@ AND other_column=&#39;foo&#39;
       <title>Multiple .gitignore files versus .gitkeep files</title>
       <link>https://harmstyler.me/posts/2012/gitignore-vs-gitkeep/</link>
       <pubDate>Sat, 18 Aug 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/gitignore-vs-gitkeep/</guid>
       <description>&lt;div class=&#34;pull-right&#34;&gt;&lt;img src=&#34;https://harmstyler.me/img/Git_icon.png&#34; alt=&#34;Git&#34; title=&#34;Git&#34; width=&#34;256&#34; height=&#34;256&#34; /&gt;&lt;/div&gt;
 
@@ -1263,7 +1261,7 @@ The &lt;code&gt;.gitkeep&lt;/code&gt; file at work:&lt;/p&gt;
       <title>eZ Publish with Sublime</title>
       <link>https://harmstyler.me/posts/2012/ez-publish-with-sublime/</link>
       <pubDate>Sat, 30 Jun 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ez-publish-with-sublime/</guid>
       <description>&lt;div class=&#34;pull-right&#34;&gt;&lt;img title=&#34;Sublime Text icon&#34; src=&#34;https://harmstyler.me/img/sublime_text_icon_2181-150x150.png&#34; alt=&#34;Sublime Text icon&#34; width=&#34;150&#34; height=&#34;150&#34; /&gt;&lt;/div&gt;
 
@@ -1275,7 +1273,7 @@ The &lt;code&gt;.gitkeep&lt;/code&gt; file at work:&lt;/p&gt;
       <title>Fixing Shards in eZ Find</title>
       <link>https://harmstyler.me/posts/2012/fixing-shards-in-ez-find/</link>
       <pubDate>Fri, 29 Jun 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/fixing-shards-in-ez-find/</guid>
       <description>&lt;p&gt;I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the &lt;code&gt;$shardQuery&lt;/code&gt; is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the &lt;code&gt;$queryHandler&lt;/code&gt; switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)&lt;/p&gt;
 
@@ -1355,7 +1353,7 @@ switch ( $queryHandler )
       <title>Solr 3.6 Update</title>
       <link>https://harmstyler.me/posts/2012/solr-3-6-update/</link>
       <pubDate>Mon, 14 May 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/solr-3-6-update/</guid>
       <description>&lt;p&gt;Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.war file on GitHub (it is in &lt;a href=&#34;https://github.com/harmstyler/ezfind&#34; title=&#34;harmstyler eZ Find fork&#34;&gt;my eZ Find branch&lt;/a&gt;). Enjoy!&lt;/p&gt;
 </description>
@@ -1365,7 +1363,7 @@ switch ( $queryHandler )
       <title>Searching Multiple Solr Cores using Shards and eZ Find</title>
       <link>https://harmstyler.me/posts/2012/ezfind-shards/</link>
       <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ezfind-shards/</guid>
       <description>&lt;!--
     ![Distributed Search](/img/distributed_search.png)
@@ -1460,7 +1458,7 @@ Shards[counterhelix]=localhost:8983/solr/counterhelix
       <title>eZ Find: Enable Attribute Storage</title>
       <link>https://harmstyler.me/posts/2012/ez-find-solr-attribute-storage/</link>
       <pubDate>Thu, 26 Apr 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ez-find-solr-attribute-storage/</guid>
       <description>&lt;!--
     ![Enable Solr Attribute Storage](/img/enable-solr-attribute-storage.png)
@@ -1494,7 +1492,7 @@ EnableSolrAttributeStorage=true
       <title>Dogs Underwater</title>
       <link>https://harmstyler.me/posts/2012/dogs-underwater/</link>
       <pubDate>Mon, 23 Apr 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/dogs-underwater/</guid>
       <description>&lt;p&gt;I am usually not one for email forwards. I got one today that I absolutely love,
 however. So, instead of re-forwarding it, I will share it here.&lt;/p&gt;
@@ -1508,7 +1506,7 @@ however. So, instead of re-forwarding it, I will share it here.&lt;/p&gt;
       <title>eZ Find Multi-Core</title>
       <link>https://harmstyler.me/posts/2012/ez-find-multi-core/</link>
       <pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ez-find-multi-core/</guid>
       <description>&lt;p&gt;One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.&lt;/p&gt;
 
@@ -1547,7 +1545,7 @@ SearchServerURI=http://localhost:8983/solr/&amp;lt;core-name&amp;gt;
       <title>Clear Cache in eZ Publish - eZpedia</title>
       <link>https://harmstyler.me/posts/2012/clear-cache-in-ez-publish-ezpedia/</link>
       <pubDate>Thu, 12 Apr 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/clear-cache-in-ez-publish-ezpedia/</guid>
       <description>&lt;p&gt;As an eZ Publish developer I know that whenever creating an eZ Publish site the
 cache can be my best friend in production and worst enemy in development.
@@ -1576,7 +1574,7 @@ running distributed eZ Publish installation.&lt;/p&gt;
       <title>Despite Bings Rise, Google Still Dominates Search [INFOGRAPHIC]</title>
       <link>https://harmstyler.me/posts/2012/despite-bings-rise-google-still-dominates-search-infographic/</link>
       <pubDate>Mon, 26 Mar 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/despite-bings-rise-google-still-dominates-search-infographic/</guid>
       <description>&lt;p&gt;Very interesting, Bing is on the rise but it appears to be at the expense of Yahoo! not Google.&lt;/p&gt;
 
@@ -1588,7 +1586,7 @@ running distributed eZ Publish installation.&lt;/p&gt;
       <title>Installing eZ Find</title>
       <link>https://harmstyler.me/posts/2012/installing-ez-find/</link>
       <pubDate>Thu, 22 Mar 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/installing-ez-find/</guid>
       <description>&lt;p&gt;Alright, so lets begin installing eZ Find by going out and downloading it from the Github =&amp;gt; &lt;a href=&#34;http://bit.ly/GEVOte&#34; title=&#34;eZ Find on GitHub&#34;&gt;https://github.com/ezsystems/ezfind&lt;/a&gt;.
 eZ Find is an eZ Publish extension so: unzip the download, rename the fold &amp;rdquo;ezfind,&amp;rdquo; and then move the &lt;em&gt;ezfind&lt;/em&gt; folder to the &lt;em&gt;extensions&lt;/em&gt; directory of your eZ Publish install.&lt;/p&gt;
@@ -1642,7 +1640,7 @@ SearchServerURI=http://localhost:8983/solr
       <title>eZ Find Basics</title>
       <link>https://harmstyler.me/posts/2012/ez-find-basics/</link>
       <pubDate>Mon, 19 Mar 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ez-find-basics/</guid>
       <description>&lt;p&gt;I have been thinking a long time about different topics I could use this blog for. I have settled for the moment on an eZ Publish extension that I have used extensively for a while, eZ Find. eZ Find is an ultra-powerful Solr powered search engine made for eZ Publish, authored by &lt;a title=&#34;@paulborgermans&#34; href=&#34;https://twitter.com/#!/paulborgermans&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Paul Borgermans&lt;/a&gt;.&lt;/p&gt;
 
@@ -1660,7 +1658,7 @@ SearchServerURI=http://localhost:8983/solr
       <title>Solr Buckets</title>
       <link>https://harmstyler.me/posts/2012/solr-buckets/</link>
       <pubDate>Sat, 25 Feb 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/solr-buckets/</guid>
       <description>&lt;p&gt;I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. &lt;strong&gt;The Problem&lt;/strong&gt;: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&amp;rsquo;s speed; let Solr do the work). Now, the book I was using, &lt;a title=&#34;Apache Solr Enterprise Search Server&#34; href=&#34;http://www.packtpub.com/apache-solr-3-enterprise-search-server/book&#34; target=&#34;_blank&#34;&gt;Apache Solr Enterprise Search Server&lt;/a&gt;, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the &lt;code&gt;SynonymFilterFactory&lt;/code&gt;. So for starters lets look at the fieldType:&lt;/p&gt;
 
@@ -1714,7 +1712,7 @@ v,w,x,y,z=&amp;gt;V-Z
       <title>Photoshopping Goodness</title>
       <link>https://harmstyler.me/posts/2012/photoshoping-goodness/</link>
       <pubDate>Sat, 11 Feb 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/photoshoping-goodness/</guid>
       <description>&lt;p&gt;I truly do wish that I were better with photoshop. That said I am very blessed to know some people
 that are photoshop gurus. Yesterday when we came across a
@@ -1732,7 +1730,7 @@ fantastic picture of Jackson. Major props goes to Ryan for &lt;a href=&#34;https
       <title>Scraping a page with php</title>
       <link>https://harmstyler.me/posts/2012/scraping-a-page-with-php/</link>
       <pubDate>Tue, 24 Jan 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/scraping-a-page-with-php/</guid>
       <description>&lt;p&gt;I ran across a problem recently, I needed to get the contents of a page so that I could mimic a widget’s functionality without having access to the database that said page’s widget used (confused yet). Basically, one site had a widget that displayed an upcoming event (information with came from a database), I needed to copy that widget to another website. Moreover, I did not want to use JavaScript to accomplish my goal because I need the new site to be cached pretty heavily on the server. My first thought was to use cURL, but when I ran curl_exec my function would output the entire page contents onto my new site, something that I did not want, I only wanted a small portion of the website. My next option was to use &lt;code&gt;file_get_contents(“my_url”)&lt;/code&gt;, as was pointed out to me, this will return the full page as a string. With this I could have accomplished my goal, but not with as much ease as I would hope. I ran into the &lt;code&gt;DOMDOcument()&lt;/code&gt; php object a while back and was curious about what I could do with it so I decided to do some research on that. This would eventually lead me to my answer. It turns out that the script is very simple and I can see myself using it quite often so I decided to share it.
 Here it is:&lt;/p&gt;
@@ -1758,7 +1756,7 @@ public function scrapePage($url,$id)
       <title>Gradient App</title>
       <link>https://harmstyler.me/posts/2011/gradient-app/</link>
       <pubDate>Thu, 20 Oct 2011 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2011/gradient-app/</guid>
       <description>&lt;p&gt;I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out gradients is easy enough, get your start color and your end color and then plug them into all the various browser specific gradient css elements (webkit, moz, etc&amp;hellip;) and you get a gradient. Like I said, simple enough but time consuming because each browser gets its own line.&lt;/p&gt;
 
@@ -1784,7 +1782,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=&#39;#69aece&#3
       <title>Path to Android!</title>
       <link>https://harmstyler.me/posts/2011/path-to-android/</link>
       <pubDate>Fri, 26 Aug 2011 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2011/path-to-android/</guid>
       <description>&lt;p&gt;&lt;div class=&#34;pull-right&#34;&gt;&lt;a href=&#34;http://path.com&#34;&gt;&lt;img class=&#34;alignleft size-full wp-image-56&#34; title=&#34;path-logo&#34; src=&#34;https://harmstyler.me/img/path-logo-2x.png&#34; alt=&#34;Path&#34; width=&#34;146&#34; height=&#34;65&#34; /&gt;&lt;/a&gt;&lt;/div&gt;Finally, Path has come to Android. Path is one of those little known apps that I think a person would love, if they knew about it. Path is made to be  built off of Facebook, but far more personal than that. Their slogan then makes sense, The Personal Network (vs the Social Network). At Path each person is only able to view a limited number of friends, making the social web experience more personal. They recognize the fact that each person in real life does not carry on relationships with 300 people, more likely 30 at the most. Because of this fact, they limit the web friends to the same number; this makes the social experience mean far more to the user. So, back to my original point, Path has been available for iPhone only since its inception. Path is not an internet app; unlike Facebook, I cannot upload photos online, I can only use my phone. Also, there are no status updates, Path is just you sharing photos with your closest friends. Path is a fantastic idea that I have been waiting to use for some time now, as I use Android. Path comes with it a simple and sleek UI, which I would expect being so limited on options and all. Just about the only bad part I can find is that not enough of my friends use it, yet. So my recommendation? Go out and get the app, it should be fun.&lt;/p&gt;
 </description>
@@ -1794,7 +1792,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=&#39;#69aece&#3
       <title>New Site</title>
       <link>https://harmstyler.me/posts/2011/new-site/</link>
       <pubDate>Wed, 24 Aug 2011 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2011/new-site/</guid>
       <description>&lt;p&gt;Obviously this is a new site yet again. I just got sick of working with PyroCMS and decided to go to good &amp;lsquo;ol Wordpress, for reliability sake. Luckily I happen to have a licence for an awesome theme, hence the awesome site design. Currently it is not customized but the theme is designed to be customized. Also the site has full access to all the awesome add-ons that wordpress developers have created. With 15% of all created sites out there being Wordpress sites, chances are somebody has thought of it first. What that means to me and possible clients, I can create sites fast and there is a large support structure to back up any work done.&lt;/p&gt;
 </description>

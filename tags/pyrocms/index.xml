@@ -6,8 +6,6 @@
     <description>Recent content in PyroCMS on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Wed, 24 Aug 2011 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/tags/pyrocms/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>New Site</title>
       <link>https://harmstyler.me/posts/2011/new-site/</link>
       <pubDate>Wed, 24 Aug 2011 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2011/new-site/</guid>
       <description>Obviously this is a new site yet again. I just got sick of working with PyroCMS and decided to go to good &amp;lsquo;ol Wordpress, for reliability sake. Luckily I happen to have a licence for an awesome theme, hence the awesome site design. Currently it is not customized but the theme is designed to be customized. Also the site has full access to all the awesome add-ons that wordpress developers have created.</description>
     </item>

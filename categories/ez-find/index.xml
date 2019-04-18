@@ -6,8 +6,6 @@
     <description>Recent content in eZ Find on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Fri, 20 Apr 2012 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/categories/ez-find/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>eZ Find Multi-Core</title>
       <link>https://harmstyler.me/posts/2012/ez-find-multi-core/</link>
       <pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ez-find-multi-core/</guid>
       <description>&lt;p&gt;One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.&lt;/p&gt;
 

@@ -6,8 +6,6 @@
     <description>Recent content in Tags on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Mon, 20 Jul 2015 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>KNP Menu</title>
       <link>https://harmstyler.me/tags/knp-menu/</link>
       <pubDate>Mon, 20 Jul 2015 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/knp-menu/</guid>
       <description></description>
     </item>
@@ -26,7 +24,7 @@
       <title>Doctrine</title>
       <link>https://harmstyler.me/tags/doctrine/</link>
       <pubDate>Fri, 07 Feb 2014 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/doctrine/</guid>
       <description></description>
     </item>
@@ -35,7 +33,7 @@
       <title>Book Review</title>
       <link>https://harmstyler.me/tags/book-review/</link>
       <pubDate>Fri, 29 Nov 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/book-review/</guid>
       <description></description>
     </item>
@@ -44,7 +42,7 @@
       <title>Solr</title>
       <link>https://harmstyler.me/tags/solr/</link>
       <pubDate>Fri, 29 Nov 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/solr/</guid>
       <description></description>
     </item>
@@ -53,7 +51,7 @@
       <title>jQuery</title>
       <link>https://harmstyler.me/tags/jquery/</link>
       <pubDate>Fri, 09 Aug 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/jquery/</guid>
       <description></description>
     </item>
@@ -62,7 +60,7 @@
       <title>Search</title>
       <link>https://harmstyler.me/tags/search/</link>
       <pubDate>Mon, 29 Jul 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/search/</guid>
       <description></description>
     </item>
@@ -71,7 +69,7 @@
       <title>Internet Explorer</title>
       <link>https://harmstyler.me/tags/internet-explorer/</link>
       <pubDate>Sat, 29 Jun 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/internet-explorer/</guid>
       <description></description>
     </item>
@@ -80,7 +78,7 @@
       <title>Solarium</title>
       <link>https://harmstyler.me/tags/solarium/</link>
       <pubDate>Fri, 15 Mar 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/solarium/</guid>
       <description></description>
     </item>
@@ -89,7 +87,7 @@
       <title>Authorization</title>
       <link>https://harmstyler.me/tags/authorization/</link>
       <pubDate>Sat, 02 Mar 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/authorization/</guid>
       <description></description>
     </item>
@@ -98,7 +96,7 @@
       <title>Symfony Access Control</title>
       <link>https://harmstyler.me/tags/symfony-access-control/</link>
       <pubDate>Sat, 02 Mar 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/symfony-access-control/</guid>
       <description></description>
     </item>
@@ -107,7 +105,7 @@
       <title>eZ Find</title>
       <link>https://harmstyler.me/tags/ez-find/</link>
       <pubDate>Fri, 07 Dec 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/ez-find/</guid>
       <description></description>
     </item>
@@ -116,7 +114,7 @@
       <title>Composer</title>
       <link>https://harmstyler.me/tags/composer/</link>
       <pubDate>Wed, 21 Nov 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/composer/</guid>
       <description></description>
     </item>
@@ -125,7 +123,7 @@
       <title>Skype</title>
       <link>https://harmstyler.me/tags/skype/</link>
       <pubDate>Thu, 01 Nov 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/skype/</guid>
       <description></description>
     </item>
@@ -134,7 +132,7 @@
       <title>Technology</title>
       <link>https://harmstyler.me/tags/technology/</link>
       <pubDate>Thu, 01 Nov 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/technology/</guid>
       <description></description>
     </item>
@@ -143,7 +141,7 @@
       <title>AWS</title>
       <link>https://harmstyler.me/tags/aws/</link>
       <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/aws/</guid>
       <description></description>
     </item>
@@ -152,7 +150,7 @@
       <title>Amazon</title>
       <link>https://harmstyler.me/tags/amazon/</link>
       <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/amazon/</guid>
       <description></description>
     </item>
@@ -161,7 +159,7 @@
       <title>Cloud</title>
       <link>https://harmstyler.me/tags/cloud/</link>
       <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/cloud/</guid>
       <description></description>
     </item>
@@ -170,7 +168,7 @@
       <title>Development</title>
       <link>https://harmstyler.me/tags/development/</link>
       <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/development/</guid>
       <description></description>
     </item>
@@ -179,7 +177,7 @@
       <title>SQL</title>
       <link>https://harmstyler.me/tags/sql/</link>
       <pubDate>Thu, 13 Sep 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/sql/</guid>
       <description></description>
     </item>
@@ -188,7 +186,7 @@
       <title>gitignore</title>
       <link>https://harmstyler.me/tags/gitignore/</link>
       <pubDate>Sat, 18 Aug 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/gitignore/</guid>
       <description></description>
     </item>
@@ -197,7 +195,7 @@
       <title>Syntax Highlighting</title>
       <link>https://harmstyler.me/tags/syntax-highlighting/</link>
       <pubDate>Sat, 30 Jun 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/syntax-highlighting/</guid>
       <description></description>
     </item>
@@ -206,7 +204,7 @@
       <title>shards</title>
       <link>https://harmstyler.me/tags/shards/</link>
       <pubDate>Fri, 29 Jun 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/shards/</guid>
       <description></description>
     </item>
@@ -215,7 +213,7 @@
       <title>Dogs</title>
       <link>https://harmstyler.me/tags/dogs/</link>
       <pubDate>Mon, 23 Apr 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/dogs/</guid>
       <description></description>
     </item>
@@ -224,7 +222,7 @@
       <title>eZ Publish</title>
       <link>https://harmstyler.me/tags/ez-publish/</link>
       <pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/ez-publish/</guid>
       <description></description>
     </item>
@@ -233,7 +231,7 @@
       <title>gradients</title>
       <link>https://harmstyler.me/tags/gradients/</link>
       <pubDate>Thu, 20 Oct 2011 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/gradients/</guid>
       <description></description>
     </item>
@@ -242,7 +240,7 @@
       <title>PHP</title>
       <link>https://harmstyler.me/tags/php/</link>
       <pubDate>Wed, 24 Aug 2011 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/php/</guid>
       <description></description>
     </item>
@@ -251,7 +249,7 @@
       <title>PyroCMS</title>
       <link>https://harmstyler.me/tags/pyrocms/</link>
       <pubDate>Wed, 24 Aug 2011 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/pyrocms/</guid>
       <description></description>
     </item>
@@ -260,7 +258,7 @@
       <title>Web Development</title>
       <link>https://harmstyler.me/tags/web-development/</link>
       <pubDate>Wed, 24 Aug 2011 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/web-development/</guid>
       <description></description>
     </item>
@@ -269,7 +267,7 @@
       <title>Wordpress</title>
       <link>https://harmstyler.me/tags/wordpress/</link>
       <pubDate>Wed, 24 Aug 2011 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/tags/wordpress/</guid>
       <description></description>
     </item>

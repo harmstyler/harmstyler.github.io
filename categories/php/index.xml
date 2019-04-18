@@ -6,8 +6,6 @@
     <description>Recent content in PHP on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Sun, 17 Feb 2019 10:13:29 -0700</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/categories/php/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>Contrast Ratio Calculator</title>
       <link>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</link>
       <pubDate>Sun, 17 Feb 2019 10:13:29 -0700</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</guid>
       <description>&lt;p&gt;Making sure webistes are accessible is a big deal these days. Websites should be mindful of their audience to make sure people with disabilities are not excluded from the site content. Color contrasts between foregrounds and backgrounds is an easy miss when checking that a site is accessible, but one that is vital to hard of sight users.&lt;/p&gt;</description>
     </item>
@@ -26,7 +24,7 @@
       <title>Allowing Raw HTML in KNP Menu Labels</title>
       <link>https://harmstyler.me/posts/2015/raw-html-in-knp-menu-labels/</link>
       <pubDate>Mon, 20 Jul 2015 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2015/raw-html-in-knp-menu-labels/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/knplabs/KnpMenu&#34;&gt;KNP Menu&lt;/a&gt; is a library by the guys at &lt;a href=&#34;http://knplabs.com&#34;&gt;KNP Labs&lt;/a&gt; for building menus with php. The KNP menu library offers great features like automatically adding branch classes, marking the first and last item in a menu, and provides features for to automatically figure out the current menu item. Adding raw html into a label (eg &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;) can be a bit of a pain, however.&lt;/p&gt;</description>
     </item>
@@ -35,7 +33,7 @@
       <title>Mixing AngularJS and Symfony</title>
       <link>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</link>
       <pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</guid>
       <description>&lt;p&gt;I enjoy being a PHP Developer. PHP is a very flexible language and Symfony2 is
 a modern framework that forces many SOLID habits on developers. I also enjoy
@@ -48,7 +46,7 @@ the two to work together, however, can be a little bit of a chore if not careful
       <title>Abstract Time Stamped Entity in Symfony2</title>
       <link>https://harmstyler.me/posts/2014/abstract-time-stamped-entity-in-symfony2/</link>
       <pubDate>Fri, 07 Feb 2014 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2014/abstract-time-stamped-entity-in-symfony2/</guid>
       <description>&lt;p&gt;One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2.&lt;/p&gt;</description>
     </item>
@@ -57,7 +55,7 @@ the two to work together, however, can be a little bit of a chore if not careful
       <title>Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium</title>
       <link>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/</link>
       <pubDate>Fri, 15 Mar 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/</guid>
       <description>Solr has quickly become one of the most popular search engines available. Due to Solr&amp;rsquo;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API. { &amp;quot;require&amp;quot;: { &amp;quot;solarium/solarium&amp;quot;: &amp;quot;3.0.0&amp;quot; } }  &amp;lt;?php $config = array( &#39;endpoint&#39; =&amp;gt; array( &#39;localhost&#39; =&amp;gt; array( &#39;host&#39; =&amp;gt; &#39;127.</description>
     </item>
@@ -66,7 +64,7 @@ the two to work together, however, can be a little bit of a chore if not careful
       <title>Scraping a page with php</title>
       <link>https://harmstyler.me/posts/2012/scraping-a-page-with-php/</link>
       <pubDate>Tue, 24 Jan 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/scraping-a-page-with-php/</guid>
       <description>I ran across a problem recently, I needed to get the contents of a page so that I could mimic a widget’s functionality without having access to the database that said page’s widget used (confused yet). Basically, one site had a widget that displayed an upcoming event (information with came from a database), I needed to copy that widget to another website. Moreover, I did not want to use JavaScript to accomplish my goal because I need the new site to be cached pretty heavily on the server.</description>
     </item>

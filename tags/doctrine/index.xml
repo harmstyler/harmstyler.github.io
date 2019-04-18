@@ -6,8 +6,6 @@
     <description>Recent content in Doctrine on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Fri, 07 Feb 2014 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/tags/doctrine/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>Abstract Time Stamped Entity in Symfony2</title>
       <link>https://harmstyler.me/posts/2014/abstract-time-stamped-entity-in-symfony2/</link>
       <pubDate>Fri, 07 Feb 2014 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2014/abstract-time-stamped-entity-in-symfony2/</guid>
       <description>&lt;p&gt;One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2.&lt;/p&gt;</description>
     </item>

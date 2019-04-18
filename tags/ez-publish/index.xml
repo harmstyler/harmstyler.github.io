@@ -6,8 +6,6 @@
     <description>Recent content in eZ Publish on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Fri, 20 Apr 2012 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/tags/ez-publish/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>eZ Find Multi-Core</title>
       <link>https://harmstyler.me/posts/2012/ez-find-multi-core/</link>
       <pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ez-find-multi-core/</guid>
       <description>&lt;p&gt;One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.&lt;/p&gt;
 
@@ -28,7 +26,7 @@
       <title>Clear Cache in eZ Publish - eZpedia</title>
       <link>https://harmstyler.me/posts/2012/clear-cache-in-ez-publish-ezpedia/</link>
       <pubDate>Thu, 12 Apr 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/clear-cache-in-ez-publish-ezpedia/</guid>
       <description>As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.
 Clear Cache in eZ Publish / Solution / Root - eZpedia
@@ -39,7 +37,7 @@ My favorite is the manually clearing of the cache. For some reason the clear-cac
       <title>Installing eZ Find</title>
       <link>https://harmstyler.me/posts/2012/installing-ez-find/</link>
       <pubDate>Thu, 22 Mar 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/installing-ez-find/</guid>
       <description>&lt;p&gt;Alright, so lets begin installing eZ Find by going out and downloading it from the Github =&amp;gt; &lt;a href=&#34;http://bit.ly/GEVOte&#34; title=&#34;eZ Find on GitHub&#34;&gt;https://github.com/ezsystems/ezfind&lt;/a&gt;.
 eZ Find is an eZ Publish extension so: unzip the download, rename the fold &amp;rdquo;ezfind,&amp;rdquo; and then move the &lt;em&gt;ezfind&lt;/em&gt; folder to the &lt;em&gt;extensions&lt;/em&gt; directory of your eZ Publish install.&lt;/p&gt;

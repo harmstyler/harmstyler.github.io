@@ -6,8 +6,6 @@
     <description>Recent content in A11y on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Sun, 17 Feb 2019 10:13:29 -0700</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/categories/a11y/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>Contrast Ratio Calculator</title>
       <link>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</link>
       <pubDate>Sun, 17 Feb 2019 10:13:29 -0700</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2019/contrast-ratio-calculator/</guid>
       <description>&lt;p&gt;Making sure webistes are accessible is a big deal these days. Websites should be mindful of their audience to make sure people with disabilities are not excluded from the site content. Color contrasts between foregrounds and backgrounds is an easy miss when checking that a site is accessible, but one that is vital to hard of sight users.&lt;/p&gt;</description>
     </item>

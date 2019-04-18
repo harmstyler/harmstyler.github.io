@@ -6,8 +6,6 @@
     <description>Recent content in AWS on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Fri, 28 Sep 2012 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/tags/aws/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>AWS authorize security groups across acounts « ShellRunner</title>
       <link>https://harmstyler.me/posts/2012/aws-authorize-security-groups-across-acounts-shellrunner/</link>
       <pubDate>Fri, 28 Sep 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/aws-authorize-security-groups-across-acounts-shellrunner/</guid>
       <description>Just had to share this post since I helped a little bit with it. Very handy little tip about authorizing security groups across AWS accounts.
 AWS authorize security groups across acounts « ShellRunner.

@@ -6,8 +6,6 @@
     <description>Recent content in eZ Platform on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Wed, 19 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/categories/ez-platform/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>Avoiding Route Collision in eZ Platform</title>
       <link>https://harmstyler.me/posts/2018/avoiding-route-collision-in-ez-platform/</link>
       <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2018/avoiding-route-collision-in-ez-platform/</guid>
       <description>eZ Platform boils down to a set of Symfony bundles that give you a nice way of managing content for your users. With these bundles, eZ reserves some routing paths for internal or admin use, paths that you might want for your own app. If you ever run across a path you want to use for your app, and not break an internal eZ feature, there is a simple solution: change the path config.</description>
     </item>

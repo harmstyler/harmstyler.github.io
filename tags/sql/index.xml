@@ -6,8 +6,6 @@
     <description>Recent content in SQL on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Thu, 13 Sep 2012 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/tags/sql/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>Solr Query for Mimicking SQL IN Operator Functionality</title>
       <link>https://harmstyler.me/posts/2012/solr-query-for-mimicking-sql-in-operator-functionality/</link>
       <pubDate>Thu, 13 Sep 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/solr-query-for-mimicking-sql-in-operator-functionality/</guid>
       <description>I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the IN operator. In Solr you have the option of specifying a field using the qf operator, but what if you have more search terms searching other fields?</description>
     </item>

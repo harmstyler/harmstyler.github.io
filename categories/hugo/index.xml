@@ -6,8 +6,6 @@
     <description>Recent content in Hugo on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Sat, 13 Apr 2019 21:05:43 -0500</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>How to Pass Variables to a Partial Template in Hugo</title>
       <link>https://harmstyler.me/posts/2019/how-to-pass-variables-to-a-partial-template-in-hugo/</link>
       <pubDate>Sat, 13 Apr 2019 21:05:43 -0500</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2019/how-to-pass-variables-to-a-partial-template-in-hugo/</guid>
       <description>As a developer, I want to keep my code as DRY as is feasible for the given project. In a Hugo project, that&amp;rsquo;s where the Partial templates come in.
  Partials are smaller, context-aware components in your list and page templates that can be used economically to keep your templating DRY.

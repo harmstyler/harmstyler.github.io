@@ -6,8 +6,6 @@
     <description>Recent content in eZ Publish on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Sun, 31 Jan 2016 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/categories/ez-publish/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>Managing Media in eZ Publish 5</title>
       <link>https://harmstyler.me/posts/2016/managing-media-in-ez-publish/</link>
       <pubDate>Sun, 31 Jan 2016 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2016/managing-media-in-ez-publish/</guid>
       <description>&lt;p&gt;Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
 that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to
@@ -29,7 +27,7 @@ files.&lt;/p&gt;</description>
       <title>eZ Publish 5 - First Thoughts</title>
       <link>https://harmstyler.me/posts/2013/ez-publish-5-first-thoughts/</link>
       <pubDate>Sat, 19 Jan 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/ez-publish-5-first-thoughts/</guid>
       <description>I finally decided on my first eZ Publish 5 project&amp;hellip; my site of course. I am currently in the middle of upgrading my wordpress install to eZ Publish. Honestly, I don&amp;rsquo;t really need anything more than a simple Wordpress install, but it will be nice to get an eZ5 site under my belt.
 Seeing as I am in the middle of development, there have been a few bumps in the development road that I have found and would like to share.</description>
@@ -39,7 +37,7 @@ Seeing as I am in the middle of development, there have been a few bumps in the 
       <title>Optimizing Solr To Fit Your Needs Part 2</title>
       <link>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-2/</link>
       <pubDate>Fri, 07 Dec 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-2/</guid>
       <description>&lt;p&gt;I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default search field called &lt;code&gt;ezf_df_text&lt;/code&gt;. The downside of searching one field is that field needs to be controlled, and the only way it can be controlled is by manually editing the Solr schema file. As you might expect, eZ Find does not control this file very well out of the box.&lt;/p&gt;</description>
     </item>
@@ -48,7 +46,7 @@ Seeing as I am in the middle of development, there have been a few bumps in the 
       <title>Learning Symfony</title>
       <link>https://harmstyler.me/posts/2012/learning-symfony/</link>
       <pubDate>Wed, 21 Nov 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/learning-symfony/</guid>
       <description>I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that eZ Systems announced that they were adopting the Symfony framework I knew that I would be be spending some time with it. I have found that Symfony doesn&amp;rsquo;t have the lowest barrier to entry so it has been a process, to say the least.</description>
     </item>
@@ -57,7 +55,7 @@ Seeing as I am in the middle of development, there have been a few bumps in the 
       <title>Optimizing Solr to fit your needs Part 1</title>
       <link>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-1/</link>
       <pubDate>Sat, 25 Aug 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-1/</guid>
       <description>Let me start by saying that eZ Find is a fantastic implementation of Solr functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an eZ Publish keyword and know that it should thereby be a Solr keyword, again, all out of the box.</description>
     </item>
@@ -66,7 +64,7 @@ Seeing as I am in the middle of development, there have been a few bumps in the 
       <title>eZ Publish with Sublime</title>
       <link>https://harmstyler.me/posts/2012/ez-publish-with-sublime/</link>
       <pubDate>Sat, 30 Jun 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ez-publish-with-sublime/</guid>
       <description>A while back I fell in love with Sublime Text 2 and its&amp;rsquo; many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ.</description>
     </item>
@@ -75,7 +73,7 @@ Seeing as I am in the middle of development, there have been a few bumps in the 
       <title>Fixing Shards in eZ Find</title>
       <link>https://harmstyler.me/posts/2012/fixing-shards-in-ez-find/</link>
       <pubDate>Fri, 29 Jun 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/fixing-shards-in-ez-find/</guid>
       <description>&lt;p&gt;I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the &lt;code&gt;$shardQuery&lt;/code&gt; is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the &lt;code&gt;$queryHandler&lt;/code&gt; switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)&lt;/p&gt;</description>
     </item>
@@ -84,7 +82,7 @@ Seeing as I am in the middle of development, there have been a few bumps in the 
       <title>Solr 3.6 Update</title>
       <link>https://harmstyler.me/posts/2012/solr-3-6-update/</link>
       <pubDate>Mon, 14 May 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/solr-3-6-update/</guid>
       <description>Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.</description>
     </item>
@@ -93,7 +91,7 @@ Seeing as I am in the middle of development, there have been a few bumps in the 
       <title>Searching Multiple Solr Cores using Shards and eZ Find</title>
       <link>https://harmstyler.me/posts/2012/ezfind-shards/</link>
       <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ezfind-shards/</guid>
       <description>&lt;!--
     ![Distributed Search](/img/distributed_search.png)
@@ -135,7 +133,7 @@ if ( isset( $distributedSearch[&#39;shards&#39;] ) )
       <title>eZ Find: Enable Attribute Storage</title>
       <link>https://harmstyler.me/posts/2012/ez-find-solr-attribute-storage/</link>
       <pubDate>Thu, 26 Apr 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ez-find-solr-attribute-storage/</guid>
       <description># Enable Solr to store all the basic information of a content object # Allows Solr to be used as a cross-site DB [IndexOptions] EnableSolrAttributeStorage=true OptimizeOnCommit=disabled  When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes &#39;as_objects&#39;, true() eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.</description>
     </item>
@@ -144,7 +142,7 @@ if ( isset( $distributedSearch[&#39;shards&#39;] ) )
       <title>eZ Find Multi-Core</title>
       <link>https://harmstyler.me/posts/2012/ez-find-multi-core/</link>
       <pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ez-find-multi-core/</guid>
       <description>&lt;p&gt;One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.&lt;/p&gt;
 
@@ -155,7 +153,7 @@ if ( isset( $distributedSearch[&#39;shards&#39;] ) )
       <title>Clear Cache in eZ Publish - eZpedia</title>
       <link>https://harmstyler.me/posts/2012/clear-cache-in-ez-publish-ezpedia/</link>
       <pubDate>Thu, 12 Apr 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/clear-cache-in-ez-publish-ezpedia/</guid>
       <description>As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.
 Clear Cache in eZ Publish / Solution / Root - eZpedia
@@ -166,7 +164,7 @@ My favorite is the manually clearing of the cache. For some reason the clear-cac
       <title>Installing eZ Find</title>
       <link>https://harmstyler.me/posts/2012/installing-ez-find/</link>
       <pubDate>Thu, 22 Mar 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/installing-ez-find/</guid>
       <description>&lt;p&gt;Alright, so lets begin installing eZ Find by going out and downloading it from the Github =&amp;gt; &lt;a href=&#34;http://bit.ly/GEVOte&#34; title=&#34;eZ Find on GitHub&#34;&gt;https://github.com/ezsystems/ezfind&lt;/a&gt;.
 eZ Find is an eZ Publish extension so: unzip the download, rename the fold &amp;rdquo;ezfind,&amp;rdquo; and then move the &lt;em&gt;ezfind&lt;/em&gt; folder to the &lt;em&gt;extensions&lt;/em&gt; directory of your eZ Publish install.&lt;/p&gt;
@@ -182,7 +180,7 @@ eZ Find is an eZ Publish extension so: unzip the download, rename the fold &amp
       <title>eZ Find Basics</title>
       <link>https://harmstyler.me/posts/2012/ez-find-basics/</link>
       <pubDate>Mon, 19 Mar 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ez-find-basics/</guid>
       <description>I have been thinking a long time about different topics I could use this blog for. I have settled for the moment on an eZ Publish extension that I have used extensively for a while, eZ Find. eZ Find is an ultra-powerful Solr powered search engine made for eZ Publish, authored by Paul Borgermans.
 For starters, an introduction to eZ Find &amp;amp; Solr.

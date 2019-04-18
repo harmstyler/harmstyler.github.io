@@ -6,8 +6,6 @@
     <description>Recent content in CSS on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Thu, 20 Oct 2011 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/categories/css/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>Gradient App</title>
       <link>https://harmstyler.me/posts/2011/gradient-app/</link>
       <pubDate>Thu, 20 Oct 2011 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2011/gradient-app/</guid>
       <description>I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out gradients is easy enough, get your start color and your end color and then plug them into all the various browser specific gradient css elements (webkit, moz, etc&amp;hellip;) and you get a gradient. Like I said, simple enough but time consuming because each browser gets its own line.</description>
     </item>
@@ -26,7 +24,7 @@
       <title>Path to Android!</title>
       <link>https://harmstyler.me/posts/2011/path-to-android/</link>
       <pubDate>Fri, 26 Aug 2011 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2011/path-to-android/</guid>
       <description>Finally, Path has come to Android. Path is one of those little known apps that I think a person would love, if they knew about it. Path is made to be built off of Facebook, but far more personal than that. Their slogan then makes sense, The Personal Network (vs the Social Network). At Path each person is only able to view a limited number of friends, making the social web experience more personal.</description>
     </item>

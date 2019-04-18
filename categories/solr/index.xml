@@ -6,8 +6,6 @@
     <description>Recent content in Solr on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Fri, 29 Nov 2013 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/categories/solr/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>Administrating Solr: A Review</title>
       <link>https://harmstyler.me/posts/2013/administrating-solr-a-review/</link>
       <pubDate>Fri, 29 Nov 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/administrating-solr-a-review/</guid>
       <description>Administrating Solr is for developers and Solr administrators who have basic knowledge of Solr and are looking for ways to keep their Solr server healthy and well maintained. Basic working knowledge on Apache Lucene is recommended, but is not mandatory.
  Pact Publishing released a new book in October 2013 called Administrating Solr. In the book readers can find out all sorts of information about, you guessed it, administrating your Solr installation.</description>
@@ -27,7 +25,7 @@
       <title>Sort Solr Facets on Per Field Basis</title>
       <link>https://harmstyler.me/posts/2013/sort-solr-facets-on-per-field-basis/</link>
       <pubDate>Mon, 29 Jul 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/sort-solr-facets-on-per-field-basis/</guid>
       <description>I recently faced a strange problem. I was faceting off of multiple facet.fields and I found the need to sort them independently of each other. As far as I knew up to this point facet.sort could only be set once. When I read the doc, however, it was claimed that the facet.sort could be set on a per field basis; sadly no examples were provided nor was it explained any further.</description>
     </item>
@@ -36,7 +34,7 @@
       <title>Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium</title>
       <link>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/</link>
       <pubDate>Fri, 15 Mar 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium-repost/</guid>
       <description>Solr has quickly become one of the most popular search engines available. Due to Solr&amp;rsquo;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API. { &amp;quot;require&amp;quot;: { &amp;quot;solarium/solarium&amp;quot;: &amp;quot;3.0.0&amp;quot; } }  &amp;lt;?php $config = array( &#39;endpoint&#39; =&amp;gt; array( &#39;localhost&#39; =&amp;gt; array( &#39;host&#39; =&amp;gt; &#39;127.</description>
     </item>
@@ -45,7 +43,7 @@
       <title>Optimizing Solr To Fit Your Needs Part 2</title>
       <link>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-2/</link>
       <pubDate>Fri, 07 Dec 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-2/</guid>
       <description>&lt;p&gt;I am finally taking the time to write about optimizing the Solr schema file. In my last post I showed that eZ Find already ships with a default search field called &lt;code&gt;ezf_df_text&lt;/code&gt;. The downside of searching one field is that field needs to be controlled, and the only way it can be controlled is by manually editing the Solr schema file. As you might expect, eZ Find does not control this file very well out of the box.&lt;/p&gt;</description>
     </item>
@@ -54,7 +52,7 @@
       <title>Solr Query for Mimicking SQL IN Operator Functionality</title>
       <link>https://harmstyler.me/posts/2012/solr-query-for-mimicking-sql-in-operator-functionality/</link>
       <pubDate>Thu, 13 Sep 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/solr-query-for-mimicking-sql-in-operator-functionality/</guid>
       <description>I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the IN operator. In Solr you have the option of specifying a field using the qf operator, but what if you have more search terms searching other fields?</description>
     </item>
@@ -63,7 +61,7 @@
       <title>Optimizing Solr to fit your needs Part 1</title>
       <link>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-1/</link>
       <pubDate>Sat, 25 Aug 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/optimizing-solr-to-fit-your-needs-part-1/</guid>
       <description>Let me start by saying that eZ Find is a fantastic implementation of Solr functionality. With eZ Find you get a fantastic search, out of the box. eZ Find gathers all the content in your system and organizes it for you into strings, text, and keywords (there are more but those the types I use most often). It can look at an eZ Publish keyword and know that it should thereby be a Solr keyword, again, all out of the box.</description>
     </item>
@@ -72,7 +70,7 @@
       <title>Solr 3.6 Update</title>
       <link>https://harmstyler.me/posts/2012/solr-3-6-update/</link>
       <pubDate>Mon, 14 May 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/solr-3-6-update/</guid>
       <description>Turns out that when using shards to search multiple cores (shards in general actually) binary is not returned properly. I found an update to the trunk (4.x) version of Solr and was successfully able to update my version of Solr 3.6. I am submitting a pull request of the code update to Solr as well a new war file to eZ Find, but in the meantime you can download the solr.</description>
     </item>
@@ -81,7 +79,7 @@
       <title>Searching Multiple Solr Cores using Shards and eZ Find</title>
       <link>https://harmstyler.me/posts/2012/ezfind-shards/</link>
       <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ezfind-shards/</guid>
       <description>&lt;!--
     ![Distributed Search](/img/distributed_search.png)
@@ -123,7 +121,7 @@ if ( isset( $distributedSearch[&#39;shards&#39;] ) )
       <title>eZ Find: Enable Attribute Storage</title>
       <link>https://harmstyler.me/posts/2012/ez-find-solr-attribute-storage/</link>
       <pubDate>Thu, 26 Apr 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ez-find-solr-attribute-storage/</guid>
       <description># Enable Solr to store all the basic information of a content object # Allows Solr to be used as a cross-site DB [IndexOptions] EnableSolrAttributeStorage=true OptimizeOnCommit=disabled  When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes &#39;as_objects&#39;, true() eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.</description>
     </item>
@@ -132,7 +130,7 @@ if ( isset( $distributedSearch[&#39;shards&#39;] ) )
       <title>eZ Find Basics</title>
       <link>https://harmstyler.me/posts/2012/ez-find-basics/</link>
       <pubDate>Mon, 19 Mar 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/ez-find-basics/</guid>
       <description>I have been thinking a long time about different topics I could use this blog for. I have settled for the moment on an eZ Publish extension that I have used extensively for a while, eZ Find. eZ Find is an ultra-powerful Solr powered search engine made for eZ Publish, authored by Paul Borgermans.
 For starters, an introduction to eZ Find &amp;amp; Solr.
@@ -143,7 +141,7 @@ Solr is an ultra-powerful search engine built in Java on top of the Apache Lucen
       <title>Solr Buckets</title>
       <link>https://harmstyler.me/posts/2012/solr-buckets/</link>
       <pubDate>Sat, 25 Feb 2012 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2012/solr-buckets/</guid>
       <description>I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. The Problem: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&amp;rsquo;s speed; let Solr do the work).</description>
     </item>

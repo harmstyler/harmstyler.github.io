@@ -6,8 +6,6 @@
     <description>Recent content in PHP CodeSniffer on Tyler Harms</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor>
-    <webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster>
     <lastBuildDate>Tue, 30 Apr 2013 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://harmstyler.me/categories/php-codesniffer/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>Symfony2 Coding Standards</title>
       <link>https://harmstyler.me/posts/2013/symfony2-coding-standards/</link>
       <pubDate>Tue, 30 Apr 2013 00:00:00 +0000</pubDate>
-      <author>tyler.harms@gmail.com (Tyler Harms)</author>
+      
       <guid>https://harmstyler.me/posts/2013/symfony2-coding-standards/</guid>
       <description>With eZ Publish moving to Symfony2, I found that I was in need of learning some new coding standards. I never really looked into PHP CodeSniffer while doing eZ Publish development (most of my code was in the templates), so I never really thought about PHP CodeSniffer as an option until starting work with Symphony2. To the point, I just wanted to share the Symfony2 PHP CodeSniffer Coding Standard on Github.</description>
     </item>
