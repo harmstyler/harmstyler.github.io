@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Cache-Control" content="public" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.55.1" /><title>Allowing Raw HTML in KNP Menu Labels • Tyler Harms</title><meta name="twitter:card" content="summary"/>
+<meta name="generator" content="Hugo 0.55.2" /><title>Allowing Raw HTML in KNP Menu Labels • Tyler Harms</title><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Allowing Raw HTML in KNP Menu Labels"/>
 <meta name="twitter:description" content="KNP Menu is a library by the guys at KNP Labs for building menus with php. The KNP menu library offers great features like automatically adding branch classes, marking the first and last item in a menu, and provides features for to automatically figure out the current menu item. Adding raw html into a label (eg &lt;br&gt;) can be a bit of a pain, however."/>
 <meta property="og:title" content="Allowing Raw HTML in KNP Menu Labels" />
@@ -18,13 +18,13 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.f23c42d3c92ff1f5416109b76e2a347b878788a66767e30c5793a31d6c86e1981347858989d9bf8dfb88f548e788ed2515ebc90574310d52c29a371e7a2e1b80.css" integrity="sha512-8jxC08kv8fVBYQm3bio0e4eHiKZnZ&#43;MMV5OjHWyG4ZgTR4WJidm/jfuI9UjniO0lFevJBXQxDVLCmjceei4bgA==">
 
 
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.208fdd69dd25b05080ddfcdf1a9684be856c83a0a5c13edfc3fb170e19465437.css" integrity="sha256-II/dad0lsFCA3fzfGpaEvoVsg6ClwT7fw/sXDhlGVDc=">
+<link rel="stylesheet" href="/scss/hyde-hyde.db26229686c54cef3ebada3e965159104c773b1bdf455fc3332e6c7090f4a32c.css" integrity="sha256-2yYilobFTO8&#43;uto&#43;llFZEEx3OxvfRV/DMy5scJD0oyw=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -190,7 +190,29 @@
 <p>To tell the renderer that the menu can contain raw html, or safe labels as the KNP menu library prefers to call it, the <code>allow_safe_labels</code> renderer option needs to be set to true.</p>
 
 <p>To set the <code>allow_safe_labels</code> option using the KNPMenu Library:</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Knp\Menu\Matcher\Matcher</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Knp\Menu\MenuFactory</span><span class="p">;</span>
@@ -207,18 +229,36 @@
 </span><span class="c1"></span><span class="nv">$rendererOptions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;allow_safe_labels&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">];</span>
 <span class="nv">$renderer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ListRenderer</span><span class="p">(</span><span class="k">new</span> <span class="nx">Matcher</span><span class="p">(),</span> <span class="nv">$rendererOptions</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$renderer</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$menu</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></td></tr></table>
+</div>
+</div>
+
 <p>Because rendering a menu is done differently using the KNPMenuBundle, the <code>allow_safe_labels</code> option is a is set quite differently:</p>
+
 <div class="highlight"><pre class="chroma"><code class="language-twig" data-lang="twig"><span class="cp">{%</span> <span class="k">raw</span> <span class="cp">%}</span><span class="x">
 </span><span class="x">{{ knp_menu_render(&#39;primary_menu&#39;, {&#39;allow_safe_labels&#39;: true}) }}
 </span><span class="x"></span><span class="cp">{%</span> <span class="k">endraw</span> <span class="cp">%}</span></code></pre></div>
+
 <p>To tell the renderer that menu item contains a safe label, and can thereby be rendered unescaped, an <code>extra</code> parameter needs to be passed.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="nv">$menu</span>
     <span class="o">-&gt;</span><span class="na">addChild</span><span class="p">(</span><span class="s1">&#39;Foo&lt;br&gt;Bar&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;uri&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/&#39;</span><span class="p">))</span>
     <span class="o">-&gt;</span><span class="na">setExtra</span><span class="p">(</span><span class="s1">&#39;safe_label&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></td></tr></table>
+</div>
+</div>
+
 <p>Options set via the <code>setExtra()</code> method end up as options on the menu item, accessible by a <code>getExtra()</code> method. The default twig template for KNPMenuBundle takes advantage of this parameter out of the box.</p>
 
 <p>In summary, rendering menus using the KNP menu library with raw html in the label is possible without much work. I hope these examples help should you ever find yourself trying put raw html in a label in the future. Know that the barriers are in place for good reason, however, as allowing raw html in your labels could allow some XSS holes to pop up in your application should the menu labels be created by a user.</p>

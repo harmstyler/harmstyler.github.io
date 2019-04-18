@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Cache-Control" content="public" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.55.1" /><title>Managing Media in eZ Publish 5 • Tyler Harms</title><meta name="twitter:card" content="summary"/>
+<meta name="generator" content="Hugo 0.55.2" /><title>Managing Media in eZ Publish 5 • Tyler Harms</title><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Managing Media in eZ Publish 5"/>
 <meta name="twitter:description" content="Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
 that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to
@@ -24,13 +24,13 @@ files." />
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.975cba22ca4dc1f6f8df261fa5f37d5f24b6afa51aaec0cb564f81b3b71a0d6a2dc3a3bf11dc5d540503cb415df0c79167218bec092cb02397817b4690f53444.css" integrity="sha512-l1y6IspNwfb43yYfpfN9XyS2r6UarsDLVk&#43;Bs7caDWotw6O/EdxdVAUDy0Fd8MeRZyGL7AkssCOXgXtGkPU0RA==">
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.f23c42d3c92ff1f5416109b76e2a347b878788a66767e30c5793a31d6c86e1981347858989d9bf8dfb88f548e788ed2515ebc90574310d52c29a371e7a2e1b80.css" integrity="sha512-8jxC08kv8fVBYQm3bio0e4eHiKZnZ&#43;MMV5OjHWyG4ZgTR4WJidm/jfuI9UjniO0lFevJBXQxDVLCmjceei4bgA==">
 
 
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.208fdd69dd25b05080ddfcdf1a9684be856c83a0a5c13edfc3fb170e19465437.css" integrity="sha256-II/dad0lsFCA3fzfGpaEvoVsg6ClwT7fw/sXDhlGVDc=">
+<link rel="stylesheet" href="/scss/hyde-hyde.db26229686c54cef3ebada3e965159104c773b1bdf455fc3332e6c7090f4a32c.css" integrity="sha256-2yYilobFTO8&#43;uto&#43;llFZEEx3OxvfRV/DMy5scJD0oyw=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -171,7 +171,7 @@ files." />
     
     
     <br/>
-    <i class="fas fa-clock"></i> 4 min read
+    <i class="fas fa-clock"></i> 5 min read
 </div>
 
 
@@ -240,7 +240,80 @@ then tells Symfony which header generate for the response, either download or vi
 that the generated eZ url alias will be the url to the media file and not the one subject to change,
 it also gets rid of the chrome around the image since we are serving the image directly.</p>
 
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">AppBundle\Controller</span><span class="p">;</span>
 
@@ -309,7 +382,9 @@ it also gets rid of the chrome around the image since we are serving the image d
         <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></td></tr></table>
+</div>
+</div>
 
 <h3 id="conclusion">Conclusion</h3>
 
