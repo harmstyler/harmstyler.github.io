@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Octopress on Tyler Harms</title>
+    <link>https://harmstyler.me/categories/octopress/</link>
+    <description>Recent content in Octopress on Tyler Harms</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Apr 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://harmstyler.me/categories/octopress/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>New Site Theme</title>
+      <link>https://harmstyler.me/posts/2013/new-site-theme/</link>
+      <pubDate>Mon, 15 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://harmstyler.me/posts/2013/new-site-theme/</guid>
+      <description>I have been working on getting a new site theme up and running for a while now. My hold up was that I could never commit to a platform. I knew that I wanted off Wordpress and onto something more developer friendly. Originally I was going to put this site on eZ Publish, but that just seemed like overkill. Next I thought about creating a Symfony2 blog, but I wanted to cheapen my hosting options so I opted against Symfony2.</description>
+    </item>
+    
+  </channel>
+</rss>
