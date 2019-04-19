@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Cache-Control" content="public" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.55.2" /><title>Contrast Ratio Calculator • Tyler Harms</title><meta name="twitter:card" content="summary"/>
+<meta name="generator" content="Hugo 0.55.1" /><title>Contrast Ratio Calculator • Tyler Harms</title><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Contrast Ratio Calculator"/>
 <meta name="twitter:description" content="Making sure webistes are accessible is a big deal these days. Websites should be mindful of their audience to make sure people with disabilities are not excluded from the site content. Color contrasts between foregrounds and backgrounds is an easy miss when checking that a site is accessible, but one that is vital to hard of sight users."/>
 <meta property="og:title" content="Contrast Ratio Calculator" />
@@ -18,7 +18,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.f23c42d3c92ff1f5416109b76e2a347b878788a66767e30c5793a31d6c86e1981347858989d9bf8dfb88f548e788ed2515ebc90574310d52c29a371e7a2e1b80.css" integrity="sha512-8jxC08kv8fVBYQm3bio0e4eHiKZnZ&#43;MMV5OjHWyG4ZgTR4WJidm/jfuI9UjniO0lFevJBXQxDVLCmjceei4bgA==">
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.526c7855d123d38fb872630d4fd87414145f1c4718e03de5cdec1c1fbdd44f3458c31f6ef3f67ba28a296a00ba072faf897644f22e1360bf7265b512a40017fa.css" integrity="sha512-Umx4VdEj04&#43;4cmMNT9h0FBRfHEcY4D3lzewcH73UTzRYwx9u8/Z7ooopagC6By&#43;viXZE8i4TYL9yZbUSpAAX&#43;g==">
 
 
 
@@ -185,7 +185,21 @@
 
 <p>Colors can be made into their object representation by using the <a href="https://github.com/harmstyler/contrast-ratio-calculator/blob/v1.0.1/lib/ContrastRatioCalculator/Color.php">Color class</a>. The color objects can be created by either the hexidecimal representation of the color or the <a href="https://en.wikipedia.org/wiki/RGB_color_model">RGB</a> representation of the color.</p>
 
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">HarmsTyler\ContrastRatioCalculator</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">Color</span>
@@ -195,19 +209,43 @@
     <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">fromHex</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$hex</span><span class="p">)</span><span class="o">:</span> <span class="nx">self</span> <span class="p">{}</span>
     <span class="c1">//...
 </span><span class="c1"></span><span class="p">}</span>
-</code></pre></div>
+</code></pre></td></tr></table>
+</div>
+</div>
 
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="nv">$color1</span> <span class="o">=</span> <span class="nx">Color</span><span class="o">::</span><span class="na">fromHex</span><span class="p">(</span><span class="s1">&#39;ffffff&#39;</span><span class="p">);</span>
 <span class="nv">$color2</span> <span class="o">=</span> <span class="nx">Color</span><span class="o">::</span><span class="na">fromRgb</span><span class="p">([</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">]);</span>
 <span class="c1">// $color1-&gt;getHex() === $color2-&gt;getHex()
-</span></code></pre></div>
+</span></code></pre></td></tr></table>
+</div>
+</div>
 
 <h3 id="calculating-the-contrast">Calculating the Contrast</h3>
 
 <p>Once color objects have been created, the <a href="https://github.com/harmstyler/contrast-ratio-calculator/blob/v1.0.1/lib/ContrastRatioCalculator/ContrastRatio.php">Contrast Ratio class</a> can be used. The Contrast Ratio class requires two color objects on insantiation, a primary and a secondary color (typically foreground and background colors). The contrast ratio calculation is made immediately upon object instantiation, so it can be retrieved from the class immediately.</p>
 
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">HarmsTyler\ContrastRatioCalculator</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">ContrastRatio</span>
@@ -215,19 +253,43 @@
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">Color</span> <span class="nv">$primaryColor</span><span class="p">,</span> <span class="nx">Color</span> <span class="nv">$secondaryColor</span><span class="p">)</span> <span class="p">{}</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getRatio</span><span class="p">()</span> <span class="p">{};</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></td></tr></table>
+</div>
+</div>
 
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="nv">$contrastRatio</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ContrastRatio</span><span class="p">(</span><span class="nv">$color1</span><span class="p">,</span> <span class="nv">$color2</span><span class="p">);</span>
 <span class="nv">$ratio</span> <span class="o">=</span> <span class="nv">$contrastRatio</span><span class="o">-&gt;</span><span class="na">getRatio</span><span class="p">();</span>
-</code></pre></div>
+</code></pre></td></tr></table>
+</div>
+</div>
 
 <h3 id="making-the-grade">Making the grade</h3>
 
 <p>A ratio alone is just a number. Without knowing how to grade a raio, it&rsquo;s actually useless. That&rsquo;s where the <a href="https://github.com/harmstyler/contrast-ratio-calculator/blob/v1.0.1/lib/ContrastRatioCalculator/WCAGContrastRating.php">WCAGContrastRating class</a> comes in to play. The WCAGContrastRating can return a grade by either passing a set of Color objects, or by passing an already created ContrastRatio object. The Web Content Accessibility Guidelines (WCAG) state what contrast ratios are a pass/fail. Specifically WCAG guidelines give grades of AAA, AA, AA Large, and FAIL (there are variations of these grades, but if text has a grade of AAA at normal text size, it can be assumed that it will receive an AAA at large text sizes as well, so those variations are ommitted from the grading scale).</p>
 
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="k">namespace</span> <span class="nx">HarmsTyler\ContrastRatioCalculator</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">WCAGContrastRating</span>
@@ -235,13 +297,25 @@
     <span class="k">public</span> <span class="k">function</span> <span class="nf">rateColors</span><span class="p">(</span><span class="nx">Color</span> <span class="nv">$primaryColor</span><span class="p">,</span> <span class="nx">Color</span> <span class="nv">$secondaryColor</span><span class="p">)</span> <span class="p">{}</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">rateContrastRatio</span><span class="p">(</span><span class="nx">ContrastRatio</span> <span class="nv">$contrastRatio</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{}</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></td></tr></table>
+</div>
+</div>
 
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="nv">$rating</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WCAGContrastRating</span><span class="p">();</span>
 <span class="nv">$grade1</span> <span class="o">=</span> <span class="nv">$rating</span><span class="o">-&gt;</span><span class="na">rateContrastRatio</span><span class="p">(</span><span class="nv">$contrastRatio</span><span class="p">);</span>
 <span class="nv">$grade2</span> <span class="o">=</span> <span class="nv">$rating</span><span class="o">-&gt;</span><span class="na">rateColors</span><span class="p">(</span><span class="nv">$color1</span><span class="p">,</span> <span class="nv">$color2</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></td></tr></table>
+</div>
+</div>
 
 <p>Grades will be returned as one of four constants: <code>AA_LARGE</code>, <code>AA</code>, <code>AAA</code>, and <code>FAIL</code>;</p>
 

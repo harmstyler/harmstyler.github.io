@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Cache-Control" content="public" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.55.2" /><title>Fixing Shards in eZ Find • Tyler Harms</title><meta name="twitter:card" content="summary"/>
+<meta name="generator" content="Hugo 0.55.1" /><title>Fixing Shards in eZ Find • Tyler Harms</title><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Fixing Shards in eZ Find"/>
 <meta name="twitter:description" content="I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the $shardQuery is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the $queryHandler switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)"/>
 <meta property="og:title" content="Fixing Shards in eZ Find" />
@@ -18,7 +18,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.f23c42d3c92ff1f5416109b76e2a347b878788a66767e30c5793a31d6c86e1981347858989d9bf8dfb88f548e788ed2515ebc90574310d52c29a371e7a2e1b80.css" integrity="sha512-8jxC08kv8fVBYQm3bio0e4eHiKZnZ&#43;MMV5OjHWyG4ZgTR4WJidm/jfuI9UjniO0lFevJBXQxDVLCmjceei4bgA==">
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.526c7855d123d38fb872630d4fd87414145f1c4718e03de5cdec1c1fbdd44f3458c31f6ef3f67ba28a296a00ba072faf897644f22e1360bf7265b512a40017fa.css" integrity="sha512-Umx4VdEj04&#43;4cmMNT9h0FBRfHEcY4D3lzewcH73UTzRYwx9u8/Z7ooopagC6By&#43;viXZE8i4TYL9yZbUSpAAX&#43;g==">
 
 
 
@@ -188,7 +188,80 @@
   <div class="post">
     <p>I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the <code>$shardQuery</code> is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the <code>$queryHandler</code> switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)</p>
 
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="nx">\\ezfezpsolrquerybuilder</span><span class="o">.</span><span class="nx">php</span>
 
@@ -257,7 +330,9 @@
         <span class="p">}</span>
 
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></td></tr></table>
+</div>
+</div>
   </div>
   
 

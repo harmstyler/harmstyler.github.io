@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Cache-Control" content="public" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.55.2" /><title>Abstract Time Stamped Entity in Symfony2 • Tyler Harms</title><meta name="twitter:card" content="summary"/>
+<meta name="generator" content="Hugo 0.55.1" /><title>Abstract Time Stamped Entity in Symfony2 • Tyler Harms</title><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Abstract Time Stamped Entity in Symfony2"/>
 <meta name="twitter:description" content="One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2."/>
 <meta property="og:title" content="Abstract Time Stamped Entity in Symfony2" />
@@ -18,7 +18,7 @@
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.f23c42d3c92ff1f5416109b76e2a347b878788a66767e30c5793a31d6c86e1981347858989d9bf8dfb88f548e788ed2515ebc90574310d52c29a371e7a2e1b80.css" integrity="sha512-8jxC08kv8fVBYQm3bio0e4eHiKZnZ&#43;MMV5OjHWyG4ZgTR4WJidm/jfuI9UjniO0lFevJBXQxDVLCmjceei4bgA==">
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.526c7855d123d38fb872630d4fd87414145f1c4718e03de5cdec1c1fbdd44f3458c31f6ef3f67ba28a296a00ba072faf897644f22e1360bf7265b512a40017fa.css" integrity="sha512-Umx4VdEj04&#43;4cmMNT9h0FBRfHEcY4D3lzewcH73UTzRYwx9u8/Z7ooopagC6By&#43;viXZE8i4TYL9yZbUSpAAX&#43;g==">
 
 
 
@@ -175,7 +175,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 3 min read
+    <i class="fas fa-clock"></i> 4 min read
 </div>
 
 
@@ -186,7 +186,44 @@
     <p>One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2.</p>
 
 <p>Luckily, adding and updated and created fields to an entity in Symfony2 with Doctrine is quite easy:</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="sd">/**
 </span><span class="sd"> * @var \DateTime
 </span><span class="sd"> *
@@ -218,13 +255,114 @@
 <span class="p">{</span>
    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setUpdated</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></td></tr></table>
+</div>
+</div>
+
 <p>The code should be pretty self explanitory, we have two DateTime field types that get initially set on entity creation in the contstructor. I then add a <code>setUpdatedValue()</code> function that runs when on PreUpdate of the entity.</p>
 
 <p>The above code works very well, but it is not an ideal solution for working with multiple models. Of course, we could add the updated/created values to every entity, but that wouldn&rsquo;t be very <a href="http://en.wikipedia.org/wiki/Don" title="t_repeat_yourself &quot;Don't Repeat Yourself">DRY</a> of us.</p>
 
 <p>The solution is to use an <a href="http://www.php.net/manual/en/language.oop5.abstract.php">Abstract Class</a> that our entity can extend. The abstract class, <code>TimeStampedEntity</code>, will have two entity variables <code>$updated</code> and <code>$created</code> and will look nearly identical to the code above when it is complete. The key that will make this work with Doctrine and Symfony2 is Doctrine&rsquo;s <a href="http://docs.doctrine-project.org/en/latest/reference/inheritance-mapping.html#mapped-superclasses"><code>MappedSuperclass</code></a> declaration that tells Symfony and Doctrine that the abstract class is a Superclass with declared entity attributes. What we are left with is a Superclass that can extend any model to add <code>updated</code> and <code>created</code> attributes to your data.</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">HarmsTyler\Common\Entity</span><span class="p">;</span>
 
@@ -317,9 +455,32 @@
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setUpdated</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></td></tr></table>
+</div>
+</div>
+
 <p>An example in use:</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">Blend\Iterate\BlogBundle\Entity</span><span class="p">;</span>
 
@@ -334,7 +495,10 @@
 </span><span class="sd"> */</span>
 <span class="k">class</span> <span class="nc">Post</span> <span class="k">extends</span> <span class="nx">TimeStampedEntity</span>
 <span class="p">{</span>
-</code></pre></div>
+</code></pre></td></tr></table>
+</div>
+</div>
+
 <p><em>edited to add setCreatedValues()</em></p>
   </div>
   

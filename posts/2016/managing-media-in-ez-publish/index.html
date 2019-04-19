@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Cache-Control" content="public" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.55.2" /><title>Managing Media in eZ Publish 5 • Tyler Harms</title><meta name="twitter:card" content="summary"/>
+<meta name="generator" content="Hugo 0.55.1" /><title>Managing Media in eZ Publish 5 • Tyler Harms</title><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Managing Media in eZ Publish 5"/>
 <meta name="twitter:description" content="Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
 that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to
@@ -24,7 +24,7 @@ files." />
 <meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
 
-<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.f23c42d3c92ff1f5416109b76e2a347b878788a66767e30c5793a31d6c86e1981347858989d9bf8dfb88f548e788ed2515ebc90574310d52c29a371e7a2e1b80.css" integrity="sha512-8jxC08kv8fVBYQm3bio0e4eHiKZnZ&#43;MMV5OjHWyG4ZgTR4WJidm/jfuI9UjniO0lFevJBXQxDVLCmjceei4bgA==">
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.526c7855d123d38fb872630d4fd87414145f1c4718e03de5cdec1c1fbdd44f3458c31f6ef3f67ba28a296a00ba072faf897644f22e1360bf7265b512a40017fa.css" integrity="sha512-Umx4VdEj04&#43;4cmMNT9h0FBRfHEcY4D3lzewcH73UTzRYwx9u8/Z7ooopagC6By&#43;viXZE8i4TYL9yZbUSpAAX&#43;g==">
 
 
 
@@ -195,7 +195,8 @@ downloads.</p>
 
 <h4 id="an-example-download-url-built-for-ez-publish-4">An example download url built for eZ Publish 4:</h4>
 
-<div class="highlight"><pre class="chroma"><code class="language-smarty" data-lang="smarty"><span class="cp">{</span><span class="nf">def</span> <span class="nv">$download_url</span> <span class="o">=</span> <span class="na">concat</span><span class="o">(</span> <span class="s2">&#34;content/download/&#34;</span><span class="o">,</span> <span class="nv">$attribute.contentobject_id</span><span class="o">,</span> <span class="s2">&#34;/&#34;</span><span class="o">,</span> <span class="nv">$attribute.content.contentobject_attribute_id</span><span class="o">,</span> <span class="s2">&#34;/&#34;</span><span class="o">,</span> <span class="nv">$attribute.content.original_filename</span> <span class="o">)|</span><span class="na">ezurl</span><span class="cp">}</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-smarty" data-lang="smarty"><span class="cp">{</span><span class="nf">def</span> <span class="nv">$download_url</span> <span class="o">=</span> 
+    <span class="na">concat</span><span class="o">(</span> <span class="s2">&#34;content/download/&#34;</span><span class="o">,</span> <span class="nv">$attribute.contentobject_id</span><span class="o">,</span> <span class="s2">&#34;/&#34;</span><span class="o">,</span> <span class="nv">$attribute.content.contentobject_attribute_id</span><span class="o">,</span> <span class="s2">&#34;/&#34;</span><span class="o">,</span> <span class="nv">$attribute.content.original_filename</span> <span class="o">)|</span><span class="na">ezurl</span><span class="cp">}</span></code></pre></div>
 
 <p>Hopefully the problems are obvious, not only is the url a pain to build, but the url is subject to change.
 That means that whenever an editor changes the uploaded file attached to the content, a new download url
