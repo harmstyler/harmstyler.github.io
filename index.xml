@@ -1055,8 +1055,8 @@ Symfony&lt;/a&gt;.&lt;/p&gt;</description>
       <description>&lt;p&gt;I would say that South Dakota Code Camp 2013 was another huge success. The organizers were once again able to find some great speakers that cover a wide array of topics. Moreover, this year I had the opportunity to speak. I chose to speak about Django, one of my favorite web frameworks. Anyway, here is a link to my slides.&lt;/p&gt;
 
 
-&lt;a class=&#34;embedly-card&#34; href=&#34;http://harmssite.com/intro-to-django/&#34;&gt;An Introduction to Django / Tyler Harms&lt;/a&gt;
-&lt;script&gt;!function(a){var b=&#34;embedly-platform&#34;,c=&#34;script&#34;;if(!a.getElementById(b)){var d=a.createElement(c);d.id=b,d.src=(&#34;https:&#34;===document.location.protocol?&#34;https&#34;:&#34;http&#34;)+&#34;://cdn.embedly.com/widgets/platform.js&#34;;var e=document.getElementsByTagName(c)[0];e.parentNode.insertBefore(d,e)}}(document);&lt;/script&gt;
+&lt;a class=&#34;embedly-card&#34; href=&#34;https://harmstyler.me/intro-to-django/&#34;&gt;An Introduction to Django / Tyler Harms&lt;/a&gt;
+&lt;script&gt;!function(a){var b=&#34;embedly-platform&#34;,c=&#34;script&#34;;if(!a.getElementById(b)){var d=a.createElement(c);d.id=b,d.src=&#34;https://cdn.embedly.com/widgets/platform.js&#34;;var e=document.getElementsByTagName(c)[0];e.parentNode.insertBefore(d,e)}}(document);&lt;/script&gt;
 
 
 </description>

@@ -98,7 +98,7 @@ the two to work together, however, can be a little bit of a chore if not careful
       <pubDate>Mon, 11 Nov 2013 00:00:00 +0000</pubDate>
       
       <guid>https://harmstyler.me/posts/2013/south-dakota-code-camp-2013/</guid>
-      <description>I would say that South Dakota Code Camp 2013 was another huge success. The organizers were once again able to find some great speakers that cover a wide array of topics. Moreover, this year I had the opportunity to speak. I chose to speak about Django, one of my favorite web frameworks. Anyway, here is a link to my slides.</description>
+      <description>I would say that South Dakota Code Camp 2013 was another huge success. The organizers were once again able to find some great speakers that cover a wide array of topics. Moreover, this year I had the opportunity to speak. I chose to speak about Django, one of my favorite web frameworks.</description>
     </item>
     
     <item>
@@ -107,8 +107,7 @@ the two to work together, however, can be a little bit of a chore if not careful
       <pubDate>Fri, 09 Aug 2013 00:00:00 +0000</pubDate>
       
       <guid>https://harmstyler.me/posts/2013/jquery-animate-body-for-all-browsers/</guid>
-      <description>It turns out that when trying to use jQuery&amp;rsquo;s animate to scrollTop on the main body of an html document different browsers require different targets to scroll to. Webkit requires targeting the body of the document while all other browsers that I know of use html. The typical solution is to target both in the same call:
-$(&amp;#39;html, body&amp;#39;).animate({ scrollTop: &amp;#39;0px&amp;#39;,&amp;#39;fast&amp;#39;, function(){ // Code to be fired when complete goes here (fired twice)  } });  This solution is problematic, however, because even though the scrollTop will only work once, the callback is fired twice.</description>
+      <description>It turns out that when trying to use jQuery&amp;rsquo;s &lt;code&gt;animate&lt;/code&gt; to &lt;code&gt;scrollTop&lt;/code&gt; on the main body of an html document different browsers require different targets to scroll to. Webkit requires targeting the &lt;code&gt;body&lt;/code&gt; of the document while all other browsers that I know of use &lt;code&gt;html&lt;/code&gt;.</description>
     </item>
     
     <item>
