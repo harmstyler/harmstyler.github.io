@@ -1,245 +1,27 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!doctype html><html lang=en-us><head><link href=https://gmpg.org/xfn/11 rel=profile><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta http-equiv=cache-control content=public><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.55.6"><title>Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium • Tyler Harms</title><meta name=twitter:card content=summary><meta name=twitter:title content="Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium"><meta name=twitter:description content="Solr has quickly become one of the most popular search engines available. Solarium, a PHP Solr Client, takes Solr further by abstracting the Solr API."><meta property=og:title content="Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium"><meta property=og:description content="Solr has quickly become one of the most popular search engines available. Solarium, a PHP Solr Client, takes Solr further by abstracting the Solr API."><meta property=og:type content=article><meta property=og:url content=https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium/><meta property=article:published_time content=2013-03-15T00:00:00&#43;00:00><meta property=article:modified_time content=2013-03-15T00:00:00&#43;00:00><meta name=copyright content="Tyler Harms"><meta name=author content="Tyler Harms"><link rel=stylesheet href=https://harmstyler.me/css/syntax.min.526c7855d123d38fb872630d4fd87414145f1c4718e03de5cdec1c1fbdd44f3458c31f6ef3f67ba28a296a00ba072faf897644f22e1360bf7265b512a40017fa.css integrity="sha512-Umx4VdEj04&#43;4cmMNT9h0FBRfHEcY4D3lzewcH73UTzRYwx9u8/Z7ooopagC6By&#43;viXZE8i4TYL9yZbUSpAAX&#43;g==" media=screen><link rel=stylesheet href=/scss/hyde-hyde.db26229686c54cef3ebada3e965159104c773b1bdf455fc3332e6c7090f4a32c.css integrity="sha256-2yYilobFTO8&#43;uto&#43;llFZEEx3OxvfRV/DMy5scJD0oyw="><link rel=stylesheet href=/scss/print.1850a99a7deb72f7243ff99e7a0dfc548ba8837498518c98cc1e44fa65bf1678.css integrity="sha256-GFCpmn3rcvckP/meeg38VIuog3SYUYyYzB5E&#43;mW/Fng=" media=print><link rel=apple-touch-icon sizes=76x76 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content=#da532c><meta name=theme-color content=#6a9fb5></head><body class=theme-base-0d><div class=sidebar><div class=container><div class=sidebar-about><span class=site__title><a href=https://harmstyler.me/>Tyler Harms</a></span><div class=author-image><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src=https://harmstyler.me//img/tyler_portrait.jpg alt="Author Image" class="img--circle img--headshot element--center lazyload"></div><p class=site__description>A Software Development Blog</p></div><div class=collapsible-menu><input type=checkbox id=menuToggle>
+<label for=menuToggle>Tyler Harms</label><div class=menu-content><div><ul class=sidebar-nav><li><a href=/posts/><span>Posts</span></a></li><li><a href=/portfolio/><span>Portfolio</span></a></li><li><a href=/about/><span>About</span></a></li></li></ul></div><section class=social><a href=https://twitter.com/harmstyler rel="me noopener"><i class="fab fa-twitter fa-lg" aria-hidden=true></i></a><a href=https://github.com/harmstyler rel="me noopener"><i class="fab fa-github fa-lg" aria-hidden=true></i></a><a href=https://gitlab.com/harmstyler rel="me noopener"><i class="fab fa-gitlab fa-lg" aria-hidden=true></i></a><a href=https://instagram.com/harmstyler rel="me noopener"><i class="fab fa-instagram fa-lg" aria-hidden=true></i></a><a href=https://linkedin.com/in/harmstyler rel="me noopener"><i class="fab fa-linkedin fa-lg" aria-hidden=true></i></a><a href=https://stackoverflow.com/users/743245/harmstyler rel="me noopener"><i class="fab fa-stack-overflow fa-lg" aria-hidden=true></i></a><a href=https://keybase.io/harmstyler rel="me noopener"><i class="fab fa-keybase fa-lg" aria-hidden=true></i></a></section></div></div><div class=copyright>&copy; 2019 Tyler Harms</div></div></div><div class="content container"><article><header><h1>Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium</h1><div class=post__meta><i class="fas fa-calendar-alt"></i>Mar 15, 2013
+in
+<a class="badge badge-category" href=/categories/php>PHP</a>
+•
+<a class="badge badge-category" href=/categories/solr>SOLR</a><br><i class="fas fa-tags"></i><a class="badge badge-tag" href=/tags/solarium>solarium</a><br><i class="fas fa-clock"></i>7 min read</div></header><div class=post><p class=lead>Solr has quickly become one of the most popular search engines available. Due to Solr&rsquo;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.</p><div class=highlight><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+    <span class=nt>&#34;require&#34;</span><span class=p>:</span> <span class=p>{</span>
+        <span class=nt>&#34;solarium/solarium&#34;</span><span class=p>:</span> <span class=s2>&#34;3.0.0&#34;</span>
+    <span class=p>}</span>
+<span class=p>}</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-php data-lang=php><span class=cp>&lt;?php</span>
+<span class=nv>$config</span> <span class=o>=</span> <span class=k>array</span><span class=p>(</span>
+    <span class=s1>&#39;endpoint&#39;</span> <span class=o>=&gt;</span> <span class=k>array</span><span class=p>(</span>
+        <span class=s1>&#39;localhost&#39;</span> <span class=o>=&gt;</span> <span class=k>array</span><span class=p>(</span>
+            <span class=s1>&#39;host&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;127.0.0.1&#39;</span><span class=p>,</span> <span class=s1>&#39;port&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;8983&#39;</span><span class=p>,</span> <span class=s1>&#39;path&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;/solr/&#39;</span>
+        <span class=p>)</span>
+    <span class=p>)</span>
+<span class=p>);</span>
 
-<head>
-    <link href="https://gmpg.org/xfn/11" rel="profile"><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.55.6" /><title>Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium • Tyler Harms</title><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium"/>
-<meta name="twitter:description" content="Solr has quickly become one of the most popular search engines available. Solarium, a PHP Solr Client, takes Solr further by abstracting the Solr API."/>
-<meta property="og:title" content="Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium" />
-<meta property="og:description" content="Solr has quickly become one of the most popular search engines available. Solarium, a PHP Solr Client, takes Solr further by abstracting the Solr API." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://harmstyler.me/posts/2013/start-search-with-solr-integrating-solr-into-any-php-project-is-easy-with-solarium/" />
-<meta property="article:published_time" content="2013-03-15T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2013-03-15T00:00:00&#43;00:00"/>
-<meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
-
-
-<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.526c7855d123d38fb872630d4fd87414145f1c4718e03de5cdec1c1fbdd44f3458c31f6ef3f67ba28a296a00ba072faf897644f22e1360bf7265b512a40017fa.css" integrity="sha512-Umx4VdEj04&#43;4cmMNT9h0FBRfHEcY4D3lzewcH73UTzRYwx9u8/Z7ooopagC6By&#43;viXZE8i4TYL9yZbUSpAAX&#43;g==" media="screen">
-
-
-
-
-
-<link rel="stylesheet" href="/scss/hyde-hyde.db26229686c54cef3ebada3e965159104c773b1bdf455fc3332e6c7090f4a32c.css" integrity="sha256-2yYilobFTO8&#43;uto&#43;llFZEEx3OxvfRV/DMy5scJD0oyw=">
-
-
-<link rel="stylesheet" href="/scss/print.1850a99a7deb72f7243ff99e7a0dfc548ba8837498518c98cc1e44fa65bf1678.css" integrity="sha256-GFCpmn3rcvckP/meeg38VIuog3SYUYyYzB5E&#43;mW/Fng=" media="print">
-
-
-<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#6a9fb5"></head>
-<body class="theme-base-0d ">
-<div class="sidebar">
-  <div class="container ">
-    <div class="sidebar-about">
-      <span class="site__title">
-        <a href="https://harmstyler.me/">Tyler Harms</a>
-      </span>
-      
-        
-        
-        
-        <div class="author-image">
-          <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://harmstyler.me//img/tyler_portrait.jpg" alt="Author Image" class="img--circle img--headshot element--center lazyload">
-        </div>
-        
-      
-      
-      <p class="site__description">
-         A Software Development Blog 
-      </p>
-    </div>
-    <div class="collapsible-menu">
-      <input type="checkbox" id="menuToggle">
-      <label for="menuToggle">Tyler Harms</label>
-      <div class="menu-content">
-        <div>
-	<ul class="sidebar-nav">
-		 
-		 
-			 
-				<li>
-					<a href="/posts/">
-						<span>Posts</span>
-					</a>
-				</li>
-			 
-		 
-			 
-				<li>
-					<a href="/portfolio/">
-						<span>Portfolio</span>
-					</a>
-				</li>
-			 
-		 
-			 
-				<li>
-					<a href="/about/">
-						<span>About</span>
-					</a>
-				</li>
-			 
-		
-		</li>
-	</ul>
-</div>
-
-        <section class="social">
-	
-	<a href="https://twitter.com/harmstyler" rel="me noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	<a href="https://github.com/harmstyler" rel="me noopener"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	<a href="https://gitlab.com/harmstyler" rel="me noopener"><i class="fab fa-gitlab fa-lg" aria-hidden="true"></i></a>
-	
-	
-	<a href="https://instagram.com/harmstyler" rel="me noopener"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
-	
-	
-	<a href="https://linkedin.com/in/harmstyler" rel="me noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
-	
-	
-	<a href="https://stackoverflow.com/users/743245/harmstyler" rel="me noopener"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	
-	<a href="https://keybase.io/harmstyler" rel="me noopener"><i class="fab fa-keybase fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	
-</section>
-
-      </div>
-    </div>
-    
-<div class="copyright">
-  &copy; 2019 Tyler Harms
-  
-</div>
-
-
-
-  </div>
-</div>
-<div class="content container">
-    <article>
-  <header>
-    <h1>Start Searching with Solr - Integrating Solr into any PHP project is easy with Solarium</h1>
-    
-    
-<div class="post__meta">
-    
-    
-      <i class="fas fa-calendar-alt"></i> Mar 15, 2013
-    
-    
-    
-      
-      
-          in
-          
-          
-              <a class="badge badge-category" href="/categories/php">PHP</a>
-              •
-          
-              <a class="badge badge-category" href="/categories/solr">SOLR</a>
-              
-          
-      
-    
-    
-    
-      
-      
-          <br/>
-           <i class="fas fa-tags"></i>
-          
-          <a class="badge badge-tag" href="/tags/solarium">solarium</a>
-          
-      
-    
-    
-    <br/>
-    <i class="fas fa-clock"></i> 7 min read
-</div>
-
-
-  </header>
-  
-  
-  <div class="post">
-    
-
-<p class="lead">
-    Solr has quickly become one of the most popular search engines available. Due to Solr&rsquo;s many features and its low barrier to entry it can be an ideal candidate when seeking a search engine. Solarium, a PHP Solr Client, takes Solr one step further by giving developers easier access to the Solr API.
-</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-    <span class="nt">&#34;require&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;solarium/solarium&#34;</span><span class="p">:</span> <span class="s2">&#34;3.0.0&#34;</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-<span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;endpoint&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-        <span class="s1">&#39;localhost&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-            <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;8983&#39;</span><span class="p">,</span> <span class="s1">&#39;path&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/solr/&#39;</span>
-        <span class="p">)</span>
-    <span class="p">)</span>
-<span class="p">);</span>
-
-<span class="c1">// new Solarium Client object
-</span><span class="c1"></span><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Solarium\Client</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
-</code></pre></div>
-
-<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&#34;id&#34;</span> <span class="na">type=</span><span class="s">&#34;int&#34;</span> <span class="na">indexed=</span><span class="s">&#34;true&#34;</span> <span class="na">stored=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&#34;name&#34;</span> <span class="na">type=</span><span class="s">&#34;string&#34;</span> <span class="na">indexed=</span><span class="s">&#34;true&#34;</span> <span class="na">stored=</span><span class="s">&#34;true&#34;</span> <span class="na">multiValued=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&#34;text&#34;</span> <span class="na">type=</span><span class="s">&#34;text&#34;</span> <span class="na">indexed=</span><span class="s">&#34;true&#34;</span> <span class="na">stored=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span></code></pre></div>
-
-<h2 id="introduction-to-solr">Introduction to Solr:</h2>
-
-<p>Search is an important part of most web projects and should be given much care. Throughout the years, making content searchable has changed a great deal. Obviously, exposing SQL queries to users through search is dangerous. Modern search implementations require a secure approach, such as a stand-alone search server, separate from site data. There are many search options to choose from. Your search list might include: Sphinx, Flax, ElasticSearch, Google, and Solr. Solr’s scalability, speed, built in features and community make it an ideal platform for any project. Luckily, integrating Solr into your PHP project has been made easy by the Solarium Project.</p>
-
-<p>In Apache’s own words, &ldquo;<em>Solr is an open source enterprise search server based on the Lucene Java search library, with XML/HTTP and JSON, Ruby, and Python APIs, hit highlighting, faceted search, caching, replication, and a web administration interface</em>&ldquo;<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>. Apache Solr is an open source, extensible, stand-alone search engine, built on Lucene, managed by The Apache Software Foundation. There are currently two stable versions of Solr available for use; Solr 3.6.2 and Solr 4.0. Either version may be used with Solarium; Solr 4 ships with added features, however, so use Solr 4 if possible.</p>
-
-<p>Solr is designed to run as a stand-alone Java web application (app). The documentation for downloading, installing, and running Solr can be found at <a href="http://lucene.apache.org/solr/tutorial.html" title="Solr Tutorial">http://lucene.apache.org/solr/tutorial.html</a>. Because Solr is meant to be separate from the primary project, it can be installed anywhere. All interactions with Solr happen over HTTP through a REST-like API. Solarium utilizes both PHP and JSON for its interactions with Solr.</p>
-
-<p>One of the greatest features of Solr is its scalability. Replication can be set up to run multiple Solr instances in a master/slave setup, just like MySQL replication.The documentation for setting up a master/slave setup is very thorough, so it will not be discussed further here. Another option for scaling Solr is to search multiple search cores. Solr can run multiple search cores at a time. Solr can search multiple cores at a time through its distributed search and sharding capabilities. Large search indexes can be split into multiple smaller indexes; then through a distributed search multiple cores are searched. The best part of a multicore search setup is that not all cores need to exist on the same server. This allows for very flexible search architecture.</p>
-
-<h2 id="solarium-acts-as-a-bridge">Solarium acts as a bridge</h2>
-
-<p>Solr has a REST-like API, so interactions with it are very simple and happen over HTTP. The Solarium Project is &ldquo;<em>an open source Solr client library for PHP applications</em>&rdquo; <sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>, which makes interacting with Solr even simpler. Solarium exists to expose the Solr API through an easy to use PHP library.</p>
-
-<p>Installation of Solarium has been made very easy through the use of Composer (Listing 1). Installing through Composer will automatically add the library to the PHP autoload path. To install Solarium into a project not utilizing Composer, the files will need to be downloaded from GitHub (<a href="https://github.com/basdenooijer/solarium/tags" title="Solarium Library">https://github.com/basdenooijer/solarium/tags</a>). Next, add the solarium library to the PHP autoload path manually. After Solarium is installed, Solr can be accessed through sending a Solarium Client ($client) object to a configuration array. The configuration array should be made up of the Solr host, port and path (Listing 2).</p>
-
-<h2 id="adding-content-to-solr">Adding content to Solr</h2>
-
-<p>Before anything can be searched in Solr, documents (docs) must be added to the Solr index. Solr maintains a collection of docs in its index. A doc is a collection of fields and values. Solr fields must be defined in the Solr schema. A field can occur multiple times in a doc.</p>
-
-<p>To make an update to Solr using Solarium, start with the <code>$client</code> object. Using the <code>$client</code> object, create an <code>$update</code> instance then make a doc:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$update = $client-&gt;createUpdate();
-$doc1 = $update-&gt;createDocument();</code></pre></div>
-
-<p>With the newly created <code>$doc</code>, begin adding content to Solr fields as instances of the $doc:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$doc1-&gt;id = 123;
+<span class=c1>// new Solarium Client object
+</span><span class=c1></span><span class=nv>$client</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Solarium\Client</span><span class=p>(</span><span class=nv>$config</span><span class=p>);</span>
+</code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;field</span> <span class=na>name=</span><span class=s>&#34;id&#34;</span> <span class=na>type=</span><span class=s>&#34;int&#34;</span> <span class=na>indexed=</span><span class=s>&#34;true&#34;</span> <span class=na>stored=</span><span class=s>&#34;true&#34;</span> <span class=nt>/&gt;</span>
+<span class=nt>&lt;field</span> <span class=na>name=</span><span class=s>&#34;name&#34;</span> <span class=na>type=</span><span class=s>&#34;string&#34;</span> <span class=na>indexed=</span><span class=s>&#34;true&#34;</span> <span class=na>stored=</span><span class=s>&#34;true&#34;</span> <span class=na>multiValued=</span><span class=s>&#34;true&#34;</span> <span class=nt>/&gt;</span>
+<span class=nt>&lt;field</span> <span class=na>name=</span><span class=s>&#34;text&#34;</span> <span class=na>type=</span><span class=s>&#34;text&#34;</span> <span class=na>indexed=</span><span class=s>&#34;true&#34;</span> <span class=na>stored=</span><span class=s>&#34;true&#34;</span> <span class=nt>/&gt;</span></code></pre></div><h2 id=introduction-to-solr>Introduction to Solr:</h2><p>Search is an important part of most web projects and should be given much care. Throughout the years, making content searchable has changed a great deal. Obviously, exposing SQL queries to users through search is dangerous. Modern search implementations require a secure approach, such as a stand-alone search server, separate from site data. There are many search options to choose from. Your search list might include: Sphinx, Flax, ElasticSearch, Google, and Solr. Solr’s scalability, speed, built in features and community make it an ideal platform for any project. Luckily, integrating Solr into your PHP project has been made easy by the Solarium Project.</p><p>In Apache’s own words, &ldquo;<em>Solr is an open source enterprise search server based on the Lucene Java search library, with XML/HTTP and JSON, Ruby, and Python APIs, hit highlighting, faceted search, caching, replication, and a web administration interface</em>&ldquo;<sup class=footnote-ref id=fnref:1><a href=#fn:1>1</a></sup>. Apache Solr is an open source, extensible, stand-alone search engine, built on Lucene, managed by The Apache Software Foundation. There are currently two stable versions of Solr available for use; Solr 3.6.2 and Solr 4.0. Either version may be used with Solarium; Solr 4 ships with added features, however, so use Solr 4 if possible.</p><p>Solr is designed to run as a stand-alone Java web application (app). The documentation for downloading, installing, and running Solr can be found at <a href=http://lucene.apache.org/solr/tutorial.html title="Solr Tutorial">http://lucene.apache.org/solr/tutorial.html</a>. Because Solr is meant to be separate from the primary project, it can be installed anywhere. All interactions with Solr happen over HTTP through a REST-like API. Solarium utilizes both PHP and JSON for its interactions with Solr.</p><p>One of the greatest features of Solr is its scalability. Replication can be set up to run multiple Solr instances in a master/slave setup, just like MySQL replication.The documentation for setting up a master/slave setup is very thorough, so it will not be discussed further here. Another option for scaling Solr is to search multiple search cores. Solr can run multiple search cores at a time. Solr can search multiple cores at a time through its distributed search and sharding capabilities. Large search indexes can be split into multiple smaller indexes; then through a distributed search multiple cores are searched. The best part of a multicore search setup is that not all cores need to exist on the same server. This allows for very flexible search architecture.</p><h2 id=solarium-acts-as-a-bridge>Solarium acts as a bridge</h2><p>Solr has a REST-like API, so interactions with it are very simple and happen over HTTP. The Solarium Project is &ldquo;<em>an open source Solr client library for PHP applications</em>&rdquo; <sup class=footnote-ref id=fnref:2><a href=#fn:2>2</a></sup>, which makes interacting with Solr even simpler. Solarium exists to expose the Solr API through an easy to use PHP library.</p><p>Installation of Solarium has been made very easy through the use of Composer (Listing 1). Installing through Composer will automatically add the library to the PHP autoload path. To install Solarium into a project not utilizing Composer, the files will need to be downloaded from GitHub (<a href=https://github.com/basdenooijer/solarium/tags title="Solarium Library">https://github.com/basdenooijer/solarium/tags</a>). Next, add the solarium library to the PHP autoload path manually. After Solarium is installed, Solr can be accessed through sending a Solarium Client ($client) object to a configuration array. The configuration array should be made up of the Solr host, port and path (Listing 2).</p><h2 id=adding-content-to-solr>Adding content to Solr</h2><p>Before anything can be searched in Solr, documents (docs) must be added to the Solr index. Solr maintains a collection of docs in its index. A doc is a collection of fields and values. Solr fields must be defined in the Solr schema. A field can occur multiple times in a doc.</p><p>To make an update to Solr using Solarium, start with the <code>$client</code> object. Using the <code>$client</code> object, create an <code>$update</code> instance then make a doc:</p><div class=highlight><pre class=chroma><code class=language-php data-lang=php>$update = $client-&gt;createUpdate();
+$doc1 = $update-&gt;createDocument();</code></pre></div><p>With the newly created <code>$doc</code>, begin adding content to Solr fields as instances of the $doc:</p><div class=highlight><pre class=chroma><code class=language-php data-lang=php>$doc1-&gt;id = 123;
 $doc1-&gt;name = &#39;First Document&#39;;
 $doc1-&gt;text = &#39;This is the first document\&#39;s content&#39;;
 
@@ -247,160 +29,25 @@ $doc1-&gt;text = &#39;This is the first document\&#39;s content&#39;;
 $doc2 = $update-&gt;createDocument();
 $doc2-&gt;id = 234;
 $doc2-&gt;name = &#39;Next Document&#39;;
-$doc2-&gt;text = &#39;This is the next document\&#39;s content&#39;;</code></pre></div>
-
-<p>In this example, the Solr schema would have to be set up to accept the id, name and text fields. Solr ships with an example search app with a good demo of a Solr schema; each field will need to be added to the schema in order for Solr to add the docs to the search index (Listing 3). Next, add each <code>$doc</code> created to an array so that <code>addDocuments()</code> can be called on the array. This will run the Solr add command for every document in the array:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$update-&gt;addDocuments(array($doc1, $doc2));</code></pre></div>
-
-<p>The newly-added docs will not actually become a permanent part of the Solr index until Solr is told to commit all added docs to its index. To do this with Solarium, call <code>addCommit()</code> to generate a commit message for Solr, then a call to <code>update()</code> with the <code>$update</code> will send the commit:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$update-&gt;addCommit(); $client-&gt;update($update);</code></pre></div>
-
-<p>The new docs should now exist and be searchable using Solr.</p>
-
-<h2 id="searching-solr-through-solarium">Searching Solr through Solarium</h2>
-
-<p>Solarium offers a robust PHP API for searching Solr. To run a basic query, start with the $client object. Next, call the <code>createSelect()</code> instance of the <code>$client</code> object to generate the query for execution:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$query = $client-&gt;createSelect();
+$doc2-&gt;text = &#39;This is the next document\&#39;s content&#39;;</code></pre></div><p>In this example, the Solr schema would have to be set up to accept the id, name and text fields. Solr ships with an example search app with a good demo of a Solr schema; each field will need to be added to the schema in order for Solr to add the docs to the search index (Listing 3). Next, add each <code>$doc</code> created to an array so that <code>addDocuments()</code> can be called on the array. This will run the Solr add command for every document in the array:</p><div class=highlight><pre class=chroma><code class=language-php data-lang=php>$update-&gt;addDocuments(array($doc1, $doc2));</code></pre></div><p>The newly-added docs will not actually become a permanent part of the Solr index until Solr is told to commit all added docs to its index. To do this with Solarium, call <code>addCommit()</code> to generate a commit message for Solr, then a call to <code>update()</code> with the <code>$update</code> will send the commit:</p><div class=highlight><pre class=chroma><code class=language-php data-lang=php>$update-&gt;addCommit(); $client-&gt;update($update);</code></pre></div><p>The new docs should now exist and be searchable using Solr.</p><h2 id=searching-solr-through-solarium>Searching Solr through Solarium</h2><p>Solarium offers a robust PHP API for searching Solr. To run a basic query, start with the $client object. Next, call the <code>createSelect()</code> instance of the <code>$client</code> object to generate the query for execution:</p><div class=highlight><pre class=chroma><code class=language-php data-lang=php>$query = $client-&gt;createSelect();
 
 // *:* is equivalent to telling solr to return all docs
-$query-&gt;setQuery(&#39;*:*&#39;);</code></pre></div>
-
-<p>Because the <code>createSelect()</code> function is being used to generate the query, the <code>select()</code> function should be used when executing the query:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$resultSet = $client-&gt;select($query);</code></pre></div>
-
-<p>Use the <code>$resultSet</code> array to iterate over the array and display the results:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">echo &#39;<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;search-results&#34;</span><span class="p">&gt;</span>&#39;;
+$query-&gt;setQuery(&#39;*:*&#39;);</code></pre></div><p>Because the <code>createSelect()</code> function is being used to generate the query, the <code>select()</code> function should be used when executing the query:</p><div class=highlight><pre class=chroma><code class=language-php data-lang=php>$resultSet = $client-&gt;select($query);</code></pre></div><p>Use the <code>$resultSet</code> array to iterate over the array and display the results:</p><div class=highlight><pre class=chroma><code class=language-php data-lang=php>echo &#39;<span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;search-results&#34;</span><span class=p>&gt;</span>&#39;;
 foreach ($resultSet as $result) {
-    echo &#39;<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;search-result&#34;</span><span class="p">&gt;</span>&#39;;
-    echo &#39;<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>&#39; . $result-&gt;id . &#39;<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>&#39;;
-    echo &#39;<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>&#39; . $result-&gt;name . &#39;<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>&#39;;
-    echo &#39;<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>&#39; . $result-&gt;text . &#39;<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>&#39;;
-    echo &#39;<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>&#39;;
+    echo &#39;<span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;search-result&#34;</span><span class=p>&gt;</span>&#39;;
+    echo &#39;<span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span>&#39; . $result-&gt;id . &#39;<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>&#39;;
+    echo &#39;<span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span>&#39; . $result-&gt;name . &#39;<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>&#39;;
+    echo &#39;<span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span>&#39; . $result-&gt;text . &#39;<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>&#39;;
+    echo &#39;<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>&#39;;
 }
-echo &#39;<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>&#39;;</code></pre></div>
-
-<p>The <code>$resultSet</code> can also be refined. Setting up pagination, for instance, is very easy:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$query-&gt;setStart(0)-&gt;setRows(10);</code></pre></div>
-
-<p>Sorting is also very easy (note that Solr will sort by score if no sort is set):</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$query-&gt;addSort(&#39;name&#39;, Solarium_Query_Select::SORT_ASC);</code></pre></div>
-
-<p>Filtering, setting query fields, boosting, and faceting are also possible ways of searching Solr. Filtering is another way of narrowing search results without using a query. Query fields allow for control over what fields are searched. Boosting gives certain field’s higher precedence in the Search. Facets give users a way to better navigate search results. Solarium gives easy access to all the various ways of searching Solr content.</p>
-
-<h2 id="removing-content-from-solr">Removing content from Solr</h2>
-
-<p>Solr does not have a command called update; however, updates can be performed by re-adding content. Solr uses a unique identifier for each doc and only allows for one instance of the identifier in the search index. To update content, call the add command on an already existent Solr doc id. Sometimes updating Solr with new content isn’t enough. Sometimes the need to delete content from Solr arises. Doing this is similar to when adding docs, create an $update instance:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$update = $client-&gt;createUpdate();</code></pre></div>
-
-<p>Using the $update instance, documents can be deleted by id or by query. This offers a great deal of flexibility for deleting content. Deleting by id is used more often because it offers very precise deletes:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$update-&gt;addDeleteById(234);
+echo &#39;<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>&#39;;</code></pre></div><p>The <code>$resultSet</code> can also be refined. Setting up pagination, for instance, is very easy:</p><div class=highlight><pre class=chroma><code class=language-php data-lang=php>$query-&gt;setStart(0)-&gt;setRows(10);</code></pre></div><p>Sorting is also very easy (note that Solr will sort by score if no sort is set):</p><div class=highlight><pre class=chroma><code class=language-php data-lang=php>$query-&gt;addSort(&#39;name&#39;, Solarium_Query_Select::SORT_ASC);</code></pre></div><p>Filtering, setting query fields, boosting, and faceting are also possible ways of searching Solr. Filtering is another way of narrowing search results without using a query. Query fields allow for control over what fields are searched. Boosting gives certain field’s higher precedence in the Search. Facets give users a way to better navigate search results. Solarium gives easy access to all the various ways of searching Solr content.</p><h2 id=removing-content-from-solr>Removing content from Solr</h2><p>Solr does not have a command called update; however, updates can be performed by re-adding content. Solr uses a unique identifier for each doc and only allows for one instance of the identifier in the search index. To update content, call the add command on an already existent Solr doc id. Sometimes updating Solr with new content isn’t enough. Sometimes the need to delete content from Solr arises. Doing this is similar to when adding docs, create an $update instance:</p><div class=highlight><pre class=chroma><code class=language-php data-lang=php>$update = $client-&gt;createUpdate();</code></pre></div><p>Using the $update instance, documents can be deleted by id or by query. This offers a great deal of flexibility for deleting content. Deleting by id is used more often because it offers very precise deletes:</p><div class=highlight><pre class=chroma><code class=language-php data-lang=php>$update-&gt;addDeleteById(234);
 $update-&gt;addCommit();
-$client-&gt;update($update);</code></pre></div>
-
-<p>Deleting by query, however, can be incredibly powerful and useful. When starting development of a new search project with test content, for instance, deleting by query offers the ability to remove all test content. If all the test content starts with the word test, deleting the content is simple:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$update-&gt;addDeleteQuery(&#39;name:test*&#39;);
+$client-&gt;update($update);</code></pre></div><p>Deleting by query, however, can be incredibly powerful and useful. When starting development of a new search project with test content, for instance, deleting by query offers the ability to remove all test content. If all the test content starts with the word test, deleting the content is simple:</p><div class=highlight><pre class=chroma><code class=language-php data-lang=php>$update-&gt;addDeleteQuery(&#39;name:test*&#39;);
 $update-&gt;addCommit();
-$client-&gt;update($update);</code></pre></div>
-
-<p>Another common practice is to wipe the index and start fresh. Using delete by query, this task is again made very simple:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$update-&gt;addDeleteQuery(&#39;*:*&#39;);
+$client-&gt;update($update);</code></pre></div><p>Another common practice is to wipe the index and start fresh. Using delete by query, this task is again made very simple:</p><div class=highlight><pre class=chroma><code class=language-php data-lang=php>$update-&gt;addDeleteQuery(&#39;*:*&#39;);
 $update-&gt;addCommit();
-$client-&gt;update($update);</code></pre></div>
-
-<p>Solarium’s delete doc API is very useful in maintaining an up-to-date search index.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>Solr is an incredibly scalable, powerful and easy-to-use search engine that should be considered for any search project. Solr is designed to be language agnostic through its REST-like API, and thanks to Solarium it fits very easily into any PHP project. This article covers only three use cases for Solarium; the examples shipped with Solarium offer a great deal more. Search highlighting, debugging, optimizing, and ‘more like this’ functionality are all possible with Solr and Solarium.</p>
-
-<h2 id="references">References</h2>
-<div class="footnotes">
-
-<hr />
-
-<ol>
-<li id="fn:1">Apache Solr: <a href="http://projects.apache.org/projects/solr.html">http://projects.apache.org/projects/solr.html</a>
- <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
-<li id="fn:2">The Solarium Project: <a href="http://www.solarium-project.org/">http://www.solarium-project.org/</a>
- <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
-</ol>
-</div>
-
-  </div>
-  
-
-<div class="navigation navigation-single">
-    
-    <a href="/posts/2013/symfony2-access-conrol/" class="navigation-prev">
-      <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">Symfony2 Access Control</span>
-    </a>
-    
-    
-    <a href="/posts/2013/new-site-theme/" class="navigation-next">
-      <span class="navigation-tittle">New Site Theme</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
-    
-</div>
-
-
-  
-
-
-
-
-  
-    
-        <div id="graphcomment"></div>
-<script type="text/javascript">
-  window.graphcomment_id = 'harmstyler-me';
-   
-  (function() {
-    var gc = document.createElement('script'); gc.type = 'text/javascript'; gc.async = true;
-    gc.src = 'https://graphcomment.com/js/integration.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
-  })();
-</script>
-    
-
-
-</article>
-
-</div>
-    
-  
-  
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133041000-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-
-
-    
-
-
-<script type="text/javascript" src="https://harmstyler.me/js/lazysizes.min.2a1077711d9a0180d46fd021941edea1dbfd6fc20d319ce0759cbaca6e971fe16964f86f9eece26cdc460ad443374889ad10dd08abe192f65a0e8a676636a93e.js" integrity="sha512-KhB3cR2aAYDUb9AhlB7eodv9b8INMZzgdZy6ym6XH&#43;FpZPhvnuzibNxGCtRDN0iJrRDdCKvhkvZaDopnZjapPg=="></script>
-</body>
-</html>
+$client-&gt;update($update);</code></pre></div><p>Solarium’s delete doc API is very useful in maintaining an up-to-date search index.</p><h2 id=conclusion>Conclusion</h2><p>Solr is an incredibly scalable, powerful and easy-to-use search engine that should be considered for any search project. Solr is designed to be language agnostic through its REST-like API, and thanks to Solarium it fits very easily into any PHP project. This article covers only three use cases for Solarium; the examples shipped with Solarium offer a great deal more. Search highlighting, debugging, optimizing, and ‘more like this’ functionality are all possible with Solr and Solarium.</p><h2 id=references>References</h2><div class=footnotes><hr><ol><li id=fn:1>Apache Solr: <a href=http://projects.apache.org/projects/solr.html>http://projects.apache.org/projects/solr.html</a>
+<a class=footnote-return href=#fnref:1><sup>[return]</sup></a></li><li id=fn:2>The Solarium Project: <a href=http://www.solarium-project.org/>http://www.solarium-project.org/</a>
+<a class=footnote-return href=#fnref:2><sup>[return]</sup></a></li></ol></div></div><div class="navigation navigation-single"><a href=/posts/2013/symfony2-access-conrol/ class=navigation-prev><i aria-hidden=true class="fa fa-chevron-left"></i><span class=navigation-tittle>Symfony2 Access Control</span></a>
+<a href=/posts/2013/new-site-theme/ class=navigation-next><span class=navigation-tittle>New Site Theme</span>
+<i aria-hidden=true class="fa fa-chevron-right"></i></a></div><div id=graphcomment></div><script type=text/javascript>window.graphcomment_id='harmstyler-me';(function(){var gc=document.createElement('script');gc.type='text/javascript';gc.async=true;gc.src='https://graphcomment.com/js/integration.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(gc);})();</script></article></div><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-133041000-1','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script><script defer src=https://use.fontawesome.com/releases/v5.5.0/js/all.js integrity=sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0 crossorigin=anonymous></script><script type=text/javascript src=https://harmstyler.me/js/lazysizes.min.2a1077711d9a0180d46fd021941edea1dbfd6fc20d319ce0759cbaca6e971fe16964f86f9eece26cdc460ad443374889ad10dd08abe192f65a0e8a676636a93e.js integrity="sha512-KhB3cR2aAYDUb9AhlB7eodv9b8INMZzgdZy6ym6XH&#43;FpZPhvnuzibNxGCtRDN0iJrRDdCKvhkvZaDopnZjapPg=="></script></body></html>

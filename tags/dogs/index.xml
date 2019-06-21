@@ -1,25 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Dogs on Tyler Harms</title>
-    <link>https://harmstyler.me/tags/dogs/</link>
-    <description>Recent content in Dogs on Tyler Harms</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 23 Apr 2012 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://harmstyler.me/tags/dogs/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Dogs Underwater</title>
-      <link>https://harmstyler.me/posts/2012/dogs-underwater/</link>
-      <pubDate>Mon, 23 Apr 2012 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2012/dogs-underwater/</guid>
-      <description>I am usually not one for email forwards. I got one today that I absolutely love, however. So, instead of re-forwarding it, I will share it here.
-I found the original author of the pictures here (the email had no information about the author).</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dogs on Tyler Harms</title><link>https://harmstyler.me/tags/dogs/</link><description>Recent content in Dogs on Tyler Harms</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 23 Apr 2012 00:00:00 +0000</lastBuildDate><atom:link href="https://harmstyler.me/tags/dogs/index.xml" rel="self" type="application/rss+xml"/><item><title>Dogs Underwater</title><link>https://harmstyler.me/posts/2012/dogs-underwater/</link><pubDate>Mon, 23 Apr 2012 00:00:00 +0000</pubDate><guid>https://harmstyler.me/posts/2012/dogs-underwater/</guid><description>I am usually not one for email forwards. I got one today that I absolutely love, however. So, instead of re-forwarding it, I will share it here.
+I found the original author of the pictures here (the email had no information about the author).</description></item></channel></rss>

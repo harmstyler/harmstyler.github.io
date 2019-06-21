@@ -1,53 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>eZ Publish on Tyler Harms</title>
-    <link>https://harmstyler.me/tags/ez-publish/</link>
-    <description>Recent content in eZ Publish on Tyler Harms</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 20 Apr 2012 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://harmstyler.me/tags/ez-publish/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>eZ Find Multi-Core</title>
-      <link>https://harmstyler.me/posts/2012/ez-find-multi-core/</link>
-      <pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2012/ez-find-multi-core/</guid>
-      <description>&lt;p&gt;One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;pull-right&#34;&gt;&lt;img title=&#34;solr-dir&#34; src=&#34;https://harmstyler.me/img/solr-dir.png&#34; alt=&#34;Solr Directory&#34; width=&#34;300&#34; height=&#34;186&#34; /&gt;&lt;/div&gt;So, to start. Let&amp;rsquo;s assume that if you are reading this, you already read through my previous eZ Find tutorial (&lt;a href=&#34;https://harmstyler.me/2012/03/installing-ez-find/&#34; title=&#34;Installing eZ Find&#34;&gt;Installing eZ Find&lt;/a&gt;). Since we already have our sever up and running there won&amp;rsquo;t be a lot of work to do there. But, we need to move our config files to the Solr multicore directory. Last time we used the Solr directory, this time we need to use the directory &lt;code&gt;solr.multicore&lt;/code&gt;. Inside the multicore directory there are a couple of demo cores for languages. What I did is duplicated the english directory a couple times and renamed them for each site.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Clear Cache in eZ Publish - eZpedia</title>
-      <link>https://harmstyler.me/posts/2012/clear-cache-in-ez-publish-ezpedia/</link>
-      <pubDate>Thu, 12 Apr 2012 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2012/clear-cache-in-ez-publish-ezpedia/</guid>
-      <description>As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>eZ Publish on Tyler Harms</title><link>https://harmstyler.me/tags/ez-publish/</link><description>Recent content in eZ Publish on Tyler Harms</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 20 Apr 2012 00:00:00 +0000</lastBuildDate><atom:link href="https://harmstyler.me/tags/ez-publish/index.xml" rel="self" type="application/rss+xml"/><item><title>eZ Find Multi-Core</title><link>https://harmstyler.me/posts/2012/ez-find-multi-core/</link><pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate><guid>https://harmstyler.me/posts/2012/ez-find-multi-core/</guid><description>&lt;p&gt;One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;pull-right&#34;&gt;&lt;img title=&#34;solr-dir&#34; src=&#34;https://harmstyler.me/img/solr-dir.png&#34; alt=&#34;Solr Directory&#34; width=&#34;300&#34; height=&#34;186&#34; /&gt;&lt;/div&gt;So, to start. Let&amp;rsquo;s assume that if you are reading this, you already read through my previous eZ Find tutorial (&lt;a href=&#34;https://harmstyler.me/2012/03/installing-ez-find/&#34; title=&#34;Installing eZ Find&#34;&gt;Installing eZ Find&lt;/a&gt;). Since we already have our sever up and running there won&amp;rsquo;t be a lot of work to do there. But, we need to move our config files to the Solr multicore directory. Last time we used the Solr directory, this time we need to use the directory &lt;code&gt;solr.multicore&lt;/code&gt;. Inside the multicore directory there are a couple of demo cores for languages. What I did is duplicated the english directory a couple times and renamed them for each site.&lt;/p&gt;</description></item><item><title>Clear Cache in eZ Publish - eZpedia</title><link>https://harmstyler.me/posts/2012/clear-cache-in-ez-publish-ezpedia/</link><pubDate>Thu, 12 Apr 2012 00:00:00 +0000</pubDate><guid>https://harmstyler.me/posts/2012/clear-cache-in-ez-publish-ezpedia/</guid><description>As an eZ Publish developer I know that whenever creating an eZ Publish site the cache can be my best friend in production and worst enemy in development. eZpedia has a great article all about clearing the cache.
 Clear Cache in eZ Publish / Solution / Root - eZpedia
-My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.</description>
-    </item>
-    
-    <item>
-      <title>Installing eZ Find</title>
-      <link>https://harmstyler.me/posts/2012/installing-ez-find/</link>
-      <pubDate>Thu, 22 Mar 2012 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2012/installing-ez-find/</guid>
-      <description>&lt;p&gt;Alright, so lets begin installing eZ Find by going out and downloading it from the Github =&amp;gt; &lt;a href=&#34;http://bit.ly/GEVOte&#34; title=&#34;eZ Find on GitHub&#34;&gt;https://github.com/ezsystems/ezfind&lt;/a&gt;.
+My favorite is the manually clearing of the cache. For some reason the clear-cache script sometimes misses some files; so the only way you are going to see your changes is by dumping those files manually.</description></item><item><title>Installing eZ Find</title><link>https://harmstyler.me/posts/2012/installing-ez-find/</link><pubDate>Thu, 22 Mar 2012 00:00:00 +0000</pubDate><guid>https://harmstyler.me/posts/2012/installing-ez-find/</guid><description>&lt;p&gt;Alright, so lets begin installing eZ Find by going out and downloading it from the Github =&amp;gt; &lt;a href=&#34;http://bit.ly/GEVOte&#34; title=&#34;eZ Find on GitHub&#34;&gt;https://github.com/ezsystems/ezfind&lt;/a&gt;.
 eZ Find is an eZ Publish extension so: unzip the download, rename the fold &amp;rdquo;ezfind,&amp;rdquo; and then move the &lt;em&gt;ezfind&lt;/em&gt; folder to the &lt;em&gt;extensions&lt;/em&gt; directory of your eZ Publish install.&lt;/p&gt;
-
 &lt;p&gt;So, as with any extension, we have to activate it. Go into your override &lt;code&gt;site.ini.append.php&lt;/code&gt; (settings/override/site.ini.append.php) and add ezfind to your active extension list (&lt;code&gt;ActiveExtensions[]=ezfind&lt;/code&gt;). I added mine just after my main site extension. Easy enough so far right?&lt;/p&gt;
-
 &lt;div class=&#34;pull-left&#34;&gt;&lt;a href=&#34;https://harmstyler.me/img/solr-structure.png&#34;&gt;&lt;img title=&#34;solr-structure&#34; src=&#34;https://harmstyler.me/img/small/solr-structure-small.png&#34; alt=&#34;Solr installed locally&#34; width=&#34;179&#34; height=&#34;301&#34; /&gt;&lt;/a&gt;&lt;/div&gt;
-
-&lt;p&gt;As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a &lt;em&gt;java&lt;/em&gt; directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish install and rename the folder &amp;ldquo;Solr&amp;rdquo; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on one Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+&lt;p&gt;As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a &lt;em&gt;java&lt;/em&gt; directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish install and rename the folder &amp;ldquo;Solr&amp;rdquo; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on one Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.&lt;/p&gt;</description></item></channel></rss>
