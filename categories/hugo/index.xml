@@ -1,3 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo on Tyler Harms</title><link>https://harmstyler.me/categories/hugo/</link><description>Recent content in Hugo on Tyler Harms</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 13 Apr 2019 21:05:43 -0500</lastBuildDate><atom:link href="https://harmstyler.me/categories/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Pass Variables to a Partial Template in Hugo</title><link>https://harmstyler.me/posts/2019/how-to-pass-variables-to-a-partial-template-in-hugo/</link><pubDate>Sat, 13 Apr 2019 21:05:43 -0500</pubDate><guid>https://harmstyler.me/posts/2019/how-to-pass-variables-to-a-partial-template-in-hugo/</guid><description>As a developer, I want to keep my code as DRY as is feasible for the given project. In a Hugo project, that&amp;rsquo;s where the Partial templates come in.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Tyler Harms</title>
+    <link>https://harmstyler.me/categories/hugo/</link>
+    <description>Recent content in Hugo on Tyler Harms</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 13 Apr 2019 21:05:43 -0500</lastBuildDate><atom:link href="https://harmstyler.me/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Pass Variables to a Partial Template in Hugo</title>
+      <link>https://harmstyler.me/posts/2019/how-to-pass-variables-to-a-partial-template-in-hugo/</link>
+      <pubDate>Sat, 13 Apr 2019 21:05:43 -0500</pubDate>
+      
+      <guid>https://harmstyler.me/posts/2019/how-to-pass-variables-to-a-partial-template-in-hugo/</guid>
+      <description>As a developer, I want to keep my code as DRY as is feasible for the given project. In a Hugo project, that&amp;rsquo;s where the Partial templates come in.
 Partials are smaller, context-aware components in your list and page templates that can be used economically to keep your templating DRY.
-Partials, however, have one serious limitation, they&amp;rsquo;re cached during the build of a given page (or scope). Once a partial has been created, no outside logic can adjust what the partial returns (for the page).</description></item></channel></rss>
+Partials, however, have one serious limitation, they&amp;rsquo;re cached during the build of a given page (or scope). Once a partial has been created, no outside logic can adjust what the partial returns (for the page).</description>
+    </item>
+    
+  </channel>
+</rss>

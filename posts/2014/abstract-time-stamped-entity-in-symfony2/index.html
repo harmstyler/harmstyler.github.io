@@ -1,289 +1,563 @@
-<!doctype html><html lang=en-us><head><link href=https://gmpg.org/xfn/11 rel=profile><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta http-equiv=cache-control content="public"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.74.3"><title>Abstract Time Stamped Entity in Symfony2 • Tyler Harms</title><meta name=twitter:card content="summary"><meta name=twitter:title content="Abstract Time Stamped Entity in Symfony2"><meta name=twitter:description content="One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2."><meta property="og:title" content="Abstract Time Stamped Entity in Symfony2"><meta property="og:description" content="One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2."><meta property="og:type" content="article"><meta property="og:url" content="https://harmstyler.me/posts/2014/abstract-time-stamped-entity-in-symfony2/"><meta property="article:published_time" content="2014-02-07T00:00:00+00:00"><meta property="article:modified_time" content="2014-02-07T00:00:00+00:00"><meta name=copyright content="Tyler Harms"><meta name=author content="Tyler Harms"><link rel=stylesheet href=https://harmstyler.me/css/syntax.min.526c7855d123d38fb872630d4fd87414145f1c4718e03de5cdec1c1fbdd44f3458c31f6ef3f67ba28a296a00ba072faf897644f22e1360bf7265b512a40017fa.css integrity="sha512-Umx4VdEj04+4cmMNT9h0FBRfHEcY4D3lzewcH73UTzRYwx9u8/Z7ooopagC6By+viXZE8i4TYL9yZbUSpAAX+g==" media=screen><link rel=stylesheet href=/scss/hyde-hyde.23223b3fbdd5963ba070b35e098aca594477d9b37a714c6f3e8af16d7e26bcbe.css integrity="sha256-IyI7P73VljugcLNeCYrKWUR32bN6cUxvPorxbX4mvL4="><link rel=stylesheet href=/scss/print.1850a99a7deb72f7243ff99e7a0dfc548ba8837498518c98cc1e44fa65bf1678.css integrity="sha256-GFCpmn3rcvckP/meeg38VIuog3SYUYyYzB5E+mW/Fng=" media=print><link rel=apple-touch-icon sizes=76x76 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#6a9fb5"><meta name=description content="One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2."></head><body class=theme-base-0d><div class=sidebar><div class=container><div class=sidebar-about><span class=site__title><a href=https://harmstyler.me/>Tyler Harms</a></span><div class=author-image><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src=https://harmstyler.me//img/tyler_portrait.jpg alt="Author Image" class="img--circle img--headshot element--center lazyload"></div><p class=site__description>A Software Development Blog</p></div><div class=collapsible-menu><input type=checkbox id=menuToggle>
-<label for=menuToggle>Tyler Harms</label><div class=menu-content><div><ul class=sidebar-nav><li><a href=/posts/><span>Posts</span></a></li><li><a href=/portfolio/><span>Portfolio</span></a></li><li><a href=/about/><span>About</span></a></li></li></ul></div><section class=social><a href=https://twitter.com/harmstyler rel="me noopener"><i class="fab fa-twitter fa-lg" aria-hidden=true></i></a><a href=https://github.com/harmstyler rel="me noopener"><i class="fab fa-github fa-lg" aria-hidden=true></i></a><a href=https://gitlab.com/harmstyler rel="me noopener"><i class="fab fa-gitlab fa-lg" aria-hidden=true></i></a><a href=https://instagram.com/harmstyler rel="me noopener"><i class="fab fa-instagram fa-lg" aria-hidden=true></i></a><a href=https://linkedin.com/in/harmstyler rel="me noopener"><i class="fab fa-linkedin fa-lg" aria-hidden=true></i></a><a href=https://stackoverflow.com/users/743245/harmstyler rel="me noopener"><i class="fab fa-stack-overflow fa-lg" aria-hidden=true></i></a><a href=https://keybase.io/harmstyler rel="me noopener"><i class="fab fa-keybase fa-lg" aria-hidden=true></i></a></section></div></div><div class=copyright>&copy; 2020 Tyler Harms</div></div></div><div class="content container"><article><header><h1>Abstract Time Stamped Entity in Symfony2</h1><div class=post__meta><i class="fas fa-calendar-alt"></i>&nbsp;Feb 7, 2014
-in
-<a class="badge badge-category" href=/categories/php>PHP</a>
-•
-<a class="badge badge-category" href=/categories/symfony2>SYMFONY2</a><br>&nbsp;<i class="fas fa-tags"></i>
-<a class="badge badge-tag" href=/tags/doctrine>doctrine</a><br><i class="fas fa-clock"></i>&nbsp;4 min read</div></header><div class=post><p>One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2.</p><p>Luckily, adding and updated and created fields to an entity in Symfony2 with Doctrine is quite easy:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-php data-lang=php><span class=cp>&lt;?php</span>
-<span class=sd>/**
-</span><span class=sd> * @var \DateTime
-</span><span class=sd> *
-</span><span class=sd> * @ORM\Column(name=&#34;created&#34;, type=&#34;datetime&#34;)
-</span><span class=sd> */</span>
-<span class=k>private</span> <span class=nv>$created</span><span class=p>;</span>
+<!DOCTYPE html>
+<html lang="en-us">
 
-<span class=sd>/**
-</span><span class=sd> * @var \DateTime
-</span><span class=sd> *
-</span><span class=sd> * @ORM\Column(name=&#34;updated&#34;, type=&#34;datetime&#34;)
-</span><span class=sd> */</span>
-<span class=k>private</span> <span class=nv>$updated</span><span class=p>;</span>
+<head>
+    <link href="https://gmpg.org/xfn/11" rel="profile"><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.101.0" /><title>Abstract Time Stamped Entity in Symfony2 • Tyler Harms</title><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Abstract Time Stamped Entity in Symfony2"/>
+<meta name="twitter:description" content="One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2."/>
+<meta property="og:title" content="Abstract Time Stamped Entity in Symfony2" />
+<meta property="og:description" content="One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harmstyler.me/posts/2014/abstract-time-stamped-entity-in-symfony2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2014-02-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-02-07T00:00:00+00:00" />
 
-<span class=k>public</span> <span class=k>function</span> <span class=fm>__construct</span><span class=p>()</span>
-<span class=p>{</span>
-    <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>setCreated</span><span class=p>(</span><span class=k>new</span> <span class=nx>\DateTime</span><span class=p>());</span>
-    <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>setUpdated</span><span class=p>(</span><span class=k>new</span> <span class=nx>\DateTime</span><span class=p>());</span>
-<span class=p>}</span>
+<meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
 
-<span class=c1>// getters &amp; setters
-</span><span class=c1></span>
-<span class=sd>/**
-</span><span class=sd> * Auto set the updated date
-</span><span class=sd> *
-</span><span class=sd> * @ORM\PreUpdate
-</span><span class=sd> */</span>
-<span class=k>public</span> <span class=k>function</span> <span class=nf>setUpdatedValue</span><span class=p>()</span>
-<span class=p>{</span>
-   <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>setUpdated</span><span class=p>(</span><span class=k>new</span> <span class=nx>\DateTime</span><span class=p>());</span>
-<span class=p>}</span>
-</code></pre></td></tr></table></div></div><p>The code should be pretty self explanitory, we have two DateTime field types that get initially set on entity creation in the contstructor. I then add a <code>setUpdatedValue()</code> function that runs when on PreUpdate of the entity.</p><p>The above code works very well, but it is not an ideal solution for working with multiple models. Of course, we could add the updated/created values to every entity, but that wouldn&rsquo;t be very <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself" title="Don't Repeat Yourself">DRY</a> of us.</p><p>The solution is to use an <a href=http://www.php.net/manual/en/language.oop5.abstract.php>Abstract Class</a> that our entity can extend. The abstract class, <code>TimeStampedEntity</code>, will have two entity variables <code>$updated</code> and <code>$created</code> and will look nearly identical to the code above when it is complete. The key that will make this work with Doctrine and Symfony2 is Doctrine&rsquo;s <a href=http://docs.doctrine-project.org/en/latest/reference/inheritance-mapping.html#mapped-superclasses><code>MappedSuperclass</code></a> declaration that tells Symfony and Doctrine that the abstract class is a Superclass with declared entity attributes. What we are left with is a Superclass that can extend any model to add <code>updated</code> and <code>created</code> attributes to your data.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span><span class=lnt>33
-</span><span class=lnt>34
-</span><span class=lnt>35
-</span><span class=lnt>36
-</span><span class=lnt>37
-</span><span class=lnt>38
-</span><span class=lnt>39
-</span><span class=lnt>40
-</span><span class=lnt>41
-</span><span class=lnt>42
-</span><span class=lnt>43
-</span><span class=lnt>44
-</span><span class=lnt>45
-</span><span class=lnt>46
-</span><span class=lnt>47
-</span><span class=lnt>48
-</span><span class=lnt>49
-</span><span class=lnt>50
-</span><span class=lnt>51
-</span><span class=lnt>52
-</span><span class=lnt>53
-</span><span class=lnt>54
-</span><span class=lnt>55
-</span><span class=lnt>56
-</span><span class=lnt>57
-</span><span class=lnt>58
-</span><span class=lnt>59
-</span><span class=lnt>60
-</span><span class=lnt>61
-</span><span class=lnt>62
-</span><span class=lnt>63
-</span><span class=lnt>64
-</span><span class=lnt>65
-</span><span class=lnt>66
-</span><span class=lnt>67
-</span><span class=lnt>68
-</span><span class=lnt>69
-</span><span class=lnt>70
-</span><span class=lnt>71
-</span><span class=lnt>72
-</span><span class=lnt>73
-</span><span class=lnt>74
-</span><span class=lnt>75
-</span><span class=lnt>76
-</span><span class=lnt>77
-</span><span class=lnt>78
-</span><span class=lnt>79
-</span><span class=lnt>80
-</span><span class=lnt>81
-</span><span class=lnt>82
-</span><span class=lnt>83
-</span><span class=lnt>84
-</span><span class=lnt>85
-</span><span class=lnt>86
-</span><span class=lnt>87
-</span><span class=lnt>88
-</span><span class=lnt>89
-</span><span class=lnt>90
-</span><span class=lnt>91
-</span><span class=lnt>92
-</span><span class=lnt>93
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-php data-lang=php><span class=cp>&lt;?php</span>
 
-<span class=k>namespace</span> <span class=nx>HarmsTyler\Common\Entity</span><span class=p>;</span>
+<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.526c7855d123d38fb872630d4fd87414145f1c4718e03de5cdec1c1fbdd44f3458c31f6ef3f67ba28a296a00ba072faf897644f22e1360bf7265b512a40017fa.css" integrity="sha512-Umx4VdEj04&#43;4cmMNT9h0FBRfHEcY4D3lzewcH73UTzRYwx9u8/Z7ooopagC6By&#43;viXZE8i4TYL9yZbUSpAAX&#43;g==" media="screen">
 
-<span class=k>use</span> <span class=nx>Doctrine\ORM\Mapping</span> <span class=k>as</span> <span class=nx>ORM</span><span class=p>;</span>
 
-<span class=sd>/**
-</span><span class=sd> * @ORM\MappedSuperclass
-</span><span class=sd> * @ORM\HasLifecycleCallbacks
-</span><span class=sd> */</span>
-<span class=k>abstract</span> <span class=k>class</span> <span class=nc>TimeStampedEntity</span> <span class=p>{</span>
 
-    <span class=sd>/**
-</span><span class=sd>     * @var \DateTime
-</span><span class=sd>     *
-</span><span class=sd>     * @ORM\Column(name=&#34;created&#34;, type=&#34;datetime&#34;)
-</span><span class=sd>     */</span>
-    <span class=k>private</span> <span class=nv>$created</span><span class=p>;</span>
 
-    <span class=sd>/**
-</span><span class=sd>     * @var \DateTime
-</span><span class=sd>     *
-</span><span class=sd>     * @ORM\Column(name=&#34;updated&#34;, type=&#34;datetime&#34;)
-</span><span class=sd>     */</span>
-    <span class=k>private</span> <span class=nv>$updated</span><span class=p>;</span>
 
-    <span class=sd>/**
-</span><span class=sd>     * Set created
-</span><span class=sd>     *
-</span><span class=sd>     * @param \DateTime $created
-</span><span class=sd>     * @return self
-</span><span class=sd>     */</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>setCreated</span><span class=p>(</span><span class=nv>$created</span><span class=p>)</span>
-    <span class=p>{</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>created</span> <span class=o>=</span> <span class=nv>$created</span><span class=p>;</span>
+<link rel="stylesheet" href="/scss/hyde-hyde.23223b3fbdd5963ba070b35e098aca594477d9b37a714c6f3e8af16d7e26bcbe.css" integrity="sha256-IyI7P73VljugcLNeCYrKWUR32bN6cUxvPorxbX4mvL4=">
 
-        <span class=k>return</span> <span class=nv>$this</span><span class=p>;</span>
-    <span class=p>}</span>
 
-    <span class=sd>/**
-</span><span class=sd>     * Get created
-</span><span class=sd>     *
-</span><span class=sd>     * @return \DateTime
-</span><span class=sd>     */</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>getCreated</span><span class=p>()</span>
-    <span class=p>{</span>
-        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>created</span><span class=p>;</span>
-    <span class=p>}</span>
+<link rel="stylesheet" href="/scss/print.1850a99a7deb72f7243ff99e7a0dfc548ba8837498518c98cc1e44fa65bf1678.css" integrity="sha256-GFCpmn3rcvckP/meeg38VIuog3SYUYyYzB5E&#43;mW/Fng=" media="print">
 
-    <span class=sd>/**
-</span><span class=sd>     * Set updated
-</span><span class=sd>     *
-</span><span class=sd>     * @param \DateTime $updated
-</span><span class=sd>     * @return self
-</span><span class=sd>     */</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>setUpdated</span><span class=p>(</span><span class=nv>$updated</span><span class=p>)</span>
-    <span class=p>{</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>updated</span> <span class=o>=</span> <span class=nv>$updated</span><span class=p>;</span>
 
-        <span class=k>return</span> <span class=nv>$this</span><span class=p>;</span>
-    <span class=p>}</span>
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#6a9fb5">
+    <meta name="description" content="One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2.">
 
-    <span class=sd>/**
-</span><span class=sd>     * Get updated
-</span><span class=sd>     *
-</span><span class=sd>     * @return \DateTime
-</span><span class=sd>     */</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>getUpdated</span><span class=p>()</span>
-    <span class=p>{</span>
-        <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>updated</span><span class=p>;</span>
-    <span class=p>}</span>
 
-    <span class=sd>/**
-</span><span class=sd>     * Auto set the updated date
-</span><span class=sd>     *
-</span><span class=sd>     * @ORM\PreUpdate
-</span><span class=sd>     */</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>setUpdatedValue</span><span class=p>()</span>
-    <span class=p>{</span>
-       <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>setUpdated</span><span class=p>(</span><span class=k>new</span> <span class=nx>\DateTime</span><span class=p>());</span>
-    <span class=p>}</span>
+</head>
+<body class="theme-base-0d ">
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="https://harmstyler.me/">Tyler Harms</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://harmstyler.me//img/tyler_portrait.jpg" alt="Author Image" class="img--circle img--headshot element--center lazyload">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         A Software Development Blog 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Tyler Harms</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Portfolio</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+		</li>
+	</ul>
+</div>
 
-    <span class=sd>/**
-</span><span class=sd>     * Set initial value for created/updated values
-</span><span class=sd>     *
-</span><span class=sd>     * @ORM\PrePersist
-</span><span class=sd>     */</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>setCreatedValues</span><span class=p>()</span>
-    <span class=p>{</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>setCreated</span><span class=p>(</span><span class=k>new</span> <span class=nx>\DateTime</span><span class=p>());</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>setUpdated</span><span class=p>(</span><span class=k>new</span> <span class=nx>\DateTime</span><span class=p>());</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></td></tr></table></div></div><p>An example in use:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-php data-lang=php><span class=cp>&lt;?php</span>
+        <section class="social">
+	
+	<a href="https://indieweb.social/@harmstyler" rel="me noopener"><i class="fab fa-mastodon fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://github.com/harmstyler" rel="me noopener"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://gitlab.com/harmstyler" rel="me noopener"><i class="fab fa-gitlab fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://instagram.com/harmstyler" rel="me noopener"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://linkedin.com/in/harmstyler" rel="me noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://stackoverflow.com/users/743245/harmstyler" rel="me noopener"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	<a href="https://keybase.io/harmstyler" rel="me noopener"><i class="fab fa-keybase fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+</section>
 
-<span class=k>namespace</span> <span class=nx>Blend\Iterate\BlogBundle\Entity</span><span class=p>;</span>
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2022 Tyler Harms
+  
+</div>
 
-<span class=k>use</span> <span class=nx>HarmsTyler\Common\Entity\TimeStampedEntity</span><span class=p>;</span>
-<span class=k>use</span> <span class=nx>Doctrine\ORM\Mapping</span> <span class=k>as</span> <span class=nx>ORM</span><span class=p>;</span>
 
-<span class=sd>/**
-</span><span class=sd> * Post
-</span><span class=sd> *
-</span><span class=sd> * @ORM\Table()
-</span><span class=sd> * @ORM\Entity
-</span><span class=sd> */</span>
-<span class=k>class</span> <span class=nc>Post</span> <span class=k>extends</span> <span class=nx>TimeStampedEntity</span>
-<span class=p>{</span>
-</code></pre></td></tr></table></div></div><p>edited to add setCreatedValues()</p></div><div class="navigation navigation-single"><a href=/posts/2013/administrating-solr-a-review/ class=navigation-prev><i aria-hidden=true class="fa fa-chevron-left"></i><span class=navigation-tittle>Administrating Solr: A Review</span></a>
-<a href=/posts/2014/mixing-angular-and-symfony/ class=navigation-next><span class=navigation-tittle>Mixing AngularJS and Symfony</span>
-<i aria-hidden=true class="fa fa-chevron-right"></i></a></div><div id=graphcomment></div><script type=text/javascript>window.graphcomment_id='harmstyler-me';(function(){var gc=document.createElement('script');gc.type='text/javascript';gc.async=true;gc.src='https://graphcomment.com/js/integration.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(gc);})();</script></article></div><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-133041000-1','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script><script defer src=https://use.fontawesome.com/releases/v5.5.0/js/all.js integrity=sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0 crossorigin=anonymous></script><script type=text/javascript src=https://harmstyler.me/js/lazysizes.min.2a1077711d9a0180d46fd021941edea1dbfd6fc20d319ce0759cbaca6e971fe16964f86f9eece26cdc460ad443374889ad10dd08abe192f65a0e8a676636a93e.js integrity="sha512-KhB3cR2aAYDUb9AhlB7eodv9b8INMZzgdZy6ym6XH+FpZPhvnuzibNxGCtRDN0iJrRDdCKvhkvZaDopnZjapPg=="></script></body></html>
+
+  </div>
+</div>
+<div class="content container">
+    <article>
+  <header>
+    <h1>Abstract Time Stamped Entity in Symfony2</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i>&nbsp;Feb 7, 2014
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/php">PHP</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/symfony2">SYMFONY2</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+          &nbsp;<i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/doctrine">doctrine</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i>&nbsp;4 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <p>One of my favorite features of Ruby on Rails is that all models are timestamped by default. Ruby on Rails, of course, opts for convention over configuration. Symfony2, on the other hand, opts for configuration over convention. Anyone who has worked with Symfony2 can speak to the mass of config files that exist in a project. I can understand, therefore, why timestamped models (entities) are not a feature in Symfony2. In this post I will show how to add timestamp all your Symfony2 entities. For this post, I chose to use Doctrine as my ORM, so all code show directly relates to Doctrine and Symfony2.</p>
+<p>Luckily, adding and updated and created fields to an entity in Symfony2 with Doctrine is quite easy:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @var \DateTime
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @ORM\Column(name=&#34;created&#34;, type=&#34;datetime&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="nv">$created</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @var \DateTime
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @ORM\Column(name=&#34;updated&#34;, type=&#34;datetime&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="nv">$updated</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setCreated</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setUpdated</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// getters &amp; setters
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Auto set the updated date
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @ORM\PreUpdate
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="nf">setUpdatedValue</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setUpdated</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>The code should be pretty self explanitory, we have two DateTime field types that get initially set on entity creation in the contstructor. I then add a <code>setUpdatedValue()</code> function that runs when on PreUpdate of the entity.</p>
+<p>The above code works very well, but it is not an ideal solution for working with multiple models. Of course, we could add the updated/created values to every entity, but that wouldn&rsquo;t be very <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself" title="Don't Repeat Yourself">DRY</a> of us.</p>
+<p>The solution is to use an <a href="http://www.php.net/manual/en/language.oop5.abstract.php">Abstract Class</a> that our entity can extend. The abstract class, <code>TimeStampedEntity</code>, will have two entity variables <code>$updated</code> and <code>$created</code> and will look nearly identical to the code above when it is complete. The key that will make this work with Doctrine and Symfony2 is Doctrine&rsquo;s <a href="http://docs.doctrine-project.org/en/latest/reference/inheritance-mapping.html#mapped-superclasses"><code>MappedSuperclass</code></a> declaration that tells Symfony and Doctrine that the abstract class is a Superclass with declared entity attributes. What we are left with is a Superclass that can extend any model to add <code>updated</code> and <code>created</code> attributes to your data.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">HarmsTyler\Common\Entity</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Doctrine\ORM\Mapping</span> <span class="k">as</span> <span class="nx">ORM</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @ORM\MappedSuperclass
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @ORM\HasLifecycleCallbacks
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">abstract</span> <span class="k">class</span> <span class="nc">TimeStampedEntity</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @var \DateTime
+</span></span></span><span class="line"><span class="cl"><span class="sd">     *
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @ORM\Column(name=&#34;created&#34;, type=&#34;datetime&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="nv">$created</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @var \DateTime
+</span></span></span><span class="line"><span class="cl"><span class="sd">     *
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @ORM\Column(name=&#34;updated&#34;, type=&#34;datetime&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="nv">$updated</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * Set created
+</span></span></span><span class="line"><span class="cl"><span class="sd">     *
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param \DateTime $created
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return self
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">setCreated</span><span class="p">(</span><span class="nv">$created</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">created</span> <span class="o">=</span> <span class="nv">$created</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * Get created
+</span></span></span><span class="line"><span class="cl"><span class="sd">     *
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return \DateTime
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">getCreated</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">created</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * Set updated
+</span></span></span><span class="line"><span class="cl"><span class="sd">     *
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param \DateTime $updated
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return self
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUpdated</span><span class="p">(</span><span class="nv">$updated</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">updated</span> <span class="o">=</span> <span class="nv">$updated</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * Get updated
+</span></span></span><span class="line"><span class="cl"><span class="sd">     *
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return \DateTime
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">getUpdated</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">updated</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * Auto set the updated date
+</span></span></span><span class="line"><span class="cl"><span class="sd">     *
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @ORM\PreUpdate
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUpdatedValue</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">       <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setUpdated</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * Set initial value for created/updated values
+</span></span></span><span class="line"><span class="cl"><span class="sd">     *
+</span></span></span><span class="line"><span class="cl"><span class="sd">     * @ORM\PrePersist
+</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">setCreatedValues</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setCreated</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setUpdated</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>An example in use:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">Blend\Iterate\BlogBundle\Entity</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">HarmsTyler\Common\Entity\TimeStampedEntity</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Doctrine\ORM\Mapping</span> <span class="k">as</span> <span class="nx">ORM</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sd">/**
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * Post
+</span></span></span><span class="line"><span class="cl"><span class="sd"> *
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @ORM\Table()
+</span></span></span><span class="line"><span class="cl"><span class="sd"> * @ORM\Entity
+</span></span></span><span class="line"><span class="cl"><span class="sd"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Post</span> <span class="k">extends</span> <span class="nx">TimeStampedEntity</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p><!-- raw HTML omitted -->edited to add setCreatedValues()<!-- raw HTML omitted --></p>
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/2013/administrating-solr-a-review/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Administrating Solr: A Review</span>
+    </a>
+    
+    
+    <a href="/posts/2014/mixing-angular-and-symfony/" class="navigation-next">
+      <span class="navigation-tittle">Mixing AngularJS and Symfony</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+
+
+
+  
+    
+        <div id="graphcomment"></div>
+<script type="text/javascript">
+  window.graphcomment_id = 'harmstyler-me';
+   
+  (function() {
+    var gc = document.createElement('script'); gc.type = 'text/javascript'; gc.async = true;
+    gc.src = 'https://graphcomment.com/js/integration.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
+  })();
+</script>
+    
+
+
+</article>
+
+</div>
+    
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133041000-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+
+    
+
+
+<script type="text/javascript" src="https://harmstyler.me/js/lazysizes.min.6e30beddfbf7ae1f972b70bbde23ae3ac52a28fd677c4fd5dcd1de92744398706f32e19e02dd53a7ad3f20fd9527bef5fbe2cc75ca733eb291ba15d9d267d202.js" integrity="sha512-bjC&#43;3fv3rh&#43;XK3C73iOuOsUqKP1nfE/V3NHeknRDmHBvMuGeAt1Tp60/IP2VJ771&#43;&#43;LMdcpzPrKRuhXZ0mfSAg=="></script>
+</body>
+</html>

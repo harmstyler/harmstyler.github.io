@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Skype on Tyler Harms</title><link>https://harmstyler.me/tags/skype/</link><description>Recent content in Skype on Tyler Harms</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 01 Nov 2012 00:00:00 +0000</lastBuildDate><atom:link href="https://harmstyler.me/tags/skype/index.xml" rel="self" type="application/rss+xml"/><item><title>Skype version 6</title><link>https://harmstyler.me/posts/2012/skype-version-6/</link><pubDate>Thu, 01 Nov 2012 00:00:00 +0000</pubDate><guid>https://harmstyler.me/posts/2012/skype-version-6/</guid><description>I recently updated to Skype 6 and found something interesting out. My style package that worked in Skype 5 would not work in Skype 6. With some digging, we found out that in order to make your Skype 5 style work in Skype 6 you need to update the MessageViewVersion to version 7 (I have no idea why). So, with that, have fun updating your Skype to the latest version while still getting use out of your favorite Skype theme.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Skype on Tyler Harms</title>
+    <link>https://harmstyler.me/tags/skype/</link>
+    <description>Recent content in Skype on Tyler Harms</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Nov 2012 00:00:00 +0000</lastBuildDate><atom:link href="https://harmstyler.me/tags/skype/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Skype version 6</title>
+      <link>https://harmstyler.me/posts/2012/skype-version-6/</link>
+      <pubDate>Thu, 01 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://harmstyler.me/posts/2012/skype-version-6/</guid>
+      <description>I recently updated to Skype 6 and found something interesting out. My style package that worked in Skype 5 would not work in Skype 6. With some digging, we found out that in order to make your Skype 5 style work in Skype 6 you need to update the MessageViewVersion to version 7 (I have no idea why). So, with that, have fun updating your Skype to the latest version while still getting use out of your favorite Skype theme.</description>
+    </item>
+    
+  </channel>
+</rss>

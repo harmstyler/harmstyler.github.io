@@ -1,6 +1,70 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Solr on Tyler Harms</title><link>https://harmstyler.me/tags/solr/</link><description>Recent content in Solr on Tyler Harms</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 29 Nov 2013 00:00:00 +0000</lastBuildDate><atom:link href="https://harmstyler.me/tags/solr/index.xml" rel="self" type="application/rss+xml"/><item><title>Administrating Solr: A Review</title><link>https://harmstyler.me/posts/2013/administrating-solr-a-review/</link><pubDate>Fri, 29 Nov 2013 00:00:00 +0000</pubDate><guid>https://harmstyler.me/posts/2013/administrating-solr-a-review/</guid><description>Pact Publishing released a new book in October 2013 called Administrating Solr. In the book readers can find out all sorts of information about, you guessed it, administrating your Solr installation. Whether it be Searching Solr, Monitoring Solr, Managing Solr, or Optimizing Solr the book has your bases covered.</description></item><item><title>Sort Solr Facets on Per Field Basis</title><link>https://harmstyler.me/posts/2013/sort-solr-facets-on-per-field-basis/</link><pubDate>Mon, 29 Jul 2013 00:00:00 +0000</pubDate><guid>https://harmstyler.me/posts/2013/sort-solr-facets-on-per-field-basis/</guid><description>I recently faced a strange problem. I was faceting off of multiple facet.fields and I found the need to sort them independently of each other. As far as I knew up to this point facet.sort could only be set once. When I read the doc, however, it was claimed that the facet.sort could be set on a per field basis; sadly no examples were provided nor was it explained any further.</description></item><item><title>Solr Query for Mimicking SQL IN Operator Functionality</title><link>https://harmstyler.me/posts/2012/solr-query-for-mimicking-sql-in-operator-functionality/</link><pubDate>Thu, 13 Sep 2012 00:00:00 +0000</pubDate><guid>https://harmstyler.me/posts/2012/solr-query-for-mimicking-sql-in-operator-functionality/</guid><description>I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the IN operator. In Solr you have the option of specifying a field using the qf operator, but what if you have more search terms searching other fields? The problem becomes far more complex.</description></item><item><title>Fixing Shards in eZ Find</title><link>https://harmstyler.me/posts/2012/fixing-shards-in-ez-find/</link><pubDate>Fri, 29 Jun 2012 00:00:00 +0000</pubDate><guid>https://harmstyler.me/posts/2012/fixing-shards-in-ez-find/</guid><description>&lt;p>I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the &lt;code>$shardQuery&lt;/code> is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the &lt;code>$queryHandler&lt;/code> switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)&lt;/p></description></item><item><title>eZ Find Multi-Core</title><link>https://harmstyler.me/posts/2012/ez-find-multi-core/</link><pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate><guid>https://harmstyler.me/posts/2012/ez-find-multi-core/</guid><description>&lt;p>One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.&lt;/p>
-&lt;!-- raw HTML omitted --></description></item><item><title>Installing eZ Find</title><link>https://harmstyler.me/posts/2012/installing-ez-find/</link><pubDate>Thu, 22 Mar 2012 00:00:00 +0000</pubDate><guid>https://harmstyler.me/posts/2012/installing-ez-find/</guid><description>&lt;p>Alright, so lets begin installing eZ Find by going out and downloading it from the Github =&amp;gt; &lt;a href="http://bit.ly/GEVOte" title="eZ Find on GitHub">https://github.com/ezsystems/ezfind&lt;/a>.
-eZ Find is an eZ Publish extension so: unzip the download, rename the fold &amp;ldquo;ezfind,&amp;rdquo; and then move the &lt;em>ezfind&lt;/em> folder to the &lt;em>extensions&lt;/em> directory of your eZ Publish install.&lt;/p>
-&lt;p>So, as with any extension, we have to activate it. Go into your override &lt;code>site.ini.append.php&lt;/code> (settings/override/site.ini.append.php) and add ezfind to your active extension list (&lt;code>ActiveExtensions[]=ezfind&lt;/code>). I added mine just after my main site extension. Easy enough so far right?&lt;/p>
-&lt;!-- raw HTML omitted -->
-&lt;p>As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a &lt;em>java&lt;/em> directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish install and rename the folder &amp;ldquo;Solr&amp;rdquo; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on one Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Solr on Tyler Harms</title>
+    <link>https://harmstyler.me/tags/solr/</link>
+    <description>Recent content in Solr on Tyler Harms</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 Nov 2013 00:00:00 +0000</lastBuildDate><atom:link href="https://harmstyler.me/tags/solr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Administrating Solr: A Review</title>
+      <link>https://harmstyler.me/posts/2013/administrating-solr-a-review/</link>
+      <pubDate>Fri, 29 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://harmstyler.me/posts/2013/administrating-solr-a-review/</guid>
+      <description>Pact Publishing released a new book in October 2013 called Administrating Solr. In the book readers can find out all sorts of information about, you guessed it, administrating your Solr installation. Whether it be Searching Solr, Monitoring Solr, Managing Solr, or Optimizing Solr the book has your bases covered.</description>
+    </item>
+    
+    <item>
+      <title>Sort Solr Facets on Per Field Basis</title>
+      <link>https://harmstyler.me/posts/2013/sort-solr-facets-on-per-field-basis/</link>
+      <pubDate>Mon, 29 Jul 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://harmstyler.me/posts/2013/sort-solr-facets-on-per-field-basis/</guid>
+      <description>I recently faced a strange problem. I was faceting off of multiple facet.fields and I found the need to sort them independently of each other. As far as I knew up to this point facet.sort could only be set once. When I read the doc, however, it was claimed that the facet.sort could be set on a per field basis; sadly no examples were provided nor was it explained any further.</description>
+    </item>
+    
+    <item>
+      <title>Solr Query for Mimicking SQL IN Operator Functionality</title>
+      <link>https://harmstyler.me/posts/2012/solr-query-for-mimicking-sql-in-operator-functionality/</link>
+      <pubDate>Thu, 13 Sep 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://harmstyler.me/posts/2012/solr-query-for-mimicking-sql-in-operator-functionality/</guid>
+      <description>I did a lot of playing around with solr to get this right. Unfortunately there is not a lot of documentation on searching within a certain field. With the SQL language you can search for multiple terms in a given field using the IN operator. In Solr you have the option of specifying a field using the qf operator, but what if you have more search terms searching other fields?</description>
+    </item>
+    
+    <item>
+      <title>Fixing Shards in eZ Find</title>
+      <link>https://harmstyler.me/posts/2012/fixing-shards-in-ez-find/</link>
+      <pubDate>Fri, 29 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://harmstyler.me/posts/2012/fixing-shards-in-ez-find/</guid>
+      <description>&lt;p&gt;I am way overdue on my promise to show you how to make shards work. As I said before, shards in eZ Find do not work out of the box. In the code the &lt;code&gt;$shardQuery&lt;/code&gt; is built properly but the variable is never actually used after it is created. What I did to make this work is a simple if/else block inside the &lt;code&gt;$queryHandler&lt;/code&gt; switch. I am not submitting this as a pull request to eZ Find at the moment just because I do not like the way I made this work, I feel like there is a better way to do it. Nevertheless here is my code to make Shards work, I hope you enjoy and moreover I hope you suggest a better way to make the code work ;)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>eZ Find Multi-Core</title>
+      <link>https://harmstyler.me/posts/2012/ez-find-multi-core/</link>
+      <pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://harmstyler.me/posts/2012/ez-find-multi-core/</guid>
+      <description>&lt;p&gt;One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
+    </item>
+    
+    <item>
+      <title>Installing eZ Find</title>
+      <link>https://harmstyler.me/posts/2012/installing-ez-find/</link>
+      <pubDate>Thu, 22 Mar 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://harmstyler.me/posts/2012/installing-ez-find/</guid>
+      <description>&lt;p&gt;Alright, so lets begin installing eZ Find by going out and downloading it from the Github =&amp;gt; &lt;a href=&#34;http://bit.ly/GEVOte&#34; title=&#34;eZ Find on GitHub&#34;&gt;https://github.com/ezsystems/ezfind&lt;/a&gt;.
+eZ Find is an eZ Publish extension so: unzip the download, rename the fold &amp;ldquo;ezfind,&amp;rdquo; and then move the &lt;em&gt;ezfind&lt;/em&gt; folder to the &lt;em&gt;extensions&lt;/em&gt; directory of your eZ Publish install.&lt;/p&gt;
+&lt;p&gt;So, as with any extension, we have to activate it. Go into your override &lt;code&gt;site.ini.append.php&lt;/code&gt; (settings/override/site.ini.append.php) and add ezfind to your active extension list (&lt;code&gt;ActiveExtensions[]=ezfind&lt;/code&gt;). I added mine just after my main site extension. Easy enough so far right?&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;As you had probably already guessed, eZ Find will not without first setting up Solr. Luckily eZ Find comes with the recommended version of Solr for eZ Find. Within the eZ Find extension you should see a &lt;em&gt;java&lt;/em&gt; directory (remember Solr is written in Java?). So what we need to do is copy the java directory and move it to the htdocs level of your eZ Publish install and rename the folder &amp;ldquo;Solr&amp;rdquo; (see the image on the right). There is a lot in the solr directory that we will not need to mess with right now, specifically I will not cover the multicore options right now, just know that eZ Find can run multiple sites/cores on one Solr install. Also note that I just installed Solr locally, but it can also be installed on remote servers.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

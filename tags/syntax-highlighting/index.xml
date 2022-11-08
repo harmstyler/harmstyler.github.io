@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Syntax Highlighting on Tyler Harms</title><link>https://harmstyler.me/tags/syntax-highlighting/</link><description>Recent content in Syntax Highlighting on Tyler Harms</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 30 Jun 2012 00:00:00 +0000</lastBuildDate><atom:link href="https://harmstyler.me/tags/syntax-highlighting/index.xml" rel="self" type="application/rss+xml"/><item><title>eZ Publish with Sublime</title><link>https://harmstyler.me/posts/2012/ez-publish-with-sublime/</link><pubDate>Sat, 30 Jun 2012 00:00:00 +0000</pubDate><guid>https://harmstyler.me/posts/2012/ez-publish-with-sublime/</guid><description>A while back I fell in love with Sublime Text 2and its&amp;rsquo; many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Syntax Highlighting on Tyler Harms</title>
+    <link>https://harmstyler.me/tags/syntax-highlighting/</link>
+    <description>Recent content in Syntax Highlighting on Tyler Harms</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 30 Jun 2012 00:00:00 +0000</lastBuildDate><atom:link href="https://harmstyler.me/tags/syntax-highlighting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>eZ Publish with Sublime</title>
+      <link>https://harmstyler.me/posts/2012/ez-publish-with-sublime/</link>
+      <pubDate>Sat, 30 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://harmstyler.me/posts/2012/ez-publish-with-sublime/</guid>
+      <description>A while back I fell in love with Sublime Text 2 and its&amp;rsquo; many advantages over TextMate. What it lacked however was any real support for the eZ Publish templating language (no different than TextMate). What I wanted was a simple editor that offered variable and method highlighting equivalent to a nice IDE like PHPStorm. I was originally using the Smarty package for TextMate (you can use any TextMate package in Sublime), but that does not offer a lot of method highlighting support for eZ.</description>
+    </item>
+    
+  </channel>
+</rss>
