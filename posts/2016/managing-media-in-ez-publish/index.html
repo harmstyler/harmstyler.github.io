@@ -1,454 +1,203 @@
-<!DOCTYPE html>
-<html lang="en-us">
-
-<head>
-    <link href="https://gmpg.org/xfn/11" rel="profile"><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.101.0" /><title>Managing Media in eZ Publish 5 • Tyler Harms</title><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Managing Media in eZ Publish 5"/>
-<meta name="twitter:description" content="Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
+<!doctype html><html lang=en-us><head><link href=https://gmpg.org/xfn/11 rel=profile><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
 that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to
 in this post are any content types placed in the media category, traditionally images, files, audio files, and video
-files."/>
-<meta property="og:title" content="Managing Media in eZ Publish 5" />
-<meta property="og:description" content="Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
+files."><link rel=canonical href=https://harmstyler.me/posts/2016/managing-media-in-ez-publish/><title>Managing Media in eZ Publish 5 &#183; Tyler Harms</title><meta name=twitter:card content="summary"><meta name=twitter:title content="Managing Media in eZ Publish 5"><meta name=twitter:description content="Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to in this post are any content types placed in the media category, traditionally images, files, audio files, and video files."><meta property="og:url" content="https://harmstyler.me/posts/2016/managing-media-in-ez-publish/"><meta property="og:site_name" content="Tyler Harms"><meta property="og:title" content="Managing Media in eZ Publish 5"><meta property="og:description" content="Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to in this post are any content types placed in the media category, traditionally images, files, audio files, and video files."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2016-01-31T00:00:00+00:00"><meta property="article:modified_time" content="2016-01-31T00:00:00+00:00"><meta itemprop=name content="Managing Media in eZ Publish 5"><meta itemprop=description content="Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to in this post are any content types placed in the media category, traditionally images, files, audio files, and video files."><meta itemprop=datePublished content="2016-01-31T00:00:00+00:00"><meta itemprop=dateModified content="2016-01-31T00:00:00+00:00"><meta itemprop=wordCount content="916"><meta itemprop=keywords content="Symfony,EZ Publish"><meta name=generator content="Hugo 0.154.5"><meta name=copyright content="Tyler Harms"><meta name=author content="Tyler Harms"><link rel=stylesheet href=https://harmstyler.me/css/syntax.min.526c7855d123d38fb872630d4fd87414145f1c4718e03de5cdec1c1fbdd44f3458c31f6ef3f67ba28a296a00ba072faf897644f22e1360bf7265b512a40017fa.css integrity="sha512-Umx4VdEj04+4cmMNT9h0FBRfHEcY4D3lzewcH73UTzRYwx9u8/Z7ooopagC6By+viXZE8i4TYL9yZbUSpAAX+g==" media=screen><link rel=stylesheet href=/scss/hyde-hyde.51d9e06a8e337f8159a7ffa08e5d6e735ddf5ae6fe9cf8e99fb22367a5fcc195.css integrity="sha256-Udngao4zf4FZp/+gjl1uc13fWub+nPjpn7IjZ6X8wZU="><link rel=stylesheet href=/scss/print.1850a99a7deb72f7243ff99e7a0dfc548ba8837498518c98cc1e44fa65bf1678.css integrity="sha256-GFCpmn3rcvckP/meeg38VIuog3SYUYyYzB5E+mW/Fng=" media=print><link rel=apple-touch-icon sizes=76x76 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#6a9fb5"><meta name=description content="Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
 that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to
 in this post are any content types placed in the media category, traditionally images, files, audio files, and video
-files." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://harmstyler.me/posts/2016/managing-media-in-ez-publish/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2016-01-31T00:00:00+00:00" />
-<meta property="article:modified_time" content="2016-01-31T00:00:00+00:00" />
-
-<meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
-
-
-<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.526c7855d123d38fb872630d4fd87414145f1c4718e03de5cdec1c1fbdd44f3458c31f6ef3f67ba28a296a00ba072faf897644f22e1360bf7265b512a40017fa.css" integrity="sha512-Umx4VdEj04&#43;4cmMNT9h0FBRfHEcY4D3lzewcH73UTzRYwx9u8/Z7ooopagC6By&#43;viXZE8i4TYL9yZbUSpAAX&#43;g==" media="screen">
-
-
-
-
-
-<link rel="stylesheet" href="/scss/hyde-hyde.23223b3fbdd5963ba070b35e098aca594477d9b37a714c6f3e8af16d7e26bcbe.css" integrity="sha256-IyI7P73VljugcLNeCYrKWUR32bN6cUxvPorxbX4mvL4=">
-
-
-<link rel="stylesheet" href="/scss/print.1850a99a7deb72f7243ff99e7a0dfc548ba8837498518c98cc1e44fa65bf1678.css" integrity="sha256-GFCpmn3rcvckP/meeg38VIuog3SYUYyYzB5E&#43;mW/Fng=" media="print">
-
-
-<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#6a9fb5">
-    <meta name="description" content="Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
+files."></head><body class=theme-base-0d><div class=sidebar><div class=container><div class=sidebar-about><span class=site__title><a href=https://harmstyler.me/>Tyler Harms</a></span><div class=author-image><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src=https://harmstyler.me//img/tyler_portrait.jpg alt="Author Image" class="img--circle img--headshot element--center lazyload"></div><p class=site__description>A Software Development Blog</p></div><div class=collapsible-menu><input type=checkbox id=menuToggle>
+<label for=menuToggle>Tyler Harms</label><div class=menu-content><nav class=sidebar-nav aria-label="Main Navigation"><ul><li><a href=/posts/><span>Posts</span></a></li><li><a href=/portfolio/><span>Portfolio</span></a></li><li><a href=/about/><span>About</span></a></li></ul></nav><section class=social><a href=https://indieweb.social/@harmstyler rel="me noopener" aria-label=Mastodon><i class="fab fa-mastodon fa-lg" aria-hidden=true></i></a>
+<a href=https://github.com/harmstyler rel="me noopener" aria-label=GitHub><i class="fab fa-github fa-lg" aria-hidden=true></i></a>
+<a href=https://gitlab.com/harmstyler rel="me noopener" aria-label=GitLab><i class="fab fa-gitlab fa-lg" aria-hidden=true></i></a>
+<a href=https://instagram.com/harmstyler rel="me noopener" aria-label=Instagram><i class="fab fa-instagram fa-lg" aria-hidden=true></i></a>
+<a href=https://linkedin.com/in/harmstyler rel="me noopener" aria-label=LinkedIn><i class="fab fa-linkedin fa-lg" aria-hidden=true></i></a>
+<a href=https://stackoverflow.com/users/743245/harmstyler rel="me noopener" aria-label="Stack Overflow"><i class="fab fa-stack-overflow fa-lg" aria-hidden=true></i></a></section></div></div><div class=copyright>&copy; 2026 Tyler Harms</div></div></div><div class="content container"><article><header><h1>Managing Media in eZ Publish 5</h1><div class=post__meta><i class="fas fa-calendar-alt"></i>&nbsp;Jan 31, 2016
+in
+<a class="badge badge-category" href=/categories/ez-publish>EZ PUBLISH</a>
+•
+<a class="badge badge-category" href=/categories/symfony>SYMFONY</a><br><i class="fas fa-clock"></i>&nbsp;5 min read</div></header><div class=post><p>Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
 that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to
 in this post are any content types placed in the media category, traditionally images, files, audio files, and video
-files.">
-
-
-</head>
-<body class="theme-base-0d ">
-<div class="sidebar">
-  <div class="container ">
-    <div class="sidebar-about">
-      <span class="site__title">
-        <a href="https://harmstyler.me/">Tyler Harms</a>
-      </span>
-      
-        
-        
-        
-        <div class="author-image">
-          <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://harmstyler.me//img/tyler_portrait.jpg" alt="Author Image" class="img--circle img--headshot element--center lazyload">
-        </div>
-        
-      
-      
-      <p class="site__description">
-         A Software Development Blog 
-      </p>
-    </div>
-    <div class="collapsible-menu">
-      <input type="checkbox" id="menuToggle">
-      <label for="menuToggle">Tyler Harms</label>
-      <div class="menu-content">
-        <div>
-	<ul class="sidebar-nav">
-		 
-		 
-			 
-				<li>
-					<a href="/posts/">
-						<span>Posts</span>
-					</a>
-				</li>
-			 
-		 
-			 
-				<li>
-					<a href="/portfolio/">
-						<span>Portfolio</span>
-					</a>
-				</li>
-			 
-		 
-			 
-				<li>
-					<a href="/about/">
-						<span>About</span>
-					</a>
-				</li>
-			 
-		
-		</li>
-	</ul>
-</div>
-
-        <section class="social">
-	
-	<a href="https://hachyderm.io/@harmstyler" rel="me"><i class="fab fa-mastodon fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	
-	<a href="https://github.com/harmstyler" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	<a href="https://gitlab.com/harmstyler" rel="me"><i class="fab fa-gitlab fa-lg" aria-hidden="true"></i></a>
-	
-	
-	<a href="https://instagram.com/harmstyler" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
-	
-	
-	<a href="https://linkedin.com/in/harmstyler" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
-	
-	
-	<a href="https://stackoverflow.com/users/743245/harmstyler" rel="me"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	
-	<a href="https://keybase.io/harmstyler" rel="me"><i class="fab fa-keybase fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	
-</section>
-
-      </div>
-    </div>
-    
-<div class="copyright">
-  &copy; 2022 Tyler Harms
-  
-</div>
-
-
-
-  </div>
-</div>
-<div class="content container">
-    <article>
-  <header>
-    <h1>Managing Media in eZ Publish 5</h1>
-    
-    
-<div class="post__meta">
-    
-    
-      <i class="fas fa-calendar-alt"></i>&nbsp;Jan 31, 2016
-    
-    
-    
-      
-      
-          in
-          
-          
-              <a class="badge badge-category" href="/categories/ez-publish">EZ PUBLISH</a>
-              •
-          
-              <a class="badge badge-category" href="/categories/symfony">SYMFONY</a>
-              
-          
-      
-    
-    
-    
-    <br/>
-    <i class="fas fa-clock"></i>&nbsp;5 min read
-</div>
-
-
-  </header>
-  
-  
-  <div class="post">
-    <p>Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
-that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to
-in this post are any content types placed in the media category, traditionally images, files, audio files, and video
-files.</p>
-<h3 id="problem-number-1-the-content-download">Problem Number 1, the content download</h3>
-<p>Anyone familiar with eZ Publish 4 knows that in order force a download of a media content object you
+files.</p><h3 id=problem-number-1-the-content-download>Problem Number 1, the content download</h3><p>Anyone familiar with eZ Publish 4 knows that in order force a download of a media content object you
 needed to build a route to the <code>content/download</code> module/view. The <code>content/download</code> was very handy
 in its day because it did its job well, it forced a download on whatever file it was given.
 <code>content/download</code> even handled permissions for the file. It also, though, had a number of problems.
 The first problem with the <code>content/download</code> has to do with <em>how</em> developers were forced to build
-downloads.</p>
-<h4 id="an-example-download-url-built-for-ez-publish-4">An example download url built for eZ Publish 4:</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-smarty" data-lang="smarty"><span class="line"><span class="cl"><span class="cp">{</span><span class="nf">def</span> <span class="nv">$download_url</span> <span class="o">=</span> 
-</span></span><span class="line"><span class="cl">    <span class="na">concat</span><span class="o">(</span> <span class="s2">&#34;content/download/&#34;</span><span class="o">,</span> <span class="nv">$attribute.contentobject_id</span><span class="o">,</span> <span class="s2">&#34;/&#34;</span><span class="o">,</span> <span class="nv">$attribute.content.contentobject_attribute_id</span><span class="o">,</span> <span class="s2">&#34;/&#34;</span><span class="o">,</span> <span class="nv">$attribute.content.original_filename</span> <span class="o">)|</span><span class="na">ezurl</span><span class="cp">}</span></span></span></code></pre></div>
-<p>Hopefully the problems are obvious, not only is the url a pain to build, but the url is subject to change.
+downloads.</p><h4 id=an-example-download-url-built-for-ez-publish-4>An example download url built for eZ Publish 4:</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-smarty data-lang=smarty><span class=line><span class=cl><span class=cp>{</span><span class=nf>def</span> <span class=nv>$download_url</span> <span class=o>=</span> 
+</span></span><span class=line><span class=cl>    <span class=na>concat</span><span class=o>(</span> <span class=s2>&#34;content/download/&#34;</span><span class=o>,</span> <span class=nv>$attribute.contentobject_id</span><span class=o>,</span> <span class=s2>&#34;/&#34;</span><span class=o>,</span> <span class=nv>$attribute.content.contentobject_attribute_id</span><span class=o>,</span> <span class=s2>&#34;/&#34;</span><span class=o>,</span> <span class=nv>$attribute.content.original_filename</span> <span class=o>)|</span><span class=na>ezurl</span><span class=cp>}</span></span></span></code></pre></td></tr></table></div></div><p>Hopefully the problems are obvious, not only is the url a pain to build, but the url is subject to change.
 That means that whenever an editor changes the uploaded file attached to the content, a new download url
 will be generated. This means that these urls can never be used outside the generated site pages (no emails, etc),
-unless you are OK with possible dead links from time to time.</p>
-<p>The second problem I have with the <code>content/download</code> method is that the developer gets no control
+unless you are OK with possible dead links from time to time.</p><p>The second problem I have with the <code>content/download</code> method is that the developer gets no control
 over the title of the downloaded file. The downloaded file will always have the name of the uploaded file.
-Most of the time this is fine, but when fine tuning is needed, the <code>content/download</code> is not flexible.</p>
-<h3 id="problem-number-2-the-media-full-view">Problem Number 2, the media full view</h3>
-<p>I have yet to have a client want the full view of a media content object include the site chrome.
+Most of the time this is fine, but when fine tuning is needed, the <code>content/download</code> is not flexible.</p><h3 id=problem-number-2-the-media-full-view>Problem Number 2, the media full view</h3><p>I have yet to have a client want the full view of a media content object include the site chrome.
 In eZ Publish 4, this was a pain point we just had to live with. The generated URL Alias for media content
 went to a full view of the content, by default with the site chrome but this can be changed. What could
 not be changed in eZ Publish 4 were the headers when viewing full view media. So, though I could adjust the
 chrome of a media full view, I could never do anything but display the content to the user using the
-default site headers.</p>
-<h3 id="the-solution-a-symfony-media-controller">The Solution, A Symfony media controller</h3>
-<p>I am left with two problems to solve, luckily the same solution fixes both. In eZ Publish 5 (and eZ Platform)
+default site headers.</p><h3 id=the-solution-a-symfony-media-controller>The Solution, A Symfony media controller</h3><p>I am left with two problems to solve, luckily the same solution fixes both. In eZ Publish 5 (and eZ Platform)
 developers can set custom controllers when matching content to templates. Providing a custom Symfony controller
 and action gives developers the control needed to set the necessary headers to force a download while
-providing a consistent path to file downloads.</p>
-<h4 id="first-set-the-full-view-to-use-a-new-mediacontroller">First, set the full view to use a new <code>MediaController</code></h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">system</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">global</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">location_view</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">full</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">media</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="nt">controller</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;AppBundle:Media:media&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="nt">match</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="nt">Identifier\ContentType</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="l">file, image, video ]</span></span></span></code></pre></div>
-<h4 id="second-create-the-mediacontroller">Second, create the <code>MediaController</code></h4>
-<p>What this does is lets a user pass a <code>dl</code> query parameter to the eZ generated url alias. The query parameter tells
+providing a consistent path to file downloads.</p><h4 id=first-set-the-full-view-to-use-a-new-mediacontroller>First, set the full view to use a new <code>MediaController</code></h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>system</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>global</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>location_view</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>            </span><span class=nt>full</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                </span><span class=nt>media</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                    </span><span class=nt>controller</span><span class=p>:</span><span class=w> </span><span class=s2>&#34;AppBundle:Media:media&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                    </span><span class=nt>match</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>                        </span><span class=nt>Identifier\ContentType</span><span class=p>:</span><span class=w> </span><span class=p>[</span><span class=w> </span><span class=l>file, image, video ]</span></span></span></code></pre></td></tr></table></div></div><h4 id=second-create-the-mediacontroller>Second, create the <code>MediaController</code></h4><p>What this does is lets a user pass a <code>dl</code> query parameter to the eZ generated url alias. The query parameter tells
 then tells Symfony which header generate for the response, either download or view the media. This means
 that the generated eZ url alias will be the url to the media file and not the one subject to change,
-it also gets rid of the chrome around the image since we are serving the image directly.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">AppBundle\Controller</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">eZ\Bundle\EzPublishCoreBundle\Controller</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\BinaryFileResponse</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Response</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\ResponseHeaderBag</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">eZ\Publish\SPI\FieldType\Value</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MediaController</span> <span class="k">extends</span> <span class="nx">Controller</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="sd">/**
-</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param $locationId
-</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param $viewType
-</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param bool $layout
-</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param array $params
-</span></span></span><span class="line"><span class="cl"><span class="sd">     *
-</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return Response
-</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">mediaAction</span><span class="p">(</span><span class="nv">$locationId</span><span class="p">,</span> <span class="nv">$viewType</span><span class="p">,</span> <span class="nv">$layout</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">$disposition</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDisposition</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(</span><span class="nv">$locationId</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getBinaryFileResponse</span><span class="p">(</span><span class="nv">$file</span><span class="p">,</span> <span class="nv">$disposition</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="sd">/**
-</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return ResponseHeaderBag::DISPOSITION_ATTACHMENT|ResponseHeaderBag::DISPOSITION_INLINE
-</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDisposition</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;request_stack&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getCurrentRequest</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">$dl</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;dl&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$dl</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="nx">ResponseHeaderBag</span><span class="o">::</span><span class="na">DISPOSITION_ATTACHMENT</span> <span class="o">:</span> <span class="nx">ResponseHeaderBag</span><span class="o">::</span><span class="na">DISPOSITION_INLINE</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="sd">/**
-</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param $locationId
-</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param string $fileName
-</span></span></span><span class="line"><span class="cl"><span class="sd">     *
-</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return mixed
-</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">function</span> <span class="nf">getFile</span><span class="p">(</span><span class="nv">$locationId</span><span class="p">,</span> <span class="nv">$fileName</span> <span class="o">=</span> <span class="s1">&#39;file&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">$location</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getLocationService</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">loadLocation</span><span class="p">(</span><span class="nv">$locationId</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">$content</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContentService</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">loadContent</span><span class="p">(</span><span class="nv">$location</span><span class="o">-&gt;</span><span class="na">contentId</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$content</span><span class="o">-&gt;</span><span class="na">getFieldValue</span><span class="p">(</span><span class="nv">$fileName</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$file</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="sd">/**
-</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param $file
-</span></span></span><span class="line"><span class="cl"><span class="sd">     * @param string $dispositionType
-</span></span></span><span class="line"><span class="cl"><span class="sd">     *
-</span></span></span><span class="line"><span class="cl"><span class="sd">     * @return BinaryFileResponse
-</span></span></span><span class="line"><span class="cl"><span class="sd">     */</span>
-</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">function</span> <span class="nf">getBinaryFileResponse</span><span class="p">(</span><span class="nx">Value</span> <span class="nv">$file</span><span class="p">,</span> <span class="nv">$dispositionType</span> <span class="o">=</span> <span class="nx">ResponseHeaderBag</span><span class="o">::</span><span class="na">DISPOSITION_ATTACHMENT</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">$fileUri</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="o">-&gt;</span><span class="na">getParameter</span><span class="p">(</span><span class="s1">&#39;kernel.root_dir&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;/../web&#39;</span> <span class="o">.</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">uri</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BinaryFileResponse</span><span class="p">(</span><span class="nv">$fileUri</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentDisposition</span><span class="p">(</span><span class="nv">$dispositionType</span><span class="p">,</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">fileName</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div>
-<h3 id="conclusion">Conclusion</h3>
-<p>I am sure there are other options for handling media that I haven&rsquo;t though of, please share your ideas
+it also gets rid of the chrome around the image since we are serving the image directly.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nx>AppBundle\Controller</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>eZ\Bundle\EzPublishCoreBundle\Controller</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Symfony\Component\HttpFoundation\BinaryFileResponse</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Symfony\Component\HttpFoundation\Response</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Symfony\Component\HttpFoundation\ResponseHeaderBag</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>eZ\Publish\SPI\FieldType\Value</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>MediaController</span> <span class=k>extends</span> <span class=nx>Controller</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=sd>/**
+</span></span></span><span class=line><span class=cl><span class=sd>     * @param $locationId
+</span></span></span><span class=line><span class=cl><span class=sd>     * @param $viewType
+</span></span></span><span class=line><span class=cl><span class=sd>     * @param bool $layout
+</span></span></span><span class=line><span class=cl><span class=sd>     * @param array $params
+</span></span></span><span class=line><span class=cl><span class=sd>     *
+</span></span></span><span class=line><span class=cl><span class=sd>     * @return Response
+</span></span></span><span class=line><span class=cl><span class=sd>     */</span>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>mediaAction</span><span class=p>(</span><span class=nv>$locationId</span><span class=p>,</span> <span class=nv>$viewType</span><span class=p>,</span> <span class=nv>$layout</span> <span class=o>=</span> <span class=k>false</span><span class=p>,</span> <span class=k>array</span> <span class=nv>$params</span> <span class=o>=</span> <span class=k>array</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$disposition</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>getDisposition</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$file</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>getFile</span><span class=p>(</span><span class=nv>$locationId</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$response</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>getBinaryFileResponse</span><span class=p>(</span><span class=nv>$file</span><span class=p>,</span> <span class=nv>$disposition</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$response</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=sd>/**
+</span></span></span><span class=line><span class=cl><span class=sd>     * @return ResponseHeaderBag::DISPOSITION_ATTACHMENT|ResponseHeaderBag::DISPOSITION_INLINE
+</span></span></span><span class=line><span class=cl><span class=sd>     */</span>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>getDisposition</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$request</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>get</span><span class=p>(</span><span class=s1>&#39;request_stack&#39;</span><span class=p>)</span><span class=o>-&gt;</span><span class=na>getCurrentRequest</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$dl</span> <span class=o>=</span> <span class=nv>$request</span><span class=o>-&gt;</span><span class=na>get</span><span class=p>(</span><span class=s1>&#39;dl&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$dl</span> <span class=o>==</span> <span class=mi>1</span> <span class=o>?</span> <span class=nx>ResponseHeaderBag</span><span class=o>::</span><span class=na>DISPOSITION_ATTACHMENT</span> <span class=o>:</span> <span class=nx>ResponseHeaderBag</span><span class=o>::</span><span class=na>DISPOSITION_INLINE</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=sd>/**
+</span></span></span><span class=line><span class=cl><span class=sd>     * @param $locationId
+</span></span></span><span class=line><span class=cl><span class=sd>     * @param string $fileName
+</span></span></span><span class=line><span class=cl><span class=sd>     *
+</span></span></span><span class=line><span class=cl><span class=sd>     * @return mixed
+</span></span></span><span class=line><span class=cl><span class=sd>     */</span>
+</span></span><span class=line><span class=cl>    <span class=k>private</span> <span class=k>function</span> <span class=nf>getFile</span><span class=p>(</span><span class=nv>$locationId</span><span class=p>,</span> <span class=nv>$fileName</span> <span class=o>=</span> <span class=s1>&#39;file&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$location</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>getRepository</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>getLocationService</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>loadLocation</span><span class=p>(</span><span class=nv>$locationId</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$content</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>getRepository</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>getContentService</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>loadContent</span><span class=p>(</span><span class=nv>$location</span><span class=o>-&gt;</span><span class=na>contentId</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$file</span> <span class=o>=</span> <span class=nv>$content</span><span class=o>-&gt;</span><span class=na>getFieldValue</span><span class=p>(</span><span class=nv>$fileName</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$file</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=sd>/**
+</span></span></span><span class=line><span class=cl><span class=sd>     * @param $file
+</span></span></span><span class=line><span class=cl><span class=sd>     * @param string $dispositionType
+</span></span></span><span class=line><span class=cl><span class=sd>     *
+</span></span></span><span class=line><span class=cl><span class=sd>     * @return BinaryFileResponse
+</span></span></span><span class=line><span class=cl><span class=sd>     */</span>
+</span></span><span class=line><span class=cl>    <span class=k>private</span> <span class=k>function</span> <span class=nf>getBinaryFileResponse</span><span class=p>(</span><span class=nx>Value</span> <span class=nv>$file</span><span class=p>,</span> <span class=nv>$dispositionType</span> <span class=o>=</span> <span class=nx>ResponseHeaderBag</span><span class=o>::</span><span class=na>DISPOSITION_ATTACHMENT</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$fileUri</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>container</span><span class=o>-&gt;</span><span class=na>getParameter</span><span class=p>(</span><span class=s1>&#39;kernel.root_dir&#39;</span><span class=p>)</span> <span class=o>.</span> <span class=s1>&#39;/../web&#39;</span> <span class=o>.</span> <span class=nv>$file</span><span class=o>-&gt;</span><span class=na>uri</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$response</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>BinaryFileResponse</span><span class=p>(</span><span class=nv>$fileUri</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$response</span><span class=o>-&gt;</span><span class=na>setContentDisposition</span><span class=p>(</span><span class=nv>$dispositionType</span><span class=p>,</span> <span class=nv>$file</span><span class=o>-&gt;</span><span class=na>fileName</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$response</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><h3 id=conclusion>Conclusion</h3><p>I am sure there are other options for handling media that I haven&rsquo;t though of, please share your ideas
 as I, for one, would love to hear them. With Symfony there is no one size fits all solution, so this MediaController
 may not work as designed. That said, I do hope this helps with managing media inside eZ Publish/Platform
 in the future. Please note that I do not show any permissions customizations in the <code>MediaController</code>, some permissions will
-still be automatically managed by eZ, but you will probably have to include some permissions checks in your actions.</p>
-  </div>
-  
-
-<div class="navigation navigation-single">
-    
-    <a href="/posts/2015/raw-html-in-knp-menu-labels/" class="navigation-prev">
-      <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">Allowing Raw HTML in KNP Menu Labels</span>
-    </a>
-    
-    
-    <a href="/posts/2018/avoiding-route-collision-in-ez-platform/" class="navigation-next">
-      <span class="navigation-tittle">Avoiding Route Collision in eZ Platform</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
-    
-</div>
-
-
-  
-
-
-
-
-  
-    
-        <div id="graphcomment"></div>
-<script type="text/javascript">
-  window.graphcomment_id = 'harmstyler-me';
-   
-  (function() {
-    var gc = document.createElement('script'); gc.type = 'text/javascript'; gc.async = true;
-    gc.src = 'https://graphcomment.com/js/integration.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
-  })();
-</script>
-    
-
-
-</article>
-
-</div>
-    
-  
-  
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133041000-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-
-
-    
-
-
-<script type="text/javascript" src="https://harmstyler.me/js/lazysizes.min.6e30beddfbf7ae1f972b70bbde23ae3ac52a28fd677c4fd5dcd1de92744398706f32e19e02dd53a7ad3f20fd9527bef5fbe2cc75ca733eb291ba15d9d267d202.js" integrity="sha512-bjC&#43;3fv3rh&#43;XK3C73iOuOsUqKP1nfE/V3NHeknRDmHBvMuGeAt1Tp60/IP2VJ771&#43;&#43;LMdcpzPrKRuhXZ0mfSAg=="></script>
-</body>
-</html>
+still be automatically managed by eZ, but you will probably have to include some permissions checks in your actions.</p></div><div class="navigation navigation-single"><a href=/posts/2015/raw-html-in-knp-menu-labels/ class=navigation-prev><i aria-hidden=true class="fa fa-chevron-left"></i>
+<span class=navigation-tittle>Allowing Raw HTML in KNP Menu Labels</span>
+</a><a href=/posts/2018/avoiding-route-collision-in-ez-platform/ class=navigation-next><span class=navigation-tittle>Avoiding Route Collision in eZ Platform</span>
+<i aria-hidden=true class="fa fa-chevron-right"></i></a></div><div id=graphcomment></div><script type=text/javascript>window.graphcomment_id="harmstyler-me",function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://graphcomment.com/js/integration.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)}()</script></article></div><script async src="https://www.googletagmanager.com/gtag/js?id=G-367546757"></script><script>var doNotTrack=!1,dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes";if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-367546757")}</script><script defer src=https://use.fontawesome.com/releases/v5.5.0/js/all.js integrity=sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0 crossorigin=anonymous></script><script type=text/javascript src=https://harmstyler.me/js/lazysizes.min.64304986998b78c207dc8b4c3da26cc22276e8b0260e7adc7172f39c35686ef216c931ad50af0239886d0d55c2e65f732d51804a62ddf45a686455117060b8e7.js integrity="sha512-ZDBJhpmLeMIH3ItMPaJswiJ26LAmDnrccXLznDVobvIWyTGtUK8COYhtDVXC5l9zLVGASmLd9FpoZFURcGC45w=="></script></body></html>

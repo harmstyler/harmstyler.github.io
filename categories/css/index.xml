@@ -1,29 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>CSS on Tyler Harms</title>
-    <link>https://harmstyler.me/categories/css/</link>
-    <description>Recent content in CSS on Tyler Harms</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 20 Oct 2011 00:00:00 +0000</lastBuildDate><atom:link href="https://harmstyler.me/categories/css/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Gradient App</title>
-      <link>https://harmstyler.me/posts/2011/gradient-app/</link>
-      <pubDate>Thu, 20 Oct 2011 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2011/gradient-app/</guid>
-      <description>I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out gradients is easy enough, get your start color and your end color and then plug them into all the various browser specific gradient css elements (webkit, moz, etc&amp;hellip;) and you get a gradient. Like I said, simple enough but time consuming because each browser gets its own line.</description>
-    </item>
-    
-    <item>
-      <title>Path to Android!</title>
-      <link>https://harmstyler.me/posts/2011/path-to-android/</link>
-      <pubDate>Fri, 26 Aug 2011 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2011/path-to-android/</guid>
-      <description> </description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CSS on Tyler Harms</title><link>https://harmstyler.me/categories/css/</link><description>Recent content in CSS on Tyler Harms</description><generator>Hugo</generator><language>en-us</language><managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor><webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster><lastBuildDate>Thu, 20 Oct 2011 00:00:00 +0000</lastBuildDate><atom:link href="https://harmstyler.me/categories/css/index.xml" rel="self" type="application/rss+xml"/><item><title>Gradient App</title><link>https://harmstyler.me/posts/2011/gradient-app/</link><pubDate>Thu, 20 Oct 2011 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2011/gradient-app/</guid><description>&lt;p&gt;I am well overdue for a new HarmsSite post. So today I am going to talk about one of my favorite new tools. But first, an intro. Building out gradients is easy enough, get your start color and your end color and then plug them into all the various browser specific gradient css elements (webkit, moz, etc&amp;hellip;) and you get a gradient. Like I said, simple enough but time consuming because each browser gets its own line.&lt;/p&gt;</description></item><item><title>Path to Android!</title><link>https://harmstyler.me/posts/2011/path-to-android/</link><pubDate>Fri, 26 Aug 2011 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2011/path-to-android/</guid><description>&lt;a href="http://path.com"&gt;&lt;img src="https://harmstyler.me/img/path-logo-2x.png"
+ alt="Path"
+ title="path-logo"
+ class="pull-right"
+ loading="lazy"
+ decoding="async"
+ &gt;&lt;/a&gt;&lt;p&gt;Finally, Path has come to Android. Path is one of those little known apps that I think a person would love, if they knew about it. Path is made to be built off of Facebook, but far more personal than that. Their slogan then makes sense, The Personal Network (vs the Social Network). At Path each person is only able to view a limited number of friends, making the social web experience more personal. They recognize the fact that each person in real life does not carry on relationships with 300 people, more likely 30 at the most. Because of this fact, they limit the web friends to the same number; this makes the social experience mean far more to the user. So, back to my original point, Path has been available for iPhone only since its inception. Path is not an internet app; unlike Facebook, I cannot upload photos online, I can only use my phone. Also, there are no status updates, Path is just you sharing photos with your closest friends. Path is a fantastic idea that I have been waiting to use for some time now, as I use Android. Path comes with it a simple and sleek UI, which I would expect being so limited on options and all. Just about the only bad part I can find is that not enough of my friends use it, yet. So my recommendation? Go out and get the app, it should be fun.&lt;/p&gt;</description></item></channel></rss>

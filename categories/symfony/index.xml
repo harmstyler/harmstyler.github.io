@@ -1,82 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Symfony on Tyler Harms</title>
-    <link>https://harmstyler.me/categories/symfony/</link>
-    <description>Recent content in Symfony on Tyler Harms</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 19 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://harmstyler.me/categories/symfony/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Avoiding Route Collision in eZ Platform</title>
-      <link>https://harmstyler.me/posts/2018/avoiding-route-collision-in-ez-platform/</link>
-      <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2018/avoiding-route-collision-in-ez-platform/</guid>
-      <description>eZ Platform boils down to a set of Symfony bundles that give you a nice way of managing content for your users. With these bundles, eZ reserves some routing paths for internal or admin use, paths that you might want for your own app. If you ever run across a path you want to use for your app, and not break an internal eZ feature, there is a simple solution: change the path config.</description>
-    </item>
-    
-    <item>
-      <title>Managing Media in eZ Publish 5</title>
-      <link>https://harmstyler.me/posts/2016/managing-media-in-ez-publish/</link>
-      <pubDate>Sun, 31 Jan 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2016/managing-media-in-ez-publish/</guid>
-      <description>&lt;p&gt;Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Symfony on Tyler Harms</title><link>https://harmstyler.me/categories/symfony/</link><description>Recent content in Symfony on Tyler Harms</description><generator>Hugo</generator><language>en-us</language><managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor><webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster><lastBuildDate>Wed, 19 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://harmstyler.me/categories/symfony/index.xml" rel="self" type="application/rss+xml"/><item><title>Avoiding Route Collision in eZ Platform</title><link>https://harmstyler.me/posts/2018/avoiding-route-collision-in-ez-platform/</link><pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2018/avoiding-route-collision-in-ez-platform/</guid><description>&lt;p&gt;eZ Platform boils down to a set of Symfony bundles that give you a nice way of managing content for your users. With these bundles, eZ reserves some routing paths for internal or admin use, paths that you might want for your own app. If you ever run across a path you want to use for your app, and not break an internal eZ feature, there is a simple solution: &lt;strong&gt;change the path config&lt;/strong&gt;.&lt;/p&gt;</description></item><item><title>Managing Media in eZ Publish 5</title><link>https://harmstyler.me/posts/2016/managing-media-in-ez-publish/</link><pubDate>Sun, 31 Jan 2016 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2016/managing-media-in-ez-publish/</guid><description>&lt;p&gt;Managing media in an eZ Publish 4 install was always a pain point for me. There were a number of problems
 that I had with media in eZ Publish 4 that are now addressed thanks to Symfony. The media I am referring to
 in this post are any content types placed in the media category, traditionally images, files, audio files, and video
-files.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Allowing Raw HTML in KNP Menu Labels</title>
-      <link>https://harmstyler.me/posts/2015/raw-html-in-knp-menu-labels/</link>
-      <pubDate>Mon, 20 Jul 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2015/raw-html-in-knp-menu-labels/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/knplabs/KnpMenu&#34;&gt;KNP Menu&lt;/a&gt; is a library by the guys at &lt;a href=&#34;http://knplabs.com&#34;&gt;KNP Labs&lt;/a&gt; for building menus with php. The KNP menu library offers great features like automatically adding branch classes, marking the first and last item in a menu, and provides features for to automatically figure out the current menu item. Adding raw html into a label (eg &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;) can be a bit of a pain, however.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Mixing AngularJS and Symfony</title>
-      <link>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</link>
-      <pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</guid>
-      <description>&lt;p&gt;I enjoy being a PHP Developer. PHP is a very flexible language and Symfony2 is
+files.&lt;/p&gt;</description></item><item><title>Allowing Raw HTML in KNP Menu Labels</title><link>https://harmstyler.me/posts/2015/raw-html-in-knp-menu-labels/</link><pubDate>Mon, 20 Jul 2015 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2015/raw-html-in-knp-menu-labels/</guid><description>&lt;p&gt;&lt;a href="https://github.com/knplabs/KnpMenu"&gt;KNP Menu&lt;/a&gt; is a library by the guys at &lt;a href="http://knplabs.com"&gt;KNP Labs&lt;/a&gt; for building menus with php. The KNP menu library offers great features like automatically adding branch classes, marking the first and last item in a menu, and provides features for to automatically figure out the current menu item. Adding raw html into a label (eg &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;) can be a bit of a pain, however.&lt;/p&gt;</description></item><item><title>Mixing AngularJS and Symfony</title><link>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</link><pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</guid><description>&lt;p&gt;I enjoy being a PHP Developer. PHP is a very flexible language and Symfony2 is
 a modern framework that forces many SOLID habits on developers. I also enjoy
 working with AngularJS. AngularJS makes Javascript fun and much easier to work
 with. Moreover, much like Symfony2, it forces good habits on developers. Getting
-the two to work together, however, can be a little bit of a chore if not careful.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Symfony2 Access Control</title>
-      <link>https://harmstyler.me/posts/2013/symfony2-access-conrol/</link>
-      <pubDate>Sat, 02 Mar 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2013/symfony2-access-conrol/</guid>
-      <description>I am very new to Symfony development. While developing a side project app I found I needed to control access to a certain area to logged in users only. Based on my previous development history I was expecting to have to determine if a user was logged in via the controller. I figured I would need to find an is_logged_in boolean and use it to determine user access control. What I found while doing my development is that Symfony2 takes care of access control in a much more eloquent way.</description>
-    </item>
-    
-    <item>
-      <title>eZ Publish 5 - First Thoughts</title>
-      <link>https://harmstyler.me/posts/2013/ez-publish-5-first-thoughts/</link>
-      <pubDate>Sat, 19 Jan 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2013/ez-publish-5-first-thoughts/</guid>
-      <description>I finally decided on my first eZ Publish 5 project&amp;hellip; my site of course. I am currently in the middle of upgrading my wordpress install to eZ Publish. Honestly, I don&amp;rsquo;t really need anything more than a simple Wordpress install, but it will be nice to get an eZ5 site under my belt.
-Seeing as I am in the middle of development, there have been a few bumps in the development road that I have found and would like to share.</description>
-    </item>
-    
-    <item>
-      <title>Learning Symfony</title>
-      <link>https://harmstyler.me/posts/2012/learning-symfony/</link>
-      <pubDate>Wed, 21 Nov 2012 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2012/learning-symfony/</guid>
-      <description>The blog starts with the basics and explores a good deal of Symfony components in detail. In the end you will be left with a barley usable blog, but that is alright, it leaves you with a project to fix. It is a tutorial for Symfony 2.0, and because Symfony is currently on 2.1.3 you will notice some part don&amp;rsquo;t work the way you expect (but I think that forces you to learn more anyway).</description>
-    </item>
-    
-  </channel>
-</rss>
+the two to work together, however, can be a little bit of a chore if not careful.&lt;/p&gt;</description></item><item><title>Symfony2 Access Control</title><link>https://harmstyler.me/posts/2013/symfony2-access-conrol/</link><pubDate>Sat, 02 Mar 2013 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2013/symfony2-access-conrol/</guid><description>&lt;p&gt;I am very new to Symfony development. While developing a side project app I found I needed to control access to a certain area to logged in users only. Based on my previous development history I was expecting to have to determine if a user was logged in via the controller. I figured I would need to find an &lt;code&gt;is_logged_in&lt;/code&gt; boolean and use it to determine user access control. What I found while doing my development is that Symfony2 takes care of access control in a much more eloquent way. Rather than having to determine if a user is logged in inside each controller, Symfony2 controls access using a system similar to its routing system. Inside a Symfony2 app there is, by default, a &lt;code&gt;security.yml&lt;/code&gt; file that is used to control access. Inside the &lt;code&gt;security.yml&lt;/code&gt; file locate the &lt;code&gt;access_control&lt;/code&gt; declaration. By simply declaring a route inside the &lt;code&gt;access_control&lt;/code&gt; yml array we can control which users have access to which routes, like so:&lt;/p&gt;</description></item><item><title>eZ Publish 5 - First Thoughts</title><link>https://harmstyler.me/posts/2013/ez-publish-5-first-thoughts/</link><pubDate>Sat, 19 Jan 2013 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2013/ez-publish-5-first-thoughts/</guid><description>&lt;img src="https://harmstyler.me/img/symfony-logo.png"
+ alt="Symfony Logo"
+ title="Symfony Logo"
+ class="pull-right"
+ loading="lazy"
+ decoding="async"
+ &gt;&lt;p&gt;I finally decided on my first eZ Publish 5 project&amp;hellip; my site of course. I am currently in the middle of upgrading my wordpress install to eZ Publish. Honestly, I don&amp;rsquo;t really need anything more than a simple Wordpress install, but it will be nice to get an eZ5 site under my belt.&lt;/p&gt;
+&lt;p&gt;Seeing as I am in the middle of development, there have been a few bumps in the development road that I have found and would like to share. Firstly, I can find no way to run eZ Publish 5 completely in legacy mode, no matter what I do my pagelayout template needs to be a twig template. I posed the question to the eZ Community and it sounds like this should be possible, but it just wouldn&amp;rsquo;t work for me (see the discussion &lt;a href="http://bit.ly/WhVHwu" title="Overriding templates in eZ 5"&gt;here&lt;/a&gt;). I actually don&amp;rsquo;t have a problem with this, it&amp;rsquo;s not like being forced to use Symfony is a bad thing.&lt;/p&gt;</description></item><item><title>Learning Symfony</title><link>https://harmstyler.me/posts/2012/learning-symfony/</link><pubDate>Wed, 21 Nov 2012 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2012/learning-symfony/</guid><description>&lt;img src="https://harmstyler.me/img/symfony2.jpg"
+ alt="Nashville Symfony"
+ title="Nashville Symfony"
+ class="pull-right"
+ loading="lazy"
+ decoding="async"
+ &gt;&lt;p&gt;I have spent a good deal of my freetime this past month or two learning as much about about the php framework Symfony as possible. The moment that eZ Systems announced that they were adopting the Symfony framework I knew that I would be be spending some time with it. I have found that Symfony doesn&amp;rsquo;t have the lowest barrier to entry so it has been a process, to say the least. I have a blog that has helped matters a great deal and so I wanted to give it some props here. If you are like me, wanting to learn Symfony but lacking time and resources, you should really check this site out: &lt;a href="http://tutorial.symblog.co.uk/" title="Symblog: Creating a Blog in Symfony2"&gt;Symblog: Creating a Blog in Symfony2&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

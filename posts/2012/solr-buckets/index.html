@@ -1,292 +1,77 @@
-<!DOCTYPE html>
-<html lang="en-us">
-
-<head>
-    <link href="https://gmpg.org/xfn/11" rel="profile"><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Cache-Control" content="public" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.101.0" /><title>Solr Buckets • Tyler Harms</title><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Solr Buckets"/>
-<meta name="twitter:description" content="I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. The Problem: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&rsquo;s speed; let Solr do the work)."/>
-<meta property="og:title" content="Solr Buckets" />
-<meta property="og:description" content="I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. The Problem: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&rsquo;s speed; let Solr do the work)." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://harmstyler.me/posts/2012/solr-buckets/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2012-02-25T00:00:00+00:00" />
-<meta property="article:modified_time" content="2012-02-25T00:00:00+00:00" />
-
-<meta name="copyright" content="Tyler Harms" /><meta name="author" content="Tyler Harms" />
-
-
-<link rel="stylesheet" href="https://harmstyler.me/css/syntax.min.526c7855d123d38fb872630d4fd87414145f1c4718e03de5cdec1c1fbdd44f3458c31f6ef3f67ba28a296a00ba072faf897644f22e1360bf7265b512a40017fa.css" integrity="sha512-Umx4VdEj04&#43;4cmMNT9h0FBRfHEcY4D3lzewcH73UTzRYwx9u8/Z7ooopagC6By&#43;viXZE8i4TYL9yZbUSpAAX&#43;g==" media="screen">
-
-
-
-
-
-<link rel="stylesheet" href="/scss/hyde-hyde.23223b3fbdd5963ba070b35e098aca594477d9b37a714c6f3e8af16d7e26bcbe.css" integrity="sha256-IyI7P73VljugcLNeCYrKWUR32bN6cUxvPorxbX4mvL4=">
-
-
-<link rel="stylesheet" href="/scss/print.1850a99a7deb72f7243ff99e7a0dfc548ba8837498518c98cc1e44fa65bf1678.css" integrity="sha256-GFCpmn3rcvckP/meeg38VIuog3SYUYyYzB5E&#43;mW/Fng=" media="print">
-
-
-<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#6a9fb5">
-    <meta name="description" content="I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. The Problem: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&rsquo;s speed; let Solr do the work).">
-
-
-</head>
-<body class="theme-base-0d ">
-<div class="sidebar">
-  <div class="container ">
-    <div class="sidebar-about">
-      <span class="site__title">
-        <a href="https://harmstyler.me/">Tyler Harms</a>
-      </span>
-      
-        
-        
-        
-        <div class="author-image">
-          <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://harmstyler.me//img/tyler_portrait.jpg" alt="Author Image" class="img--circle img--headshot element--center lazyload">
-        </div>
-        
-      
-      
-      <p class="site__description">
-         A Software Development Blog 
-      </p>
-    </div>
-    <div class="collapsible-menu">
-      <input type="checkbox" id="menuToggle">
-      <label for="menuToggle">Tyler Harms</label>
-      <div class="menu-content">
-        <div>
-	<ul class="sidebar-nav">
-		 
-		 
-			 
-				<li>
-					<a href="/posts/">
-						<span>Posts</span>
-					</a>
-				</li>
-			 
-		 
-			 
-				<li>
-					<a href="/portfolio/">
-						<span>Portfolio</span>
-					</a>
-				</li>
-			 
-		 
-			 
-				<li>
-					<a href="/about/">
-						<span>About</span>
-					</a>
-				</li>
-			 
-		
-		</li>
-	</ul>
-</div>
-
-        <section class="social">
-	
-	<a href="https://hachyderm.io/@harmstyler" rel="me"><i class="fab fa-mastodon fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	
-	<a href="https://github.com/harmstyler" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	<a href="https://gitlab.com/harmstyler" rel="me"><i class="fab fa-gitlab fa-lg" aria-hidden="true"></i></a>
-	
-	
-	<a href="https://instagram.com/harmstyler" rel="me"><i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
-	
-	
-	<a href="https://linkedin.com/in/harmstyler" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
-	
-	
-	<a href="https://stackoverflow.com/users/743245/harmstyler" rel="me"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	
-	<a href="https://keybase.io/harmstyler" rel="me"><i class="fab fa-keybase fa-lg" aria-hidden="true"></i></a>
-	
-	
-	
-	
-</section>
-
-      </div>
-    </div>
-    
-<div class="copyright">
-  &copy; 2022 Tyler Harms
-  
-</div>
-
-
-
-  </div>
-</div>
-<div class="content container">
-    <article>
-  <header>
-    <h1>Solr Buckets</h1>
-    
-    
-<div class="post__meta">
-    
-    
-      <i class="fas fa-calendar-alt"></i>&nbsp;Feb 25, 2012
-    
-    
-    
-      
-      
-          in
-          
-          
-              <a class="badge badge-category" href="/categories/solr">SOLR</a>
-              
-          
-      
-    
-    
-    
-      
-      
-          <br/>
-          &nbsp;<i class="fas fa-tags"></i>
-          
-          <a class="badge badge-tag" href="/tags/ez-find">ez find</a>
-          
-      
-    
-    
-    <br/>
-    <i class="fas fa-clock"></i>&nbsp;3 min read
-</div>
-
-
-  </header>
-  
-  
-  <div class="post">
-    <p>I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. <strong>The Problem</strong>: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&rsquo;s speed; let Solr do the work). Now, the book I was using, <!-- raw HTML omitted -->Apache Solr Enterprise Search Server<!-- raw HTML omitted -->, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the <code>SynonymFilterFactory</code>. So for starters lets look at the fieldType:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;fieldType</span> <span class="na">name=</span><span class="s">&#34;bucketFirstLetterGroup&#34;</span> <span class="na">class=</span><span class="s">&#34;solr.TextField&#34;</span> <span class="na">sortMissingLast=</span><span class="s">&#34;true&#34;</span> <span class="na">omitNorms=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;analyzer</span> <span class="na">type=</span><span class="s">&#34;index&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;tokenizer</span> <span class="na">class=</span><span class="s">&#34;solr.PatternTokenizerFactory&#34;</span> <span class="na">pattern=</span><span class="s">&#34;^([a-zA-Z]).*&#34;</span> <span class="na">group=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&#34;solr.SynonymFilterFactory&#34;</span> <span class="na">synonyms=</span><span class="s">&#34;mb_letterBuckets.txt&#34;</span> <span class="na">ignoreCase=</span><span class="s">&#34;true&#34;</span> <span class="na">expand=</span><span class="s">&#34;false&#34;</span><span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/analyzer&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;analyzer</span> <span class="na">type=</span><span class="s">&#34;query&#34;</span><span class="nt">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;tokenizer</span> <span class="na">class=</span><span class="s">&#34;solr.KeywordTokenizerFactory&#34;</span> <span class="nt">/&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/analyzer&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/fieldType&gt;</span>
-</span></span></code></pre></div><p>It is actually pretty straight forward. It uses a <code>PatternTokenizerFactory</code> to ignore case but grab only letters and then the SynonymFilterFactory looks at a text file to see how to group all the letters. That is where the book got fuzzy. It told me to look at the default <code>synonyms.txt</code> file for reference and it sent me on my merry way. I scoured the internet for the answer to my dilemma and finally found my answer though trial and error. The default <code>synonyms.txt</code> file looks like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#some test synonym mappings unlikely to appear in real input text</span>
-</span></span><span class="line"><span class="cl"><span class="nv">aaafoo</span> <span class="o">=</span>&gt; aaabar
-</span></span><span class="line"><span class="cl"><span class="nv">bbbfoo</span> <span class="o">=</span>&gt; bbbfoo bbbbar
-</span></span><span class="line"><span class="cl"><span class="nv">cccfoo</span> <span class="o">=</span>&gt; cccbar cccbaz
-</span></span><span class="line"><span class="cl">fooaaa,baraaa,bazaaa
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Some synonym groups specific to this example</span>
-</span></span><span class="line"><span class="cl">GB,gib,gigabyte,gigabytes
-</span></span><span class="line"><span class="cl">MB,mib,megabyte,megabytes
-</span></span><span class="line"><span class="cl">Television, Televisions, TV, TVs
-</span></span><span class="line"><span class="cl"><span class="c1">#notice we use &#34;gib&#34; instead of &#34;GiB&#34; so any WordDelimiterFilter coming</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#after us won&#39;t split it into two words.</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Synonym mappings can be used for spelling correction too</span>
-</span></span><span class="line"><span class="cl"><span class="nv">pixima</span> <span class="o">=</span>&gt; pixma
-</span></span></code></pre></div><p>From this file I concluded that my buckets should be grouped as <code>a-c=&gt;a b c</code> and so on. But that is not the case (it will actually appear to bucket the letters but also leave all the letters as their own bucket at the same time (A-C 150 results A 50 results and so on). It actually works opposite of the example. What is on the left is the solr fieldType and the right is the bucket/synonym. To work it must be <code>a,b,c=&gt;a-c</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">a,b,c<span class="o">=</span>&gt;A-C
-</span></span><span class="line"><span class="cl">d,e,f<span class="o">=</span>&gt;D-F
-</span></span><span class="line"><span class="cl">g,h,i<span class="o">=</span>&gt;G-I
-</span></span><span class="line"><span class="cl">j,k,l<span class="o">=</span>&gt;J-L
-</span></span><span class="line"><span class="cl">m,n,o<span class="o">=</span>&gt;M-O
-</span></span><span class="line"><span class="cl">p,q,r<span class="o">=</span>&gt;P-R
-</span></span><span class="line"><span class="cl">s,t,u<span class="o">=</span>&gt;S-U
-</span></span><span class="line"><span class="cl">v,w,x,y,z<span class="o">=</span>&gt;V-Z
-</span></span></code></pre></div><p>So yeah, I have been meaning to post this for a while as I could find no meaningful help on the matter elsewhere on the internet. Also, remember to reindex!</p>
-
-  </div>
-  
-
-<div class="navigation navigation-single">
-    
-    <a href="/posts/2012/photoshoping-goodness/" class="navigation-prev">
-      <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">Photoshopping Goodness</span>
-    </a>
-    
-    
-    <a href="/posts/2012/ez-find-basics/" class="navigation-next">
-      <span class="navigation-tittle">eZ Find Basics</span>
-      <i aria-hidden="true" class="fa fa-chevron-right"></i>
-    </a>
-    
-</div>
-
-
-  
-
-
-
-
-  
-    
-        <div id="graphcomment"></div>
-<script type="text/javascript">
-  window.graphcomment_id = 'harmstyler-me';
-   
-  (function() {
-    var gc = document.createElement('script'); gc.type = 'text/javascript'; gc.async = true;
-    gc.src = 'https://graphcomment.com/js/integration.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
-  })();
-</script>
-    
-
-
-</article>
-
-</div>
-    
-  
-  
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133041000-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
-
-
-
-    
-
-
-<script type="text/javascript" src="https://harmstyler.me/js/lazysizes.min.6e30beddfbf7ae1f972b70bbde23ae3ac52a28fd677c4fd5dcd1de92744398706f32e19e02dd53a7ad3f20fd9527bef5fbe2cc75ca733eb291ba15d9d267d202.js" integrity="sha512-bjC&#43;3fv3rh&#43;XK3C73iOuOsUqKP1nfE/V3NHeknRDmHBvMuGeAt1Tp60/IP2VJ771&#43;&#43;LMdcpzPrKRuhXZ0mfSAg=="></script>
-</body>
-</html>
+<!doctype html><html lang=en-us><head><link href=https://gmpg.org/xfn/11 rel=profile><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. The Problem: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&rsquo;s speed; let Solr do the work). Now, the book I was using, Apache Solr Enterprise Search Server, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the SynonymFilterFactory. So for starters lets look at the fieldType:"><link rel=canonical href=https://harmstyler.me/posts/2012/solr-buckets/><title>Solr Buckets &#183; Tyler Harms</title><meta name=twitter:card content="summary"><meta name=twitter:title content="Solr Buckets"><meta name=twitter:description content="I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. The Problem: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr’s speed; let Solr do the work). Now, the book I was using, Apache Solr Enterprise Search Server, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the SynonymFilterFactory. So for starters lets look at the fieldType:"><meta property="og:url" content="https://harmstyler.me/posts/2012/solr-buckets/"><meta property="og:site_name" content="Tyler Harms"><meta property="og:title" content="Solr Buckets"><meta property="og:description" content="I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. The Problem: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr’s speed; let Solr do the work). Now, the book I was using, Apache Solr Enterprise Search Server, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the SynonymFilterFactory. So for starters lets look at the fieldType:"><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2012-02-25T00:00:00+00:00"><meta property="article:modified_time" content="2012-02-25T00:00:00+00:00"><meta property="article:tag" content="EZ Find"><meta itemprop=name content="Solr Buckets"><meta itemprop=description content="I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. The Problem: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr’s speed; let Solr do the work). Now, the book I was using, Apache Solr Enterprise Search Server, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the SynonymFilterFactory. So for starters lets look at the fieldType:"><meta itemprop=datePublished content="2012-02-25T00:00:00+00:00"><meta itemprop=dateModified content="2012-02-25T00:00:00+00:00"><meta itemprop=wordCount content="487"><meta itemprop=keywords content="EZ Find"><meta name=generator content="Hugo 0.154.5"><meta name=copyright content="Tyler Harms"><meta name=author content="Tyler Harms"><link rel=stylesheet href=https://harmstyler.me/css/syntax.min.526c7855d123d38fb872630d4fd87414145f1c4718e03de5cdec1c1fbdd44f3458c31f6ef3f67ba28a296a00ba072faf897644f22e1360bf7265b512a40017fa.css integrity="sha512-Umx4VdEj04+4cmMNT9h0FBRfHEcY4D3lzewcH73UTzRYwx9u8/Z7ooopagC6By+viXZE8i4TYL9yZbUSpAAX+g==" media=screen><link rel=stylesheet href=/scss/hyde-hyde.51d9e06a8e337f8159a7ffa08e5d6e735ddf5ae6fe9cf8e99fb22367a5fcc195.css integrity="sha256-Udngao4zf4FZp/+gjl1uc13fWub+nPjpn7IjZ6X8wZU="><link rel=stylesheet href=/scss/print.1850a99a7deb72f7243ff99e7a0dfc548ba8837498518c98cc1e44fa65bf1678.css integrity="sha256-GFCpmn3rcvckP/meeg38VIuog3SYUYyYzB5E+mW/Fng=" media=print><link rel=apple-touch-icon sizes=76x76 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#6a9fb5"><meta name=description content="I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. The Problem: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&rsquo;s speed; let Solr do the work). Now, the book I was using, Apache Solr Enterprise Search Server, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the SynonymFilterFactory. So for starters lets look at the fieldType:"></head><body class=theme-base-0d><div class=sidebar><div class=container><div class=sidebar-about><span class=site__title><a href=https://harmstyler.me/>Tyler Harms</a></span><div class=author-image><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src=https://harmstyler.me//img/tyler_portrait.jpg alt="Author Image" class="img--circle img--headshot element--center lazyload"></div><p class=site__description>A Software Development Blog</p></div><div class=collapsible-menu><input type=checkbox id=menuToggle>
+<label for=menuToggle>Tyler Harms</label><div class=menu-content><nav class=sidebar-nav aria-label="Main Navigation"><ul><li><a href=/posts/><span>Posts</span></a></li><li><a href=/portfolio/><span>Portfolio</span></a></li><li><a href=/about/><span>About</span></a></li></ul></nav><section class=social><a href=https://indieweb.social/@harmstyler rel="me noopener" aria-label=Mastodon><i class="fab fa-mastodon fa-lg" aria-hidden=true></i></a>
+<a href=https://github.com/harmstyler rel="me noopener" aria-label=GitHub><i class="fab fa-github fa-lg" aria-hidden=true></i></a>
+<a href=https://gitlab.com/harmstyler rel="me noopener" aria-label=GitLab><i class="fab fa-gitlab fa-lg" aria-hidden=true></i></a>
+<a href=https://instagram.com/harmstyler rel="me noopener" aria-label=Instagram><i class="fab fa-instagram fa-lg" aria-hidden=true></i></a>
+<a href=https://linkedin.com/in/harmstyler rel="me noopener" aria-label=LinkedIn><i class="fab fa-linkedin fa-lg" aria-hidden=true></i></a>
+<a href=https://stackoverflow.com/users/743245/harmstyler rel="me noopener" aria-label="Stack Overflow"><i class="fab fa-stack-overflow fa-lg" aria-hidden=true></i></a></section></div></div><div class=copyright>&copy; 2026 Tyler Harms</div></div></div><div class="content container"><article><header><h1>Solr Buckets</h1><div class=post__meta><i class="fas fa-calendar-alt"></i>&nbsp;Feb 25, 2012
+in
+<a class="badge badge-category" href=/categories/solr>SOLR</a><br>&nbsp;<i class="fas fa-tags"></i>
+<a class="badge badge-tag" href=/tags/ez-find>ez find</a><br><i class="fas fa-clock"></i>&nbsp;3 min read</div></header><div class=post><p>I have been meaning to make this post for a couple of months now. I came across this topic a while back when I was working on creating some custom facets for a website running eZ Find, powered by Solr. <strong>The Problem</strong>: I needed to bucket all the authors together by last name (eg. A-C, D-F and so on). I also wanted to do this all within Solr, since the book I was using for reference said it was possible and I did not want to use Javascript (I wanted to take advantage of Solr&rsquo;s speed; let Solr do the work). Now, the book I was using, <a title="Apache Solr Enterprise Search Server" href=http://www.packtpub.com/apache-solr-3-enterprise-search-server/book target=_blank>Apache Solr Enterprise Search Server</a>, was very good at explaining how to do everything when it came to creating my new custom fieldType. Where it was lacking was in how to declare my new synonyms for the <code>SynonymFilterFactory</code>. So for starters lets look at the fieldType:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=nt>&lt;fieldType</span> <span class=na>name=</span><span class=s>&#34;bucketFirstLetterGroup&#34;</span> <span class=na>class=</span><span class=s>&#34;solr.TextField&#34;</span> <span class=na>sortMissingLast=</span><span class=s>&#34;true&#34;</span> <span class=na>omitNorms=</span><span class=s>&#34;true&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;analyzer</span> <span class=na>type=</span><span class=s>&#34;index&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;tokenizer</span> <span class=na>class=</span><span class=s>&#34;solr.PatternTokenizerFactory&#34;</span> <span class=na>pattern=</span><span class=s>&#34;^([a-zA-Z]).*&#34;</span> <span class=na>group=</span><span class=s>&#34;1&#34;</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;filter</span> <span class=na>class=</span><span class=s>&#34;solr.SynonymFilterFactory&#34;</span> <span class=na>synonyms=</span><span class=s>&#34;mb_letterBuckets.txt&#34;</span> <span class=na>ignoreCase=</span><span class=s>&#34;true&#34;</span> <span class=na>expand=</span><span class=s>&#34;false&#34;</span><span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/analyzer&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;analyzer</span> <span class=na>type=</span><span class=s>&#34;query&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;tokenizer</span> <span class=na>class=</span><span class=s>&#34;solr.KeywordTokenizerFactory&#34;</span> <span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/analyzer&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/fieldType&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><p>It is actually pretty straight forward. It uses a <code>PatternTokenizerFactory</code> to ignore case but grab only letters and then the SynonymFilterFactory looks at a text file to see how to group all the letters. That is where the book got fuzzy. It told me to look at the default <code>synonyms.txt</code> file for reference and it sent me on my merry way. I scoured the internet for the answer to my dilemma and finally found my answer though trial and error. The default <code>synonyms.txt</code> file looks like this:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1>#some test synonym mappings unlikely to appear in real input text</span>
+</span></span><span class=line><span class=cl><span class=nv>aaafoo</span> <span class=o>=</span>&gt; aaabar
+</span></span><span class=line><span class=cl><span class=nv>bbbfoo</span> <span class=o>=</span>&gt; bbbfoo bbbbar
+</span></span><span class=line><span class=cl><span class=nv>cccfoo</span> <span class=o>=</span>&gt; cccbar cccbaz
+</span></span><span class=line><span class=cl>fooaaa,baraaa,bazaaa
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Some synonym groups specific to this example</span>
+</span></span><span class=line><span class=cl>GB,gib,gigabyte,gigabytes
+</span></span><span class=line><span class=cl>MB,mib,megabyte,megabytes
+</span></span><span class=line><span class=cl>Television, Televisions, TV, TVs
+</span></span><span class=line><span class=cl><span class=c1>#notice we use &#34;gib&#34; instead of &#34;GiB&#34; so any WordDelimiterFilter coming</span>
+</span></span><span class=line><span class=cl><span class=c1>#after us won&#39;t split it into two words.</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Synonym mappings can be used for spelling correction too</span>
+</span></span><span class=line><span class=cl><span class=nv>pixima</span> <span class=o>=</span>&gt; pixma
+</span></span></code></pre></td></tr></table></div></div><p>From this file I concluded that my buckets should be grouped as <code>a-c=>a b c</code> and so on. But that is not the case (it will actually appear to bucket the letters but also leave all the letters as their own bucket at the same time (A-C 150 results A 50 results and so on). It actually works opposite of the example. What is on the left is the solr fieldType and the right is the bucket/synonym. To work it must be <code>a,b,c=>a-c</code>.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>a,b,c<span class=o>=</span>&gt;A-C
+</span></span><span class=line><span class=cl>d,e,f<span class=o>=</span>&gt;D-F
+</span></span><span class=line><span class=cl>g,h,i<span class=o>=</span>&gt;G-I
+</span></span><span class=line><span class=cl>j,k,l<span class=o>=</span>&gt;J-L
+</span></span><span class=line><span class=cl>m,n,o<span class=o>=</span>&gt;M-O
+</span></span><span class=line><span class=cl>p,q,r<span class=o>=</span>&gt;P-R
+</span></span><span class=line><span class=cl>s,t,u<span class=o>=</span>&gt;S-U
+</span></span><span class=line><span class=cl>v,w,x,y,z<span class=o>=</span>&gt;V-Z
+</span></span></code></pre></td></tr></table></div></div><p>So yeah, I have been meaning to post this for a while as I could find no meaningful help on the matter elsewhere on the internet. Also, remember to reindex!</p></div><div class="navigation navigation-single"><a href=/posts/2012/photoshoping-goodness/ class=navigation-prev><i aria-hidden=true class="fa fa-chevron-left"></i>
+<span class=navigation-tittle>Photoshopping Goodness</span>
+</a><a href=/posts/2012/ez-find-basics/ class=navigation-next><span class=navigation-tittle>eZ Find Basics</span>
+<i aria-hidden=true class="fa fa-chevron-right"></i></a></div><div id=graphcomment></div><script type=text/javascript>window.graphcomment_id="harmstyler-me",function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://graphcomment.com/js/integration.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)}()</script></article></div><script async src="https://www.googletagmanager.com/gtag/js?id=G-367546757"></script><script>var doNotTrack=!1,dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes";if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-367546757")}</script><script defer src=https://use.fontawesome.com/releases/v5.5.0/js/all.js integrity=sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0 crossorigin=anonymous></script><script type=text/javascript src=https://harmstyler.me/js/lazysizes.min.64304986998b78c207dc8b4c3da26cc22276e8b0260e7adc7172f39c35686ef216c931ad50af0239886d0d55c2e65f732d51804a62ddf45a686455117060b8e7.js integrity="sha512-ZDBJhpmLeMIH3ItMPaJswiJ26LAmDnrccXLznDVobvIWyTGtUK8COYhtDVXC5l9zLVGASmLd9FpoZFURcGC45w=="></script></body></html>

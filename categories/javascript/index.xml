@@ -1,42 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Javascript on Tyler Harms</title>
-    <link>https://harmstyler.me/categories/javascript/</link>
-    <description>Recent content in Javascript on Tyler Harms</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 06 Sep 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://harmstyler.me/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Mixing AngularJS and Symfony</title>
-      <link>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</link>
-      <pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</guid>
-      <description>&lt;p&gt;I enjoy being a PHP Developer. PHP is a very flexible language and Symfony2 is
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Javascript on Tyler Harms</title><link>https://harmstyler.me/categories/javascript/</link><description>Recent content in Javascript on Tyler Harms</description><generator>Hugo</generator><language>en-us</language><managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor><webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster><lastBuildDate>Sat, 06 Sep 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://harmstyler.me/categories/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>Mixing AngularJS and Symfony</title><link>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</link><pubDate>Sat, 06 Sep 2014 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2014/mixing-angular-and-symfony/</guid><description>&lt;p&gt;I enjoy being a PHP Developer. PHP is a very flexible language and Symfony2 is
 a modern framework that forces many SOLID habits on developers. I also enjoy
 working with AngularJS. AngularJS makes Javascript fun and much easier to work
 with. Moreover, much like Symfony2, it forces good habits on developers. Getting
-the two to work together, however, can be a little bit of a chore if not careful.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>jQuery Animate Body Scroll For All Browsers</title>
-      <link>https://harmstyler.me/posts/2013/jquery-animate-body-for-all-browsers/</link>
-      <pubDate>Fri, 09 Aug 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2013/jquery-animate-body-for-all-browsers/</guid>
-      <description>It turns out that when trying to use jQuery&amp;rsquo;s &lt;code&gt;animate&lt;/code&gt; to &lt;code&gt;scrollTop&lt;/code&gt; on the main body of an html document different browsers require different targets to scroll to. Webkit requires targeting the &lt;code&gt;body&lt;/code&gt; of the document while all other browsers that I know of use &lt;code&gt;html&lt;/code&gt;.</description>
-    </item>
-    
-    <item>
-      <title>IE10 Conditional Comments</title>
-      <link>https://harmstyler.me/posts/2013/ie10-conditional-comments/</link>
-      <pubDate>Sat, 29 Jun 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://harmstyler.me/posts/2013/ie10-conditional-comments/</guid>
-      <description>Let me start by saying that I was very excited by IE10. Internet Explorer 10 was supposed to be the premier IE web browser. Microsoft was so confident that they created a browser that could meet modern standards that they dropped conditional comments in IE10. If you don&amp;rsquo;t know anything about developing for IE, just know that it sucks; it was, however, aleviated some by conditional comments that allowed for custom styles/js/whatever for IE versions.</description>
-    </item>
-    
-  </channel>
-</rss>
+the two to work together, however, can be a little bit of a chore if not careful.&lt;/p&gt;</description></item><item><title>jQuery Animate Body Scroll For All Browsers</title><link>https://harmstyler.me/posts/2013/jquery-animate-body-for-all-browsers/</link><pubDate>Fri, 09 Aug 2013 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2013/jquery-animate-body-for-all-browsers/</guid><description>It turns out that when trying to use jQuery&amp;rsquo;s &lt;code&gt;animate&lt;/code&gt; to &lt;code&gt;scrollTop&lt;/code&gt; on the main body of an html document different browsers require different targets to scroll to. Webkit requires targeting the &lt;code&gt;body&lt;/code&gt; of the document while all other browsers that I know of use &lt;code&gt;html&lt;/code&gt;.</description></item><item><title>IE10 Conditional Comments</title><link>https://harmstyler.me/posts/2013/ie10-conditional-comments/</link><pubDate>Sat, 29 Jun 2013 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2013/ie10-conditional-comments/</guid><description>&lt;p&gt;Let me start by saying that I was very excited by IE10. Internet Explorer 10 was supposed to be &lt;strong&gt;the&lt;/strong&gt; premier IE web browser. Microsoft was so confident that they created a browser that could meet modern standards that they dropped conditional comments in IE10. If you don&amp;rsquo;t know anything about developing for IE, just know that it sucks; it &lt;em&gt;was&lt;/em&gt;, however, aleviated some by conditional comments that allowed for custom styles/js/whatever for IE versions. My first time working with IE10 I was made harshly aware that conditional comments no longer work. What&amp;rsquo;s worse, my site that functioned and looked great in IE9 no longer functioned in IE10. How does this happen?&lt;/p&gt;</description></item></channel></rss>
