@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web Development on Tyler Harms</title><link>https://harmstyler.me/categories/web-development/</link><description>Recent content in Web Development on Tyler Harms</description><generator>Hugo</generator><language>en-us</language><managingEditor>tyler.harms@gmail.com (Tyler Harms)</managingEditor><webMaster>tyler.harms@gmail.com (Tyler Harms)</webMaster><lastBuildDate>Mon, 19 Jan 2026 19:40:52 -0600</lastBuildDate><atom:link href="https://harmstyler.me/categories/web-development/index.xml" rel="self" type="application/rss+xml"/><item><title>Enhanced Image Rendering in Hugo</title><link>https://harmstyler.me/posts/2026/hugo-render-image/</link><pubDate>Mon, 19 Jan 2026 19:40:52 -0600</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2026/hugo-render-image/</guid><description>&lt;p&gt;&lt;img src="https://harmstyler.me/img/hugo-logo-wide.svg"
+ alt="Alt"
+ title="Hugo Logo"
+ 
+ loading="lazy"
+ decoding="async"
+ &gt;
+One of the things I love about Hugo is its flexibility when it comes to Markdown rendering. While the default behavior
+for images is usually enough, I found myself wanting more control. Specifically the ability to add CSS classes
+or wrap images in links without resorting to raw HTML in my Markdown files (as hugo raises warnings about this).&lt;/p&gt;
+&lt;p&gt;To solve this, I started using a custom &lt;code&gt;render-image.html&lt;/code&gt; template. It allows me to stay in &amp;ldquo;Markdown mode&amp;rdquo; while
+still getting the benefits of optimized, flexible image output.&lt;/p&gt;</description></item></channel></rss>
