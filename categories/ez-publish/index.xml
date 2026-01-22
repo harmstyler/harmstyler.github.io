@@ -58,48 +58,23 @@ files.&lt;/p&gt;</description></item><item><title>eZ Publish 5 - First Thoughts<
 &lt;li&gt;eZ Publish with eZ Find installed&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The following post is based on the option in the eZ Find &lt;code&gt;solr.ini&lt;/code&gt; referring to Shards.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;span class="lnt"&gt;6
-&lt;/span&gt;&lt;span class="lnt"&gt;7
-&lt;/span&gt;&lt;span class="lnt"&gt;8
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-ini" data-lang="ini"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;[SolrBase]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#Shards mapping, can be to multicores in one servlet or even a crosss servers&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#typical use is multilingual setups, but also for external index support&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#the keys are used as shorthands in template functions&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#Shards[]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#Shards[eng-GB]=http://localhost:8983/solr/eng-GB&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#Shards[fre-FR]=http://localhost:8983/solr/fre-FR&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#Shards[myforeignindex]=http://myotherhost:8983/solr&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).&lt;/p&gt;</description></item><item><title>eZ Find: Enable Attribute Storage</title><link>https://harmstyler.me/posts/2012/ez-find-solr-attribute-storage/</link><pubDate>Thu, 26 Apr 2012 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2012/ez-find-solr-attribute-storage/</guid><description>&lt;!--
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-ini" data-lang="ini"&gt;&lt;span class="line"&gt;&lt;span class="ln"&gt;1&lt;/span&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;[SolrBase]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="ln"&gt;2&lt;/span&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#Shards mapping, can be to multicores in one servlet or even a crosss servers&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="ln"&gt;3&lt;/span&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#typical use is multilingual setups, but also for external index support&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="ln"&gt;4&lt;/span&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#the keys are used as shorthands in template functions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="ln"&gt;5&lt;/span&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#Shards[]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="ln"&gt;6&lt;/span&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#Shards[eng-GB]=http://localhost:8983/solr/eng-GB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="ln"&gt;7&lt;/span&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#Shards[fre-FR]=http://localhost:8983/solr/fre-FR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="ln"&gt;8&lt;/span&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;#Shards[myforeignindex]=http://myotherhost:8983/solr&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;What this means for eZ Find developers: we can do a distributed search in our standard eZ Find fetch (with a little work).&lt;/p&gt;</description></item><item><title>eZ Find: Enable Attribute Storage</title><link>https://harmstyler.me/posts/2012/ez-find-solr-attribute-storage/</link><pubDate>Thu, 26 Apr 2012 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2012/ez-find-solr-attribute-storage/</guid><description>&lt;!--
  ![Enable Solr Attribute Storage](/img/enable-solr-attribute-storage.png)
 --&gt;
-&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
-&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
-&lt;/span&gt;&lt;span class="lnt"&gt;2
-&lt;/span&gt;&lt;span class="lnt"&gt;3
-&lt;/span&gt;&lt;span class="lnt"&gt;4
-&lt;/span&gt;&lt;span class="lnt"&gt;5
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class="lntd"&gt;
-&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-ini" data-lang="ini"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Enable Solr to store all the basic information of a content object&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Allows Solr to be used as a cross-site DB&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;[IndexOptions]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="na"&gt;EnableSolrAttributeStorage&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="na"&gt;OptimizeOnCommit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;disabled&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes &lt;code&gt;'as_objects', true()&lt;/code&gt; eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.&lt;/p&gt;</description></item><item><title>eZ Find Multi-Core</title><link>https://harmstyler.me/posts/2012/ez-find-multi-core/</link><pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2012/ez-find-multi-core/</guid><description>&lt;p&gt;One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-ini" data-lang="ini"&gt;&lt;span class="line"&gt;&lt;span class="ln"&gt;1&lt;/span&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Enable Solr to store all the basic information of a content object&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="ln"&gt;2&lt;/span&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Allows Solr to be used as a cross-site DB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="ln"&gt;3&lt;/span&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;[IndexOptions]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="ln"&gt;4&lt;/span&gt;&lt;span class="cl"&gt;&lt;span class="na"&gt;EnableSolrAttributeStorage&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="ln"&gt;5&lt;/span&gt;&lt;span class="cl"&gt;&lt;span class="na"&gt;OptimizeOnCommit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;disabled&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When using eZ Find to search a single local site, it does a really good job at building out the result object to be used. What becomes a problem, however, is when a cross-site search is necessary. When the search fetch includes &lt;code&gt;'as_objects', true()&lt;/code&gt; eZ Find tries to build out an object by fetching from the database after the Solr search is completed and the necessary content is returned.&lt;/p&gt;</description></item><item><title>eZ Find Multi-Core</title><link>https://harmstyler.me/posts/2012/ez-find-multi-core/</link><pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate><author>tyler.harms@gmail.com (Tyler Harms)</author><guid>https://harmstyler.me/posts/2012/ez-find-multi-core/</guid><description>&lt;p&gt;One of the greatest things about eZ Publish as a CMS is its ability to host many websites (siteaccesses) in one eZ Publish install. Recently I had the privilege of working on an eZ install that hosted 4 websites, giving the illusion of a single site experience across multiple urls. We used eZ Find extensively, specifically its multi-core functionality, to get information across the sites with ease. That way, all the sites can keep and maintain their own databases, and what is shared is shared through Solr.&lt;/p&gt;
 &lt;img src="https://harmstyler.me/img/solr-dir.png"
  alt="Solr Directory"
  title="solr-dir"
